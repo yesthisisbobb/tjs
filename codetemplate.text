@@ -1,0 +1,7 @@
+<?php
+  $sql = "SELECT * FROM cabang";
+       $query = mysqli_query($conn, $sql);
+       while($amku = mysqli_fetch_array($query)){
+      echo '<option>'.$amku['nm_cabang'].'</option>';
+    }
+  ?>

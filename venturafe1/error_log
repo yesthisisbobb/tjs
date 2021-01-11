@@ -1,0 +1,29 @@
+[21-Sep-2020 08:49:10 Asia/Jakarta] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: YES) in /home/smartmar/public_html/ventura2erp/venturafe1/inc/config.php on line 9
+[21-Sep-2020 08:50:14 Asia/Jakarta] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: YES) in /home/smartmar/public_html/ventura2erp/venturafe1/inc/config.php on line 9
+[21-Sep-2020 08:53:32 Asia/Jakarta] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/smartmar/public_html/ventura2erp/venturafe1/header1.php on line 230
+[21-Sep-2020 08:56:18 Asia/Jakarta] PHP Warning:  include(config.php): failed to open stream: No such file or directory in /home/smartmar/public_html/ventura2erp/venturafe1/header1.php on line 2
+[21-Sep-2020 08:56:18 Asia/Jakarta] PHP Warning:  include(config.php): failed to open stream: No such file or directory in /home/smartmar/public_html/ventura2erp/venturafe1/header1.php on line 2
+[21-Sep-2020 08:56:18 Asia/Jakarta] PHP Warning:  include(): Failed opening 'config.php' for inclusion (include_path='.:/opt/alt/php71/usr/share/pear') in /home/smartmar/public_html/ventura2erp/venturafe1/header1.php on line 2
+[21-Sep-2020 08:56:18 Asia/Jakarta] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/smartmar/public_html/ventura2erp/venturafe1/header1.php on line 232
+[21-Sep-2020 08:58:10 Asia/Jakarta] PHP Warning:  include(config.php): failed to open stream: No such file or directory in /home/smartmar/public_html/ventura2erp/venturafe1/header1.php on line 2
+[21-Sep-2020 08:58:10 Asia/Jakarta] PHP Warning:  include(config.php): failed to open stream: No such file or directory in /home/smartmar/public_html/ventura2erp/venturafe1/header1.php on line 2
+[21-Sep-2020 08:58:10 Asia/Jakarta] PHP Warning:  include(): Failed opening 'config.php' for inclusion (include_path='.:/opt/alt/php71/usr/share/pear') in /home/smartmar/public_html/ventura2erp/venturafe1/header1.php on line 2
+[21-Sep-2020 08:58:10 Asia/Jakarta] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/smartmar/public_html/ventura2erp/venturafe1/header1.php on line 232
+[21-Sep-2020 08:58:26 Asia/Jakarta] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/smartmar/public_html/ventura2erp/venturafe1/header1.php on line 232
+[22-Sep-2020 16:08:56 Asia/Jakarta] PHP Warning:  A non-numeric value encountered in /home/smartmar/public_html/ventura2erp/venturafe1/proses-cart.php on line 14
+[22-Sep-2020 16:08:56 Asia/Jakarta] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/smartmar/public_html/ventura2erp/venturafe1/index-shop.php on line 284
+[23-Sep-2020 12:18:08 Asia/Jakarta] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/smartmar/public_html/ventura2erp/venturafe1/unpaidlist.php on line 271
+[23-Sep-2020 14:13:49 Asia/Jakarta] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/smartmar/public_html/ventura2erp/venturafe1/unpaidlist.php on line 271
+[23-Sep-2020 16:07:00 Asia/Jakarta] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/smartmar/public_html/ventura2erp/venturafe1/unpaidlist.php on line 271
+[23-Sep-2020 16:07:06 Asia/Jakarta] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/smartmar/public_html/ventura2erp/venturafe1/unpaidlist.php on line 271
+[23-Sep-2020 16:07:10 Asia/Jakarta] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/smartmar/public_html/ventura2erp/venturafe1/unpaidlist.php on line 271
+[23-Sep-2020 16:07:20 Asia/Jakarta] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/smartmar/public_html/ventura2erp/venturafe1/unpaidlist.php on line 271
+[23-Sep-2020 16:07:26 Asia/Jakarta] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/smartmar/public_html/ventura2erp/venturafe1/unpaidlist.php on line 271
+[23-Sep-2020 17:11:39 Asia/Jakarta] PHP Warning:  include(config.php): failed to open stream: No such file or directory in /home/smartmar/public_html/ventura2erp/venturafe1/home_api.php on line 3
+[23-Sep-2020 17:11:39 Asia/Jakarta] PHP Warning:  include(config.php): failed to open stream: No such file or directory in /home/smartmar/public_html/ventura2erp/venturafe1/home_api.php on line 3
+[23-Sep-2020 17:11:39 Asia/Jakarta] PHP Warning:  include(): Failed opening 'config.php' for inclusion (include_path='.:/opt/alt/php71/usr/share/pear') in /home/smartmar/public_html/ventura2erp/venturafe1/home_api.php on line 3
+[23-Sep-2020 17:11:39 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home/smartmar/public_html/ventura2erp/venturafe1/home_api.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/smartmar/public_html/ventura2erp/venturafe1/home_api.php on line 6
+[06-Oct-2020 09:00:57 Asia/Jakarta] PHP Warning:  imagepng(KMGTCNGT11550S/DB116501.png): failed to open stream: No such file or directory in /home/smartmar/public_html/ventura2erp/venturafe1/phpqrcode/qrimage.php on line 43

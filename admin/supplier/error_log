@@ -1,0 +1,3 @@
+[21-Sep-2020 10:03:44 Asia/Jakarta] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home/smartmar/public_html/ventura2erp/proses.php on line 207
+[21-Sep-2020 10:03:50 Asia/Jakarta] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home/smartmar/public_html/ventura2erp/proses.php on line 207
+[21-Sep-2020 10:04:06 Asia/Jakarta] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home/smartmar/public_html/ventura2erp/proses.php on line 207

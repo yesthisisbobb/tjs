@@ -1,0 +1,12 @@
+/* Component - Jumbotron */
+.jumbotron {
+  background: #F5F5F5;
+  border-radius: 6px;
+}
+.jumbotron h1,
+.jumbotron .h1 {
+  font-size: 56px;
+}
+.jumbotron p {
+  font-size: 18px;
+}
