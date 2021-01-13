@@ -46,7 +46,7 @@ if (!isset($_SESSION["username"])) {
         <section class="shop-cart-section wishlist-section section-box">
             <div class="woocommerce">
                 <div class="container">
-                    <div id="transaction-tab-container"><span id="nor-trans" class="toggle-trans selected-trans">Buying Transactions</span>&nbsp&nbsp/&nbsp&nbsp<span id="ind-trans" class="toggle-trans">Indent Transactions</span></div>
+                    <div class="transaction-tab-container"><span id="nor-trans" class="toggle-trans selected-trans">Buying Transactions</span>&nbsp&nbsp/&nbsp&nbsp<span id="ind-trans" class="toggle-trans">Indent Transactions</span></div>
                     <div class="entry-content" id="real-content">
                         <div id="loader-transaction">
                             <div></div>
@@ -74,6 +74,8 @@ if (!isset($_SESSION["username"])) {
 
 </html>
 <script>
+    let isViewingInvoiceList = false;
+
     // Ngabil value dari URL
     function getUrlParameter(sParam) {
         var sPageURL = window.location.search.substring(1),
@@ -96,7 +98,7 @@ if (!isset($_SESSION["username"])) {
     let show_type = "ready";
     if (getUrlParameter("type") == "all") {
         show_type = "all";
-        $("#transaction-tab-container").css("display", "none");
+        $(".transaction-tab-container").css("display", "none");
     }
 
     $("#real-content").load("ajaxTransactions.php", {
@@ -112,7 +114,7 @@ if (!isset($_SESSION["username"])) {
     });
 
     $("#real-content").on("click", ".inv-btn", function() {
-        alert("bro u trippin fr");
+        window.location.href = "invoice-list.php";
     });
 
     // $.ajax({

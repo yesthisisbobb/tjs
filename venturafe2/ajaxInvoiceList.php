@@ -6,23 +6,44 @@ include("vendor/phpqrcode/qrlib.php");
 if(isset($_SESSION["username"])){
     $username = $_SESSION["username"];
     $tipe = $_POST["tipe"];
-    $status_selection = $_POST["status_selection"];
 
+    $status_selection = "";
+    if (isset($_POST["status_selection"])) {
+        // $status_selection = "AND LOWER(status_payment)='$status_selection'";
+        $status_selection = $_POST["status_selection"];
+    }
+
+    // Query command settings
     $getcommand = "";
-    if($tipe == "ready"){
+
+    $stockFilter = "";
+    if($tipe == "ready") $stockFilter = "AND tipe='RDY'";
+    else if ($tipe == "indent") $stockFilter = "AND tipe='IDT'";
+
+    if($tipe != "all"){
         if($status_selection == "paid"){
-            $getcommand = "SELECT * FROM jual WHERE user_id='$username' AND status_payment = 'Paid' ORDER BY tgl DESC";
-        } else {
-            $getcommand = "SELECT * FROM jual WHERE user_id='$username' AND status_payment = 'Unpaid' ORDER BY tgl DESC";
-        }
-    } else if ($tipe == "indent") {
-        if ($status_selection == "paid") {
-            $getcommand = "SELECT * FROM ijual WHERE user_id='$username' AND status_payment = 'Paid' ORDER BY tgl DESC";
-        } else {
-            $getcommand = "SELECT * FROM ijual WHERE user_id='$username' AND status_payment = 'Unpaid' ORDER BY tgl DESC";
+            $getcommand = "SELECT * FROM inv WHERE user_id='$username' AND LOWER(status_payment) = 'paid' $stockFilter ORDER BY tgl DESC";
+            // echo "ANY PAID masuk i1i1 - " . "SELECT * FROM inv WHERE user_id='$username' AND LOWER(status_payment) = 'paid' $stockFilter ORDER BY tgl DESC";
+        } else if($status_selection == "unpaid"){
+            $getcommand = "SELECT * FROM inv WHERE user_id='$username' AND LOWER(status_payment) = 'unpaid' $stockFilter ORDER BY tgl DESC";
+            // echo "ANY UNPAID masuk i1i2 - " . "SELECT * FROM inv WHERE user_id='$username' AND LOWER(status_payment) = 'unpaid' $stockFilter ORDER BY tgl DESC";
+        } else{
+            $getcommand = "SELECT * FROM inv WHERE user_id='$username' $stockFilter ORDER BY tgl DESC";
+            // echo "ANY ALL masuk i1i3 - " . "SELECT * FROM inv WHERE user_id='$username' $stockFilter ORDER BY tgl DESC";
         }
     } else {
-        $getcommand = "SELECT no, tgl, cart_id, noso, user_id, status, status_payment, 'Ready' as transtype from jual WHERE user_id='$username' UNION SELECT no, tgl, cart_id, noso, user_id, status, status_payment, 'Indent' as transtype from ijual WHERE user_id='$username' ORDER BY 2 DESC";
+        if ($status_selection == "paid") {
+            $getcommand = "SELECT no, tgl, noinv, noso, user_id, status, status_payment, tipe from inv WHERE user_id='$username' AND LOWER(status_payment) = 'paid' ORDER BY 2 DESC";
+            // echo "ALL PAID masuk i2i1 - " . "SELECT no, tgl, noinv, noso, user_id, status, status_payment, tipe from inv WHERE user_id='$username' AND LOWER(status_payment) = 'paid' ORDER BY 2 DESC";;
+        }
+        else if($status_selection == "unpaid"){
+            $getcommand = "SELECT no, tgl, noinv, noso, user_id, status, status_payment, tipe from inv WHERE user_id='$username' AND LOWER(status_payment) = 'unpaid' ORDER BY 2 DESC";
+            // echo "ALL UNPAID masuk i2i2 - " . "SELECT no, tgl, noinv, noso, user_id, status, status_payment, tipe from inv WHERE user_id='$username' AND LOWER(status_payment) = 'unpaid' ORDER BY 2 DESC";
+        }
+        else{
+            $getcommand = "SELECT no, tgl, noinv, noso, user_id, status, status_payment, tipe from inv WHERE user_id='$username' ORDER BY 2 DESC";
+            // echo "ALL ALL masuk i2i3 - " . "SELECT no, tgl, noinv, noso, user_id, status, status_payment, tipe from inv WHERE user_id='$username' ORDER BY 2 DESC";
+        }
     }
     $getquery = mysqli_query($conn, $getcommand);
     $resultQty = mysqli_num_rows($getquery);
@@ -34,10 +55,9 @@ if(isset($_SESSION["username"])){
                     <tr class="justify-content-center">
                         <th class="text-center">Date</th>
                         <th class="text-center">No. SO.</th>
+                        <th class="text-center">No. Invoice</th>
                         <th class="text-center">Payment Status</th>
                         <th class="text-center">Stock</th>
-                        <th class="text-center">QR Code</th>
-                        <th class="text-center"></th>
                     </tr>
                 </thead>
                 <tbody>';
@@ -47,22 +67,9 @@ if(isset($_SESSION["username"])){
             $paymentstatus = $row["status_payment"] == "Unpaid" ? "unpaid" : "paid";
             $ctr++;
 
-            $tempdir = "qr/"; //Nama folder tempat menyimpan file qrcode
-            if (!file_exists($tempdir)) //Buat folder bername qr
-            mkdir($tempdir);
-
-            //isi qrcode jika di scan
+            // Link-link
             $linkToSO = 'http://localhost/tjs/tjs/venturafe2/sales-order.php?no=' . $row["noso"];
-
-            //simpan file kedalam temp
-            $tempName = "";
-            $tempArr = explode("/",$row["noso"]);
-            foreach ($tempArr as $a) {
-                $tempName .= $a;
-            }
-            if(!file_exists($tempdir . $tempName . '.png')){
-                QRcode::png($linkToSO, $tempdir . $tempName . '.png', QR_ECLEVEL_L, 3);
-            }
+            $linkToINV = 'http://localhost/tjs/tjs/venturafe2/invoice.php?no=' . $row["noso"];
 
             // Get amount of invoice of the SO
             $invoiceQty = 0;
@@ -83,11 +90,11 @@ if(isset($_SESSION["username"])){
 
             // Checking Tipe
             $transtipe = "";
-            if (isset($row["transtype"])) {
-                $transtipe = strtoupper($row["transtype"]);
+            if ($row["tipe"] == "RDY") {
+                $transtipe = "READY";
             }
-            else{
-                $transtipe = strtoupper($tipe);
+            else if($row["tipe"] == "IDT"){
+                $transtipe = "INDENT";
             }
 
             echo        '<tr class="woocommerce-cart-form__cart-item cart_item">
@@ -99,7 +106,13 @@ if(isset($_SESSION["username"])){
                         <td>
                             <div class="text-center">
                                 ' . $row["noso"] . '
-                                <br><button type="button" class="btn btn-link btn-md" onclick="toSO(`' . $linkToSO . '`)"><i class="far fa-file-alt"></i>View Order</button>
+                                <br><button type="button" class="btn btn-link btn-md" onclick="toSO(`' . $linkToSO . '`)"><i class="far fa-file-alt"></i>View</button>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="text-center">
+                                ' . $row["noinv"] . '
+                                <br><button type="button" class="btn btn-link btn-md" onclick="toSO(`' . $linkToINV . '`)"><i class="far fa-file-alt"></i>View</button>
                             </div>
                         </td>
                         <td>
@@ -110,18 +123,6 @@ if(isset($_SESSION["username"])){
                         <td>
                             <div class="text-center">
                                 ' . $transtipe . '
-                            </div>
-                        </td>
-                        <td>
-                            <div class="text-center">
-                                <img src="' . $tempdir . $tempName . '.png">
-                            </div>
-                        </td>
-                        <td>
-                            <div class="text-center so-area" id="' . $ctr . '" so="' . $row["noso"] . '">
-                                <button type="button" class="btn btn-outline-dark btn-md inv-btn"><i class="fas fa-file-invoice"></i>View Invoice
-                                    <div class="inv-count">&nbsp'. $displayInvoiceQty .'</div>
-                                </button>
                             </div>
                         </td>
                     </tr>';
@@ -149,5 +150,3 @@ if(isset($_SESSION["username"])){
 else{
     echo "<div>m-ty :(</div>";
 }
-
-?>
