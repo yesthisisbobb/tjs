@@ -7,6 +7,11 @@ if(isset($_SESSION["username"])){
     $username = $_SESSION["username"];
     $tipe = $_POST["tipe"];
 
+    $noso = "";
+    if (isset($_POST["noso"])) {
+        $noso = $_POST["noso"];
+    }
+
     $status_selection = "";
     if (isset($_POST["status_selection"])) {
         // $status_selection = "AND LOWER(status_payment)='$status_selection'";
@@ -22,26 +27,26 @@ if(isset($_SESSION["username"])){
 
     if($tipe != "all"){
         if($status_selection == "paid"){
-            $getcommand = "SELECT * FROM inv WHERE user_id='$username' AND LOWER(status_payment) = 'paid' $stockFilter ORDER BY tgl DESC";
+            $getcommand = "SELECT * FROM inv WHERE user_id='$username' AND LOWER(status_payment) = 'paid' $stockFilter AND noso='$noso' ORDER BY tgl DESC";
             // echo "ANY PAID masuk i1i1 - " . "SELECT * FROM inv WHERE user_id='$username' AND LOWER(status_payment) = 'paid' $stockFilter ORDER BY tgl DESC";
         } else if($status_selection == "unpaid"){
-            $getcommand = "SELECT * FROM inv WHERE user_id='$username' AND LOWER(status_payment) = 'unpaid' $stockFilter ORDER BY tgl DESC";
+            $getcommand = "SELECT * FROM inv WHERE user_id='$username' AND LOWER(status_payment) = 'unpaid' $stockFilter AND noso='$noso' ORDER BY tgl DESC";
             // echo "ANY UNPAID masuk i1i2 - " . "SELECT * FROM inv WHERE user_id='$username' AND LOWER(status_payment) = 'unpaid' $stockFilter ORDER BY tgl DESC";
         } else{
-            $getcommand = "SELECT * FROM inv WHERE user_id='$username' $stockFilter ORDER BY tgl DESC";
+            $getcommand = "SELECT * FROM inv WHERE user_id='$username' $stockFilter AND noso='$noso' ORDER BY tgl DESC";
             // echo "ANY ALL masuk i1i3 - " . "SELECT * FROM inv WHERE user_id='$username' $stockFilter ORDER BY tgl DESC";
         }
     } else {
         if ($status_selection == "paid") {
-            $getcommand = "SELECT no, tgl, noinv, noso, user_id, status, status_payment, tipe from inv WHERE user_id='$username' AND LOWER(status_payment) = 'paid' ORDER BY 2 DESC";
+            $getcommand = "SELECT no, tgl, noinv, noso, user_id, status, status_payment, tipe from inv WHERE user_id='$username' AND LOWER(status_payment) = 'paid' AND noso='$noso' ORDER BY 2 DESC";
             // echo "ALL PAID masuk i2i1 - " . "SELECT no, tgl, noinv, noso, user_id, status, status_payment, tipe from inv WHERE user_id='$username' AND LOWER(status_payment) = 'paid' ORDER BY 2 DESC";;
         }
         else if($status_selection == "unpaid"){
-            $getcommand = "SELECT no, tgl, noinv, noso, user_id, status, status_payment, tipe from inv WHERE user_id='$username' AND LOWER(status_payment) = 'unpaid' ORDER BY 2 DESC";
+            $getcommand = "SELECT no, tgl, noinv, noso, user_id, status, status_payment, tipe from inv WHERE user_id='$username' AND LOWER(status_payment) = 'unpaid' AND noso='$noso' ORDER BY 2 DESC";
             // echo "ALL UNPAID masuk i2i2 - " . "SELECT no, tgl, noinv, noso, user_id, status, status_payment, tipe from inv WHERE user_id='$username' AND LOWER(status_payment) = 'unpaid' ORDER BY 2 DESC";
         }
         else{
-            $getcommand = "SELECT no, tgl, noinv, noso, user_id, status, status_payment, tipe from inv WHERE user_id='$username' ORDER BY 2 DESC";
+            $getcommand = "SELECT no, tgl, noinv, noso, user_id, status, status_payment, tipe from inv WHERE user_id='$username' AND noso='$noso' ORDER BY 2 DESC";
             // echo "ALL ALL masuk i2i3 - " . "SELECT no, tgl, noinv, noso, user_id, status, status_payment, tipe from inv WHERE user_id='$username' ORDER BY 2 DESC";
         }
     }
@@ -134,11 +139,11 @@ if(isset($_SESSION["username"])){
     }
     else{
         if($status_selection == "paid"){
-            $word = "Looks like you don't have any paid transaction...";
+            $word = "Looks like you don't have any paid invoice...";
         } else if ($status_selection == "unpaid") {
-            $word = "Looks like you have't made any transaction...";
+            $word = "Looks like you have't made any invoice...";
         }else{
-            $word = "Looks like you don't have any transaction...";
+            $word = "Looks like you don't have any invoice...";
         }
         echo    "<div class='empty-message-container'>
                     <h2>Oops! $word</h2>

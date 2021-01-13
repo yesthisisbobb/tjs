@@ -74,6 +74,7 @@ if (!isset($_SESSION["username"])) {
     // Variables declares
     let payment_status = "all"; // or paid or unpaid
     let show_type = "all"; // or ready or indent
+    let so = "";
 
     // Ngabil value dari URL
     function getUrlParameter(sParam) {
@@ -89,6 +90,7 @@ if (!isset($_SESSION["username"])) {
             }
         }
     }
+    so = getUrlParameter("noso");
 
     function toSO(link) {
         window.location.href = `${link}`;
@@ -99,6 +101,7 @@ if (!isset($_SESSION["username"])) {
     });
 
     $("#real-content").load("ajaxInvoiceList.php", {
+        "noso": so,
         "tipe": show_type,
         "status_selection": payment_status
     }, function() {
@@ -146,6 +149,7 @@ if (!isset($_SESSION["username"])) {
             method: "POST",
             dataType: "html",
             data: {
+                "noso": so,
                 "tipe": show_type,
                 "status_selection": payment_status
             },

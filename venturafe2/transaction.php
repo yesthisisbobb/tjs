@@ -114,7 +114,7 @@ if (!isset($_SESSION["username"])) {
     });
 
     $("#real-content").on("click", ".inv-btn", function() {
-        window.location.href = "invoice-list.php";
+        window.location.href = `invoice-list.php?noso=${$(this).parent().attr("so")}`;
     });
 
     // $.ajax({
