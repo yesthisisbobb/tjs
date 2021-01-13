@@ -125,6 +125,9 @@
 <script src="js/config-contact.js"></script>
 <!-- Main Js -->
 <script src="js/custom.js"></script>
+<!-- Prevent Body Scroll (Custom) -->
+<script type="text/javascript" src="js/preventBodyScroll.js"></script>
+
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
 	$(document).on('click', '#loginBtn', function() {

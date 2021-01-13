@@ -25,11 +25,14 @@
         </div>
     </div>
 </div>
-<!-- <script type="text/javascript" src="js/floating-cart.js"></script> -->
 <script>
     let fpath = "";
     $("#normal-cart-container").click(function() {
         fpath = "cart.php";
+
+        // Method dari preventBodyScroll.js (Custom)
+        preventBodyScroll();
+
         $("#floating-cart-header").text("Ready Cart");
 
         // Ngisi item-item normal cart
@@ -53,6 +56,10 @@
     });
     $("#indent-cart-container").click(function() {
         fpath = "indent.php";
+
+        // Method dari preventBodyScroll.js (Custom)
+        preventBodyScroll();
+
         $("#floating-cart-header").text("Indent Cart");
 
         // Ngisi item-item indent cart
@@ -75,6 +82,9 @@
         $("#floating-cart-modal").css("transform", "translateY(0)");
     });
     $("#floating-cart-back").click(function() {
+        // Method dari preventBodyScroll.js (Custom)
+        allowBodyScroll();
+
         $("#floating-cart-list-container").css({
             "background-color": "transparent",
             "visibility": "hidden"
