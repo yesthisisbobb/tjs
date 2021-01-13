@@ -55,12 +55,12 @@ $sodata = mysqli_fetch_array($soquery);
       <div class="so-header-part">
         <img src="resource/smblogo.png" alt="Lambang Smart Marble & Bath">
         <span><b>PT Perwira Tamaraya Abadi</b></span>
-        <span><b>Surabaya</b> (60174), Jawa Timur:</span>
-        <span>Baliwerti 119-121 Kav 10</span>
-        <span><i class="fas fa-phone" aria-hidden="true"></i>(+6231) 5324505</span>
         <span><b>Jakarta</b> (11530), Jakarta Barat:</span>
         <span>Tomang Raya No. 28-30</span>
         <span><i class="fas fa-phone" aria-hidden="true"></i>(+62) 811257180</span>
+        <span><b>Surabaya</b> (60174), Jawa Timur:</span>
+        <span>Baliwerti 119-121 Kav 10</span>
+        <span><i class="fas fa-phone" aria-hidden="true"></i>(+6231) 5324505</span>
       </div>
     </div>
     <div class="so-header-part-container">

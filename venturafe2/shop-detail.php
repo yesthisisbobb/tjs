@@ -325,7 +325,7 @@ $file = getProductPicture($kodeproduk);
     </section>
     <!-- End Shop Section -->
     </div>
-
+    <?php include("floating-cart.php"); ?>
     <?php include('headerdkk/footer.php') ?>
 </body>
 

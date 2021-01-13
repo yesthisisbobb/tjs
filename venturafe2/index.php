@@ -318,12 +318,14 @@ include('rupiah.php');
 	<br>
 	<br>
 
+	<?php include("floating-cart.php"); ?>
 	<?php include("headerdkk/footer.php"); ?>
+
 	<script type="text/javascript">
 		function scrollToAnchor(aid) {
 			var aTag = $("div[id='" + aid + "']");
 			$('html,body').animate({
-				scrollTop: aTag.offset().top
+				scrollTop: aTag.offset().top()
 			}, 'slow');
 		}
 
@@ -339,6 +341,10 @@ include('rupiah.php');
 			if (location.hash !== "undefined") {
 				scrollToAnchor(location.hash.substring(1));
 			}
+		});
+		$("body").on("click", "#normal-cart-container", function() {
+			$("#floating-cart-list-container").css("background-color", "rgba(0, 0, 0, .25)");
+			$("#floating-cart-modal").css("transform", "translateY(0)");
 		});
 	</script>
 </body>

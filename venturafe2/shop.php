@@ -105,6 +105,7 @@ $total = mysqli_num_rows($queryTotal);
 			</div>
 		</div>
 	</div>
+	<?php include("floating-cart.php"); ?>
 	<?php include('headerdkk/footer.php') ?>
 
 	<script>
@@ -115,11 +116,11 @@ $total = mysqli_num_rows($queryTotal);
 			searchVal = "",
 			kodeKategori = "";
 		let statesArr = [
-				["isSorted", false],
-				["isSearched", false],
-				["isCategorized", false],
-				["isFilteredByPrice", false]
-			];
+			["isSorted", false],
+			["isSearched", false],
+			["isCategorized", false],
+			["isFilteredByPrice", false]
+		];
 
 		function topFunction() {
 			document.body.scrollTop = 0;

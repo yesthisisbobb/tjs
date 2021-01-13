@@ -329,6 +329,14 @@ if (session_status() == PHP_SESSION_NONE) {
 
                 $("#normal-count").text(data.jmlN);
                 $("#indent-count").text(data.jmlI);
+
+                if (data.jmlN < 1) $("#normal-cart-container .floating-cart-qty").css("display", "none");
+                else $("#normal-cart-container .floating-cart-qty").css("display", "flex");
+                if (data.jmlI < 1) $("#indent-cart-container .floating-cart-qty").css("display", "none");
+                else $("#indent-cart-container .floating-cart-qty").css("display", "flex");
+
+                $("#normal-cart-container .floating-cart-qty").text(data.jmlN);
+                $("#indent-cart-container .floating-cart-qty").text(data.jmlI);
             },
             error: function(error) {
                 console.error(error.responseText);
@@ -339,12 +347,12 @@ if (session_status() == PHP_SESSION_NONE) {
         $.ajax({
             url: "ajaxCart.php",
             method: "POST",
-            dataType: "html",
+            dataType: "json",
             data: {
                 "tipe": "normal"
             },
             success: function(data) {
-                $("#normal-cart-list").html(data);
+                $("#normal-cart-list").html(data.header);
             }
         });
 
@@ -352,12 +360,12 @@ if (session_status() == PHP_SESSION_NONE) {
         $.ajax({
             url: "ajaxCart.php",
             method: "POST",
-            dataType: "html",
+            dataType: "json",
             data: {
                 "tipe": "indent"
             },
             success: function(data) {
-                $("#indent-cart-list").html(data);
+                $("#indent-cart-list").html(data.header);
             }
         });
 

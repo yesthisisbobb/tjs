@@ -64,6 +64,7 @@ if (!isset($_SESSION["username"])) {
 
     </div>
     <!-- FOOTER -->
+    <?php include("floating-cart.php"); ?>
     <?php include("headerdkk/footer.php"); ?>
 
     <a href="#" id="back-to-top"></a>

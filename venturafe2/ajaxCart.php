@@ -7,6 +7,8 @@ include("get-picture.php");
 
 // $username = "ETSGESI";
 // $tipe="normal";
+$headercart = "";
+$mobilecart = "";
 
 if(isset( $_SESSION["username"])){
     $username = $_SESSION["username"];
@@ -21,22 +23,37 @@ if(isset( $_SESSION["username"])){
 
                 $tempRemove = "removeItem('" . strval($data["kode"]) . "')";
 
-                echo    '<li class="woocommerce-mini-cart-item mini_cart_item clearfix">
-                    <a class="product-image">
-                        <img src="' . $path . '" alt="cart-2">
-                    </a>
-                    <a class="product-title">' . $data["nama"] . '</a>
-                    <span class="quantity"> ' . $data["jml"] . ' ×
-                        <span class="woocommerce-Price-amount amount">' . rupiah($data["hrg"]) . '</span>
-                    </span>
-                    <a class="remove">
-                        <span onclick="' . $tempRemove . '" class="lnr lnr-cross"></span>
-                    </a>
-                </li>';
+                $headercart .= '<li class="woocommerce-mini-cart-item mini_cart_item clearfix">
+                                    <a class="product-image">
+                                        <img src="' . $path . '" alt="cart-2">
+                                    </a>
+                                    <a class="product-title">' . $data["nama"] . '</a>
+                                    <span class="quantity"> ' . $data["jml"] . ' ×
+                                        <span class="woocommerce-Price-amount amount">' . rupiah($data["hrg"]) . '</span>
+                                    </span>
+                                    <a class="remove">
+                                        <span onclick="' . $tempRemove . '" class="lnr lnr-cross"></span>
+                                    </a>
+                                </li>';
+
+                $mobilecart .= '<div class="floating-cart-item-container">
+                                    <div class="floating-cart-item-img">
+                                        <img src="' . $path . '">
+                                    </div>
+                                    <div class="floating-cart-item-desc">
+                                        <div class="floating-cart-desc-top">' . $data["nama"] . '</div>
+                                        <div class="floating-cart-desc-bot"><span id="fqty">' . $data["jml"] . '</span>&nbspx&nbsp<span id="fpri">' . rupiah($data["hrg"]) . '</span></div>
+                                    </div>
+                                    <div class="floating-cart-item-remove" onclick="' . $tempRemove . '"><i class="fas fa-trash-alt"></i></div>
+                                </div>';
             }
         }
         else{
-            echo "
+            $headercart = "
+                <img class='not-selectable' src='resource/emptyCart.png'>
+                Uh oh! Looks like your cart is empty...
+            ";
+            $mobilecart = "
                 <img class='not-selectable' src='resource/emptyCart.png'>
                 Uh oh! Looks like your cart is empty...
             ";
@@ -47,32 +64,41 @@ if(isset( $_SESSION["username"])){
 
         if(mysqli_num_rows($query) > 0){
             while ($data = mysqli_fetch_array($query)) {
-                $path = "../img/product/" . $data["nama"] . ".jpg";
-                if (!file_exists($path)) {
-                    $path = "../img/product/" . $data["nama"] . ".JPG";
-                    if (!file_exists($path)) {
-                        $path = "../img/product/noimg.jpg";
-                    }
-                }
+                $path = getProductPicture($data["nama"]);
 
                 $tempRemove = "removeItemI('" . strval($data["kode"]) . "')";
 
-                echo    '<li class="woocommerce-mini-cart-item mini_cart_item clearfix">
-                    <a class="product-image">
-                        <img src="' . $path . '" alt="cart-2">
-                    </a>
-                    <a class="product-title">' . $data["nama"] . '</a>
-                    <span class="quantity"> ' . $data["jml"] . ' ×
-                        <span class="woocommerce-Price-amount amount">' . rupiah($data["hrg"]) . '</span>
-                    </span>
-                    <a class="remove">
-                        <span onclick="' . $tempRemove . '" class="lnr lnr-cross"></span>
-                    </a>
-                </li>';
+                $headercart .= '<li class="woocommerce-mini-cart-item mini_cart_item clearfix">
+                                    <a class="product-image">
+                                        <img src="' . $path . '" alt="cart-2">
+                                    </a>
+                                    <a class="product-title">' . $data["nama"] . '</a>
+                                    <span class="quantity"> ' . $data["jml"] . ' ×
+                                        <span class="woocommerce-Price-amount amount">' . rupiah($data["hrg"]) . '</span>
+                                    </span>
+                                    <a class="remove">
+                                        <span onclick="' . $tempRemove . '" class="lnr lnr-cross"></span>
+                                    </a>
+                                </li>';
+
+                $mobilecart .= '<div class="floating-cart-item-container">
+                                    <div class="floating-cart-item-img">
+                                        <img src="' . $path . '">
+                                    </div>
+                                    <div class="floating-cart-item-desc">
+                                        <div class="floating-cart-desc-top">' . $data["nama"] . '</div>
+                                        <div class="floating-cart-desc-bot"><span id="fqty">' . $data["jml"] . '</span>&nbspx&nbsp<span id="fpri">' . rupiah($data["hrg"]) . '</span></div>
+                                    </div>
+                                    <div class="floating-cart-item-remove" onclick="' . $tempRemove . '"><i class="fas fa-trash-alt"></i></div>
+                                </div>';
             }
         }
         else{
-            echo "
+            $headercart = "
+                <img class='not-selectable' src='resource/emptyCart.png'>
+                Uh oh! Looks like your cart is empty...
+            ";
+            $mobilecart = "
                 <img class='not-selectable' src='resource/emptyCart.png'>
                 Uh oh! Looks like your cart is empty...
             ";
@@ -80,9 +106,18 @@ if(isset( $_SESSION["username"])){
     }
 }
 else{
-    echo "
-        <img class='not-selectable' src='resource/emptyCart.png'>
-        Uh oh! Looks like your cart is empty...
-    ";
+    $headercart = "
+                <img class='not-selectable' src='resource/emptyCart.png'>
+                Uh oh! Looks like your cart is empty...
+            ";
+    $mobilecart = "
+                <img class='not-selectable' src='resource/emptyCart.png'>
+                Uh oh! Looks like your cart is empty...
+            ";
 }
+
+$resp = array();
+$resp["header"] = $headercart;
+$resp["mobile"] = $mobilecart;
+echo json_encode($resp);
 ?>

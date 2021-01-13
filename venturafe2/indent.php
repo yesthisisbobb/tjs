@@ -51,7 +51,7 @@ $result = mysqli_fetch_array($query);
         <!-- End Shop Cart Section -->
 
     </div>
-
+    <?php include("floating-cart.php"); ?>
     <?php include('headerdkk/footer.php') ?>
 
     <a href="#" id="back-to-top"></a>

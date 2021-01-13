@@ -236,6 +236,11 @@
     -ms-user-select: none;
 }
 
+.stop-scrolling{
+    height: 100%;
+    overflow: hidden;
+}
+
 button>i{
     margin-right: 8px;
 }
@@ -244,6 +249,229 @@ button>i{
     text-align: center;
 }
 
+/* ===== Punya e Floating Cart ===== */
+#normal-cart-container{
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    position: fixed;
+    bottom: 100px;
+    left: 20px;
+
+    width: 70px;
+    height: 70px;
+
+    border-radius: 50%;
+    border: 1px solid rgb(180, 180, 180);
+    box-shadow: 1px 3px 10px -2px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 1px 3px 10px -2px rgba(0,0,0,0.75);
+    -moz-box-shadow: 1px 3px 10px -2px rgba(0,0,0,0.75);
+
+    background-color: white;
+    background-image: url("../resource/headericonabu.png");
+    background-position: center;
+    background-size: 60%;
+    background-repeat: no-repeat;
+
+    cursor: pointer;
+
+    transition: .3s;
+
+    z-index: 999997;
+}
+#indent-cart-container{
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+
+    width: 70px;
+    height: 70px;
+
+    border-radius: 50%;
+    border: 1px solid rgb(180, 180, 180);
+    box-shadow: 1px 3px 10px -2px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 1px 3px 10px -2px rgba(0,0,0,0.75);
+    -moz-box-shadow: 1px 3px 10px -2px rgba(0,0,0,0.75);
+
+    background-color: white;
+    background-image: url("../resource/headericonoren.png");
+    background-position: center;
+    background-size: 60%;
+    background-repeat: no-repeat;
+
+    cursor: pointer;
+    
+    transition: .3s;
+
+    z-index: 999997;
+}
+.floating-cart-qty{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    top: 2px;
+    left: 72%;
+
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    
+    font-size: .9em;
+    
+    background-color: rgb(172, 4, 4);
+    color: white;
+}
+#floating-cart-list-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    font-size: 20px;
+
+    visibility: hidden;
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+
+    transition: .3s;
+    
+    z-index: 999998;
+}
+#floating-cart-modal{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    width: 78%;
+    height: 90%;
+
+    border-radius: 12px;
+
+    background-color: white;
+    box-shadow: 1px 3px 10px -2px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 1px 3px 10px -2px rgba(0,0,0,0.75);
+    -moz-box-shadow: 1px 3px 10px -2px rgba(0,0,0,0.75);
+
+    transform: translateY(200vh);
+    transition: .7s ease-out;
+
+    z-index: 999999;
+}
+#floating-cart-header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 14%;
+    width: 100%;
+
+    font-size: 1.4em;
+    font-weight: 500;
+}
+#floating-cart-list{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow: scroll;
+
+    height: 66%;
+    width: 82%;
+}
+.floating-cart-item-container{
+    display: flex;
+    flex-direction: row;
+
+    height: 7.2em;
+    width: 100%;
+    margin-top: 28px;
+
+    border-top: 1px solid rgb(185, 185, 185);
+}
+.floating-cart-item-container:first-of-type{
+    border-top: none;
+    margin-top: 0;
+}
+.floating-cart-item-img{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 100%;
+    width: 21%;
+}
+.floating-cart-item-img img{
+    max-width: 90%;
+    max-height: 80%;
+}
+.floating-cart-item-desc{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    height: 100%;
+    width: 62%;
+}
+.floating-cart-desc-top, .floating-cart-desc-bot{
+    display: flex;
+    justify-content: flex-start;
+
+    height:50%;
+    width: 95%;
+    padding-left: 5%;
+}
+.floating-cart-desc-top{
+    align-items: flex-end;
+
+    font-size: 1.3em;
+    font-weight: 500;
+}
+.floating-cart-desc-bot{
+    align-items: flex-start;
+
+    font-size: 1.2em;
+}
+.floating-cart-item-remove{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 100%;
+    width: 16%;
+
+    cursor: pointer;
+}
+.floating-cart-item-remove i{
+    font-size: 1.7em;
+}
+.floating-cart-item-remove:hover{
+    background-color: rgb(209, 209, 209);
+}
+#floating-cart-interaction{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    height: 18%;
+    width: 82%;
+    padding-top: 2%;
+}
+#floating-cart-interaction button{
+    width: 7.4em;
+}
+
+/* ===== Akhir Punya e Floating Cart ===== */
 /* ===== Punya e Footer ===== */
 .contact-location{
     color: #ecb319;
@@ -1287,8 +1515,19 @@ html {
     padding-top: 8px;
     padding-bottom: 8px;
 }
-
+/* Kinda Large Screen ( <= 1199px & >= 992px ) */
+@media screen and (max-width: 1199px) and (min-width: 992px) {
+    #normal-cart-container,#indent-cart-container{
+        display: flex;
+    }
+}
+/* Medium Screen ( <= 991px & >= 768px ) */
 @media screen and (max-width: 991px) and (min-width: 768px){
+    #normal-cart-container,#indent-cart-container{
+        display: flex;
+        width: 60px;
+        height: 60px;
+    }
     #sizes-base-container{
         font-size: 11px;
     }
@@ -1300,6 +1539,16 @@ html {
 @media screen and (max-width: 767px){ 
     html{
         font-size: 11px;
+    }
+    #floating-cart-interaction button{
+        font-size: 1.1em;
+        padding-top: .6em;
+        padding-bottom: .6em;
+    }
+    #normal-cart-container,#indent-cart-container{
+        display: flex;
+        width: 60px;
+        height: 60px;
     }
     #tile-calculator-modal{
         width: 80vw;
