@@ -400,6 +400,98 @@ if (session_status() == PHP_SESSION_NONE) {
         });
     }
 
+    function refreshCart(type) {
+        // Biar cart angkanya keisi
+        $.ajax({
+            url: "cart-count.php",
+            dataType: "JSON",
+            success: function(data) {
+                if (data.jmlN > 0) {
+                    $("#normal-cart img").addClass("blinking");
+                } else {
+                    $("#normal-cart img").removeClass("blinking");
+                }
+                if (data.jmlI > 0) {
+                    $("#indent-cart img").addClass("blinking");
+                } else {
+                    $("#indent-cart img").removeClass("blinking");
+                }
+
+                $("#normal-count").text(data.jmlN);
+                $("#indent-count").text(data.jmlI);
+
+                if (data.jmlN < 1) $("#normal-cart-container .floating-cart-qty").css("display", "none");
+                else $("#normal-cart-container .floating-cart-qty").css("display", "flex");
+                if (data.jmlI < 1) $("#indent-cart-container .floating-cart-qty").css("display", "none");
+                else $("#indent-cart-container .floating-cart-qty").css("display", "flex");
+
+                $("#normal-cart-container .floating-cart-qty").text(data.jmlN);
+                $("#indent-cart-container .floating-cart-qty").text(data.jmlI);
+            },
+            error: function(error) {
+                console.error(error.responseText);
+            }
+        });
+
+        if (type === "normal") {
+            // Ngisi item-item normal cart
+            $.ajax({
+                url: "ajaxCart.php",
+                method: "POST",
+                dataType: "json",
+                data: {
+                    "tipe": "normal"
+                },
+                success: function(data) {
+                    $("#floating-cart-list").html(data.mobile);
+                }
+            });
+
+            // Ngisi subtotal cart normal
+            $.ajax({
+                url: "calculate-cart-total.php",
+                method: "POST",
+                data: {
+                    "tipe": "normal"
+                },
+                success: function(data) {
+                    $("#normal-subtotal").text(data);
+                },
+                error: function(error) {
+                    console.error(error.responseText);
+                }
+            });
+        } else if (type === "indent") {
+            // Ngisi item-item indent cart
+            $.ajax({
+                url: "ajaxCart.php",
+                method: "POST",
+                dataType: "json",
+                data: {
+                    "tipe": "indent"
+                },
+                success: function(data) {
+                    $("#floating-cart-list").html(data.mobile);
+                }
+            });
+
+            // Ngisi subtotal cart indent
+            $.ajax({
+                url: "calculate-cart-total.php",
+                method: "POST",
+                data: {
+                    "tipe": "indent"
+                },
+                success: function(data) {
+                    $("#indent-subtotal").text(data);
+                },
+                error: function(error) {
+                    console.error(error.responseText);
+                }
+            });
+        }
+    }
+
     function removeItem(id) {
         $.ajax({
             url: "remove-from-cart.php",
@@ -424,6 +516,34 @@ if (session_status() == PHP_SESSION_NONE) {
             },
             success: function(data) {
                 refreshCart();
+            }
+        });
+    }
+
+    function mRemoveItem(id) {
+        $.ajax({
+            url: "remove-from-cart.php",
+            method: "POST",
+            data: {
+                "kodes": id,
+                "tipe": "normal"
+            },
+            success: function(data) {
+                refreshCart("normal");
+            }
+        });
+    }
+
+    function mRemoveItemI(id) {
+        $.ajax({
+            url: "remove-from-cart.php",
+            method: "POST",
+            data: {
+                "kodes": id,
+                "tipe": "indent"
+            },
+            success: function(data) {
+                refreshCart("indent");
             }
         });
     }

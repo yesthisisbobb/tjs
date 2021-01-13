@@ -22,6 +22,7 @@ if(isset( $_SESSION["username"])){
                 $path = getProductPicture($data["nama"]);
 
                 $tempRemove = "removeItem('" . strval($data["kode"]) . "')";
+                $mRemove = "mRemoveItem('" . strval($data["kode"]) . "')";
 
                 $headercart .= '<li class="woocommerce-mini-cart-item mini_cart_item clearfix">
                                     <a class="product-image">
@@ -44,7 +45,7 @@ if(isset( $_SESSION["username"])){
                                         <div class="floating-cart-desc-top">' . $data["nama"] . '</div>
                                         <div class="floating-cart-desc-bot"><span id="fqty">' . $data["jml"] . '</span>&nbspx&nbsp<span id="fpri">' . rupiah($data["hrg"]) . '</span></div>
                                     </div>
-                                    <div class="floating-cart-item-remove" onclick="' . $tempRemove . '"><i class="fas fa-trash-alt"></i></div>
+                                    <div class="floating-cart-item-remove" onclick="' . $mRemove . '"><i class="fas fa-trash-alt"></i></div>
                                 </div>';
             }
         }
@@ -67,6 +68,7 @@ if(isset( $_SESSION["username"])){
                 $path = getProductPicture($data["nama"]);
 
                 $tempRemove = "removeItemI('" . strval($data["kode"]) . "')";
+                $mRemove = "mRemoveItemI('" . strval($data["kode"]) . "')";
 
                 $headercart .= '<li class="woocommerce-mini-cart-item mini_cart_item clearfix">
                                     <a class="product-image">
@@ -89,7 +91,7 @@ if(isset( $_SESSION["username"])){
                                         <div class="floating-cart-desc-top">' . $data["nama"] . '</div>
                                         <div class="floating-cart-desc-bot"><span id="fqty">' . $data["jml"] . '</span>&nbspx&nbsp<span id="fpri">' . rupiah($data["hrg"]) . '</span></div>
                                     </div>
-                                    <div class="floating-cart-item-remove" onclick="' . $tempRemove . '"><i class="fas fa-trash-alt"></i></div>
+                                    <div class="floating-cart-item-remove" onclick="' . $mRemove . '"><i class="fas fa-trash-alt"></i></div>
                                 </div>';
             }
         }
