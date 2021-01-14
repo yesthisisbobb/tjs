@@ -159,11 +159,11 @@ $total = mysqli_num_rows($queryTotal);
 			e.preventDefault();
 			statesArr["isCategorized"] = true;
 
-			kodeKategori = this.id;
+			valArr["kodeKategori"] = this.id;
 			stype = $(this).attr("stype");
 			callLoader();
 			topFunction();
-			$("#kontainerAnjay").load(`ajaxCategory.php?stype=${stype}&id=${kodeKategori}`, function() {
+			$("#kontainerAnjay").load(`ajaxCategory.php?stype=${stype}&id=${valArr["kodeKategori"]}`, function() {
 				removeLoader();
 			});
 		});
@@ -173,7 +173,7 @@ $total = mysqli_num_rows($queryTotal);
 			statesArr["isSearched"] = true;
 
 			let val = $('#search').val();
-			searchVal = val;
+			valArr["searchVal"] = val;
 			callLoader();
 			topFunction();
 			$("#kontainerAnjay").load(`ajaxSearch.php?kata=${val}`, function() {
@@ -239,7 +239,7 @@ $total = mysqli_num_rows($queryTotal);
 			let id = this.innerHTML;
 			callLoader();
 			topFunction();
-			$("#kontainerAnjay").load(`ajaxSearch.php?halaman=${id}&kata=${searchVal}`, function() {
+			$("#kontainerAnjay").load(`ajaxSearch.php?halaman=${id}&kata=${valArr["searchVal"]}`, function() {
 				removeLoader();
 				$('.images-preloader').fadeOut();
 			});
@@ -257,7 +257,7 @@ $total = mysqli_num_rows($queryTotal);
 			let id = this.innerHTML;
 			callLoader();
 			topFunction();
-			$("#kontainerAnjay").load(`ajaxCategory.php?halaman=${id}&kata=${valArr["sortVal"]}&id=${kodeKategori}&stype=${stype}`, function() {
+			$("#kontainerAnjay").load(`ajaxCategory.php?halaman=${id}&kata=${valArr["sortVal"]}&id=${valArr["kodeKategori"]}&stype=${stype}`, function() {
 				removeLoader();
 				$('.images-preloader').fadeOut();
 			});
@@ -267,10 +267,10 @@ $total = mysqli_num_rows($queryTotal);
 		<?php
 		if (isset($_GET['category'])) {
 			echo "
-			kodeKategori = '" . $_GET['category'] . "';
+			valArr['kodeKategori'] = '" . $_GET['category'] . "';
 			$.ajax({
 				type: 'POST',
-				url: 'ajaxCategory.php?id='+kodeKategori,
+				url: 'ajaxCategory.php?id='+valArr['kodeKategori'],
 				success: function(data) {
 					  document.getElementById('kontainerAnjay').innerHTML = data;
 					}
