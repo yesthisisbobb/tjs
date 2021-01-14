@@ -12,9 +12,9 @@
         $tipe = $_POST["tipe"];
 
         if ($tipe === "indent") {
-            $sumcommand = "SELECT kode_stok, sum(harga) as harga FROM icartdtl WHERE userid='$userid' GROUP BY kode_stok";
+            $sumcommand = "SELECT kode_stok, sum(total) as harga FROM icartdtl WHERE userid='$userid' GROUP BY kode_stok";
         } else if ($tipe === "normal") {
-            $sumcommand = "SELECT kode_stok, sum(harga) as harga FROM cartdtl WHERE userid='$userid' GROUP BY kode_stok";
+            $sumcommand = "SELECT kode_stok, sum(total) as harga FROM cartdtl WHERE userid='$userid' GROUP BY kode_stok";
         }
 
         $total = 0;

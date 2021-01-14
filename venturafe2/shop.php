@@ -111,16 +111,18 @@ $total = mysqli_num_rows($queryTotal);
 	<script>
 		let min = 0,
 			max = 0;
-		let stype = "";
-		let sortVal = "",
-			searchVal = "",
-			kodeKategori = "";
-		let statesArr = [
-			["isSorted", false],
-			["isSearched", false],
-			["isCategorized", false],
-			["isFilteredByPrice", false]
-		];
+		let stype = ""; // Category type
+		let valArr = {
+			"sortVal": "",
+			"searchVal": "",
+			"kodeKategori": ""
+		};
+		let statesArr = {
+			"isSorted": false,
+			"isSearched": false,
+			"isCategorized": false,
+			"isFilteredByPrice": false
+		};
 
 		function topFunction() {
 			document.body.scrollTop = 0;
@@ -143,9 +145,11 @@ $total = mysqli_num_rows($queryTotal);
 		}
 
 		$('#sort').on('change', function() {
+			statesArr["isSorted"] = true;
+
 			callLoader();
 			let val = $('#sort').val();
-			sortVal = val;
+			valArr["sortVal"] = val;
 			$("#kontainerAnjay").load(`ajaxSort.php?kata=${val}`, function() {
 				removeLoader();
 			});
@@ -153,6 +157,8 @@ $total = mysqli_num_rows($queryTotal);
 
 		$(document).on('click', '.tombol-category', function(e) {
 			e.preventDefault();
+			statesArr["isCategorized"] = true;
+
 			kodeKategori = this.id;
 			stype = $(this).attr("stype");
 			callLoader();
@@ -164,6 +170,8 @@ $total = mysqli_num_rows($queryTotal);
 
 		// ===== Start to search after idling for 0.8 seconds ===== //
 		function searchByKeyword() {
+			statesArr["isSearched"] = true;
+
 			let val = $('#search').val();
 			searchVal = val;
 			callLoader();
@@ -193,6 +201,7 @@ $total = mysqli_num_rows($queryTotal);
 					$("#amount").val("Rp " + num1 + " - Rp " + num2);
 				},
 				stop: function(event, ui) {
+					statesArr["isFilteredByPrice"] = true;
 					let num1 = new Intl.NumberFormat('id-ID').format(ui.values[0]);
 					let num2 = new Intl.NumberFormat('id-ID').format(ui.values[1]);
 					$("#amount").val("Rp " + num1 + " - Rp " + num2);
@@ -239,7 +248,7 @@ $total = mysqli_num_rows($queryTotal);
 			let id = this.innerHTML;
 			callLoader();
 			topFunction();
-			$("#kontainerAnjay").load(`ajaxSort.php?halaman=${id}&kata=${sortVal}`, function() {
+			$("#kontainerAnjay").load(`ajaxSort.php?halaman=${id}&kata=${valArr["sortVal"]}`, function() {
 				removeLoader();
 				$('.images-preloader').fadeOut();
 			});
@@ -248,7 +257,7 @@ $total = mysqli_num_rows($queryTotal);
 			let id = this.innerHTML;
 			callLoader();
 			topFunction();
-			$("#kontainerAnjay").load(`ajaxCategory.php?halaman=${id}&kata=${sortVal}&id=${kodeKategori}&stype=${stype}`, function() {
+			$("#kontainerAnjay").load(`ajaxCategory.php?halaman=${id}&kata=${valArr["sortVal"]}&id=${kodeKategori}&stype=${stype}`, function() {
 				removeLoader();
 				$('.images-preloader').fadeOut();
 			});
