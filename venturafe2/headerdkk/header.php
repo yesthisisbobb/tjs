@@ -91,18 +91,28 @@ if (session_status() == PHP_SESSION_NONE) {
                                     </li>
                                 </ul>
                             </li>
+
+                            <?php
+                                if(isset($_SESSION['level'])){
+                                    if($_SESSION['level'] == "admin"){
+                            ?>
                             <li class="menu-item">
                                 <a href="#" style="color:#ec3923;">
                                     SMB ACADEMY
                                 </a>
                                 <ul class="sub-menu">
-                                    <li class="">
+                                    <li>
                                         <a href="#">
                                             Courses
                                         </a>
                                     </li>
                                 </ul>
                             </li>
+                            <?php
+                                    }
+                                }
+                            ?>
+
                         </ul>
                     </nav>
                     <!-- Header Right -->
@@ -267,7 +277,7 @@ if (session_status() == PHP_SESSION_NONE) {
                     </li>
                     <li class="drop">
                         <a href="#" style="color:#ec3923;">
-                            FOR INTERNAL
+                            SMB ACADEMY
                         </a>
                     </li>
                     <li class="drop">

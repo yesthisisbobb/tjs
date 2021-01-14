@@ -137,6 +137,18 @@
 			data: $('#formLogin').serialize(),
 			success: function(data) {
 				if (data == "Success!") {
+					$.ajax({
+						type: 'GET',
+						url: "headerdkk/header-modules.php",
+						dataType: "json",
+						success: function(data) {
+							$("nav.main-menu").html(data.header);
+							$(".au-navbar-mobile .navbar-mobile-1 .au-navbar-menu").html(data.mobile);
+						},
+						error: function(err) {
+							console.error(err);
+						}
+					});
 					$('#canvasModal').fadeOut();
 					swal("Congratulation", "Now You Can Shop", "success");
 					// $('body').css('overflow-y', 'auto');

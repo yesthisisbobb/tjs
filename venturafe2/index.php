@@ -313,7 +313,7 @@ include('rupiah.php');
 		function scrollToAnchor(aid) {
 			var aTag = $("div[id='" + aid + "']");
 			$('html,body').animate({
-				scrollTop: aTag.offset().top()
+				scrollTop: aTag.offset().top
 			}, 'slow');
 		}
 
@@ -326,7 +326,7 @@ include('rupiah.php');
 		// 	}
 		// });
 		$("#kontainerAnjay").load("ajaxHome.php", {}, function(res, status, xhr) {
-			if (location.hash !== "undefined") {
+			if (location.hash != "") {
 				scrollToAnchor(location.hash.substring(1));
 			}
 		});
