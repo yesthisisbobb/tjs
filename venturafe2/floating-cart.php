@@ -1,8 +1,8 @@
 <div id="normal-cart-container">
-    <div class="floating-cart-qty">1</div>
+    <div class="floating-cart-qty">0</div>
 </div>
 <div id="indent-cart-container">
-    <div class="floating-cart-qty">2</div>
+    <div class="floating-cart-qty">0</div>
 </div>
 <div id="floating-cart-list-container">
     <div id="floating-cart-modal">

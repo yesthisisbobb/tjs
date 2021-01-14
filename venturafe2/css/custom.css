@@ -385,8 +385,14 @@ button>i{
     justify-content: flex-start;
     overflow: scroll;
 
+    overflow-x: hidden;
+
     height: 66%;
     width: 82%;
+}
+#floating-cart-list .empty-message-container{
+    padding: 0;
+    height: 100%;
 }
 .floating-cart-item-container{
     display: flex;
@@ -1515,6 +1521,16 @@ html {
     padding-top: 8px;
     padding-bottom: 8px;
 }
+/* ===== AKHIR PUNYA E SHIPPING ORDER ===== */
+
+/* ===== PUNYA E INVOICE LIST ===== */
+#back-inv{
+    font-size: 0.9em;
+    margin-left: -2px;
+    margin-bottom: 34px;
+}
+/* ===== AKHIR PUNYA E INVOICE LIST ===== */
+
 /* Kinda Large Screen ( <= 1199px & >= 992px ) */
 @media screen and (max-width: 1199px) and (min-width: 992px) {
     #normal-cart-container,#indent-cart-container{
@@ -1540,15 +1556,25 @@ html {
     html{
         font-size: 11px;
     }
+    #normal-cart-container,#indent-cart-container{
+        display: flex;
+        width: 50px;
+        height: 50px;
+    }
+    #normal-cart-container .floating-cart-qty,#indent-cart-container .floating-cart-qty{
+        font-size: .8em;
+        width: 20px;
+        height: 20px;
+    }
+    #floating-cart-list-container{
+        font-size: 14px;
+    }
     #floating-cart-interaction button{
-        font-size: 1.1em;
         padding-top: .6em;
         padding-bottom: .6em;
     }
-    #normal-cart-container,#indent-cart-container{
-        display: flex;
-        width: 60px;
-        height: 60px;
+    #floating-cart-header{
+        font-size: .95em;
     }
     #tile-calculator-modal{
         width: 80vw;
@@ -1589,12 +1615,4 @@ html {
         display: none;
     }
 }
-/* ===== AKHIR PUNYA E SHIPPING ORDER ===== */
 
-/* ===== PUNYA E INVOICE LIST ===== */
-#back-inv{
-    font-size: 0.9em;
-    margin-left: -2px;
-    margin-bottom: 34px;
-}
-/* ===== AKHIR PUNYA E INVOICE LIST ===== */

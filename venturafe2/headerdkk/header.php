@@ -352,6 +352,7 @@ if (session_status() == PHP_SESSION_NONE) {
                 "tipe": "normal"
             },
             success: function(data) {
+                console.log("#normal-cart-list", data.header);
                 $("#normal-cart-list").html(data.header);
             }
         });
@@ -365,6 +366,7 @@ if (session_status() == PHP_SESSION_NONE) {
                 "tipe": "indent"
             },
             success: function(data) {
+                console.log("#indent-cart-list", data.header);
                 $("#indent-cart-list").html(data.header);
             }
         });
@@ -400,7 +402,7 @@ if (session_status() == PHP_SESSION_NONE) {
         });
     }
 
-    function refreshCart(type) {
+    function mRefreshCart(type) {
         // Biar cart angkanya keisi
         $.ajax({
             url: "cart-count.php",
@@ -433,6 +435,36 @@ if (session_status() == PHP_SESSION_NONE) {
             }
         });
 
+        // YANG HEADER
+        // Ngisi item-item normal cart
+        $.ajax({
+            url: "ajaxCart.php",
+            method: "POST",
+            dataType: "json",
+            data: {
+                "tipe": "normal"
+            },
+            success: function(data) {
+                console.log("#normal-cart-list", data.header);
+                $("#normal-cart-list").html(data.header);
+            }
+        });
+
+        // Ngisi item-item indent cart
+        $.ajax({
+            url: "ajaxCart.php",
+            method: "POST",
+            dataType: "json",
+            data: {
+                "tipe": "indent"
+            },
+            success: function(data) {
+                console.log("#indent-cart-list", data.header);
+                $("#indent-cart-list").html(data.header);
+            }
+        });
+
+        // YANG FLOATING
         if (type === "normal") {
             // Ngisi item-item normal cart
             $.ajax({
@@ -529,7 +561,7 @@ if (session_status() == PHP_SESSION_NONE) {
                 "tipe": "normal"
             },
             success: function(data) {
-                refreshCart("normal");
+                mRefreshCart("normal");
             }
         });
     }
@@ -543,7 +575,7 @@ if (session_status() == PHP_SESSION_NONE) {
                 "tipe": "indent"
             },
             success: function(data) {
-                refreshCart("indent");
+                mRefreshCart("indent");
             }
         });
     }

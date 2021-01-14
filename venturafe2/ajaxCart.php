@@ -50,14 +50,14 @@ if(isset( $_SESSION["username"])){
             }
         }
         else{
-            $headercart = "
-                <img class='not-selectable' src='resource/emptyCart.png'>
-                Uh oh! Looks like your cart is empty...
-            ";
-            $mobilecart = "
-                <img class='not-selectable' src='resource/emptyCart.png'>
-                Uh oh! Looks like your cart is empty...
-            ";
+            $headercart =   "<div class='empty-message-container'>
+                                <img class='not-selectable' src='resource/emptyCart.png'>
+                                Uh oh! Looks like your cart is empty...
+                            </div>";
+            $mobilecart =   "<div class='empty-message-container'>
+                                <img class='not-selectable' src='resource/emptyCart.png'>
+                                Uh oh! Looks like your cart is empty...
+                            </div>";
         }
     } else if ($tipe === "indent") {
         $getcommand = "SELECT ms.kodetipe as nama, c.kode_stok as kode, c.harga as hrg, sum(c.jumlah) as jml from icartdtl c, master_stok ms WHERE userid='$username' AND c.kode_stok = ms.kode_stok GROUP BY c.kode_stok";
@@ -96,26 +96,26 @@ if(isset( $_SESSION["username"])){
             }
         }
         else{
-            $headercart = "
-                <img class='not-selectable' src='resource/emptyCart.png'>
-                Uh oh! Looks like your cart is empty...
-            ";
-            $mobilecart = "
-                <img class='not-selectable' src='resource/emptyCart.png'>
-                Uh oh! Looks like your cart is empty...
-            ";
+            $headercart =   "<div class='empty-message-container'>
+                                <img class='not-selectable' src='resource/emptyCart.png'>
+                                Uh oh! Looks like your cart is empty...
+                            </div>";
+            $mobilecart =   "<div class='empty-message-container'>
+                                <img class='not-selectable' src='resource/emptyCart.png'>
+                                Uh oh! Looks like your cart is empty...
+                            </div>";
         }
     }
 }
 else{
-    $headercart = "
-                <img class='not-selectable' src='resource/emptyCart.png'>
-                Uh oh! Looks like your cart is empty...
-            ";
-    $mobilecart = "
-                <img class='not-selectable' src='resource/emptyCart.png'>
-                Uh oh! Looks like your cart is empty...
-            ";
+    $headercart =   "<div class='empty-message-container'>
+                        <img class='not-selectable' src='resource/emptyCart.png'>
+                        Uh oh! Looks like your cart is empty...
+                    </div>";
+    $mobilecart =   "<div class='empty-message-container'>
+                        <img class='not-selectable' src='resource/emptyCart.png'>
+                        Uh oh! Looks like your cart is empty...
+                    </div>";
 }
 
 $resp = array();

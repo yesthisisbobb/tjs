@@ -399,7 +399,7 @@ $file = getProductPicture($kodeproduk);
 
                 // console.log(totalQty);
                 if (totalQty > 1) {
-                    addToCart($("#product-code").text(), objShading);
+                    addToCartShading($("#product-code").text(), objShading);
                 } else {
                     addToCart($("#product-code").text());
                 }
@@ -549,7 +549,7 @@ $file = getProductPicture($kodeproduk);
         });
     }
 
-    function addToCart(kodestok, tileDetails) {
+    function addToCartShading(kodestok, tileDetails) {
         let quantity = $("#quantity").val();
         let price = $("#product-price").attr("value");
         let stok = $("#stok-barang").text();

@@ -250,62 +250,50 @@ include('rupiah.php');
 					<div class="row">
 						<div class="col borderRight">
 							<div class="insta-detail">
-								<a href="#" class="insta-image">
-									<h1><i class="fa fa-thumbs-o-up"></i></h1>
-									<h4 style="font-weight:bold">100% ORIGINAL</h4>
-									<h5>We guarantee you the sale of Original Brands.</h5>
-									<div class="overlay"></div>
-								</a>
+								<h1><i class="fa fa-thumbs-o-up"></i></h1>
+								<h4 style="font-weight:bold">100% ORIGINAL</h4>
+								<h5>We guarantee you the sale of Original Brands.</h5>
+								<div class="overlay"></div>
 							</div>
 						</div>
 						<div class="col borderRight">
 							<div class="insta-detail">
-								<a href="#" class="insta-image">
-									<h1><i class="fa fa-credit-card"></i></h1>
-									<h4 style="font-weight:bold">PAYMENT OPTIONS</h4>
-									<h5>We accept Bank Transfer, Debit, Visa, and MasterCard.</h5>
-									<div class="overlay"></div>
-								</a>
+								<h1><i class="fa fa-credit-card"></i></h1>
+								<h4 style="font-weight:bold">PAYMENT OPTIONS</h4>
+								<h5>We accept Bank Transfer, Debit, Visa, and MasterCard.</h5>
+								<div class="overlay"></div>
 							</div>
 						</div>
 						<div class="col borderRight">
 							<div class="insta-detail">
-								<a href="#" class="insta-image">
-									<h1><i class="fa fa-truck"></i></h1>
-									<h4 style="font-weight:bold">FREE DELIVERY</h4>
-									<h5>Free Delivery for Jakarta & Surabaya</h5>
-									<div class="overlay"></div>
-								</a>
+								<h1><i class="fa fa-truck"></i></h1>
+								<h4 style="font-weight:bold">FREE DELIVERY</h4>
+								<h5>Free Delivery for Jakarta & Surabaya</h5>
+								<div class="overlay"></div>
 							</div>
 						</div>
 						<div class="col borderRight">
 							<div class="insta-detail">
-								<a href="#" class="insta-image">
-									<h1><i class="fa fa-undo"></i></h1>
-									<h4 style="font-weight:bold">14-DAYS RETURNS</h4>
-									<h5>Within 14 days in same condition as received</h5>
-									<div class="overlay"></div>
-								</a>
+								<h1><i class="fa fa-undo"></i></h1>
+								<h4 style="font-weight:bold">14-DAYS RETURNS</h4>
+								<h5>Within 14 days in same condition as received</h5>
+								<div class="overlay"></div>
 							</div>
 						</div>
 						<div class="col borderRight">
 							<div class="insta-detail">
-								<a href="#" class="insta-image">
-									<h1><i class="fa fa-home"></i></h1>
-									<h4 style="font-weight:bold">WARRANTY</h4>
-									<h5>3 years for Sanitary ware & 2 years for tiles</h5>
-									<div class="overlay"></div>
-								</a>
+								<h1><i class="fa fa-home"></i></h1>
+								<h4 style="font-weight:bold">WARRANTY</h4>
+								<h5>3 years for Sanitary ware & 2 years for tiles</h5>
+								<div class="overlay"></div>
 							</div>
 						</div>
 						<div class="col borderRight">
 							<div class="insta-detail">
-								<a href="#" class="insta-image">
-									<h1><i class="fa fa-upload"></i></h1>
-									<h4 style="font-weight:bold">PRE & POST SALES SERVICES</h4>
-									<h5>Design Consultancy, Installation, Supervision, Maintenance</h5>
-									<div class="overlay"></div>
-								</a>
+								<h1><i class="fa fa-upload"></i></h1>
+								<h4 style="font-weight:bold">PRE & POST SALES SERVICES</h4>
+								<h5>Design Consultancy, Installation, Supervision, Maintenance</h5>
+								<div class="overlay"></div>
 							</div>
 						</div>
 
