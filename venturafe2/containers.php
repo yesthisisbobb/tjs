@@ -143,7 +143,7 @@ function homeContainerv2($kodeProduk, $kodeStok, $namaGrup, $namaKategori, $prod
                     <div class="home-product-base" onclick="' . $linkToShopDetail . '">
                         <div class="home-product-top">
                             <div class="home-product-stock' . $stockClass . '">' . $stockType . '</div>
-                            <div class="home-product-image"  onclick="' . $linkToShopDetail . '"><img src="' . $productimg . '"></div>
+                            <div class="home-product-image"  onclick="' . $linkToShopDetail . '"><img class="not-selectable" src="' . $productimg . '"></div>
                         </div>
                         <div class="home-product-bottom">
                             <div class="home-product-interaction">
@@ -201,13 +201,13 @@ function productContainerv2($kodeProduk, $kodeStok, $namaGrup, $merkimg, $produc
     echo    '<div class="col">
                 <div class="shop-product-base-container">
                     <div class="shop-product-brand-container">
-                        <div class="shop-product-brand"><img src="' . $merkimg . '"></div>
+                        <div class="shop-product-brand"><img class="not-selectable" src="' . $merkimg . '"></div>
                     </div>
                     <div class="shop-product-base">
                         <div class="shop-product-top">
                             <div class="shop-product-stock' . $stockClass . '">' . $stockType . '</div>
-                            <div class="shop-product-fave tombol-favorite" id="' . $kodeStok . '"><img src="' . $favoriteType . '"></div>
-                            <div class="shop-product-image" onclick="' . $linkToShopDetail . '"><img src="' . $productimg . '"></div>
+                            <div class="shop-product-fave tombol-favorite" id="' . $kodeStok . '"><img class="not-selectable" src="' . $favoriteType . '"></div>
+                            <div class="shop-product-image" onclick="' . $linkToShopDetail . '"><img class="not-selectable" src="' . $productimg . '"></div>
                         </div>
                         <div class="shop-product-bottom">
                             <div class="shop-product-interaction">
