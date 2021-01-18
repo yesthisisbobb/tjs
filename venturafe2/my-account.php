@@ -18,7 +18,7 @@ include('rupiah.php');
 
 <body class="homepages-1" id="realcontainer">
 	<?php include('headerdkk/header.php'); ?>
-	<div class="page-content" style="margin-top:100px">
+	<div class="page-content">
 		<!-- My Account Section -->
 		<section class="my-account-section section-box">
 			<div class="woocommerce">

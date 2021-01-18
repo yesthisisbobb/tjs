@@ -1586,6 +1586,11 @@ html {
         align-items: center;
         height: auto;
     }
+
+    .novas-form-signup{
+        margin-top: 48px;
+    }
+
     .so-header-part-container{
         width: 92%;
         padding: 18px 0px 18px;
