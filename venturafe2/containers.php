@@ -117,7 +117,7 @@ function homeContainerv2($kodeProduk, $kodeStok, $namaGrup, $namaKategori, $prod
     // Defines
     $stockType = "";
     $priceDisplay = "";
-    $linkToShopDetail = "window.location.href = 'shop-detail.php?id=$kodeProduk&namaGrup=$namaGrup'";
+    $linkToShopDetail = "window.location.href = 'shop-detail.php?id=$kodeProduk&group=$namaGrup'";
 
     // Price Settings
     // if ($showPrice == 0) {
@@ -168,7 +168,7 @@ function productContainerv2($kodeProduk, $kodeStok, $namaGrup, $merkimg, $produc
     $stockType = "";
     $priceDisplay = "";
     $favoriteType = "resource/LVWB.png";
-    $linkToShopDetail = "window.location.href = 'shop-detail.php?id=$kodeProduk&namaGrup=$namaGrup'";
+    $linkToShopDetail = "window.location.href = 'shop-detail.php?id=$kodeProduk&group=$namaGrup'";
 
     // If text is longer than 15 characters
     if(strlen($kodeProduk) > 15) $productNameType = " long-text";

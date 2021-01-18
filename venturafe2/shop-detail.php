@@ -10,7 +10,7 @@ if (!isset($_GET["id"])) {
 }
 
 $kodeproduk = $_GET["id"];
-$namaGrup = $_GET["namaGrup"];
+$namaGrup = $_GET["group"];
 $kodestok = "";
 
 $getcommand = "SELECT ms.kode_stok, ms.kodetipe as namaproduk, ms.kodemerk as merk, ms.nm_stok shortdesc, ms.des as longdesc, ms.kgsstok as kg, ms.panjang as panjang, ms.lebar as lebar, ms.tinggi as tinggi, ms.pcsctn as pcc, ms.grupname as grup, mp.pls as harga, ms.sellunit as unit, ms.grade as grade FROM master_stok ms,master_price mp  WHERE ms.kodetipe='$kodeproduk' AND ms.kode_stok=mp.kode";
@@ -239,7 +239,7 @@ $file = getProductPicture($kodeproduk);
                                             <div class="product type-product">
                                                 <div class="woocommerce-LoopProduct-link">
                                                     <div class="product-image" style="height:400px;">
-                                                        <?php $linkTo = "shop-detail.php?id=" . $data["namaproduk"] . "&namaGrup=" . $namaGrup; ?>
+                                                        <?php $linkTo = "shop-detail.php?id=" . $data["namaproduk"] . "&group=" . $namaGrup; ?>
                                                         <a href="<?= $linkTo ?>" class="wp-post-image">
                                                             <?php
                                                             $file = getProductPicture($data["namaproduk"]);
@@ -378,7 +378,7 @@ $file = getProductPicture($kodeproduk);
         $("#add-to-cart").click(function(e) {
             e.preventDefault();
 
-            let grup = getUrlParameter("namaGrup");
+            let grup = getUrlParameter("group");
 
             if (grup != "TILE") {
                 // If item is not a tile
@@ -494,7 +494,7 @@ $file = getProductPicture($kodeproduk);
 </script>
 <script>
     // Menyembunyikan sizes lek bukan tiles
-    if (!getUrlParameter("namaGrup") || getUrlParameter("namaGrup") != "TILE") {
+    if (!getUrlParameter("group") || getUrlParameter("group") != "TILE") {
         $("#tile-calc").css("display", "none");
         $("#sizes-base-container").css("display", "none");
         $("#set-shading").css("display", "none");
@@ -598,7 +598,7 @@ $file = getProductPicture($kodeproduk);
     }
 
     function shopDetail(kode, namaGrup) {
-        window.location.href = "shop-detail.php?id=" + kode + "&namaGrup=" + namaGrup;
+        window.location.href = "shop-detail.php?id=" + kode + "&group=" + namaGrup;
     }
 
     //Ngeload sizes

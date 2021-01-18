@@ -27,27 +27,30 @@ if(isset($_SESSION['username'])){
             $kodeStok = $row['kode'];
             $query2=$conn->query("SELECT * FROM master_price WHERE kode = '$kodeStok' LIMIT 1");
             $numprice = mysqli_num_rows($query2);
-            $query3=$conn->query("SELECT * FROM master_stok WHERE kode_stok = '$kodeStok' LIMIT 1");
+            $query3=$conn->query("SELECT ms.kodetipe as kode, msg.namagrup as grup FROM master_stok ms, master_sub_grup msg, detail_sub_grup dsg WHERE kode_stok = '$kodeStok' AND ms.grupname = dsg.nama AND dsg.namagrup = msg.nama LIMIT 1");
             $harga = 0;
             $kodeproduk="";
+            $namaGrup = "";
             if($numprice == 1){
                 $row2 = mysqli_fetch_assoc($query2);
                 $harga = $row2["pls"];
             }
             if($query3){
                 $row3 = mysqli_fetch_assoc($query3);
-                $kodeproduk = $row3["kodetipe"];
+                $kodeproduk = $row3["kode"];
+                $namaGrup = $row3["grup"];
             }
             
             $file = getProductPicture($kodeproduk);
+            $link = "shop-detail.php?id=$kodeproduk&group=$namaGrup";
             
             echo '<tr class="woocommerce-cart-form__cart-item cart_item">
             <td class="product-remove">
                 <a href="" class="removeFav" id="'.$kodeStok.'"><i class="zmdi zmdi-close"></i></a>
             </td>
             <td class="product-name" data-title="Product">
-                <a href="#"><img src="'.$file.'" alt="product"></a>
-                <a href="#">'.$kodeStok.'</a>
+                <a href="'.$link.'"><img src="'.$file.'" alt="product"></a>
+                <a href="'.$link.'">'.$kodeproduk.'</a>
             </td>
             <td class="product-price" data-title="Price">
                 <span class="woocommerce-Price-amount amount">
@@ -55,7 +58,7 @@ if(isset($_SESSION['username'])){
                 </span>
             </td>
             <td class="product-subtotal product-add-to-cart" data-title="To Details">
-                <a href="shop-detail.php?id='.$kodeproduk.'" class="au-btn btn-small">See Details<i class="zmdi zmdi-arrow-right"></i></a>	
+                <a href="'.$link.'" class="au-btn btn-small">See Details<i class="zmdi zmdi-arrow-right"></i></a>	
             </td>
             </tr>';
         }

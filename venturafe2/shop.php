@@ -110,7 +110,7 @@ $total = mysqli_num_rows($queryTotal);
 
 	<script>
 		let min = 0,
-			max = 0;
+			max = 0; // Min and Max values for slider filter
 		let stype = ""; // Category type
 		let valArr = {
 			"sortVal": "",

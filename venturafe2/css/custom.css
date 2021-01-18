@@ -612,7 +612,7 @@ button>i{
     font-size: 14px;
 }
 .shop-product-brand-container {
-    height: auto;
+    height: 4em;
     width: 94%;
     display: flex;
     align-items: center;
@@ -622,7 +622,7 @@ button>i{
     position: relative;
     display: flex;
     justify-content: flex-end;
-    margin-bottom: 8px;
+    /* margin-bottom: 8px; */
     width: 100px;
     height: auto;
 }
