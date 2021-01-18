@@ -615,14 +615,14 @@ button>i{
     height: 4em;
     width: 94%;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: flex-end;
 }
 .shop-product-brand {
     position: relative;
     display: flex;
     justify-content: flex-end;
-    /* margin-bottom: 8px; */
+    margin-bottom: 8px;
     width: 100px;
     height: auto;
 }
