@@ -4,7 +4,7 @@ include("rupiah.php");
 include("get-picture.php");
 include("containers.php");
 session_start();
-		$query = $conn->query("SELECT * FROM master_grup ");
+		$query = $conn->query("SELECT * FROM master_grup");
 
 		while ($row = mysqli_fetch_assoc($query)) {
 
@@ -16,7 +16,7 @@ session_start();
 								<div class="content-area">
 									';
 			$i = 0;
-			$queryMasterSubGrup = $conn->query("SELECT *,dsg.nama as jeneng FROM  master_sub_grup msg inner join detail_sub_grup dsg on msg.nama = dsg.namagrup inner join master_stok on dsg.nama = grupname WHERE msg.namagrup = '$namaGrup' ORDER BY msg.namagrup DESC LIMIT 10");
+			$queryMasterSubGrup = $conn->query("SELECT *,dsg.nama as jeneng FROM  master_sub_grup msg inner join detail_sub_grup dsg on msg.nama = dsg.namagrup inner join master_stok on dsg.nama = grupname WHERE msg.namagrup = '$namaGrup' ORDER BY RAND() DESC LIMIT 10");
 			while ($rowMasterSubGrup = mysqli_fetch_assoc($queryMasterSubGrup)) {
 				$i++;
 				$merk = $rowMasterSubGrup['kodemerk'];

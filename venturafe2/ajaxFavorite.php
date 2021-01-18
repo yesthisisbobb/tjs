@@ -20,6 +20,9 @@ if(isset($_SESSION['username'])){
         $hasil = '<img src="resource/LVWB.png"> ';
     }
 }
+else{
+    $hasil = "notLogged";
+}
 
 $conn->close();
 echo $hasil;

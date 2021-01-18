@@ -227,8 +227,11 @@
 				'kode': kode
 			},
 			success: function(data) {
-				document.getElementById(kode).innerHTML = data;
-				console.log("success");
+				if (data === "notLogged") {
+					window.location.href = "my-account.php?logged=false";
+				} else {
+					document.getElementById(kode).innerHTML = data;
+				}
 			}
 		});
 	});
