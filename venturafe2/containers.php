@@ -174,12 +174,12 @@ function productContainerv2($kodeProduk, $kodeStok, $namaGrup, $merkimg, $produc
     if(strlen($kodeProduk) > 15) $productNameType = " long-text";
 
     // Price Settings
-    // if ($showPrice == 0 ) {
-    //     $priceDisplay = "<span class='orange-yellow'>Ask for Price</span>";
-    // } else {
-    //     $priceDisplay = rupiah($harga);
-    // }
-    $priceDisplay = rupiah($harga);
+    if ($showPrice == 0 ) {
+        $priceDisplay = "Rp -";
+    } else {
+        $priceDisplay = rupiah($harga);
+    }
+    // $priceDisplay = rupiah($harga);
 
     // Stock Settings
     if($jum <= 0) {
