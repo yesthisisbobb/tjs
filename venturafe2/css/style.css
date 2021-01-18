@@ -1612,12 +1612,12 @@ textarea:-moz-placeholder {
       .featured-hp-1 .content-area .woocommerce-LoopProduct-link .product-image .onnew,
       .featured-hp-1 .content-area .woocommerce-LoopProduct-link .product-image .onsale {
         position: absolute;
-        top: 20px;
+        top: 0px;
         left: 0px; }
       .featured-hp-1 .content-area .woocommerce-LoopProduct-link .product-image .yith-wcwl-add-button {
         position: absolute;
-        top: 24px;
-        right: 16px; }
+        top: 0px;
+        right: 12px; }
         .featured-hp-1 .content-area .woocommerce-LoopProduct-link .product-image .yith-wcwl-add-button .add_to_wishlist {
           font-size: 20px;
           color: #999; }

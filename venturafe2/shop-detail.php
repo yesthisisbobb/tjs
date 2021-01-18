@@ -101,17 +101,12 @@ $file = getProductPicture($kodeproduk);
                                     while ($rowStok = mysqli_fetch_assoc($queryStok)) {
                                         $jmlprod += $rowStok["jum"];
                                     }
-                                    if ($queryStok) {
-                                        $stockres = mysqli_fetch_array($query);
-                                        if ($jmlprod > 18) {
-                                            echo "<a id='stok-barang' class='onnew'>Ready</a>";
-                                        } else if ($jmlprod <= 18 && $jmlprod > 1) {
-                                            echo "<a id='stok-barang' class='onnew' style='background:#ffc107;'>Limited</a>";
-                                        } else {
-                                            echo "<a id='stok-barang' class='onsale'>Indent</a>";
-                                        }
+                                    if ($jmlprod > 18) {
+                                        echo "<a class='shop-product-stock stock-ready' style='color:white;'>Ready</a>";
+                                    } else if ($jmlprod <= 18 && $jmlprod > 1) {
+                                        echo "<a class='shop-product-stock stock-limited' style='color:white;'>Limited</a>";
                                     } else {
-                                        echo "<a id='stok-barang' class='onsale'>Indent</a>";
+                                        echo "<a class='shop-product-stock stock-indent' style='color:white;'>Indent</a>";
                                     }
                                     ?>
                                     <div class="owl-carousel">
@@ -253,16 +248,16 @@ $file = getProductPicture($kodeproduk);
                                                         if ($stockquery) {
                                                             $stockres = mysqli_fetch_array($stockquery);
                                                             if (!isset($stockres)) {
-                                                                echo "<a id='stok-barang' class='onsale'>Indent</a>";
+                                                                echo "<a class='shop-product-stock stock-indent' style='color:white;'>Indent</a>";
                                                             } else if ($stockres['jumlah'] > 18) {
-                                                                echo "<a id='stok-barang' class='onnew'>Ready</a>";
+                                                                echo "<a class='shop-product-stock stock-ready' style='color:white;'>Ready</a>";
                                                             } else if ($stockres['jumlah'] <= 18 && $stockres['jumlah'] > 1) {
-                                                                echo "<a id='stok-barang' class='onnew' style='background:#ffc107;'>Limited</a>";
+                                                                echo "<a class='shop-product-stock stock-limited' style='color:white;'>Limited</a>";
                                                             } else {
-                                                                echo "<a id='stok-barang' class='onsale'>Indent</a>";
+                                                                echo "<aclass='shop-product-stock stock-indent' style='color:white;'>Indent</a>";
                                                             }
                                                         } else {
-                                                            echo "<a id='stok-barang' class='onsale'>Indent</a>";
+                                                            echo "<a class='shop-product-stock stock-indent' style='color:white;'>Indent</a>";
                                                         }
                                                         ?>
                                                         <?php
@@ -273,12 +268,12 @@ $file = getProductPicture($kodeproduk);
                                                             $query2 = $conn->query("SELECT * FROM fav where user='" . $_SESSION['username'] . "' AND kode='" . $data["kodestok"] . "'");
                                                             $numRows = mysqli_num_rows($query2);
                                                             if ($numRows == 0) {
-                                                                echo '<img class="favorite" src="resource/pecah.png">';
+                                                                echo '<img class="favorite" src="resource/LVWB.png">';
                                                             } else {
-                                                                echo '<img class="favorite"  src="resource/nyatu.png">';
+                                                                echo '<img class="favorite"  src="resource/LVRB.png">';
                                                             }
                                                         } else {
-                                                            echo '<img class="favorite"  src="resource/pecah.png">';
+                                                            echo '<img class="favorite"  src="resource/LVWB.png">';
                                                         }
 
                                                         /*echo '<div class="yith-wcwl-add-button show">
@@ -296,33 +291,33 @@ $file = getProductPicture($kodeproduk);
                                                         }*/
 
                                                         ?>
-                                                        </a>
+                                                            </a>
+                                                        </div>
+                                                        <div class="button add_to_cart_button">
+                                                            <img class="cart-icon" onclick='shopDetail("<?= $data["namaproduk"] ?>","<?= $namaGrup ?>")' src="images/icons/shopping-cart-black-icon.png" alt="cart">
+                                                        </div>
+                                                        <h5 class="woocommerce-loop-product__title" style="width:160px"><a href="#"> <?php echo $data["namaproduk"]; ?> </a></h5>
+                                                        <span class="price">
+                                                            <ins>
+                                                                <span class="woocommerce-Price-amount amount">
+                                                                    <?php echo rupiah($data["harga"]); ?>
+                                                                </span>
+                                                            </ins>
+                                                        </span>
                                                     </div>
-                                                    <div class="button add_to_cart_button">
-                                                        <img class="cart-icon" onclick='shopDetail("<?= $data["namaproduk"] ?>","<?= $namaGrup ?>")' src="images/icons/shopping-cart-black-icon.png" alt="cart">
-                                                    </div>
-                                                    <h5 class="woocommerce-loop-product__title" style="width:160px"><a href="#"> <?php echo $data["namaproduk"]; ?> </a></h5>
-                                                    <span class="price">
-                                                        <ins>
-                                                            <span class="woocommerce-Price-amount amount">
-                                                                <?php echo rupiah($data["harga"]); ?>
-                                                            </span>
-                                                        </ins>
-                                                    </span>
                                                 </div>
                                             </div>
                                         </div>
-                            </div>
                     <?php
                                     }
                                 }
                     ?>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-    </div>
-    </section>
+        </section>
     <!-- End Shop Section -->
     </div>
     <?php include("floating-cart.php"); ?>
