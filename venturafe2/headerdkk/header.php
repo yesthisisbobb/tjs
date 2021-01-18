@@ -93,24 +93,24 @@ if (session_status() == PHP_SESSION_NONE) {
                             </li>
 
                             <?php
-                                if(isset($_SESSION['level'])){
-                                    if($_SESSION['level'] == "admin"){
+                            if (isset($_SESSION['level'])) {
+                                if ($_SESSION['level'] == "admin") {
                             ?>
-                            <li class="menu-item">
-                                <a href="#" style="color:#ec3923;">
-                                    SMB ACADEMY
-                                </a>
-                                <ul class="sub-menu">
-                                    <li>
-                                        <a href="#">
-                                            Courses
+                                    <li class="menu-item">
+                                        <a href="#" style="color:#ec3923;">
+                                            SMB ACADEMY
                                         </a>
+                                        <ul class="sub-menu">
+                                            <li>
+                                                <a href="#">
+                                                    Courses
+                                                </a>
+                                            </li>
+                                        </ul>
                                     </li>
-                                </ul>
-                            </li>
                             <?php
-                                    }
                                 }
+                            }
                             ?>
 
                         </ul>
@@ -362,8 +362,19 @@ if (session_status() == PHP_SESSION_NONE) {
                 "tipe": "normal"
             },
             success: function(data) {
-                console.log("#normal-cart-list", data.header);
+                if (data.isEmpty != "undefined" && data.isEmpty) {
+                    $("#normal-cart-list").css({
+                        "display": "flex",
+                        "justify-content": "center",
+                        "text-align": "center"
+                    });
+                } else {
+                    $("#normal-cart-list").css("display", "block");
+                }
                 $("#normal-cart-list").html(data.header);
+            },
+            error: function(error) {
+                console.error(error.responseText);
             }
         });
 
@@ -376,8 +387,19 @@ if (session_status() == PHP_SESSION_NONE) {
                 "tipe": "indent"
             },
             success: function(data) {
-                console.log("#indent-cart-list", data.header);
+                if (data.isEmpty != "undefined" && data.isEmpty) {
+                    $("#indent-cart-list").css({
+                        "display": "flex",
+                        "justify-content": "center",
+                        "text-align": "center"
+                    });
+                } else {
+                    $("#indent-cart-list").css("display", "block");
+                }
                 $("#indent-cart-list").html(data.header);
+            },
+            error: function(error) {
+                console.error(error.responseText);
             }
         });
 
