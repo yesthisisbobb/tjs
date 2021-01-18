@@ -526,8 +526,8 @@ button>i{
 }
 .home-product-top img{
     height: auto;
-    max-width: 90%;
-    max-height: 92%;
+    max-width: 88%;
+    max-height: 88%;
 }
 .home-product-stock{
     position: absolute;
@@ -708,8 +708,8 @@ button>i{
 }
 .shop-product-image img{
     width: auto;
-    max-width: 90%;
-    max-height: 100%;
+    max-width: 88%;
+    max-height: 84%;
 }
 .shop-product-bottom{
     position: relative;
