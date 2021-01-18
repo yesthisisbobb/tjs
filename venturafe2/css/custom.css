@@ -780,6 +780,11 @@ button>i{
     overflow-y: scroll;
 }
 
+#normal-cart-list .empty-message-container,
+#indent-cart-list .empty-message-container{
+    padding: 0px;
+}
+
 .lnr-cross,
 .remove,
 .button {

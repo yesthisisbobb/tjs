@@ -73,8 +73,8 @@ if(isset($_SESSION["username"])){
             $ctr++;
 
             // Link-link
-            $linkToSO = 'http://localhost/tjs/tjs/venturafe2/sales-order.php?no=' . $row["noso"];
-            $linkToINV = 'http://localhost/tjs/tjs/venturafe2/invoice.php?no=' . $row["noso"];
+            $linkToSO = 'sales-order.php?no=' . $row["noso"];
+            $linkToINV = 'invoice.php?no=' . $row["noso"];
 
             // Get amount of invoice of the SO
             $invoiceQty = 0;
@@ -141,7 +141,7 @@ if(isset($_SESSION["username"])){
         if($status_selection == "paid"){
             $word = "Looks like you don't have any paid invoice...";
         } else if ($status_selection == "unpaid") {
-            $word = "Looks like you have't made any invoice...";
+            $word = "Looks like you don't have any unpaid invoice...";
         }else{
             $word = "Looks like you don't have any invoice...";
         }
