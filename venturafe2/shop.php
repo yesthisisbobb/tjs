@@ -28,6 +28,7 @@ $total = mysqli_num_rows($queryTotal);
 						<div class="storefront-sorting">
 							<p class="woocommerce-result-count">Showing 1 – 12 of <?= $total ?> results</p>
 							<form class="woocommerce-ordering" method="get">
+								<button type="button" class="btn btn-link" id="clear-filter"><i class="fas fa-ban"></i> Clear Filter</button>
 								<select name="orderby" id="sort" class="orderby">
 									<option value="none">--Sort--</option>
 									<option value="low">Sort by price: low to high</option>
@@ -124,6 +125,22 @@ $total = mysqli_num_rows($queryTotal);
 			"isFilteredByPrice": false
 		};
 
+		$("#clear-filter").click(function() {
+			statesArr["isSorted"] = false;
+			statesArr["isSearched"] = false;
+			statesArr["isCategorized"] = false;
+			statesArr["isFilteredByPrice"] = false;
+
+			let jsonVal = JSON.stringify({});
+			let jsonStates = JSON.stringify(statesArr);
+
+			callLoader();
+
+			$("#kontainerAnjay").load(`searchEngine.php?vals=${jsonVal}&states=${jsonStates}`, function() {
+				removeLoader();
+			});
+		});
+
 		function topFunction() {
 			document.body.scrollTop = 0;
 			document.documentElement.scrollTop = 0;
@@ -155,7 +172,7 @@ $total = mysqli_num_rows($queryTotal);
 			let jsonStates = JSON.stringify(statesArr);
 
 			callLoader();
-			
+
 			$("#kontainerAnjay").load(`searchEngine.php?vals=${jsonVal}&states=${jsonStates}`, function() {
 				removeLoader();
 			});
