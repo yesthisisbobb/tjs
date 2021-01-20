@@ -9,6 +9,7 @@ session_start();
 // let valArr = {
 // 			"sortVal": "",
 // 			"searchVal": "",
+//          "searchBy": "",
 // 			"categoryType": "",
 // 			"categoryCode": "",
 // 			"min": 100000,
@@ -48,7 +49,16 @@ if ($statesData["isCategorized"]) {
 if ($statesData["isSearched"]) {
     // echo "masuk search" . " ||";
     $searchVal = $valData["searchVal"];
-    $wheres .= " AND ms.kodetipe LIKE '%$searchVal%'";
+    $searchBy = $valData["searchBy"];
+    if ($searchBy == "type") {
+        $wheres .= " AND ms.kodetipe LIKE '%$searchVal%'";
+    }
+    else if($searchBy == "code"){
+        $wheres .= " AND ms.kode_stok LIKE '%$searchVal%'";
+    }
+    else if($searchBy == "brand"){
+        $wheres .= " AND ms.kodemerk LIKE '%$searchVal%'";
+    }
 }
 if ($statesData["isFilteredByPrice"]){
     // echo "masuk filter price ||";

@@ -28,7 +28,7 @@ $total = mysqli_num_rows($queryTotal);
 						<div class="storefront-sorting">
 							<p class="woocommerce-result-count">Showing 1 – 12 of <?= $total ?> results</p>
 							<form class="woocommerce-ordering" method="get">
-								<button type="button" class="btn btn-link" id="clear-filter"><i class="fas fa-ban"></i> Clear Filter</button>
+								<button type="button" class="btn btn-link" id="clear-filter" style="color:gray;"><i class="fas fa-ban"></i> Clear Filter</button>
 								<select name="orderby" id="sort" class="orderby">
 									<option value="none">--Sort--</option>
 									<option value="low">Sort by price: low to high</option>
@@ -50,6 +50,20 @@ $total = mysqli_num_rows($queryTotal);
 								<input type="texts" id="search" name="search" class="search-field" placeholder="Search...">
 								<i class="zmdi zmdi-search search-submit"></i>
 							</form>
+						</div>
+						<div id="search-filters">
+							<div id="search-header"><i class="fas fa-chevron-down"></i>Search by</div>
+							<div id="search-options">
+								<div class="search-item" value="type">
+									<div class="search-checkbox"></div>Type
+								</div>
+								<div class="search-item" value="code">
+									<div class="search-checkbox"></div>Code
+								</div>
+								<div class="search-item" value="brand">
+									<div class="search-checkbox"></div>Brand
+								</div>
+							</div>
 						</div>
 						<!-- Filter -->
 						<div class="widget_price_filter">
@@ -110,9 +124,11 @@ $total = mysqli_num_rows($queryTotal);
 	<?php include('headerdkk/footer.php') ?>
 
 	<script>
+		let searchFilterOptionsVisible = false;
 		let valArr = {
 			"sortVal": "",
 			"searchVal": "",
+			"searchBy": "",
 			"categoryType": "",
 			"categoryCode": "",
 			"min": 100000,
@@ -124,22 +140,6 @@ $total = mysqli_num_rows($queryTotal);
 			"isCategorized": false,
 			"isFilteredByPrice": false
 		};
-
-		$("#clear-filter").click(function() {
-			statesArr["isSorted"] = false;
-			statesArr["isSearched"] = false;
-			statesArr["isCategorized"] = false;
-			statesArr["isFilteredByPrice"] = false;
-
-			let jsonVal = JSON.stringify({});
-			let jsonStates = JSON.stringify(statesArr);
-
-			callLoader();
-
-			$("#kontainerAnjay").load(`searchEngine.php?vals=${jsonVal}&states=${jsonStates}`, function() {
-				removeLoader();
-			});
-		});
 
 		function topFunction() {
 			document.body.scrollTop = 0;
@@ -160,6 +160,40 @@ $total = mysqli_num_rows($queryTotal);
 			$("#shop-loader").css("display", "none");
 			$("#kontainerAnjay").css("display", "block");
 		}
+
+		$("#clear-filter").click(function() {
+			statesArr["isSorted"] = false;
+			statesArr["isSearched"] = false;
+			statesArr["isCategorized"] = false;
+			statesArr["isFilteredByPrice"] = false;
+
+			let jsonVal = JSON.stringify({});
+			let jsonStates = JSON.stringify(statesArr);
+
+			callLoader();
+
+			$("#kontainerAnjay").load(`searchEngine.php?vals=${jsonVal}&states=${jsonStates}`, function() {
+				removeLoader();
+			});
+		});
+
+		$("#search-header").click(function() {
+			if (!searchFilterOptionsVisible) {
+				searchFilterOptionsVisible = true;
+				$("#search-header i").addClass("filter-active");
+				$("#search-options").css("height", "auto");
+			} else {
+				searchFilterOptionsVisible = false;
+				$("#search-header i").removeClass("filter-active");
+				$("#search-options").css("height", "0px");
+			}
+		});
+
+		$(".search-item").click(function() {
+			$(".search-item .search-checkbox").removeClass("filter-checked");
+			$(this).find(".search-checkbox").addClass("filter-checked");
+			valArr["searchBy"] = $(this).attr("value");
+		});
 
 		$('#sort').on('change', function() {
 			statesArr["isSorted"] = true;
@@ -203,9 +237,13 @@ $total = mysqli_num_rows($queryTotal);
 			if (val === "") statesArr["isSearched"] = false;
 
 			valArr["searchVal"] = val;
+
+			let jsonVal = JSON.stringify(valArr);
+			let jsonStates = JSON.stringify(statesArr);
+
 			callLoader();
 			topFunction();
-			$("#kontainerAnjay").load(`ajaxSearch.php?kata=${val}`, function() {
+			$("#kontainerAnjay").load(`searchEngine.php?vals=${jsonVal}&states=${jsonStates}`, function() {
 				removeLoader();
 				$('.images-preloader').fadeOut();
 			});

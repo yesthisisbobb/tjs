@@ -756,6 +756,40 @@ button>i{
 .shop-product-buy:hover{
     background-color: rgb(231, 231, 231);
 }
+
+#search-filters{
+    margin-bottom: 33px;
+}
+#search-header{
+    cursor: pointer;
+}
+#search-header i {
+    margin-right: 12px;
+    transition: .3s ease-out;
+}
+.filter-active{
+    transform: rotate(180deg);
+}
+#search-options{
+    height: 0px;
+    overflow: hidden;
+    transition: .4s ease-in;
+}
+.search-item{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-top: 6px;
+}
+.search-checkbox{
+    width: 1em;
+    height: 1em;
+    margin-right: 12px;
+    border: 1px solid gray;
+}
+.filter-checked{
+    background-color: gray;
+}
 /* ===== AKHIR PUNYA E SHOP ===== */
 
 /* ===== PUNYA E SHOP-DETAIL ===== */
