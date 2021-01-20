@@ -55,7 +55,7 @@ $total = mysqli_num_rows($queryTotal);
 							<div id="search-header"><i class="fas fa-chevron-down"></i>Search by</div>
 							<div id="search-options">
 								<div class="search-item" value="type">
-									<div class="search-checkbox"></div>Type
+									<div class="search-checkbox filter-checked"></div>Type
 								</div>
 								<div class="search-item" value="code">
 									<div class="search-checkbox"></div>Code

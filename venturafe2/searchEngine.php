@@ -59,6 +59,9 @@ if ($statesData["isSearched"]) {
     else if($searchBy == "brand"){
         $wheres .= " AND ms.kodemerk LIKE '%$searchVal%'";
     }
+    else{
+        $wheres .= " AND ms.kodetipe LIKE '%$searchVal%'";
+    }
 }
 if ($statesData["isFilteredByPrice"]){
     // echo "masuk filter price ||";
