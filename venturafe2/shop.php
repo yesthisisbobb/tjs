@@ -47,7 +47,7 @@ $total = mysqli_num_rows($queryTotal);
 						<!-- Search -->
 						<div class="widget widget_search">
 							<form class="search-form" method="get" role="search">
-								<input type="texts" id="search" name="search" class="search-field" placeholder="Search...">
+								<input type="texts" id="search" name="search" class="search-field" placeholder="Type here to search">
 								<i class="zmdi zmdi-search search-submit"></i>
 							</form>
 						</div>
@@ -258,10 +258,10 @@ $total = mysqli_num_rows($queryTotal);
 		$(function() {
 			$("#slider-range").slider({
 				range: true,
-				step: 1000000,
-				min: 100000,
-				max: 250000000,
-				values: [100000, 250000000],
+				step: 500000,
+				min: 0,
+				max: 25000000,
+				values: [0, 250000000],
 				slide: function(event, ui) {
 					let num1 = new Intl.NumberFormat('id-ID').format(ui.values[0]);
 					let num2 = new Intl.NumberFormat('id-ID').format(ui.values[1]);
