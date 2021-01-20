@@ -5,36 +5,97 @@ include("get-picture.php");
 include("containers.php");
 session_start();
 
-// Query related variables
-$categoryType = $_GET[''];
-$valRawData = $_GET[''];
-$statesRawData = $_GET[''];
+// Variable Name Reference
+// let valArr = {
+// 			"sortVal": "",
+// 			"searchVal": "",
+// 			"categoryType": "",
+// 			"categoryCode": "",
+// 			"min": 100000,
+//           "max": 250000000
+// };
+// let statesArr = {
+//     "isSorted": false,
+//     "isSearched": false,
+//     "isCategorized": false,
+//     "isFilteredByPrice": false
+// };
 
+// Query related variables
 $contentPerPage = 12;
 $itemsPerRow = 3;
 $currentPage = isset($_GET["halaman"]) ? (int)$_GET["halaman"] : 1;
 $firstItemIndex = ($currentPage > 1) ? ($currentPage * $contentPerPage) - $contentPerPage : 0;
 
-$queryTotal = $conn->query("SELECT * FROM  master_sub_grup msg inner join detail_sub_grup dsg on msg.nama = dsg.namagrup inner join master_stok ms on dsg.nama = ms.grupname WHERE ms.status = 'Active' ORDER BY msg.namagrup");
+$valRawData = $_GET['vals'];
+$statesRawData = $_GET['states'];
+
+$valData = json_decode($valRawData, true);
+$statesData = json_decode($statesRawData, true);
+
+$masterQuery = "";
+$selects = "SELECT ms.kodetipe AS tipe, ms.kode_stok AS kode, ms.kodemerk AS merk, ms.panjang AS p, ms.lebar AS l, ms.tinggi AS t, ms.tebal AS tebal, ms.grupname AS grup";
+$froms = "FROM master_sub_grup msg, detail_sub_grup dsg, master_stok ms";
+$wheres = "WHERE ms.status='Active' AND msg.nama = dsg.namagrup AND dsg.nama = ms.grupname";
+if ($statesData["isCategorized"]) {
+    // echo "masuk kategori" . " ||";
+    $ctypeVal = $valData["categoryType"];
+    $catVal = $valData["categoryCode"];
+
+    if ($ctypeVal == "main") $wheres .= " AND msg.namagrup = '$catVal'";
+    if ($ctypeVal == "merk") $wheres .= " AND ms.kodemerk = '$catVal'";
+}
+if ($statesData["isSearched"]) {
+    // echo "masuk search" . " ||";
+    $searchVal = $valData["searchVal"];
+    $wheres .= " AND ms.kodetipe LIKE '%$searchVal%'";
+}
+if ($statesData["isFilteredByPrice"]){
+    // echo "masuk filter price ||";
+    $min = intval($valData["min"]);
+    $max = intval($valData["max"]);
+    if (!$statesData["isSorted"]){
+        $froms .= ", master_price mp";
+        $wheres .= " AND ms.kode_stok = mp.kode";
+    }
+    $wheres .= " AND mp.pls BETWEEN $min AND $max";
+}
+if ($statesData["isSorted"]) {
+    // echo "masuk sort " . $valData["sortVal"] . " ||";
+    $sortVal = $valData["sortVal"];
+    if ($sortVal == "low") {
+        $froms .= ", master_price mp";
+        $wheres .= " AND ms.kode_stok = mp.kode ORDER BY mp.pls ASC";
+    }
+    else if ($sortVal == "high") {
+        $froms .= ", master_price mp";
+        $wheres .= " AND ms.kode_stok = mp.kode ORDER BY mp.pls DESC";
+    }
+}
+$masterQuery = "$selects $froms $wheres";
+
+// echo $masterQuery;
+$queryTotal = $conn->query($masterQuery);
 $total = mysqli_num_rows($queryTotal);
-$numOfPages = ceil($total / $halaman);
+$numOfPages = ceil($total / $contentPerPage);
 
 $i = 0;
-$queryMasterSubGrup = $conn->query("SELECT *, msg.namagrup as jeneng FROM  master_sub_grup msg inner join detail_sub_grup dsg on msg.nama = dsg.namagrup inner join master_stok ms on dsg.nama = ms.grupname WHERE ms.status = 'Active' ORDER BY msg.namagrup DESC LIMIT $mulai,$halaman");
+$queryMasterSubGrup = $conn->query("$masterQuery LIMIT $firstItemIndex, $contentPerPage");
 while($rowMasterSubGrup = mysqli_fetch_assoc($queryMasterSubGrup)){
     $i++;
 
-    $merk = $rowMasterSubGrup['kodemerk'];
-    $namaGrup = $rowMasterSubGrup['jeneng'];
+    $merk = $rowMasterSubGrup['merk'];
+    $namaGrup = $rowMasterSubGrup['grup'];
     $jum = 0;
-    $kodeProduk = $rowMasterSubGrup['kodetipe'];
-    $kodeStok = $rowMasterSubGrup['kode_stok'];
+    $kodeProduk = $rowMasterSubGrup['tipe'];
+    $kodeStok = $rowMasterSubGrup['kode'];
 
     $file = getProductPicture($kodeProduk);
 
-    $queryMerk = $conn->query("SELECT * FROM master_merk WHERE kode ='$merk'");
-    $dataMerk = mysqli_fetch_assoc($queryMerk);
-    $showPrice = $dataMerk['publish'];
+    // $queryMerk = $conn->query("SELECT * FROM master_merk WHERE kode ='$merk'");
+    // $dataMerk = mysqli_fetch_assoc($queryMerk);
+    // $showPrice = $dataMerk['publish'];
+    $showPrice = 1;
 
     $harga = 0;
     $queryHarga = $conn->query("SELECT * FROM master_price WHERE kode ='$kodeStok'");

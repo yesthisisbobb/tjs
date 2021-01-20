@@ -29,7 +29,7 @@ $total = mysqli_num_rows($queryTotal);
 							<p class="woocommerce-result-count">Showing 1 – 12 of <?= $total ?> results</p>
 							<form class="woocommerce-ordering" method="get">
 								<select name="orderby" id="sort" class="orderby">
-									<option value="low">--Sort--</option>
+									<option value="none">--Sort--</option>
 									<option value="low">Sort by price: low to high</option>
 									<option value="high">Sort by price: high to low</option>
 								</select>
@@ -109,13 +109,13 @@ $total = mysqli_num_rows($queryTotal);
 	<?php include('headerdkk/footer.php') ?>
 
 	<script>
-		let min = 0,
-			max = 0; // Min and Max values for slider filter
-		let stype = ""; // Category type
 		let valArr = {
 			"sortVal": "",
 			"searchVal": "",
-			"kodeKategori": ""
+			"categoryType": "",
+			"categoryCode": "",
+			"min": 100000,
+			"max": 250000000
 		};
 		let statesArr = {
 			"isSorted": false,
@@ -146,11 +146,17 @@ $total = mysqli_num_rows($queryTotal);
 
 		$('#sort').on('change', function() {
 			statesArr["isSorted"] = true;
+			if ($(this).val() === "none") statesArr["isSorted"] = false;
 
-			callLoader();
 			let val = $('#sort').val();
 			valArr["sortVal"] = val;
-			$("#kontainerAnjay").load(`ajaxSort.php?kata=${val}`, function() {
+
+			let jsonVal = JSON.stringify(valArr);
+			let jsonStates = JSON.stringify(statesArr);
+
+			callLoader();
+			
+			$("#kontainerAnjay").load(`searchEngine.php?vals=${jsonVal}&states=${jsonStates}`, function() {
 				removeLoader();
 			});
 		});
@@ -159,20 +165,26 @@ $total = mysqli_num_rows($queryTotal);
 			e.preventDefault();
 			statesArr["isCategorized"] = true;
 
-			valArr["kodeKategori"] = this.id;
-			stype = $(this).attr("stype");
+			valArr["categoryCode"] = this.id;
+			valArr["categoryType"] = $(this).attr("stype");
+
+			let jsonVal = JSON.stringify(valArr);
+			let jsonStates = JSON.stringify(statesArr);
+
 			callLoader();
 			topFunction();
-			$("#kontainerAnjay").load(`ajaxCategory.php?stype=${stype}&id=${valArr["kodeKategori"]}`, function() {
+
+			$("#kontainerAnjay").load(`searchEngine.php?vals=${jsonVal}&states=${jsonStates}`, function() {
 				removeLoader();
 			});
 		});
 
 		// ===== Start to search after idling for 0.8 seconds ===== //
 		function searchByKeyword() {
-			statesArr["isSearched"] = true;
-
 			let val = $('#search').val();
+			statesArr["isSearched"] = true;
+			if (val === "") statesArr["isSearched"] = false;
+
 			valArr["searchVal"] = val;
 			callLoader();
 			topFunction();
@@ -205,10 +217,15 @@ $total = mysqli_num_rows($queryTotal);
 					let num1 = new Intl.NumberFormat('id-ID').format(ui.values[0]);
 					let num2 = new Intl.NumberFormat('id-ID').format(ui.values[1]);
 					$("#amount").val("Rp " + num1 + " - Rp " + num2);
-					min = ui.values[0];
-					max = ui.values[1];
+
+					valArr["min"] = ui.values[0];
+					valArr["max"] = ui.values[1];
+
+					let jsonVal = JSON.stringify(valArr);
+					let jsonStates = JSON.stringify(statesArr);
+
 					callLoader();
-					$("#kontainerAnjay").load(`ajaxSlider.php?min=${ui.values[0]}&max=${ui.values[1]}`, function() {
+					$("#kontainerAnjay").load(`searchEngine.php?vals=${jsonVal}&states=${jsonStates}`, function() {
 						removeLoader();
 					});
 				}
@@ -219,45 +236,13 @@ $total = mysqli_num_rows($queryTotal);
 		// ===== Codes for pager ===== //
 		$(document).on('click', '.pager', function() {
 			let id = this.innerHTML;
+
+			let jsonVal = JSON.stringify(valArr);
+			let jsonStates = JSON.stringify(statesArr);
+
 			callLoader();
 			topFunction();
-			$("#kontainerAnjay").load(`ajaxShop.php?halaman=${id}`, function() {
-				removeLoader();
-				$('.images-preloader').fadeOut();
-			});
-		});
-		$(document).on('click', '.sliderPager', function() {
-			let id = this.innerHTML;
-			callLoader();
-			topFunction();
-			$("#kontainerAnjay").load(`ajaxSlider.php?min=${min}&max=${max}&halaman=${id}`, function() {
-				removeLoader();
-				$('.images-preloader').fadeOut();
-			});
-		});
-		$(document).on('click', '.searchPager', function() {
-			let id = this.innerHTML;
-			callLoader();
-			topFunction();
-			$("#kontainerAnjay").load(`ajaxSearch.php?halaman=${id}&kata=${valArr["searchVal"]}`, function() {
-				removeLoader();
-				$('.images-preloader').fadeOut();
-			});
-		});
-		$(document).on('click', '.sortPager', function() {
-			let id = this.innerHTML;
-			callLoader();
-			topFunction();
-			$("#kontainerAnjay").load(`ajaxSort.php?halaman=${id}&kata=${valArr["sortVal"]}`, function() {
-				removeLoader();
-				$('.images-preloader').fadeOut();
-			});
-		});
-		$(document).on('click', '.categorypager', function() {
-			let id = this.innerHTML;
-			callLoader();
-			topFunction();
-			$("#kontainerAnjay").load(`ajaxCategory.php?halaman=${id}&kata=${valArr["sortVal"]}&id=${valArr["kodeKategori"]}&stype=${stype}`, function() {
+			$("#kontainerAnjay").load(`searchEngine.php?halaman=${id}&vals=${jsonVal}&states=${jsonStates}`, function() {
 				removeLoader();
 				$('.images-preloader').fadeOut();
 			});
@@ -267,10 +252,10 @@ $total = mysqli_num_rows($queryTotal);
 		<?php
 		if (isset($_GET['category'])) {
 			echo "
-			valArr['kodeKategori'] = '" . $_GET['category'] . "';
+			valArr['categoryCode'] = '" . $_GET['category'] . "';
 			$.ajax({
 				type: 'POST',
-				url: 'ajaxCategory.php?id='+valArr['kodeKategori'],
+				url: 'ajaxCategory.php?id='+valArr['categoryCode'],
 				success: function(data) {
 					  document.getElementById('kontainerAnjay').innerHTML = data;
 					}
