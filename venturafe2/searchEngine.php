@@ -35,7 +35,7 @@ $valData = json_decode($valRawData, true);
 $statesData = json_decode($statesRawData, true);
 
 $masterQuery = "";
-$selects = "SELECT ms.kodetipe AS tipe, ms.kode_stok AS kode, ms.kodemerk AS merk, ms.panjang AS p, ms.lebar AS l, ms.tinggi AS t, ms.tebal AS tebal, ms.grupname AS grup";
+$selects = "SELECT ms.kodetipe AS tipe, ms.kode_stok AS kode, ms.kodemerk AS merk, ms.panjang AS p, ms.lebar AS l, ms.tinggi AS t, ms.tebal AS tebal, msg.namagrup AS grup";
 $froms = "FROM master_sub_grup msg, detail_sub_grup dsg, master_stok ms";
 $wheres = "WHERE ms.status='Active' AND msg.nama = dsg.namagrup AND dsg.nama = ms.grupname";
 if ($statesData["isCategorized"]) {

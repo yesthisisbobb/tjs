@@ -16,8 +16,8 @@ if (session_status() == PHP_SESSION_NONE) {
   	================================================== -->
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Smart Marble & Bath">
-<meta property="og:title" content="Distributor for Marbles and Bath Appliances" />
-<meta property="og:description" content="Find the best quality for Marbles and Bath Appliances here." />
+<meta property="og:title" content="Distributor for Marble Tiles and Sanitaryware " />
+<meta property="og:description" content="Find the best quality for Marble Tiles and Sanitaryware here." />
 <meta property="og:image" content="http://smartmarbleandbath.com/tjs/img/logo/metasmb.JPG" />
 <!-- Font
   ================================================== -->
@@ -66,4 +66,7 @@ if (session_status() == PHP_SESSION_NONE) {
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 <!--jquery UI -->
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+<!-- Video.js -->
+<link href="../vendor/videojs/video-js.css" rel="stylesheet" />

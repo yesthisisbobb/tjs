@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Courses</title>
+    <title>SMB Academy | Courses</title>
     <?php include("./headerdkk/template-head.php"); ?>
 </head>
 
