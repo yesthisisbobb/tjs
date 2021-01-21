@@ -85,6 +85,9 @@ if ($statesData["isSorted"]) {
         $wheres .= " AND ms.kode_stok = mp.kode ORDER BY mp.pls DESC";
     }
 }
+if (!$statesData["isSorted"] && !$statesData["isFilteredByPrice"] && !$statesData["isSearched"] && !$statesData["isCategorized"]) {
+    $wheres .= " ORDER BY RAND()";
+}
 $masterQuery = "$selects $froms $wheres";
 
 // echo $masterQuery;
