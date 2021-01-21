@@ -18,7 +18,7 @@ if (session_status() == PHP_SESSION_NONE) {
 <meta property="og:site_name" content="Smart Marble & Bath">
 <meta property="og:title" content="Distributor for Marbles and Bath Appliances" />
 <meta property="og:description" content="Find the best quality for Marbles and Bath Appliances here." />
-<meta property="og:image" content="http://smartmarbleandbath.com/tjs/img/logo/metasmb.jpg" />
+<meta property="og:image" content="http://smartmarbleandbath.com/tjs/img/logo/metasmb.JPG" />
 <!-- Font
   ================================================== -->
 <script src="https://kit.fontawesome.com/f0ec2f5d0b.js" crossorigin="anonymous"></script>
