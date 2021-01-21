@@ -277,22 +277,6 @@
             </div>
         </section>
         <!-- End Blog Section -->
-        <!-- Modal Video -->
-        <div class="modal fade" id="modal-video">
-            <div class="modal-dialog display-flex-center">
-                <div class="modal-content bmd-modalContent">
-                    <div class="modal-body">
-                        <div class="close-button">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        </div>
-                        <div class="embed-responsive embed-responsive-16by9">
-                            <iframe class="embed-responsive-item"></iframe>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Modal Video -->
     </div>
 
     <?php include('headerdkk/footer.php') ?>
