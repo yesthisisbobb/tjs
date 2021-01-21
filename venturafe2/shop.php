@@ -260,8 +260,8 @@ $total = mysqli_num_rows($queryTotal);
 				range: true,
 				step: 500000,
 				min: 0,
-				max: 25000000,
-				values: [0, 250000000],
+				max: 250000000,
+				values: [0, 2500000000],
 				slide: function(event, ui) {
 					let num1 = new Intl.NumberFormat('id-ID').format(ui.values[0]);
 					let num2 = new Intl.NumberFormat('id-ID').format(ui.values[1]);
