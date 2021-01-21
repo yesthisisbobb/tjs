@@ -1,3 +1,8 @@
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+  session_start();
+}
+?>
 <meta charset="utf-8">
 <meta name="description" content="Smart Marble & Bath(SMB) The company is a branch of Karya Modern Group. Karya Modern Group has already been in tile and fitting industry for more than 42 Years. Karya Modern Group started as a building material store back in 1976. Our main office is located in Jl. Baliwerti Kav 10, Surabaya, East Java">
 <meta name="author" content="Hiro Solution">
