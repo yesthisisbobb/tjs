@@ -8,7 +8,7 @@ if (!isset($_SESSION["username"])) {
 <html>
 
 <head>
-	<title>Favorites</title>
+	<title>SMB | Favorites</title>
 	<?php include("headerdkk/template-head.php"); ?>
 </head>
 

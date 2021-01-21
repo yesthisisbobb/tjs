@@ -32,7 +32,7 @@ $file = getProductPicture($kodeproduk);
 <html>
 
 <head>
-    <title>Item Detail</title>
+    <title>SMB | Item Detail - <?php echo $kodeproduk; ?></title>
     <?php include("./headerdkk/template-head.php"); ?>
 </head>
 
@@ -291,33 +291,33 @@ $file = getProductPicture($kodeproduk);
                                                         }*/
 
                                                         ?>
-                                                            </a>
-                                                        </div>
-                                                        <div class="button add_to_cart_button">
-                                                            <img class="cart-icon" onclick='shopDetail("<?= $data["namaproduk"] ?>","<?= $namaGrup ?>")' src="images/icons/shopping-cart-black-icon.png" alt="cart">
-                                                        </div>
-                                                        <h5 class="woocommerce-loop-product__title" style="width:160px"><a href="#"> <?php echo $data["namaproduk"]; ?> </a></h5>
-                                                        <span class="price">
-                                                            <ins>
-                                                                <span class="woocommerce-Price-amount amount">
-                                                                    <?php echo rupiah($data["harga"]); ?>
-                                                                </span>
-                                                            </ins>
-                                                        </span>
+                                                        </a>
                                                     </div>
+                                                    <div class="button add_to_cart_button">
+                                                        <img class="cart-icon" onclick='shopDetail("<?= $data["namaproduk"] ?>","<?= $namaGrup ?>")' src="images/icons/shopping-cart-black-icon.png" alt="cart">
+                                                    </div>
+                                                    <h5 class="woocommerce-loop-product__title" style="width:160px"><a href="#"> <?php echo $data["namaproduk"]; ?> </a></h5>
+                                                    <span class="price">
+                                                        <ins>
+                                                            <span class="woocommerce-Price-amount amount">
+                                                                <?php echo rupiah($data["harga"]); ?>
+                                                            </span>
+                                                        </ins>
+                                                    </span>
                                                 </div>
                                             </div>
                                         </div>
+                            </div>
                     <?php
                                     }
                                 }
                     ?>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+    </div>
+    </section>
     <!-- End Shop Section -->
     </div>
     <?php include("floating-cart.php"); ?>

@@ -8,7 +8,7 @@ if (!isset($_SESSION["username"])) {
 <html>
 
 <head>
-    <title>Transactions</title>
+    <title>SMB | Transactions</title>
     <?php include("headerdkk/template-head.php"); ?>
 </head>
 

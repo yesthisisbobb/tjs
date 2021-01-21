@@ -12,7 +12,7 @@ include('rupiah.php');
 </style>
 
 <head>
-	<title>Smart Marble</title>
+	<title>Smart Marble & Bath | SMB</title>
 	<?php include("./headerdkk/template-head.php"); ?>
 </head>
 

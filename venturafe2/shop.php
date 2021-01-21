@@ -8,7 +8,7 @@ $total = mysqli_num_rows($queryTotal);
 <html>
 
 <head>
-	<title>Shop</title>
+	<title>SMB | Shop</title>
 	<?php include("./headerdkk/template-head.php"); ?>
 </head>
 <style>
