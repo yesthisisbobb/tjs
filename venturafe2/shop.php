@@ -183,6 +183,11 @@ $total = mysqli_num_rows($queryTotal);
 			statesArr["isFilteredByPrice"] = false;
 
 			$("#sort").val("none");
+			$("#search").val("");
+			$("#slider-range").slider({
+				values: [0, 250000000]
+			});
+			$("#amount").val("Rp 0 - Rp 250.000.000");
 			$('.tombol-category span').removeClass("category-active");
 
 			let jsonVal = JSON.stringify({});
