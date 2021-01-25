@@ -182,6 +182,9 @@ $total = mysqli_num_rows($queryTotal);
 			statesArr["isCategorized"] = false;
 			statesArr["isFilteredByPrice"] = false;
 
+			$("#sort").val("none");
+			$('.tombol-category span').removeClass("category-active");
+
 			let jsonVal = JSON.stringify({});
 			let jsonStates = JSON.stringify(statesArr);
 
@@ -230,6 +233,9 @@ $total = mysqli_num_rows($queryTotal);
 		$(document).on('click', '.tombol-category', function(e) {
 			e.preventDefault();
 			statesArr["isCategorized"] = true;
+
+			$('.tombol-category span').removeClass("category-active");
+			$(this).children("span").addClass("category-active");
 
 			valArr["categoryCode"] = this.id;
 			valArr["categoryType"] = $(this).attr("stype");

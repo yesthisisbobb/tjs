@@ -790,6 +790,9 @@ button>i{
 .filter-checked{
     background-color: gray;
 }
+.category-active{
+    color: rgb(80,183,189);
+}
 /* ===== AKHIR PUNYA E SHOP ===== */
 
 /* ===== PUNYA E SHOP-DETAIL ===== */

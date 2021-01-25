@@ -97,7 +97,7 @@ $file = getProductPicture($kodeproduk);
                                     <?php
                                     $jmlprod = 0;
                                     $stockres = [];
-                                    $queryStok = $conn->query("SELECT * FROM master_shading where kode_stok='$kodestok'");
+                                    $queryStok = $conn->query("SELECT * FROM master_shading where kode_stok='$kodestok' AND (gudang = '1G.PROYEK' OR gudang = '1G DISPLAY SALE' OR gudang = '1G SHOWROOM BRAVAT' OR gudang='1G.DISPLAY KMJ-1' OR gudang = '1G.DISPLAY KMJ-2' OR gudang = '1G.DISTRIBUSI' OR gudang = '1G.RETAILjkt' OR gudang = '1G.TOKO1' OR gudang = '1G.TOKO2' OR gudang = '4G.JAKARTA')");
                                     while ($rowStok = mysqli_fetch_assoc($queryStok)) {
                                         $jmlprod += $rowStok["jum"];
                                     }
@@ -243,7 +243,7 @@ $file = getProductPicture($kodeproduk);
                                                         </a>
                                                         <?php
                                                         $tempkode = $data["kodestok"];
-                                                        $stockcommand = "SELECT kode_stok, SUM(jum) as jumlah FROM master_shading WHERE kode_stok='$tempkode' GROUP BY kode_stok";
+                                                        $stockcommand = "SELECT kode_stok, SUM(jum) as jumlah FROM master_shading WHERE kode_stok='$tempkode' AND (gudang = '1G.PROYEK' OR gudang = '1G DISPLAY SALE' OR gudang = '1G SHOWROOM BRAVAT' OR gudang='1G.DISPLAY KMJ-1' OR gudang = '1G.DISPLAY KMJ-2' OR gudang = '1G.DISTRIBUSI' OR gudang = '1G.RETAILjkt' OR gudang = '1G.TOKO1' OR gudang = '1G.TOKO2' OR gudang = '4G.JAKARTA') GROUP BY kode_stok";
                                                         $stockquery = mysqli_query($conn, $stockcommand);
                                                         if ($stockquery) {
                                                             $stockres = mysqli_fetch_array($stockquery);
