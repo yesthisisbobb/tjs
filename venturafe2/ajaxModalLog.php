@@ -5,12 +5,12 @@ if (!isset($_SESSION['loginId'])) {
             <form id="formLogin">
             <div class="input-container input-border">
                     <i class=" fa fa-envelope icon icon"></i>
-                <input type="email" class="input-field" required="" pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" name="email" placeholder="Your e-mail...">
+                <input autocomplete="username" type="email" class="input-field" required="" pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" name="email" placeholder="Your e-mail...">
             </div>
             <br>
             <div class="input-container input-border">
                     <i class="fa fa-lock icon"></i>
-                <input type="password" required="" id="password" class="input-field" name="password" placeholder="Your Password...">
+                <input autocomplete="current-password" type="password" required="" id="password" class="input-field" name="password" placeholder="Your Password...">
                 <i class="fa fa-eye toggle-visible" id="icon-toggle" onClick="toggleVisible(1)"></i>
             </div>
            

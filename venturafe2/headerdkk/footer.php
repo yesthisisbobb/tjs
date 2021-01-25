@@ -129,7 +129,7 @@
 <script type="text/javascript" src="js/preventBodyScroll.js"></script>
 
 <!-- Video JS -->
-<script src="../vendor/videojs/video.min.js"></script>
+<script src="vendor/videojs/video.min.js"></script>
 
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>

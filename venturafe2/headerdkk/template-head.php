@@ -69,4 +69,4 @@ if (session_status() == PHP_SESSION_NONE) {
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 <!-- Video.js -->
-<link href="../vendor/videojs/video-js.css" rel="stylesheet" />
+<link href="vendor/videojs/video-js.css" rel="stylesheet" />

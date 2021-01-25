@@ -31,12 +31,12 @@ include('rupiah.php');
 									<form id="login-form-ma" class="woocommerce-form-register js-contact-form">
 										<div class="input-container input-border">
 											<i class=" fa fa-envelope icon icon"></i>
-											<input type="email" class="input-field" required="" pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" name="email" placeholder="E-mail">
+											<input autocomplete="username" type="email" class="input-field" required="" pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" name="email" placeholder="E-mail">
 										</div>
 										<br>
 										<div class="input-container input-border">
 											<i class="fa fa-lock icon"></i>
-											<input type="password" required="" id="password2" class="input-field " name="password" placeholder="Password">
+											<input autocomplete="current-password" type="password" required="" id="password2" class="input-field " name="password" placeholder="Password">
 											<i class="fa fa-eye toggle-visible" id="icon-toggle" onClick="toggleVisible(3)"></i>
 										</div>
 										<button style="cursor:pointer;background:#6c757d;color:white;border:0px solid white;padding:12px" id="login-button-ma" type="button" data-dismiss="modal" class="au-btn loginBtn">
@@ -51,12 +51,12 @@ include('rupiah.php');
 									<form id="formRegister" class="woocommerce-form-register js-contact-form">
 										<div class="input-container input-border">
 											<i class=" fa fa-envelope icon icon"></i>
-											<input type="email" class="input-field" required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" id="email" name="email" placeholder="E-mail">
+											<input autocomplete="username" type="email" class="input-field" required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" id="email" name="email" placeholder="E-mail">
 										</div>
 										<br>
 										<div class="input-container input-border">
 											<i class="fa fa-lock icon"></i>
-											<input type="password" required id="password1" class="input-field" name="password" placeholder="Password">
+											<input autocomplete="current-password" type="password" required id="password1" class="input-field" name="password" placeholder="Password">
 											<i class="fa fa-eye toggle-visible" id="icon-toggle" onClick="toggleVisible(2)"></i>
 										</div>
 										<br>

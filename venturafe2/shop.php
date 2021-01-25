@@ -141,6 +141,21 @@ $total = mysqli_num_rows($queryTotal);
 			"isFilteredByPrice": false
 		};
 
+		// Ngabil value dari URL
+		function getUrlParameter(sParam) {
+			var sPageURL = window.location.search.substring(1),
+				sURLVariables = sPageURL.split('&'),
+				sParameterName;
+
+			for (let i = 0; i < sURLVariables.length; i++) {
+				sParameterName = sURLVariables[i].split('=');
+
+				if (sParameterName[0] === sParam) {
+					return sParameterName[1] === undefined ? false : decodeURIComponent(sParameterName[1]);
+				}
+			}
+		}
+
 		function topFunction() {
 			document.body.scrollTop = 0;
 			document.documentElement.scrollTop = 0;
@@ -304,30 +319,27 @@ $total = mysqli_num_rows($queryTotal);
 		});
 		// ===== End of codes for pager ===== //
 
-		<?php
-		if (isset($_GET['category'])) {
-			echo "
-			valArr['categoryCode'] = '" . $_GET['category'] . "';
-			$.ajax({
-				type: 'POST',
-				url: 'ajaxCategory.php?id='+valArr['categoryCode'],
-				success: function(data) {
-					  document.getElementById('kontainerAnjay').innerHTML = data;
-					}
-				  });";
+		if (getUrlParameter("category")) {
+			statesArr['isCategorized'] = true;
+			valArr['categoryType'] = "main";
+			valArr['categoryCode'] = getUrlParameter("category");
+
+			let jsonVal = JSON.stringify(valArr);
+			let jsonStates = JSON.stringify(statesArr);
+
+			callLoader();
+			$("#kontainerAnjay").load(`searchEngine.php?vals=${jsonVal}&states=${jsonStates}`, function() {
+				removeLoader();
+			});
 		} else {
-			echo "	$.ajax({
-				type: 'POST',
-				url: 'ajaxShop.php',
-				success: function(data) {
-					document.getElementById('kontainerAnjay').innerHTML = data;
-		
-					$('.images-preloader').fadeOut();
-				}
-				
-			});";
+			let jsonVal = JSON.stringify(valArr);
+			let jsonStates = JSON.stringify(statesArr);
+
+			callLoader();
+			$("#kontainerAnjay").load(`searchEngine.php?vals=${jsonVal}&states=${jsonStates}`, function() {
+				removeLoader();
+			});
 		}
-		?>
 	</script>
 	</body>
 
