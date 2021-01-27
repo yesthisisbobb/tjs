@@ -59,11 +59,6 @@ if (session_status() == PHP_SESSION_NONE) {
                                     PRODUCTS
                                 </a>
                             </li>
-                            <li class="menu-item mega-menu">
-                                <a href="shop.php">
-                                    PORTFOLIO
-                                </a>
-                            </li>
                             <li class="menu-item">
                                 <a href="favorite.php">
                                     FAVORITE
@@ -87,6 +82,18 @@ if (session_status() == PHP_SESSION_NONE) {
                                     <li class="">
                                         <a href="transaction.php?type=unpaid">
                                             PENDING
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="menu-item">
+                                <a href="#">
+                                    ABOUT
+                                </a>
+                                <ul class="sub-menu">
+                                    <li class="">
+                                        <a href="#">
+                                            COMPANY PROFILE
                                         </a>
                                     </li>
                                 </ul>
@@ -251,11 +258,6 @@ if (session_status() == PHP_SESSION_NONE) {
                         </a>
                     </li>
                     <li class="drop">
-                        <a class="drop-link" href="#OTHER">
-                            PORTFOLIO
-                        </a>
-                    </li>
-                    <li class="drop">
                         <a href="favorite.php">
                             FAVORITE
                         </a>
@@ -273,6 +275,11 @@ if (session_status() == PHP_SESSION_NONE) {
                     <li class="drop">
                         <a href="transaction.php?type=paid">
                             PAID TRANSACTIONS
+                        </a>
+                    </li>
+                    <li class="drop">
+                        <a class="drop-link" href="#OTHER">
+                            ABOUT
                         </a>
                     </li>
                     <li class="drop">
