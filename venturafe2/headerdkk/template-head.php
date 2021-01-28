@@ -5,7 +5,8 @@ if (session_status() == PHP_SESSION_NONE) {
 ?>
 <meta charset="utf-8">
 <meta name="description" content="Smart Marble & Bath(SMB) The company is a branch of Karya Modern Group. Karya Modern Group has already been in tile and fitting industry for more than 42 Years. Karya Modern Group started as a building material store back in 1976. Our main office is located in Jl. Baliwerti Kav 10, Surabaya, East Java">
-<meta name="author" content="Hiro Solution">
+<meta name="author" content="Hiro Solutions, Bobby Ishak">
+<meta name="keywords" content="marbles,sanitary,smart,bath">
 <!-- Mobile Specific Metas
   	================================================== -->
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
@@ -18,7 +19,7 @@ if (session_status() == PHP_SESSION_NONE) {
 <meta property="og:site_name" content="Smart Marble & Bath">
 <meta property="og:title" content="Distributor for Marble Tiles and Sanitaryware " />
 <meta property="og:description" content="Find the best quality for Marble Tiles and Sanitaryware here." />
-<meta property="og:image" content="http://smartmarbleandbath.com/tjs/img/logo/metasmb.JPG" />
+<meta property="og:image" content="https://smartmarbleandbath.com/tjs/img/logo/metasmb.JPG" />
 <!-- Font
   ================================================== -->
 <script src="https://kit.fontawesome.com/f0ec2f5d0b.js" crossorigin="anonymous"></script>
@@ -66,7 +67,7 @@ if (session_status() == PHP_SESSION_NONE) {
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 <!--jquery UI -->
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 <!-- Video.js -->
 <link href="vendor/videojs/video-js.css" rel="stylesheet" />

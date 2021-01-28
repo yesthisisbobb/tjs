@@ -905,6 +905,13 @@ button>i{
 }
 
 /* Tile Calculator */
+#tile-calc{
+    background:#202020;
+    color:white;
+    border:0px solid white;
+    padding-left:10px;
+    padding-right:10px;
+}
 #tile-calculator-base{
     visibility: hidden;
     position: fixed;

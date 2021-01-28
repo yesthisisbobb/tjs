@@ -148,7 +148,7 @@ $file = getProductPicture($kodeproduk);
                                             <span class="modify-qty plus" onclick="Increase()">+</span>
                                             <span class="modify-qty minus" onclick="Decrease()">-</span>
                                         </div>
-                                        <button id="tile-calc" style="background:#0f0f0f;color:white;border:0px solid white" class="single_add_to_cart_button button alt au-btn btn-small"><i class="fas fa-calculator"></i></button>
+                                        <button id="tile-calc" class="single_add_to_cart_button button alt au-btn btn-small"><i class="fas fa-calculator"></i></button>
                                         <button id="add-to-cart" style="background:#20c997;color:white;border:0px solid white" class="single_add_to_cart_button button alt au-btn btn-small"><?php echo (intval($jmlprod) < 2) ? "Indent " : "Add " ?> to cart<i class="zmdi zmdi-arrow-right"></i></button>
                                     </form>
                                     <div id="sizes-base-container">
@@ -164,14 +164,23 @@ $file = getProductPicture($kodeproduk);
                                             <a id="category" href="#"><?php echo $result["grup"]; ?></a>
                                         </span>
                                         <!-- <?php if ($namaGrup == "TILE") { ?> -->
-                                            <span class="posted_in">
-                                                Pcs/Carton:
-                                                <span id="pcc" href="#"><?php echo $result["pcc"]; ?></span>
-                                            </span>
+                                        <span class="posted_in">
+                                            Pcs/Carton:
+                                            <span id="pcc" href="#"><?php echo $result["pcc"]; ?></span>
+                                        </span>
                                         <!-- <?php } ?> -->
                                         <span class="sku_wrapper">
                                             Weight:
-                                            <span class="sku"><?php echo $result["kg"] . " kg"; ?></span>
+                                            <span class="sku">
+                                                <?php
+                                                if ($namaGrup == "TILE") {
+                                                    echo intval($result["kg"]) . " g/carton";
+                                                }
+                                                else{
+                                                    echo intval($result["kg"]) . " g/pc";
+                                                }
+                                                ?>
+                                            </span>
                                         </span>
                                     </div>
                                     <div class="product-share">
