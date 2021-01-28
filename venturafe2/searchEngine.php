@@ -48,7 +48,7 @@ if ($statesData["isCategorized"]) {
 }
 if ($statesData["isSearched"]) {
     // echo "masuk search" . " ||";
-    $searchVal = $valData["searchVal"];
+    $searchVal = trim($valData["searchVal"]);
     $searchBy = $valData["searchBy"];
     if ($searchBy == "type") {
         $wheres .= " AND ms.kodetipe LIKE '%$searchVal%'";
