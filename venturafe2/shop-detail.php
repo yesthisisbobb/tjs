@@ -254,7 +254,7 @@ $file = getProductPicture($kodeproduk);
                                                             } else if ($stockres['jumlah'] <= 18 && $stockres['jumlah'] > 1) {
                                                                 echo "<a class='shop-product-stock stock-limited' style='color:white;'>Limited</a>";
                                                             } else {
-                                                                echo "<aclass='shop-product-stock stock-indent' style='color:white;'>Indent</a>";
+                                                                echo "<a class='shop-product-stock stock-indent' style='color:white;'>Indent</a>";
                                                             }
                                                         } else {
                                                             echo "<a class='shop-product-stock stock-indent' style='color:white;'>Indent</a>";

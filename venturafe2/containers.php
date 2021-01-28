@@ -182,10 +182,10 @@ function productContainerv2($kodeProduk, $kodeStok, $namaGrup, $merkimg, $produc
     // $priceDisplay = rupiah($harga);
 
     // Stock Settings
-    if($jum <= 0) {
+    if($jum <= 1) {
         $stockType = "Indent";
     }
-    else if($jum > 0 && $jum <= 18){
+    else if($jum > 1 && $jum <= 18){
         $stockType = "Limited";
     }
     else{
