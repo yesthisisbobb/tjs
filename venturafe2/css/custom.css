@@ -1,3 +1,12 @@
+@font-face {
+    font-family: "Monotype Baskerville eText";
+    src: url("//db.onlinewebfonts.com/t/7ff156862c7f9569455874115efe100a.eot");
+    src: url("//db.onlinewebfonts.com/t/7ff156862c7f9569455874115efe100a.eot?#iefix") format("embedded-opentype"),
+    url("//db.onlinewebfonts.com/t/7ff156862c7f9569455874115efe100a.woff2") format("woff2"),
+    url("//db.onlinewebfonts.com/t/7ff156862c7f9569455874115efe100a.woff") format("woff"),
+    url("//db.onlinewebfonts.com/t/7ff156862c7f9569455874115efe100a.ttf") format("truetype"),
+    url("//db.onlinewebfonts.com/t/7ff156862c7f9569455874115efe100a.svg#Monotype Baskerville eText") format("svg");
+}
 /* LOADER 1 */
 #loader-transaction {
   display: inline-block;
@@ -599,6 +608,60 @@ button>i{
     height: 90%;
 }
 /* ===== AKHIR PUNYA E INDEX ===== */
+
+/* ===== PUNYA E COMPANY ===== */
+.smb-serif{
+    font-family: "Monotype Baskerville eText";
+}
+.smb-bold{
+    font-weight: 600;
+}
+#cp-base-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    margin-top: 140px;
+    padding-bottom: 40px;
+    width: 100%;
+
+    font-size: 18px;
+}
+#cp-main-container{
+    height: auto;
+    width: 88%;
+}
+#cp-header{
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 420px;
+    margin-bottom: 48px;
+
+    background-image: url("../resource/cp-header.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#cp-header img{
+    width: 74px;
+    height: 74px;
+}
+#cp-projects-header{
+    width: fit-content;
+    padding: 0 8px 0 10%;
+
+    font-size: 2.1em;
+    font-weight: 400;
+
+    border-bottom: 1px solid lightgray;
+}
+/* ===== AKHIR PUNYA E COMPANY ===== */
 
 /* ===== PUNYA E SHOP ===== */
 .shop-product-base-container{
@@ -1575,9 +1638,15 @@ html {
     #normal-cart-container,#indent-cart-container{
         display: flex;
     }
+    #cp-base-container{
+        margin-top: 0;
+    }
 }
 /* Medium Screen ( <= 991px & >= 768px ) */
 @media screen and (max-width: 991px) and (min-width: 768px){
+    #cp-base-container{
+        margin-top: 0;
+    }
     #normal-cart-container,#indent-cart-container{
         display: flex;
         width: 60px;
@@ -1594,6 +1663,9 @@ html {
 @media screen and (max-width: 767px){ 
     html{
         font-size: 11px;
+    }
+    #cp-base-container{
+        margin-top: 0;
     }
     #normal-cart-container,#indent-cart-container{
         display: flex;

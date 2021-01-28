@@ -92,7 +92,7 @@ if (session_status() == PHP_SESSION_NONE) {
                                 </a>
                                 <ul class="sub-menu">
                                     <li class="">
-                                        <a href="#">
+                                        <a href="company.php">
                                             COMPANY PROFILE
                                         </a>
                                     </li>

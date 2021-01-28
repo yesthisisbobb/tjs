@@ -1,6 +1,7 @@
 <?php
 function getProductPicture ($kode){
-    $upper = strtoupper($kode);
+    $processedCode = str_replace(" ", "", $kode);
+    $upper = strtoupper($processedCode);
     $file = "../img/product/$upper.jpg";
 
     if (!file_exists($file)) {
@@ -8,7 +9,7 @@ function getProductPicture ($kode){
 
         if (!file_exists($file)) {
             // Lek lowercase
-            $lower = strtolower($kode);
+            $lower = strtolower($processedCode);
             $file = "../img/product/$lower.jpg";
 
             if(!file_exists($file)){

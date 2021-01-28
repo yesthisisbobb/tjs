@@ -38,11 +38,6 @@ $allh =     '<ul>
                         PRODUCTS
                     </a>
                 </li>
-                <li class="menu-item mega-menu">
-                    <a href="shop.php">
-                        PORTFOLIO
-                    </a>
-                </li>
                 <li class="menu-item">
                     <a href="favorite.php">
                         FAVORITE
@@ -70,6 +65,18 @@ $allh =     '<ul>
                         </li>
                     </ul>
                 </li>
+                <li class="menu-item mega-menu">
+                    <a href="shop.php">
+                        ABOUT
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="#">
+                                COMPANY PROFILE
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 <li class="menu-item">
                     <a href="#" style="color:#ec3923;">
                         SMB ACADEMY
@@ -77,7 +84,7 @@ $allh =     '<ul>
                     <ul class="sub-menu">
                         <li>
                             <a href="#">
-                                Courses
+                                COURSES
                             </a>
                         </li>
                     </ul>
@@ -117,11 +124,6 @@ $uh =   '<ul>
                     PRODUCTS
                 </a>
             </li>
-            <li class="menu-item mega-menu">
-                <a href="shop.php">
-                    PORTFOLIO
-                </a>
-            </li>
             <li class="menu-item">
                 <a href="favorite.php">
                     FAVORITE
@@ -149,6 +151,11 @@ $uh =   '<ul>
                     </li>
                 </ul>
             </li>
+            <li class="menu-item mega-menu">
+                <a href="shop.php">
+                    ABOUT
+                </a>
+            </li>
         </ul>';
 
 function mVersion($isLogged, $type){
@@ -165,11 +172,6 @@ function mVersion($isLogged, $type){
                     <li class="drop">
                         <a class="drop-link" href="shop.php">
                             PRODUCTS
-                        </a>
-                    </li>
-                    <li class="drop">
-                        <a class="drop-link" href="#OTHER">
-                            PORTFOLIO
                         </a>
                     </li>
                     <li class="drop">
@@ -190,6 +192,11 @@ function mVersion($isLogged, $type){
                     <li class="drop">
                         <a href="transaction.php?type=paid">
                             PAID TRANSACTIONS
+                        </a>
+                    </li>
+                    <li class="drop">
+                        <a class="drop-link" href="#">
+                            ABOUT
                         </a>
                     </li>
                     <li class="drop">
@@ -216,11 +223,6 @@ function mVersion($isLogged, $type){
                         </a>
                     </li>
                     <li class="drop">
-                        <a class="drop-link" href="#OTHER">
-                            PORTFOLIO
-                        </a>
-                    </li>
-                    <li class="drop">
                         <a href="favorite.php">
                             FAVORITE
                         </a>
@@ -238,6 +240,11 @@ function mVersion($isLogged, $type){
                     <li class="drop">
                         <a href="transaction.php?type=paid">
                             PAID TRANSACTIONS
+                        </a>
+                    </li>
+                    <li class="drop">
+                        <a class="drop-link" href="#OTHER">
+                            ABOUT
                         </a>
                     </li>
                     <li class="drop">
