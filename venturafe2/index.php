@@ -83,9 +83,9 @@ include('rupiah.php');
 						<!-- Categories 1 -->
 						<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
 							<div class="categories-detail lighting">
-								<a href="shop-full-width.html" class="images"><img src="resource/simpolostandar.jpg" alt="Lighting"></a>
+								<a href="shop.php?brand=bt" class="images"><img src="resource/simpolostandar.jpg" alt="Lighting"></a>
 								<div class="product">
-									<a href="shop-full-width.html">
+									<a href="shop.php?brand=bt">
 										<span class="name">
 											<span class="line">- </span>
 											BRIGHTON
@@ -97,9 +97,9 @@ include('rupiah.php');
 						<!-- Categories 2 -->
 						<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
 							<div class="categories-detail furniture">
-								<a href="shop-full-width.html" class="images"><img src="resource/kohlerrodokgede.JPG" alt="Furniture"></a>
+								<a href="shop.php?brand=khl" class="images"><img src="resource/kohlerrodokgede.JPG" alt="Furniture"></a>
 								<div class="product">
-									<a href="shop-full-width.html">
+									<a href="shop.php?brand=khl">
 										<span class="name">
 											<span class="line">- </span>
 											KOHLER
@@ -111,9 +111,9 @@ include('rupiah.php');
 						<!-- Categories 3 -->
 						<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
 							<div class="categories-detail decoration">
-								<a href="shop-full-width.html" class="images"><img src="resource/bravatstandar.jpg" alt="Decoration"></a>
+								<a href="shop.php?brand=bv" class="images"><img src="resource/bravatstandar.jpg" alt="Decoration"></a>
 								<div class="product">
-									<a href="shop-full-width.html">
+									<a href="shop.php?brand=bv">
 										<span class="name">
 											<span class="line">- </span>
 											BRAVAT
@@ -179,7 +179,7 @@ include('rupiah.php');
 						<div class="col">
 							<div class="insta-detail">
 								<a href="" class="insta-image">
-									<img src="../venturafe1/images/clients/logo/kohler.jpg" alt="insta-1">
+									<img src="resource/Brand Logos/kohler.jpg" alt="insta-1">
 									<div class="overlay"></div>
 								</a>
 							</div>
@@ -188,7 +188,7 @@ include('rupiah.php');
 						<div class="col">
 							<div class="insta-detail">
 								<a href="#" class="insta-image">
-									<img src="../venturafe1/images/clients/logo/fiandre.png" alt="insta-2">
+									<img src="resource/Brand Logos/fiandre.png" alt="insta-2">
 									<div class="overlay"></div>
 								</a>
 							</div>
@@ -197,7 +197,7 @@ include('rupiah.php');
 						<div class="col">
 							<div class="insta-detail">
 								<a href="#" class="insta-image">
-									<img src="../venturafe1/images/clients/logo/bri.png" alt="insta-3">
+									<img src="resource/Brand Logos/bri.png" alt="insta-3">
 									<div class="overlay"></div>
 								</a>
 							</div>
@@ -206,7 +206,7 @@ include('rupiah.php');
 						<div class="col">
 							<div class="insta-detail">
 								<a href="#" class="insta-image">
-									<img src="../venturafe1/images/clients/logo/bra.png" alt="insta-4">
+									<img src="resource/Brand Logos/bra.png" alt="insta-4">
 									<div class="overlay"></div>
 								</a>
 							</div>
@@ -215,7 +215,7 @@ include('rupiah.php');
 						<div class="col">
 							<div class="insta-detail">
 								<a href="#" class="insta-image">
-									<img src="../venturafe1/images/clients/logo/tre.png" alt="insta-5">
+									<img src="resource/Brand Logos/tre.png" alt="insta-5">
 									<div class="overlay"></div>
 								</a>
 							</div>
@@ -224,7 +224,7 @@ include('rupiah.php');
 						<div class="col">
 							<div class="insta-detail">
 								<a href="#" class="insta-image">
-									<img src="../venturafe1/images/clients/logo/sm.png" alt="insta-5">
+									<img src="resource/Brand Logos/sm.png" alt="insta-5">
 									<div class="overlay"></div>
 								</a>
 							</div>

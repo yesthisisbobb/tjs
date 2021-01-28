@@ -14,7 +14,7 @@ $namaGrup = $_GET["group"];
 $_SESSION["home_clicked"] = $_GET["group"];
 $kodestok = "";
 
-$getcommand = "SELECT ms.kode_stok, ms.kodetipe as namaproduk, ms.kodemerk as merk, ms.nm_stok shortdesc, ms.des as longdesc, ms.kgsstok as kg, ms.panjang as panjang, ms.lebar as lebar, ms.tinggi as tinggi, ms.pcsctn as pcc, ms.grupname as grup, mp.pls as harga, ms.sellunit as unit, ms.grade as grade FROM master_stok ms,master_price mp  WHERE ms.kodetipe='$kodeproduk' AND ms.kode_stok=mp.kode";
+$getcommand = "SELECT ms.kode_stok, ms.kodetipe as namaproduk, ms.kodemerk as merk, ms.nm_stok shortdesc, ms.des as longdesc, ms.kgsstok as kg, ms.panjang as panjang, ms.lebar as lebar, ms.tinggi as tinggi, ms.pcsctn as pcc, ms.grupname as grup, mp.pls as harga, ms.sellunit as unit, ms.grade as grade FROM master_stok ms,master_price mp  WHERE ms.kodetipe='$kodeproduk' AND ms.kode_stok = mp.kode";
 $query = mysqli_query($conn, $getcommand);
 $result = mysqli_fetch_array($query);
 $nurows = mysqli_num_rows($query);
@@ -127,9 +127,11 @@ $file = getProductPicture($kodeproduk);
                                 <div class="summary entry-summary">
                                     <h1 class="product_title entry-title"><?php echo isset($result["namaproduk"]) ? $result["namaproduk"] : "Nama produk tidak tersedia"; ?></h1>
                                     <div id="product-code" class="product_code"><?php echo $kodestok; ?></div>
+                                    <!-- <span id="product_color">Color: </span>
+                                    <span id="product_pattern">Pattern: </span> -->
                                     <span id="grade">Grade:&nbsp<?php echo $result["grade"]; ?></span>
                                     <br>
-                                    <span id="product_stock">Stock:&nbsp<?php echo $jmlprod . " " . $result["unit"]; ?></span>
+                                    <span id="product_stock" style="font-weight:bold;">Stock:&nbsp<?php echo $jmlprod . " " . $result["unit"]; ?></span>
                                     <p class="price">
                                         <ins>
                                             <span id="product-price" class="woocommerce-Price-amount amount" value=<?= ((isset($result["harga"]) ? rupiah($result["harga"]) : "0")) ?>>
@@ -146,7 +148,7 @@ $file = getProductPicture($kodeproduk);
                                             <span class="modify-qty plus" onclick="Increase()">+</span>
                                             <span class="modify-qty minus" onclick="Decrease()">-</span>
                                         </div>
-                                        <button id="tile-calc" style="background:#0f0f0f;color:white;border:0px solid white" class="single_add_to_cart_button button alt au-btn btn-small">Calculator<i class="fas fa-calculator"></i></button>
+                                        <button id="tile-calc" style="background:#0f0f0f;color:white;border:0px solid white" class="single_add_to_cart_button button alt au-btn btn-small"><i class="fas fa-calculator"></i></button>
                                         <button id="add-to-cart" style="background:#20c997;color:white;border:0px solid white" class="single_add_to_cart_button button alt au-btn btn-small"><?php echo (intval($jmlprod) < 2) ? "Indent " : "Add " ?> to cart<i class="zmdi zmdi-arrow-right"></i></button>
                                     </form>
                                     <div id="sizes-base-container">
@@ -156,20 +158,20 @@ $file = getProductPicture($kodeproduk);
                                         </div>
                                     </div>
                                     <div class="product_meta">
-                                        <div id="product-spec">Product Specifications</div>
-                                        <?php if ($namaGrup == "TILE") { ?>
+                                        <div id="product-spec">Other Specifications</div>
+                                        <span class="posted_in">
+                                            Category:
+                                            <a id="category" href="#"><?php echo $result["grup"]; ?></a>
+                                        </span>
+                                        <!-- <?php if ($namaGrup == "TILE") { ?> -->
                                             <span class="posted_in">
                                                 Pcs/Carton:
                                                 <span id="pcc" href="#"><?php echo $result["pcc"]; ?></span>
                                             </span>
-                                        <?php } ?>
+                                        <!-- <?php } ?> -->
                                         <span class="sku_wrapper">
-                                            Product Code:
-                                            <span class="sku"><?php echo $kodestok; ?></span>
-                                        </span>
-                                        <span class="posted_in">
-                                            Category:
-                                            <a id="category" href="#"><?php echo $result["grup"]; ?></a>
+                                            Weight:
+                                            <span class="sku"><?php echo $result["kg"] . " kg"; ?></span>
                                         </span>
                                     </div>
                                     <div class="product-share">
@@ -201,10 +203,6 @@ $file = getProductPicture($kodeproduk);
                                         <div class="woocommerce-Tabs-panel tab-pane" id="tab-additional_information" role="tabpanel" aria-labelledby="tab-title-additional_information">
                                             <table class="shop_attributes">
                                                 <tbody>
-                                                    <tr>
-                                                        <th>Weight</th>
-                                                        <td class="product_weight"><?php echo $result["kg"] . " kg"; ?></td>
-                                                    </tr>
                                                     <tr>
                                                         <th>Dimensions (cm)</th>
                                                         <td class="product_dimensions"><?php echo "H: " . $result['tinggi'] .  " W: " . $result['panjang'] . " D: " . $result['lebar'] ?></td>

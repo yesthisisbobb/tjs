@@ -342,6 +342,18 @@ $total = mysqli_num_rows($queryTotal);
 			$("#kontainerAnjay").load(`searchEngine.php?vals=${jsonVal}&states=${jsonStates}`, function() {
 				removeLoader();
 			});
+		} else if (getUrlParameter("brand")) {
+			statesArr['isCategorized'] = true;
+			valArr['categoryType'] = "merk";
+			valArr['categoryCode'] = getUrlParameter("brand");
+
+			let jsonVal = JSON.stringify(valArr);
+			let jsonStates = JSON.stringify(statesArr);
+
+			callLoader();
+			$("#kontainerAnjay").load(`searchEngine.php?vals=${jsonVal}&states=${jsonStates}`, function() {
+				removeLoader();
+			});
 		} else {
 			let jsonVal = JSON.stringify(valArr);
 			let jsonStates = JSON.stringify(statesArr);
