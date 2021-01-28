@@ -68,7 +68,6 @@ session_start();
 							</div>
 						</div>
 					</div>
-				</section>
-			<!-- End Featured Sale Section -->';
+				</section>';
 		}
 		?>

@@ -5,11 +5,6 @@ include('rupiah.php');
 
 <!DOCTYPE html>
 <html>
-<style>
-	html {
-		scroll-behavior: smooth;
-	}
-</style>
 
 <head>
 	<title>Smart Marble & Bath | SMB</title>
@@ -93,9 +88,8 @@ include('rupiah.php');
 									<a href="shop-full-width.html">
 										<span class="name">
 											<span class="line">- </span>
-											SIMPOLO
+											BRIGHTON
 										</span>
-										<span class="quantity">- 12 Products</span>
 									</a>
 								</div>
 							</div>
@@ -110,7 +104,6 @@ include('rupiah.php');
 											<span class="line">- </span>
 											KOHLER
 										</span>
-										<span class="quantity">- 15 Products</span>
 									</a>
 								</div>
 							</div>
@@ -125,7 +118,6 @@ include('rupiah.php');
 											<span class="line">- </span>
 											BRAVAT
 										</span>
-										<span class="quantity">- 20 Products</span>
 									</a>
 								</div>
 							</div>
@@ -317,18 +309,31 @@ include('rupiah.php');
 			}, 'slow');
 		}
 
-		// $.ajax({
-		// 	type: 'POST',
-		// 	url: 'ajaxHome.php',
-		// 	success: function(data) {
-		// 		document.getElementById("kontainerAnjay").innerHTML = data;
-		// 		$('.images-preloader').fadeOut();
-		// 	}
-		// });
-		$("#kontainerAnjay").load("ajaxHome.php", {}, function(res, status, xhr) {
-			if (location.hash != "") {
+		async function getHomeClicked() {
+			return $.ajax({
+				url: "getSession.php?name=home_clicked",
+				type: "GET",
+				success: function(data) {
+					if (data != "nosess") {
+						lastClickedSess = data;
+						scrollToAnchor(lastClickedSess);
+					}
+				}
+			});
+		}
+		async function resolveScroll() {
+			let lastClickedSess = "";
+			lastClickedSess = await getHomeClicked();
+
+			if (lastClickedSess != "nosess") {
+				scrollToAnchor(lastClickedSess);
+			} else if (location.hash != "") {
 				scrollToAnchor(location.hash.substring(1));
 			}
+		}
+
+		$("#kontainerAnjay").load("ajaxHome.php", {}, function(res, status, xhr) {
+			resolveScroll();
 		});
 		$("body").on("click", "#normal-cart-container", function() {
 			$("#floating-cart-list-container").css("background-color", "rgba(0, 0, 0, .25)");
