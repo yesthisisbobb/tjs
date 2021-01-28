@@ -1639,9 +1639,9 @@ html {
     #cp-base-container{
         margin-top: 0;
     }
-    .row .col.borderRight{
+    /* .row .col.borderRight{
         display: none;
-    }
+    } */
     #normal-cart-container,#indent-cart-container{
         display: flex;
     }
@@ -1651,9 +1651,9 @@ html {
     #cp-base-container{
         margin-top: 0;
     }
-    .row .col.borderRight{
+    /* .row .col.borderRight{
         display: none;
-    }
+    } */
     #normal-cart-container,#indent-cart-container{
         display: flex;
         width: 60px;
@@ -1674,9 +1674,9 @@ html {
     #cp-base-container{
         margin-top: 0;
     }
-    .row .col.borderRight{
+    /* .row .col.borderRight{
         display: none;
-    }
+    } */
     #normal-cart-container,#indent-cart-container{
         display: flex;
         width: 50px;

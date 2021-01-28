@@ -16,7 +16,7 @@ include('rupiah.php');
     <div id="cp-base-container">
         <div id="cp-main-container">
             <div id="cp-header">
-                <img src="resource/smboutline_logo_only.svg" alt="Smart Marble & Bath Logo">
+                <img src="resource/smboutline_logo_only.svg" alt="Smart Marble & Bath Logo" class="not-selectable">
             </div>
             <div id="cp-projects">
                 <div id="cp-projects-header" class="smb-serif">
