@@ -153,7 +153,7 @@ function homeContainerv2($kodeProduk, $kodeStok, $namaGrup, $namaKategori, $prod
                                     <span class="home-product-price">' . $priceDisplay . '</span>
                                 </div>
                                 <div class="home-product-buy" onclick="' . $linkToShopDetail . '">
-                                    <img src="images/icons/shopping-cart-black-icon.png">
+                                    <img src="resource/cart.svg">
                                 </div>
                             </div>
                         </div>
@@ -216,7 +216,7 @@ function productContainerv2($kodeProduk, $kodeStok, $namaGrup, $merkimg, $produc
                                     <span class="shop-product-price">' . $priceDisplay . '</span>
                                 </div>
                                 <div class="shop-product-buy">
-                                    <img onclick="' . $linkToShopDetail . '" src="images/icons/shopping-cart-black-icon.png">
+                                    <img onclick="' . $linkToShopDetail . '" src="resource/cart.svg">
                                 </div>
                             </div>
                         </div>

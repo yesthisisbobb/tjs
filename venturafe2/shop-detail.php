@@ -174,10 +174,10 @@ $file = getProductPicture($kodeproduk);
                                             <span class="sku">
                                                 <?php
                                                 if ($namaGrup == "TILE") {
-                                                    echo intval($result["kg"]) . " g/carton";
+                                                    echo intval($result["kg"]) . "kg / carton";
                                                 }
                                                 else{
-                                                    echo intval($result["kg"]) . " g/pc";
+                                                    echo intval($result["kg"]) . "kg / pc";
                                                 }
                                                 ?>
                                             </span>

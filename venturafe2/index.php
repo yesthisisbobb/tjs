@@ -83,12 +83,12 @@ include('rupiah.php');
 						<!-- Categories 1 -->
 						<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
 							<div class="categories-detail lighting">
-								<a href="shop.php?brand=bt" class="images"><img src="resource/simpolostandar.jpg" alt="Lighting"></a>
+								<a href="shop.php?brand=sm" class="images"><img src="resource/Vertical Banners/simpolo750x808.jpg" alt="Lighting"></a>
 								<div class="product">
-									<a href="shop.php?brand=bt">
+									<a href="shop.php?brand=sm">
 										<span class="name">
 											<span class="line">- </span>
-											BRIGHTON
+											SMART MARBLE
 										</span>
 									</a>
 								</div>
@@ -97,7 +97,7 @@ include('rupiah.php');
 						<!-- Categories 2 -->
 						<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
 							<div class="categories-detail furniture">
-								<a href="shop.php?brand=khl" class="images"><img src="resource/kohlerrodokgede.JPG" alt="Furniture"></a>
+								<a href="shop.php?brand=khl" class="images"><img src="resource/Vertical Banners/kohlerrodokgede.JPG" alt="Furniture"></a>
 								<div class="product">
 									<a href="shop.php?brand=khl">
 										<span class="name">
@@ -111,7 +111,7 @@ include('rupiah.php');
 						<!-- Categories 3 -->
 						<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
 							<div class="categories-detail decoration">
-								<a href="shop.php?brand=bv" class="images"><img src="resource/bravatstandar.jpg" alt="Decoration"></a>
+								<a href="shop.php?brand=bv" class="images"><img src="resource/Vertical Banners/bravatstandar.jpg" alt="Decoration"></a>
 								<div class="product">
 									<a href="shop.php?brand=bv">
 										<span class="name">

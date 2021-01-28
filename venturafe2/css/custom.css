@@ -262,12 +262,9 @@ button>i{
     display: flex;
     align-items: center;
 }
-#indent-cart object, #normal-cart object{
+#indent-cart img, #normal-cart img{
     width: 22px;
     height: 22px;
-}
-#indent-cart img{
-    fill: lightgreen;
 }
 #normal-count, #indent-count{
     margin-left: 4px;
@@ -619,8 +616,8 @@ button>i{
     background-color: rgb(231, 231, 231);
 }
 .home-product-buy img{
-    width: 90%;
-    height: 90%;
+    width: 62%;
+    height: 62%;
 }
 /* ===== AKHIR PUNYA E INDEX ===== */
 
@@ -834,6 +831,10 @@ button>i{
 }
 .shop-product-buy:hover{
     background-color: rgb(231, 231, 231);
+}
+.shop-product-buy img{
+    width: 54%;
+    height: 54%;
 }
 
 #search-filters{

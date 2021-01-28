@@ -127,7 +127,7 @@ if (session_status() == PHP_SESSION_NONE) {
                         <!-- Cart -->
                         <div class="site-header-cart">
                             <div class="cart-contents" id="normal-cart">
-                                <img src="resource/headericonabu.png" alt="cart">
+                                <img src="resource/cart.svg" alt="cart">
                                 <span id="normal-count">0</span>
                             </div>
                             <div class="widget_shopping_cart">
@@ -152,7 +152,7 @@ if (session_status() == PHP_SESSION_NONE) {
                         <!-- Cart -->
                         <div class="site-header-cart">
                             <div class="cart-contents" id="indent-cart">
-                                <img src="resource/headericonoren.png" alt="cart">
+                                <img src="resource/cart_indent.svg" alt="cart">
                                 <span id="indent-count">0</span>
                             </div>
                             <div class="widget_shopping_cart">
