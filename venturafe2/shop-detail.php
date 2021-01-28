@@ -320,6 +320,9 @@ $file = getProductPicture($kodeproduk);
     </section>
     <!-- End Shop Section -->
     </div>
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-601246950c7527df"></script>
+
     <?php include("floating-cart.php"); ?>
     <?php include('headerdkk/footer.php') ?>
 </body>

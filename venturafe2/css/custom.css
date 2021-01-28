@@ -257,7 +257,22 @@ button>i{
 .swal-modal .swal-text {
     text-align: center;
 }
-
+/* ===== Punya e cart header ===== */
+#indent-cart, #normal-cart {
+    display: flex;
+    align-items: center;
+}
+#indent-cart object, #normal-cart object{
+    width: 22px;
+    height: 22px;
+}
+#indent-cart img{
+    fill: lightgreen;
+}
+#normal-count, #indent-count{
+    margin-left: 4px;
+}
+/* ===== Akhir punya e cart header ====== */
 /* ===== Punya e Floating Cart ===== */
 #normal-cart-container{
     display: none;
