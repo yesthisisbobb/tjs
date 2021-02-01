@@ -128,13 +128,17 @@ $file = getProductPicture($kodeproduk);
                                     <h1 class="product_title entry-title"><?php echo isset($result["namaproduk"]) ? $result["namaproduk"] : "Nama produk tidak tersedia"; ?></h1>
                                     <div id="product-code" class="product_code"><?php echo $kodestok; ?></div>
                                     <?php
+                                    // get URL
+                                    $protocol = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+                                    $url = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+
                                     $cpcommand = "SELECT color, pattern FROM master_tipe WHERE kode = '$kodeproduk'";
                                     $cpquery = mysqli_query($conn, $cpcommand);
                                     $cpresult = mysqli_fetch_assoc($cpquery);
-                                    if($namaGrup == "TILE"){
+                                    if ($namaGrup == "TILE") {
                                     ?>
-                                    <span id="product_color">Color:&nbsp<?php echo ($cpresult["color"])? $cpresult["color"] : "-"; ?></span><br>
-                                    <span id="product_pattern">Pattern:&nbsp<?php echo ($cpresult["pattern"]) ? $cpresult["pattern"] : "-"; ?></span><br>
+                                        <span id="product_color">Color:&nbsp<?php echo ($cpresult["color"]) ? $cpresult["color"] : "-"; ?></span><br>
+                                        <span id="product_pattern">Pattern:&nbsp<?php echo ($cpresult["pattern"]) ? $cpresult["pattern"] : "-"; ?></span><br>
                                     <?php } ?>
                                     <span id="grade">Grade:&nbsp<?php echo (isset($result["grade"])) ? $result["grade"] : "1"; ?></span>
                                     <br>
@@ -191,9 +195,9 @@ $file = getProductPicture($kodeproduk);
                                     </div>
                                     <div class="product-share">
                                         <span>Share:</span>
-                                        <a href="#"><i class="zmdi zmdi-facebook"></i></a>
-                                        <a href="#"><i class="zmdi zmdi-twitter"></i></a>
-                                        <a href="#"><i class="zmdi zmdi-instagram"></i></a>
+                                        <a href="https://www.facebook.com/sharer.php?u=<?= $url ?>"><i class="zmdi zmdi-facebook"></i></a>
+                                        <a href="https://twitter.com/intent/tweet?url=<?= $url ?>&text=I really like this item! You should check it out too!"><i class="zmdi zmdi-twitter"></i></a>
+                                        <a href="whatsapp://send?text=<?= $url ?>"><i class="zmdi zmdi-whatsapp"></i></a>
                                     </div>
                                     <button id="set-shading" class="single_add_to_cart_button button au-btn btn-small"><i class="far fa-eye"></i>View Shading</button>
                                     <div id="shading-base-container">
@@ -334,8 +338,6 @@ $file = getProductPicture($kodeproduk);
     </section>
     <!-- End Shop Section -->
     </div>
-    <!-- Go to www.addthis.com/dashboard to customize your tools -->
-    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-601246950c7527df"></script>
 
     <?php include("floating-cart.php"); ?>
     <?php include('headerdkk/footer.php') ?>
