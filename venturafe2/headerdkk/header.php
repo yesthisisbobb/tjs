@@ -282,11 +282,19 @@ if (session_status() == PHP_SESSION_NONE) {
                             ABOUT
                         </a>
                     </li>
+                    <?php
+                    if (isset($_SESSION['level'])) {
+                        if ($_SESSION['level'] == "admin") {
+                    ?>
                     <li class="drop">
                         <a href="#" style="color:#ec3923;">
                             SMB ACADEMY
                         </a>
                     </li>
+                    <?php
+                        }
+                    }
+                    ?>
                     <li class="drop">
                         <?php
                         if (isset($_SESSION['username'])) {
