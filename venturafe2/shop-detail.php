@@ -295,6 +295,22 @@ $file = getProductPicture($kodeproduk);
                                                         } else {
                                                             echo "<a class='shop-product-stock stock-indent' style='color:white;'>Indent</a>";
                                                         }
+                                                        // $stockcommand = "SELECT kode_stok, SUM(jum) as jumlah FROM master_shading WHERE kode_stok='$tempkode' AND (gudang = '1G.PROYEK' OR gudang = '1G DISPLAY SALE' OR gudang = '1G SHOWROOM BRAVAT' OR gudang='1G.DISPLAY KMJ-1' OR gudang = '1G.DISPLAY KMJ-2' OR gudang = '1G.DISTRIBUSI' OR gudang = '1G.RETAILjkt' OR gudang = '1G.TOKO1' OR gudang = '1G.TOKO2' OR gudang = '4G.JAKARTA') GROUP BY kode_stok";
+                                                        // $stockquery = mysqli_query($conn, $stockcommand);
+                                                        // if ($stockquery) {
+                                                        //     $stockres = mysqli_fetch_array($stockquery);
+                                                        //     if (!isset($stockres)) {
+                                                        //         echo "<a class='shop-product-stock stock-indent' style='color:white;'>Indent</a>";
+                                                        //     } else if ($stockres['jumlah'] > 18) {
+                                                        //         echo "<a class='shop-product-stock stock-ready' style='color:white;'>Ready</a>";
+                                                        //     } else if ($stockres['jumlah'] <= 18 && $stockres['jumlah'] > 1) {
+                                                        //         echo "<a class='shop-product-stock stock-limited' style='color:white;'>Limited</a>";
+                                                        //     } else {
+                                                        //         echo "<a class='shop-product-stock stock-indent' style='color:white;'>Indent</a>";
+                                                        //     }
+                                                        // } else {
+                                                        //     echo "<a class='shop-product-stock stock-indent' style='color:white;'>Indent</a>";
+                                                        // }
                                                         ?>
                                                         <?php
 
