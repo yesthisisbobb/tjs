@@ -194,6 +194,7 @@ $total = mysqli_num_rows($queryTotal);
 			sessionStorage.removeItem("min");
 			sessionStorage.removeItem("max");
 
+			sessionStorage.removeItem("page");
 
 			$("#sort").val("none");
 			$("#search").val("");
@@ -349,6 +350,7 @@ $total = mysqli_num_rows($queryTotal);
 		// ===== Codes for pager ===== //
 		$(document).on('click', '.pager', function() {
 			let id = this.innerHTML;
+			sessionStorage.setItem("page", id);
 
 			let jsonVal = JSON.stringify(valArr);
 			let jsonStates = JSON.stringify(statesArr);
@@ -401,6 +403,8 @@ $total = mysqli_num_rows($queryTotal);
 					$("#amount").val("Rp " + new Intl.NumberFormat('id-ID').format(valArr["min"]) + " - Rp " + new Intl.NumberFormat('id-ID').format(valArr["max"]));
 				});
 			}
+			let current_page = 1;
+			if (sessionStorage.getItem("page")) current_page = sessionStorage.getItem("page");
 
 			statesArr["isSorted"] = sessionStorage.getItem("isSorted");
 			statesArr["isSearched"] = sessionStorage.getItem("isSearched");
@@ -411,7 +415,7 @@ $total = mysqli_num_rows($queryTotal);
 			let jsonStates = JSON.stringify(statesArr);
 
 			callLoader();
-			$("#kontainerAnjay").load(`searchEngine.php?vals=${jsonVal}&states=${jsonStates}`, function() {
+			$("#kontainerAnjay").load(`searchEngine.php?halaman=${current_page}&vals=${jsonVal}&states=${jsonStates}`, function() {
 				removeLoader();
 			});
 		} else if (getUrlParameter("category")) {
