@@ -127,11 +127,18 @@ $file = getProductPicture($kodeproduk);
                                 <div class="summary entry-summary">
                                     <h1 class="product_title entry-title"><?php echo isset($result["namaproduk"]) ? $result["namaproduk"] : "Nama produk tidak tersedia"; ?></h1>
                                     <div id="product-code" class="product_code"><?php echo $kodestok; ?></div>
-                                    <!-- <span id="product_color">Color: </span>
-                                    <span id="product_pattern">Pattern: </span> -->
-                                    <span id="grade">Grade:&nbsp<?php echo $result["grade"]; ?></span>
+                                    <?php
+                                    $cpcommand = "SELECT color, pattern FROM master_tipe WHERE kode = '$kodeproduk'";
+                                    $cpquery = mysqli_query($conn, $cpcommand);
+                                    $cpresult = mysqli_fetch_assoc($cpquery);
+                                    if($namaGrup == "TILE"){
+                                    ?>
+                                    <span id="product_color">Color:&nbsp<?php echo ucfirst($cpresult["color"]); ?></span><br>
+                                    <span id="product_pattern">Pattern:&nbsp<?php echo ucfirst($cpresult["pattern"]); ?></span><br>
+                                    <?php } ?>
+                                    <span id="grade">Grade:&nbsp<?php echo (isset($result["grade"])) ? $result["grade"] : "1"; ?></span>
                                     <br>
-                                    <span id="product_stock" style="font-weight:bold;">Stock:&nbsp<?php echo $jmlprod . " " . $result["unit"]; ?></span>
+                                    <span id="product_stock">Stock:&nbsp<span style="font-weight:bold;"><?php echo $jmlprod . " " . $result["unit"]; ?></span></span>
                                     <p class="price">
                                         <ins>
                                             <span id="product-price" class="woocommerce-Price-amount amount" value=<?= ((isset($result["harga"]) ? rupiah($result["harga"]) : "0")) ?>>
@@ -175,8 +182,7 @@ $file = getProductPicture($kodeproduk);
                                                 <?php
                                                 if ($namaGrup == "TILE") {
                                                     echo intval($result["kg"]) . "kg / carton";
-                                                }
-                                                else{
+                                                } else {
                                                     echo intval($result["kg"]) . "kg / pc";
                                                 }
                                                 ?>
