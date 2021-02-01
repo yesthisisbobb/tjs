@@ -165,7 +165,8 @@ $total = mysqli_num_rows($queryTotal);
 			// Ngambil Loader
 			$("#kontainerAnjay").css({
 				"display": "flex",
-				"justify-content": "center"
+				"justify-content": "center",
+				"padding-bottom": "48px"
 			});
 			$("#kontainerAnjay").html('<div id="shop-loader"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>');
 			$("#shop-loader").css("display", "inline-block");
@@ -174,6 +175,7 @@ $total = mysqli_num_rows($queryTotal);
 		function removeLoader() {
 			$("#shop-loader").css("display", "none");
 			$("#kontainerAnjay").css("display", "block");
+			$("#kontainerAnjay").css("padding-bottom", "0");
 		}
 
 		$("#clear-filter").click(function() {
