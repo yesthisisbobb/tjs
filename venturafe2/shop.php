@@ -181,6 +181,19 @@ $total = mysqli_num_rows($queryTotal);
 			statesArr["isSearched"] = false;
 			statesArr["isCategorized"] = false;
 			statesArr["isFilteredByPrice"] = false;
+			sessionStorage.removeItem("isSorted");
+			sessionStorage.removeItem("isSearched");
+			sessionStorage.removeItem("isCategorized");
+			sessionStorage.removeItem("isFilteredByPrice");
+
+			sessionStorage.removeItem("sortVal");
+			sessionStorage.removeItem("searchVal");
+			sessionStorage.removeItem("searchBy");
+			sessionStorage.removeItem("categoryType");
+			sessionStorage.removeItem("categoryCode");
+			sessionStorage.removeItem("min");
+			sessionStorage.removeItem("max");
+
 
 			$("#sort").val("none");
 			$("#search").val("");
@@ -215,15 +228,22 @@ $total = mysqli_num_rows($queryTotal);
 		$(".search-item").click(function() {
 			$(".search-item .search-checkbox").removeClass("filter-checked");
 			$(this).find(".search-checkbox").addClass("filter-checked");
+
 			valArr["searchBy"] = $(this).attr("value");
+			sessionStorage.setItem("searchBy", $(this).attr("value"));
 		});
 
 		$('#sort').on('change', function() {
 			statesArr["isSorted"] = true;
-			if ($(this).val() === "none") statesArr["isSorted"] = false;
+			sessionStorage.setItem("isSorted", true);
+			if ($(this).val() === "none") {
+				statesArr["isSorted"] = false;
+				sessionStorage.removeItem("isSorted");
+			}
 
 			let val = $('#sort').val();
 			valArr["sortVal"] = val;
+			sessionStorage.setItem("sortVal", val);
 
 			let jsonVal = JSON.stringify(valArr);
 			let jsonStates = JSON.stringify(statesArr);
@@ -238,12 +258,15 @@ $total = mysqli_num_rows($queryTotal);
 		$(document).on('click', '.tombol-category', function(e) {
 			e.preventDefault();
 			statesArr["isCategorized"] = true;
+			sessionStorage.setItem("isCategorized", true);
 
 			$('.tombol-category span').removeClass("category-active");
 			$(this).children("span").addClass("category-active");
 
 			valArr["categoryCode"] = this.id;
 			valArr["categoryType"] = $(this).attr("stype");
+			sessionStorage.setItem("categoryCode", this.id);
+			sessionStorage.setItem("categoryType", $(this).attr("stype"));
 
 			let jsonVal = JSON.stringify(valArr);
 			let jsonStates = JSON.stringify(statesArr);
@@ -260,9 +283,14 @@ $total = mysqli_num_rows($queryTotal);
 		function searchByKeyword() {
 			let val = $('#search').val();
 			statesArr["isSearched"] = true;
-			if (val === "") statesArr["isSearched"] = false;
+			sessionStorage.setItem("isSearched", true);
+			if (val === "") {
+				statesArr["isSearched"] = false;
+				sessionStorage.removeItem("isSearched");
+			}
 
 			valArr["searchVal"] = val;
+			sessionStorage.setItem("searchVal", val);
 
 			let jsonVal = JSON.stringify(valArr);
 			let jsonStates = JSON.stringify(statesArr);
@@ -295,12 +323,16 @@ $total = mysqli_num_rows($queryTotal);
 				},
 				stop: function(event, ui) {
 					statesArr["isFilteredByPrice"] = true;
+					sessionStorage.setItem("isFilteredByPrice", true);
+
 					let num1 = new Intl.NumberFormat('id-ID').format(ui.values[0]);
 					let num2 = new Intl.NumberFormat('id-ID').format(ui.values[1]);
 					$("#amount").val("Rp " + num1 + " - Rp " + num2);
 
 					valArr["min"] = ui.values[0];
 					valArr["max"] = ui.values[1];
+					sessionStorage.setItem("min", ui.values[0]);
+					sessionStorage.setItem("max", ui.values[1]);
 
 					let jsonVal = JSON.stringify(valArr);
 					let jsonStates = JSON.stringify(statesArr);
@@ -330,10 +362,66 @@ $total = mysqli_num_rows($queryTotal);
 		});
 		// ===== End of codes for pager ===== //
 
-		if (getUrlParameter("category")) {
+		// "sortVal": "",
+		// "searchVal": "",
+		// "searchBy": "",
+		// "categoryType": "",
+		// "categoryCode": "",
+		// "min": 100000,
+		// "max": 250000000
+
+		// "isSorted": false,
+		// "isSearched": false,
+		// "isCategorized": false,
+		// "isFilteredByPrice": false
+		if (sessionStorage.getItem("isSorted") || sessionStorage.getItem("isSearched") || sessionStorage.getItem("isCategorized") || sessionStorage.getItem("isFilteredByPrice")) {
+			if (valArr["sortVal"] = sessionStorage.getItem("sortVal")) {
+				$("#sort").val(valArr["sortVal"]);
+			}
+			if (valArr["searchVal"] = sessionStorage.getItem("searchVal")) {
+				$("#search").val(valArr["searchVal"]);
+			}
+			if (valArr["searchBy"] = sessionStorage.getItem("searchBy")) {
+				$(".search-item .search-checkbox").removeClass("filter-checked");
+				$(`.search-item[value=${valArr['searchBy']}] .search-checkbox`).addClass("filter-checked");
+			}
+			if ((valArr["categoryType"] = sessionStorage.getItem("categoryType")) && (valArr["categoryCode"] = sessionStorage.getItem("categoryCode"))) {
+				$('.tombol-category span').removeClass("category-active");
+				$(`#${valArr["categoryCode"]} span`).addClass("category-active");
+			}
+			if (valArr["min"] = sessionStorage.getItem("min")) {
+				$(function() {
+					$("#slider-range").slider("values", 0, valArr["min"]);
+					$("#amount").val("Rp " + new Intl.NumberFormat('id-ID').format(valArr["min"]) + " - Rp " + new Intl.NumberFormat('id-ID').format(valArr["max"]));
+				});
+			}
+			if (valArr["max"] = sessionStorage.getItem("max")) {
+				$(function() {
+					$("#slider-range").slider("values", 1, valArr["max"]);
+					$("#amount").val("Rp " + new Intl.NumberFormat('id-ID').format(valArr["min"]) + " - Rp " + new Intl.NumberFormat('id-ID').format(valArr["max"]));
+				});
+			}
+
+			statesArr["isSorted"] = sessionStorage.getItem("isSorted");
+			statesArr["isSearched"] = sessionStorage.getItem("isSearched");
+			statesArr["isCategorized"] = sessionStorage.getItem("isCategorized");
+			statesArr["isFilteredByPrice"] = sessionStorage.getItem("isFilteredByPrice");
+
+			let jsonVal = JSON.stringify(valArr);
+			let jsonStates = JSON.stringify(statesArr);
+
+			callLoader();
+			$("#kontainerAnjay").load(`searchEngine.php?vals=${jsonVal}&states=${jsonStates}`, function() {
+				removeLoader();
+			});
+		} else if (getUrlParameter("category")) {
 			statesArr['isCategorized'] = true;
+			sessionStorage.setItem("isCategorized", true);
+
 			valArr['categoryType'] = "main";
 			valArr['categoryCode'] = getUrlParameter("category");
+			sessionStorage.setItem("categoryType", "main");
+			sessionStorage.setItem("categoryCode", getUrlParameter("category"));
 
 			let jsonVal = JSON.stringify(valArr);
 			let jsonStates = JSON.stringify(statesArr);
@@ -344,8 +432,12 @@ $total = mysqli_num_rows($queryTotal);
 			});
 		} else if (getUrlParameter("brand")) {
 			statesArr['isCategorized'] = true;
+			sessionStorage.setItem("isCategorized", true);
+
 			valArr['categoryType'] = "merk";
 			valArr['categoryCode'] = getUrlParameter("brand");
+			sessionStorage.setItem("categoryType", "merk");
+			sessionStorage.setItem("categoryCode", getUrlParameter("brand"));
 
 			let jsonVal = JSON.stringify(valArr);
 			let jsonStates = JSON.stringify(statesArr);
