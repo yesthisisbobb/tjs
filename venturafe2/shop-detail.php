@@ -133,8 +133,8 @@ $file = getProductPicture($kodeproduk);
                                     $cpresult = mysqli_fetch_assoc($cpquery);
                                     if($namaGrup == "TILE"){
                                     ?>
-                                    <span id="product_color">Color:&nbsp<?php echo ucfirst($cpresult["color"]); ?></span><br>
-                                    <span id="product_pattern">Pattern:&nbsp<?php echo ucfirst($cpresult["pattern"]); ?></span><br>
+                                    <span id="product_color">Color:&nbsp<?php echo ($cpresult["color"])? $cpresult["color"] : "-"; ?></span><br>
+                                    <span id="product_pattern">Pattern:&nbsp<?php echo ($cpresult["pattern"]) ? $cpresult["pattern"] : "-"; ?></span><br>
                                     <?php } ?>
                                     <span id="grade">Grade:&nbsp<?php echo (isset($result["grade"])) ? $result["grade"] : "1"; ?></span>
                                     <br>
