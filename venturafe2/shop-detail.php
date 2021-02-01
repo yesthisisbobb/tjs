@@ -1,5 +1,6 @@
 <?php
 include("db/config.php");
+include("api/bridge.php");
 include("rupiah.php");
 include("get-picture.php");
 
@@ -98,10 +99,25 @@ $file = getProductPicture($kodeproduk);
                                     <?php
                                     $jmlprod = 0;
                                     $stockres = [];
-                                    $queryStok = $conn->query("SELECT * FROM master_shading where kode_stok='$kodestok' AND (gudang = '1G.PROYEK' OR gudang = '1G DISPLAY SALE' OR gudang = '1G SHOWROOM BRAVAT' OR gudang='1G.DISPLAY KMJ-1' OR gudang = '1G.DISPLAY KMJ-2' OR gudang = '1G.DISTRIBUSI' OR gudang = '1G.RETAILjkt' OR gudang = '1G.TOKO1' OR gudang = '1G.TOKO2' OR gudang = '4G.JAKARTA')");
-                                    while ($rowStok = mysqli_fetch_assoc($queryStok)) {
-                                        $jmlprod += $rowStok["jum"];
+
+                                    // Koneksi ke API
+                                    $page = 1;
+                                    $apidata = ventura('item?page=' . $page, ["kode" => "$kodeproduk", 'merk' => null, 'gudang' => null], 'POST');
+
+                                    $jmlprod = 0;
+                                    $apitotalpage = $apidata["result"]["total_page"];
+                                    for ($i=1; $i <= $apitotalpage; $i++) {
+                                        $apidata = ventura('item?page=' . $i, ["kode" => "$kodeproduk", 'merk' => null, 'gudang' => null], 'POST');
+                                        foreach ($apidata["result"]["data"] as $d) {
+                                            $jmlprod += $d["Qty"];
+                                        }
                                     }
+
+                                    // $queryStok = $conn->query("SELECT * FROM master_shading where kode_stok='$kodestok' AND (gudang = '1G.PROYEK' OR gudang = '1G DISPLAY SALE' OR gudang = '1G SHOWROOM BRAVAT' OR gudang='1G.DISPLAY KMJ-1' OR gudang = '1G.DISPLAY KMJ-2' OR gudang = '1G.DISTRIBUSI' OR gudang = '1G.RETAILjkt' OR gudang = '1G.TOKO1' OR gudang = '1G.TOKO2' OR gudang = '4G.JAKARTA')");
+                                    // while ($rowStok = mysqli_fetch_assoc($queryStok)) {
+                                    //     $jmlprod += $rowStok["jum"];
+                                    // }
+
                                     if ($jmlprod > 18) {
                                         echo "<a class='shop-product-stock stock-ready' style='color:white;'>Ready</a>";
                                     } else if ($jmlprod <= 18 && $jmlprod > 1) {
@@ -260,20 +276,22 @@ $file = getProductPicture($kodeproduk);
                                                             <img height=238 src="<?= $file ?>" alt="product">
                                                         </a>
                                                         <?php
-                                                        $tempkode = $data["kodestok"];
-                                                        $stockcommand = "SELECT kode_stok, SUM(jum) as jumlah FROM master_shading WHERE kode_stok='$tempkode' AND (gudang = '1G.PROYEK' OR gudang = '1G DISPLAY SALE' OR gudang = '1G SHOWROOM BRAVAT' OR gudang='1G.DISPLAY KMJ-1' OR gudang = '1G.DISPLAY KMJ-2' OR gudang = '1G.DISTRIBUSI' OR gudang = '1G.RETAILjkt' OR gudang = '1G.TOKO1' OR gudang = '1G.TOKO2' OR gudang = '4G.JAKARTA') GROUP BY kode_stok";
-                                                        $stockquery = mysqli_query($conn, $stockcommand);
-                                                        if ($stockquery) {
-                                                            $stockres = mysqli_fetch_array($stockquery);
-                                                            if (!isset($stockres)) {
-                                                                echo "<a class='shop-product-stock stock-indent' style='color:white;'>Indent</a>";
-                                                            } else if ($stockres['jumlah'] > 18) {
-                                                                echo "<a class='shop-product-stock stock-ready' style='color:white;'>Ready</a>";
-                                                            } else if ($stockres['jumlah'] <= 18 && $stockres['jumlah'] > 1) {
-                                                                echo "<a class='shop-product-stock stock-limited' style='color:white;'>Limited</a>";
-                                                            } else {
-                                                                echo "<a class='shop-product-stock stock-indent' style='color:white;'>Indent</a>";
+                                                        $tempkode = $data["namaproduk"];
+                                                        $page = 1;
+                                                        $apidata = ventura('item?page=' . $page, ["kode" => "$tempkode", 'merk' => null, 'gudang' => null], 'POST');
+
+                                                        $jmlprod = 0;
+                                                        $apitotalpage = $apidata["result"]["total_page"];
+                                                        for ($i = 1; $i <= $apitotalpage; $i++) {
+                                                            $apidata = ventura('item?page=' . $i, ["kode" => "$tempkode", 'merk' => null, 'gudang' => null], 'POST');
+                                                            foreach ($apidata["result"]["data"] as $d) {
+                                                                $jmlprod += $d["Qty"];
                                                             }
+                                                        }
+                                                        if ($jmlprod > 18) {
+                                                            echo "<a class='shop-product-stock stock-ready' style='color:white;'>Ready</a>";
+                                                        } else if ($jmlprod <= 18 && $jmlprod > 1) {
+                                                            echo "<a class='shop-product-stock stock-limited' style='color:white;'>Limited</a>";
                                                         } else {
                                                             echo "<a class='shop-product-stock stock-indent' style='color:white;'>Indent</a>";
                                                         }
@@ -293,20 +311,6 @@ $file = getProductPicture($kodeproduk);
                                                         } else {
                                                             echo '<img class="favorite"  src="resource/LVWB.png">';
                                                         }
-
-                                                        /*echo '<div class="yith-wcwl-add-button show">
-                                                            <a href="" class="add_to_wishlist tombol-favorite" id="' . $tempkode . '">';
-                                                        if (isset($_SESSION['username'])) {
-                                                            $query2 = $conn->query("SELECT * FROM fav where user='" . $_SESSION['username'] . "' AND kode='" . $tempkode . "'");
-                                                            $numRows = mysqli_num_rows($query2);
-                                                            if ($numRows == 0) {
-                                                                echo '<i class="zmdi zmdi-favorite-outline"></i>';
-                                                            } else {
-                                                                echo '<i class="zmdi zmdi-favorite"></i>';
-                                                            }
-                                                        } else {
-                                                            echo '<i class="zmdi zmdi-favorite-outline"></i>';
-                                                        }*/
 
                                                         ?>
                                                         </a>
