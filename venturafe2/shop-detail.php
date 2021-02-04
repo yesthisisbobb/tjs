@@ -15,7 +15,7 @@ $namaGrup = $_GET["group"];
 $_SESSION["home_clicked"] = $_GET["group"];
 $kodestok = "";
 
-$getcommand = "SELECT ms.kode_stok, ms.kodetipe as namaproduk, ms.kodemerk as merk, ms.nm_stok shortdesc, ms.des as longdesc, ms.kgsstok as kg, ms.panjang as panjang, ms.lebar as lebar, ms.tinggi as tinggi, ms.pcsctn as pcc, ms.grupname as grup, mp.pls as harga, ms.sellunit as unit, ms.grade as grade FROM master_stok ms,master_price mp  WHERE ms.kodetipe='$kodeproduk' AND ms.kode_stok = mp.kode";
+$getcommand = "SELECT ms.kode_stok, ms.kodetipe as namaproduk, ms.kodemerk as merk, ms.nm_stok shortdesc, ms.des as longdesc, ms.kgsstok as kg, ms.panjang as panjang, ms.lebar as lebar, ms.tinggi as tinggi, ms.pcsctn as pcc, ms.grupname as grup, mp.pls as harga, ms.sellunit as unit, ms.grade as grade FROM master_stok ms LEFT JOIN master_price mp ON ms.kode_stok = mp.kode WHERE ms.kodetipe='$kodeproduk'";
 $query = mysqli_query($conn, $getcommand);
 $result = mysqli_fetch_array($query);
 $nurows = mysqli_num_rows($query);
