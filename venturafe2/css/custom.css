@@ -1688,6 +1688,17 @@ html {
     #tile-calculator-modal{
         width: 60vw;
     }
+    #add-to-cart{
+        padding-left: 26px;
+        padding-right: 26px;
+    }
+    #add-to-cart span{
+        display: none;
+    }
+    #add-to-cart i{
+        padding-left: 0;
+        margin-right: 0;
+    }
 }
 /* Small Screen ( <= 767px ) */
 @media screen and (max-width: 767px){ 
