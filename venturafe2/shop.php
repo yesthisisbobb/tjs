@@ -304,8 +304,8 @@ $total = mysqli_num_rows($queryTotal);
 				sessionStorage.removeItem("isSearched");
 			}
 
-			valArr["searchVal"] = val;
-			sessionStorage.setItem("searchVal", val);
+			valArr["searchVal"] = encodeURIComponent(val);
+			sessionStorage.setItem("searchVal", encodeURIComponent(val));
 
 			let jsonVal = JSON.stringify(valArr);
 			let jsonStates = JSON.stringify(statesArr);
@@ -395,7 +395,7 @@ $total = mysqli_num_rows($queryTotal);
 				$("#sort").val(valArr["sortVal"]);
 			}
 			if (valArr["searchVal"] = sessionStorage.getItem("searchVal")) {
-				$("#search").val(valArr["searchVal"]);
+				$("#search").val(decodeURIComponent(valArr["searchVal"]));
 			}
 			if (valArr["searchBy"] = sessionStorage.getItem("searchBy")) {
 				$(".search-item .search-checkbox").removeClass("filter-checked");

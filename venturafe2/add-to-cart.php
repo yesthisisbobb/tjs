@@ -46,13 +46,13 @@ if(isset($_SESSION["username"])){
     // while ($rowStok = mysqli_fetch_assoc($queryStok)) {
     //     $jmlprod += $rowStok["jum"];
     // }
-    $apidata = ventura('item?page=1', ["kode" => "$kodetipe", 'merk' => null, 'gudang' => null], 'POST');
+    $apidata = ventura('item/stock?page=1', ["kode" => "$kodetipe", 'merk' => null, 'gudang' => null], 'POST');
     $resp["api"] = $apidata;
     $apitotalpage = $apidata["result"]["total_page"];
     for ($i = 1; $i <= $apitotalpage; $i++) {
-        $apidata = ventura('item?page=' . $i, ["kode" => "$kodetipe", 'merk' => null, 'gudang' => null], 'POST');
+        $apidata = ventura('item/stock?page=' . $i, ["kode" => "$kodetipe", 'merk' => null, 'gudang' => null], 'POST');
         foreach ($apidata["result"]["data"] as $d) {
-            $jmlprod += $d["Qty"];
+            $jmlprod += $d["stok"];
         }
     }
 

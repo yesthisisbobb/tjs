@@ -102,14 +102,14 @@ $file = getProductPicture($kodeproduk);
 
                                     // Koneksi ke API
                                     $page = 1;
-                                    $apidata = ventura('item?page=' . $page, ["kode" => "$kodeproduk", 'merk' => null, 'gudang' => null], 'POST');
+                                    $apidata = ventura('item/stock?page=' . $page, ["kode" => "$kodeproduk", 'merk' => null, 'gudang' => null], 'POST');
 
                                     $jmlprod = 0;
                                     $apitotalpage = $apidata["result"]["total_page"];
                                     for ($i = 1; $i <= $apitotalpage; $i++) {
-                                        $apidata = ventura('item?page=' . $i, ["kode" => "$kodeproduk", 'merk' => null, 'gudang' => null], 'POST');
+                                        $apidata = ventura('item/stock?page=' . $i, ["kode" => "$kodeproduk", 'merk' => null, 'gudang' => null], 'POST');
                                         foreach ($apidata["result"]["data"] as $d) {
-                                            $jmlprod += $d["Qty"];
+                                            $jmlprod += $d["stok"];
                                         }
                                     }
 
@@ -278,14 +278,14 @@ $file = getProductPicture($kodeproduk);
                                                         <?php
                                                         $tempkode = $data["namaproduk"];
                                                         $page = 1;
-                                                        $apidata = ventura('item?page=' . $page, ["kode" => "$tempkode", 'merk' => null, 'gudang' => null], 'POST');
+                                                        $apidata = ventura('item/stock?page=' . $page, ["kode" => "$tempkode", 'merk' => null, 'gudang' => null], 'POST');
 
                                                         $jmlprod = 0;
                                                         $apitotalpage = $apidata["result"]["total_page"];
                                                         for ($i = 1; $i <= $apitotalpage; $i++) {
-                                                            $apidata = ventura('item?page=' . $i, ["kode" => "$tempkode", 'merk' => null, 'gudang' => null], 'POST');
+                                                            $apidata = ventura('item/stock?page=' . $i, ["kode" => "$tempkode", 'merk' => null, 'gudang' => null], 'POST');
                                                             foreach ($apidata["result"]["data"] as $d) {
-                                                                $jmlprod += $d["Qty"];
+                                                                $jmlprod += $d["stok"];
                                                             }
                                                         }
                                                         if ($jmlprod > 18) {

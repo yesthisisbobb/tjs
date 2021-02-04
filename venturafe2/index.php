@@ -54,7 +54,7 @@ include('rupiah.php');
 							PREMIUM
 						</div>
 						<div class="tp-caption tp-resizeme slide-caption-title-2" data-frames='[{"delay":1000,"speed":1000,"frame":"0","from":"y:-50px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":500,"frame":"999","to":"y:-20px;opacity:0;","ease":"Power3.easeInOut"}]' data-fontsize="['90', '90', '80', '80']" data-lineheight="['70', '70', '60', '60']" data-color="#fff" data-textAlign="['center', 'center', 'center', 'center']" data-x="['center','center','center','center']" data-y="['middle','middle','middle','middle']" data-hoffset="['0', '0', '0', '0']" data-voffset="['-140', '-117', '-110', '-90']" data-width="['1200', '850', '850', '800']" data-whitespace="normal" data-basealign="slide" data-responsive_offset="off">
-							<span>SIMPOLO</span> CERAMICS
+							<span>SMART</span> MARBLE
 						</div>
 						<div class="tp-caption tp-resizeme slide-caption-title-3" data-frames='[{"delay":0,"speed":300,"frame":"0","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]' data-fontsize="['80', '80', '80', '90']" data-lineheight="['60', '60', '50', '50']" data-color="['#666','#fff','#fff','#fff']" data-textAlign="['center', 'center', 'center', 'center']" data-x="['right','right','right','right']" data-y="['bottom','bottom','bottom','bottom']" data-hoffset="['27', '27', '27', '60']" data-voffset="['28', '30', '30', '30']" data-width="['250', '250', '300', '350']" data-whitespace="normal" data-basealign="slide" data-responsive_offset="off">
 							<label style="color:black">02<label>
