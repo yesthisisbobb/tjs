@@ -234,6 +234,18 @@ $total = mysqli_num_rows($queryTotal);
 
 			valArr["searchBy"] = $(this).attr("value");
 			sessionStorage.setItem("searchBy", $(this).attr("value"));
+
+			if ($('#search').val() != "") {
+				let jsonVal = JSON.stringify(valArr);
+				let jsonStates = JSON.stringify(statesArr);
+
+				callLoader();
+				topFunction();
+				$("#kontainerAnjay").load(`searchEngine.php?vals=${jsonVal}&states=${jsonStates}`, function() {
+					removeLoader();
+					$('.images-preloader').fadeOut();
+				});
+			}
 		});
 
 		$('#sort').on('change', function() {
