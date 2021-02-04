@@ -5,6 +5,7 @@ use vakata\database\Query;
 session_start();
 
 include("db/config.php");
+include("api/bridge.php");
 
 if(isset($_SESSION["username"])){
     $resp = array();
@@ -27,6 +28,12 @@ if(isset($_SESSION["username"])){
         $tileDetails = $_POST["tileDetails"];
     }
 
+    // Nyari kodetipe
+    $scommand = "SELECT kodetipe FROM master_stok WHERE kode_stok='$kodep'";
+    $squery =  mysqli_query($conn, $scommand);
+    $sraw = mysqli_fetch_assoc($squery);
+    $kodetipe = $sraw["kodetipe"];
+
     // Ngambil harga
     $sqlgetharga = "SELECT pls FROM master_price WHERE kode='$kodep'";
     $queryget = mysqli_query($conn, $sqlgetharga);
@@ -35,9 +42,18 @@ if(isset($_SESSION["username"])){
     if(!isset($hrg)) $hrg = 0;
 
     // Get Stock Availability
-    $queryStok = mysqli_query($conn, "SELECT * FROM master_shading where kode_stok='$kodep'");
-    while ($rowStok = mysqli_fetch_assoc($queryStok)) {
-        $jmlprod += $rowStok["jum"];
+    // $queryStok = mysqli_query($conn, "SELECT * FROM master_shading where kode_stok='$kodep'");
+    // while ($rowStok = mysqli_fetch_assoc($queryStok)) {
+    //     $jmlprod += $rowStok["jum"];
+    // }
+    $apidata = ventura('item?page=1', ["kode" => "$kodetipe", 'merk' => null, 'gudang' => null], 'POST');
+    $resp["api"] = $apidata;
+    $apitotalpage = $apidata["result"]["total_page"];
+    for ($i = 1; $i <= $apitotalpage; $i++) {
+        $apidata = ventura('item?page=' . $i, ["kode" => "$kodetipe", 'merk' => null, 'gudang' => null], 'POST');
+        foreach ($apidata["result"]["data"] as $d) {
+            $jmlprod += $d["Qty"];
+        }
     }
 
     $cart = $INDENT_TABLE;
