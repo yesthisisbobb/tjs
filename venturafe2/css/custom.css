@@ -1731,6 +1731,9 @@ html {
     #floating-cart-header{
         font-size: .95em;
     }
+    #sizes-base-container{
+        font-size: 10px;
+    }
     #tile-calculator-modal{
         width: 80vw;
     }
