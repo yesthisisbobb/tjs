@@ -176,7 +176,7 @@ $file = getProductPicture($kodeproduk);
                                             <span class="modify-qty minus" onclick="Decrease()">-</span>
                                         </div>
                                         <button id="tile-calc" class="single_add_to_cart_button button alt au-btn btn-small"><i class="fas fa-calculator"></i></button>
-                                        <button id="add-to-cart" style="background:#20c997;color:white;border:0px solid white" class="single_add_to_cart_button button alt au-btn btn-small"><span><?php echo (intval($jmlprod) < 2) ? "Indent " : "Add " ?> to cart</span><span class="atc-icon"><i class="fas fa-cart-plus"></i></span></button>
+                                        <button id="add-to-cart" style="background:#20c997;color:white;border:0px solid white" class="single_add_to_cart_button button alt au-btn btn-small"><span id="atc-indication"><?php echo (intval($jmlprod) < 2) ? "Indent " : "Add " ?> to cart</span><span class="atc-icon"><i class="fas fa-cart-plus"></i></span></button>
                                     </form>
                                     <div id="sizes-base-container">
                                         <div id="sizes-header">Available Sizes</div>

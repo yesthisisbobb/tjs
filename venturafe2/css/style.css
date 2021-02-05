@@ -3426,7 +3426,8 @@ textarea:-moz-placeholder {
       padding: 18.5px 37px;
       cursor: pointer; }
       .shop-single-v1-section .woocommerce .summary .cart .btn-small i {
-        padding-left: 10px; }
+        /* padding-left: 10px; */
+      }
   .shop-single-v1-section .woocommerce .summary .product_meta .posted_in,
   .shop-single-v1-section .woocommerce .summary .product_meta .tagged_as {
     display: block;

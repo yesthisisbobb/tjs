@@ -52,7 +52,7 @@ if(isset($_SESSION["username"])){
             mkdir($tempdir);
 
             //isi qrcode jika di scan
-            $linkToSO = 'http://localhost/tjs/tjs/venturafe2/sales-order.php?no=' . $row["noso"];
+            $linkToSO = 'https://localhost/tjs/tjs/venturafe2/sales-order.php?no=' . $row["noso"];
 
             //simpan file kedalam temp
             $tempName = "";

@@ -1707,10 +1707,10 @@ html {
         padding-left: 26px;
         padding-right: 26px;
     }
-    #add-to-cart span{
+    #add-to-cart #atc-indication{
         display: none;
     }
-    #add-to-cart i{
+    #add-to-cart .atc-icon{
         padding-left: 0;
         margin-right: 0;
     }
@@ -1756,10 +1756,10 @@ html {
         padding-left: 26px;
         padding-right: 26px;
     }
-    #add-to-cart span{
+    #add-to-cart #atc-indication{
         display: none;
     }
-    #add-to-cart i{
+    #add-to-cart .atc-icon{
         padding-left: 0;
         margin-right: 0;
     }
