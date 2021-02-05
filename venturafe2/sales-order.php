@@ -104,6 +104,7 @@ $sodata = mysqli_fetch_array($soquery);
     </div>
     <div class="so-header-part-container">
       <div class="so-header-part">
+        <!-- tes -->
         <?php
         $linkToSO = linkToSO($_GET["no"]); // links.php
         $qrdir = "qr/";
