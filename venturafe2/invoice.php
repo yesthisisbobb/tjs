@@ -3,6 +3,7 @@ session_start();
 include("db/config.php"); //include koneksi database
 include("../venturafe1/phpqrcode/qrlib.php");
 include("rupiah.php");
+include("links.php");
 include("get-picture.php");
 
 $user = $_SESSION["username"];
@@ -104,7 +105,7 @@ $sodata = mysqli_fetch_array($soquery);
     <div class="so-header-part-container">
       <div class="so-header-part">
         <?php
-        $linkToSO = 'http://localhost/tjs/tjs/venturafe2/shipping-order.php?no=' . $_GET["no"];
+        $linkToSO = linkToSO($_GET["no"]); // links.php
         $qrdir = "qr/";
         $tempArr = explode("/", $_GET["no"]);
         foreach ($tempArr as $a) {

@@ -2,6 +2,7 @@
 session_start();
 include("db/config.php");
 include("vendor/phpqrcode/qrlib.php"); 
+include("links.php");
 
 if(isset($_SESSION["username"])){
     $username = $_SESSION["username"];
@@ -52,7 +53,7 @@ if(isset($_SESSION["username"])){
             mkdir($tempdir);
 
             //isi qrcode jika di scan
-            $linkToSO = 'https://localhost/tjs/tjs/venturafe2/sales-order.php?no=' . $row["noso"];
+            $linkToSO = linkToSO($row["noso"]); // links.php
 
             //simpan file kedalam temp
             $tempName = "";
