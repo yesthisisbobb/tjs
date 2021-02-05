@@ -176,7 +176,7 @@ $file = getProductPicture($kodeproduk);
                                             <span class="modify-qty minus" onclick="Decrease()">-</span>
                                         </div>
                                         <button id="tile-calc" class="single_add_to_cart_button button alt au-btn btn-small"><i class="fas fa-calculator"></i></button>
-                                        <button id="add-to-cart" style="background:#20c997;color:white;border:0px solid white" class="single_add_to_cart_button button alt au-btn btn-small"><span><?php echo (intval($jmlprod) < 2) ? "Indent " : "Add " ?> to cart</span><i class="fas fa-cart-plus"></i></button>
+                                        <button id="add-to-cart" style="background:#20c997;color:white;border:0px solid white" class="single_add_to_cart_button button alt au-btn btn-small"><span><?php echo (intval($jmlprod) < 2) ? "Indent " : "Add " ?> to cart</span><span class="atc-icon"><i class="fas fa-cart-plus"></i></span></button>
                                     </form>
                                     <div id="sizes-base-container">
                                         <div id="sizes-header">Available Sizes</div>
@@ -540,6 +540,24 @@ $file = getProductPicture($kodeproduk);
         "height": "0px"
     });
 
+    function atcButtonLoad(state) {
+        if (state) {
+            $("#add-to-cart .atc-icon").html("<i class='fas fa-spinner'></i>");
+            $("#add-to-cart").css({
+                "background": "transparent",
+                "color": "black"
+            });
+        } else {
+            $("#add-to-cart .atc-icon").html("<i class='fas fa-cart-plus'></i>");
+            $("#add-to-cart").css({
+                "background": "#20c997",
+                "color": "white",
+                "border": "0px solid white"
+            });
+            // background:#20c997; color:white; border:0px solid white
+        }
+    }
+
     function addToCart(kodestok) {
         let quantity = $("#quantity").val();
         let price = $("#product-price").attr("value");
@@ -555,6 +573,9 @@ $file = getProductPicture($kodeproduk);
                 "kode": kodestok,
                 "hrg": price,
                 "tipe": tipe
+            },
+            beforeSend: function() {
+                atcButtonLoad(true);
             },
             success: function(data) {
                 if (data.msg !== "notLogged") {
@@ -579,6 +600,9 @@ $file = getProductPicture($kodeproduk);
             },
             error: function(error) {
                 console.error(error.responseText);
+            },
+            complete: function() {
+                atcButtonLoad(false);
             }
         });
     }
@@ -601,6 +625,9 @@ $file = getProductPicture($kodeproduk);
                 "hrg": price,
                 "tipe": tipe,
                 "tileDetails": JSON.stringify(tileDetails)
+            },
+            beforeSend: function() {
+                atcButtonLoad(true);
             },
             success: function(data) {
                 if (data.msg !== "notLogged") {
@@ -627,6 +654,9 @@ $file = getProductPicture($kodeproduk);
             },
             error: function(error) {
                 console.error(error.responseText);
+            },
+            complete: function() {
+                atcButtonLoad(false);
             }
         });
     }

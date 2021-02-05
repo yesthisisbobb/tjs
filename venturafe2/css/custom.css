@@ -231,6 +231,11 @@
 .blinking{
     animation: blink 1s ease-out infinite;
 }
+
+@keyframes rotate{
+    0%{transform: rotate(0deg);}
+    100%{transform: rotate(360deg);}
+}
 /* End Animations */
 
 .orange-yellow{
@@ -884,6 +889,16 @@ button>i{
 
 .add_to_cart_button {
     cursor: pointer;
+}
+
+#add-to-cart .atc-icon .fa-spinner{
+    padding-left: 0px;
+    margin-left: 10px;
+    transform-origin: center;
+    animation-name: rotate;
+    animation-iteration-count: infinite;
+    animation-duration: 1.8s;
+    animation-timing-function: ease-in-out;
 }
 
 #normal-cart-list,
