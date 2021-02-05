@@ -255,9 +255,9 @@
     overflow: hidden;
 }
 
-button>i{
+/* button>i{
     margin-right: 8px;
-}
+} */
 
 .swal-modal .swal-text {
     text-align: center;
@@ -891,6 +891,9 @@ button>i{
     cursor: pointer;
 }
 
+#add-to-cart .atc-icon{
+    padding-left: 8px;
+}
 #add-to-cart .atc-icon .fa-spinner{
     padding-left: 0px;
     margin-left: 10px;
