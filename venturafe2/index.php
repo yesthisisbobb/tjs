@@ -178,7 +178,7 @@ include('rupiah.php');
 						<!-- Insta 1 -->
 						<div class="col">
 							<div class="insta-detail">
-								<a href="" class="insta-image">
+								<a href="https://www.us.kohler.com/us/" class="insta-image">
 									<img src="resource/Brand Logos/kohler.jpg" alt="insta-1">
 									<div class="overlay"></div>
 								</a>
@@ -187,7 +187,7 @@ include('rupiah.php');
 						<!-- Insta 2 -->
 						<div class="col">
 							<div class="insta-detail">
-								<a href="#" class="insta-image">
+								<a href="https://www.granitifiandre.com/" class="insta-image">
 									<img src="resource/Brand Logos/fiandre.png" alt="insta-2">
 									<div class="overlay"></div>
 								</a>
@@ -196,7 +196,7 @@ include('rupiah.php');
 						<!-- Insta 3 -->
 						<div class="col">
 							<div class="insta-detail">
-								<a href="#" class="insta-image">
+								<a href="shop.php?brand=BT" class="insta-image">
 									<img src="resource/Brand Logos/bri.png" alt="insta-3">
 									<div class="overlay"></div>
 								</a>
@@ -205,7 +205,7 @@ include('rupiah.php');
 						<!-- Insta 4 -->
 						<div class="col">
 							<div class="insta-detail">
-								<a href="#" class="insta-image">
+								<a href="https://www.bravat.de/en" class="insta-image">
 									<img src="resource/Brand Logos/bra.png" alt="insta-4">
 									<div class="overlay"></div>
 								</a>
@@ -214,7 +214,7 @@ include('rupiah.php');
 						<!-- Insta 5 -->
 						<div class="col">
 							<div class="insta-detail">
-								<a href="#" class="insta-image">
+								<a href="https://www.rubinetterie3m.it/en/index.html" class="insta-image">
 									<img src="resource/Brand Logos/tre.png" alt="insta-5">
 									<div class="overlay"></div>
 								</a>
@@ -223,7 +223,7 @@ include('rupiah.php');
 						<!-- Insta 6 -->
 						<div class="col">
 							<div class="insta-detail">
-								<a href="#" class="insta-image">
+								<a href="shop.php?brand=SM" class="insta-image">
 									<img src="resource/Brand Logos/sm.png" alt="insta-5">
 									<div class="overlay"></div>
 								</a>
