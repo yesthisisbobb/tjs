@@ -170,7 +170,7 @@ include('rupiah.php');
 						<!-- Categories 2 -->
 						<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
 							<div class="categories-detail furniture">
-								<a href="shop.php?brand=khl" class="images"><img src="resource/Vertical Banners/kohler750x808.jpg" alt="Furniture"></a>
+								<a href="shop.php?brand=khl" class="images"><img src="resource/Vertical Banners/kohler750x808.JPG" alt="Furniture"></a>
 								<div class="product">
 									<a href="shop.php?brand=khl">
 										<span class="name">
