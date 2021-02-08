@@ -202,9 +202,10 @@ $total = mysqli_num_rows($queryTotal);
 
 			$("#sort").val("none");
 			$("#search").val("");
-			// $("#slider-range").slider({
-			// 	values: [0, 250000000]
-			// });
+			$("#min").attr("type", "number");
+			$("#min").val("");
+			$("#max").attr("type", "number");
+			$("#max").val("");
 			$("#amount").val("Rp 0 - Rp 250.000.000");
 			$('.tombol-category span').removeClass("category-active");
 
