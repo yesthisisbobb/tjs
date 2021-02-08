@@ -23,7 +23,7 @@ if (session_status() == PHP_SESSION_NONE) {
 <meta name="google-signin-client_id" content="172839595771-hmlm2v27nmluk7kc2r0qpsa8d6lvphb8.apps.googleusercontent.com">
 <!-- Font
   ================================================== -->
-<script src="https://kit.fontawesome.com/f0ec2f5d0b.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/f0ec2f5d0b.js" crossorigin="anonymous" async></script>
 <link rel="stylesheet" type="text/css" href="fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
 <link rel="stylesheet" type="text/css" href="fonts/linearicons/style.css">
 <link rel="stylesheet" type="text/css" href="css/poppins-font.css">
@@ -39,7 +39,7 @@ if (session_status() == PHP_SESSION_NONE) {
 <!-- Material Design Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
 <!-- Bootrap -->
-<link rel="stylesheet" href="vendor/bootrap/css/bootstrap.min.css" />
+<link rel="stylesheet" href="vendor/bootrap/css/bootstrap.min.css" async/>
 <!-- Owl Carousel 2 -->
 <link rel="stylesheet" href="vendor/owl/css/owl.carousel.min.css">
 <link rel="stylesheet" href="vendor/owl/css/owl.theme.default.min.css">
@@ -55,7 +55,7 @@ if (session_status() == PHP_SESSION_NONE) {
 <!-- noUiSlider Library -->
 <link rel="stylesheet" type="text/css" href="vendor/nouislider/css/nouislider.css">
 <!-- Main Style Css -->
-<link rel="stylesheet" href="css/style.css?ver=1.1" />
+<link rel="stylesheet" href="css/style.css?ver=1.1" defer/>
 <!-- Kastem -->
 <link rel="stylesheet" type="text/css" href="css/custom.css?ver=1.6">
 <!-- JQUERY -->
