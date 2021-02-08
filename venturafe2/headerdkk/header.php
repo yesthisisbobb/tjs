@@ -4,7 +4,7 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 ?>
 <!-- Images Loader -->
-<div class="images-preloader">
+<!-- <div class="images-preloader">
     <div id="preloader_1" class="rectangle-bounce">
         <span></span>
         <span></span>
@@ -12,7 +12,7 @@ if (session_status() == PHP_SESSION_NONE) {
         <span></span>
         <span></span>
     </div>
-</div>
+</div> -->
 
 <header class="header">
     <!-- Show Desktop Header -->
