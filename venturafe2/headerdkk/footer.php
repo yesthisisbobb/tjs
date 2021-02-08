@@ -135,7 +135,18 @@
 
 <!-- <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script> -->
 <!-- <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
+
+<!-- Google Sign-in -->
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+
 <script>
+	function onSignIn(googleUser) {
+		var profile = googleUser.getBasicProfile();
+		console.log('ID: ' + profile.getId());
+		console.log('Name: ' + profile.getName());
+		console.log('Image URL: ' + profile.getImageUrl());
+		console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+	}
 	$(document).on('click', '#loginBtn', function() {
 		$.ajax({
 			type: 'POST',
@@ -203,6 +214,9 @@
 			confirmButtonText: 'Log Out!'
 		}).then((result) => {
 			if (result.isConfirmed) {
+				var auth2 = gapi.auth2.getAuthInstance();
+				auth2.signOut();
+
 				$.ajax({
 					type: 'POST',
 					url: 'ajaxLogout.php',

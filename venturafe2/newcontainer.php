@@ -215,24 +215,26 @@
                 <div class="item">
                     <div class="product type-product">
                         <div class="woocommerce-LoopProduct-link">
-                            <div class="product-image" style="height:400px;">
+                            <div class="product-image">
                                 <a href="#" class="wp-post-image">
-                                    <img height=238 src="../img/product/6v3.jpg" alt="product">
+                                    <img src="images/hp-1-featured-6.jpg" alt="product">
                                 </a>
-                                <a class='shop-product-stock stock-indent' style='color:white;'>Indent</a>
                                 <div class="yith-wcwl-add-button show">
-                                    <a href="" class="add_to_wishlist tombol-favorite" id="">
-                                        <img class="favorite" src="resource/LVWB.png">
+                                    <a href="#" class="add_to_wishlist">
+                                        <i class="zmdi zmdi-favorite-outline"></i>
                                     </a>
                                 </div>
                                 <div class="button add_to_cart_button">
-                                    <img class="cart-icon" onclick='' src="images/icons/shopping-cart-black-icon.png" alt="cart">
+                                    <a href="#">
+                                        <img src="images/icons/shopping-cart-black-icon.png" alt="cart">
+                                    </a>
                                 </div>
-                                <h5 class="woocommerce-loop-product__title" style="width:160px"><a href="#"></a></h5>
+                                <h5 class="woocommerce-loop-product__title"><a href="#">Laundry Bag</a></h5>
                                 <span class="price">
                                     <ins>
                                         <span class="woocommerce-Price-amount amount">
-                                            Rp. 10.000
+                                            <span class="woocommerce-Price-currencySymbol">$</span>
+                                            37
                                         </span>
                                     </ins>
                                 </span>
@@ -242,6 +244,7 @@
                 </div>
             </div>
         </div>
+    </div>
 </body>
 
 </html>

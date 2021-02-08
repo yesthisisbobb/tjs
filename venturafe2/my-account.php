@@ -42,6 +42,7 @@ include('rupiah.php');
 										<button style="cursor:pointer;background:#6c757d;color:white;border:0px solid white;padding:12px" id="login-button-ma" type="button" data-dismiss="modal" class="au-btn loginBtn">
 											L O G I N
 										</button>
+										<div class="g-signin2" data-onsuccess="onSignIn"></div>
 									</form>
 								</div>
 							</div>

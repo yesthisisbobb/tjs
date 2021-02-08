@@ -20,6 +20,7 @@ if (session_status() == PHP_SESSION_NONE) {
 <meta property="og:title" content="Distributor for Marble Tiles and Sanitaryware " />
 <meta property="og:description" content="Find the best quality for Marble Tiles and Sanitaryware here." />
 <meta property="og:image" content="https://smartmarbleandbath.com/tjs/img/logo/metasmb.JPG" />
+<meta name="google-signin-client_id" content="172839595771-hmlm2v27nmluk7kc2r0qpsa8d6lvphb8.apps.googleusercontent.com">
 <!-- Font
   ================================================== -->
 <script src="https://kit.fontawesome.com/f0ec2f5d0b.js" crossorigin="anonymous"></script>

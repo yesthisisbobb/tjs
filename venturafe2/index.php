@@ -22,7 +22,7 @@ include('rupiah.php');
 					<!-- BEGIN SLIDE 1 -->
 					<li data-transition="boxslide">
 						<!-- SLIDE'S MAIN BACKGROUND IMAGE -->
-						<img src="resource/Home Sliders/bravatgede.jpg" alt="slide-1" class="rev-slidebg">
+						<img src="resource/Home Sliders/bravat1760x837.jpg" alt="slide-1" class="rev-slidebg">
 
 						<!-- BEGIN LAYER -->
 						<div class="tp-caption tp-resizeme slide-caption-title-1" data-frames='[{"delay":500,"speed":1000,"frame":"0","from":"y:-50px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":500,"frame":"999","to":"y:-20px;opacity:0;","ease":"Power3.easeInOut"}]' data-fontsize="['20', '25', '30', '35']" data-lineheight="['32', '35', '40', '45']" data-color="#d59f9f" data-textAlign="['center', 'center', 'center', 'center']" data-x="['center','center','center','center']" data-y="['middle','middle','middle','middle']" data-hoffset="['0', '0', '0', '0']" data-voffset="['-227', '-200', '-175', '-130']" data-width="['187', '250', '300', '350']" data-whitespace="normal" data-basealign="slide" data-responsive_offset="off">
@@ -47,7 +47,7 @@ include('rupiah.php');
 					<!-- BEGIN SLIDE 2 -->
 					<li data-transition="boxslide">
 						<!-- SLIDE'S MAIN BACKGROUND IMAGE -->
-						<img src="resource/Home Sliders/simpologede.jpg" alt="slide-2" class="rev-slidebg">
+						<img src="resource/Home Sliders/simpolo1760x837.jpg" alt="slide-2" class="rev-slidebg">
 
 						<!-- BEGIN LAYER -->
 						<div class="tp-caption tp-resizeme slide-caption-title-1" data-frames='[{"delay":500,"speed":1000,"frame":"0","from":"y:-50px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":500,"frame":"999","to":"y:-20px;opacity:0;","ease":"Power3.easeInOut"}]' data-fontsize="['20', '25', '30', '35']" data-lineheight="['32', '35', '40', '45']" data-color="#3d4552" data-textAlign="['center', 'center', 'center', 'center']" data-x="['center','center','center','center']" data-y="['middle','middle','middle','middle']" data-hoffset="['0', '0', '0', '0']" data-voffset="['-227', '-200', '-175', '-130']" data-width="['187', '250', '300', '350']" data-whitespace="normal" data-basealign="slide" data-responsive_offset="off">
@@ -170,7 +170,7 @@ include('rupiah.php');
 						<!-- Categories 2 -->
 						<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
 							<div class="categories-detail furniture">
-								<a href="shop.php?brand=khl" class="images"><img src="resource/Vertical Banners/kohlerrodokgede.JPG" alt="Furniture"></a>
+								<a href="shop.php?brand=khl" class="images"><img src="resource/Vertical Banners/kohler750x808.JPG" alt="Furniture"></a>
 								<div class="product">
 									<a href="shop.php?brand=khl">
 										<span class="name">
@@ -184,7 +184,7 @@ include('rupiah.php');
 						<!-- Categories 3 -->
 						<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
 							<div class="categories-detail decoration">
-								<a href="shop.php?brand=bv" class="images"><img src="resource/Vertical Banners/bravatstandar.jpg" alt="Decoration"></a>
+								<a href="shop.php?brand=bv" class="images"><img src="resource/Vertical Banners/bravat750x808.jpg" alt="Decoration"></a>
 								<div class="product">
 									<a href="shop.php?brand=bv">
 										<span class="name">
