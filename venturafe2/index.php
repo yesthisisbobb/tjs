@@ -22,7 +22,7 @@ include('rupiah.php');
 					<!-- BEGIN SLIDE 1 -->
 					<li data-transition="boxslide">
 						<!-- SLIDE'S MAIN BACKGROUND IMAGE -->
-						<img src="resource/bravatgede.jpg" alt="slide-1" class="rev-slidebg">
+						<img src="resource/Home Sliders/bravatgede.jpg" alt="slide-1" class="rev-slidebg">
 
 						<!-- BEGIN LAYER -->
 						<div class="tp-caption tp-resizeme slide-caption-title-1" data-frames='[{"delay":500,"speed":1000,"frame":"0","from":"y:-50px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":500,"frame":"999","to":"y:-20px;opacity:0;","ease":"Power3.easeInOut"}]' data-fontsize="['20', '25', '30', '35']" data-lineheight="['32', '35', '40', '45']" data-color="#d59f9f" data-textAlign="['center', 'center', 'center', 'center']" data-x="['center','center','center','center']" data-y="['middle','middle','middle','middle']" data-hoffset="['0', '0', '0', '0']" data-voffset="['-227', '-200', '-175', '-130']" data-width="['187', '250', '300', '350']" data-whitespace="normal" data-basealign="slide" data-responsive_offset="off">
@@ -38,7 +38,7 @@ include('rupiah.php');
 							<label style="color:black">/<label>
 						</div>
 						<div class="tp-caption tp-resizeme slide-caption-title-3" data-frames='[{"delay":0,"speed":300,"frame":"0","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]' data-fontsize="['20', '25', '30', '40']" data-lineheight="['32', '35', '40', '45']" data-color="['#666','#fff','#fff','#fff']" data-textAlign="['center', 'center', 'center', 'center']" data-x="['right','right','right','right']" data-y="['bottom','bottom','bottom','bottom']" data-hoffset="['-6', '-43', '-40', '15']" data-voffset="['63', '56', '50', '37']" data-width="['187', '250', '300', '350']" data-whitespace="normal" data-basealign="slide" data-responsive_offset="off">
-							<label style="color:black">02<label>
+							<label style="color:black">05<label>
 						</div>
 						<!-- END LAYER -->
 					</li>
@@ -47,7 +47,7 @@ include('rupiah.php');
 					<!-- BEGIN SLIDE 2 -->
 					<li data-transition="boxslide">
 						<!-- SLIDE'S MAIN BACKGROUND IMAGE -->
-						<img src="resource/simpologede.jpg" alt="slide-2" class="rev-slidebg">
+						<img src="resource/Home Sliders/simpologede.jpg" alt="slide-2" class="rev-slidebg">
 
 						<!-- BEGIN LAYER -->
 						<div class="tp-caption tp-resizeme slide-caption-title-1" data-frames='[{"delay":500,"speed":1000,"frame":"0","from":"y:-50px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":500,"frame":"999","to":"y:-20px;opacity:0;","ease":"Power3.easeInOut"}]' data-fontsize="['20', '25', '30', '35']" data-lineheight="['32', '35', '40', '45']" data-color="#3d4552" data-textAlign="['center', 'center', 'center', 'center']" data-x="['center','center','center','center']" data-y="['middle','middle','middle','middle']" data-hoffset="['0', '0', '0', '0']" data-voffset="['-227', '-200', '-175', '-130']" data-width="['187', '250', '300', '350']" data-whitespace="normal" data-basealign="slide" data-responsive_offset="off">
@@ -63,13 +63,86 @@ include('rupiah.php');
 							<label style="color:black">/<label>
 						</div>
 						<div class="tp-caption tp-resizeme slide-caption-title-3" data-frames='[{"delay":0,"speed":300,"frame":"0","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]' data-fontsize="['20', '25', '30', '40']" data-lineheight="['32', '35', '40', '45']" data-color="['#666','#fff','#fff','#fff']" data-textAlign="['center', 'center', 'center', 'center']" data-x="['right','right','right','right']" data-y="['bottom','bottom','bottom','bottom']" data-hoffset="['-17', '-43', '-40', '15']" data-voffset="['63', '56', '50', '37']" data-width="['187', '250', '300', '350']" data-whitespace="normal" data-basealign="slide" data-responsive_offset="off">
-							<label style="color:black">02<label>
+							<label style="color:black">05<label>
 						</div>
 						<!-- END LAYER -->
 					</li>
 					<!-- END SLIDE 2 -->
 
+					<!-- BEGIN SLIDE 3 -->
+					<li data-transition="boxslide">
+						<!-- SLIDE'S MAIN BACKGROUND IMAGE -->
+						<img src="resource/Home Sliders/geta1760x837.jpg" alt="slide-2" class="rev-slidebg">
 
+						<!-- BEGIN LAYER -->
+						<div class="tp-caption tp-resizeme slide-caption-title-1" data-frames='[{"delay":500,"speed":1000,"frame":"0","from":"y:-50px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":500,"frame":"999","to":"y:-20px;opacity:0;","ease":"Power3.easeInOut"}]' data-fontsize="['20', '25', '30', '35']" data-lineheight="['32', '35', '40', '45']" data-color="#3d4552" data-textAlign="['center', 'center', 'center', 'center']" data-x="['center','center','center','center']" data-y="['middle','middle','middle','middle']" data-hoffset="['0', '0', '0', '0']" data-voffset="['-227', '-200', '-175', '-130']" data-width="['187', '250', '300', '350']" data-whitespace="normal" data-basealign="slide" data-responsive_offset="off">
+							PREMIUM
+						</div>
+						<div class="tp-caption tp-resizeme slide-caption-title-2" data-frames='[{"delay":1000,"speed":1000,"frame":"0","from":"y:-50px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":500,"frame":"999","to":"y:-20px;opacity:0;","ease":"Power3.easeInOut"}]' data-fontsize="['90', '90', '80', '80']" data-lineheight="['70', '70', '60', '60']" data-color="#fff" data-textAlign="['center', 'center', 'center', 'center']" data-x="['center','center','center','center']" data-y="['middle','middle','middle','middle']" data-hoffset="['0', '0', '0', '0']" data-voffset="['-140', '-117', '-110', '-90']" data-width="['1200', '850', '850', '800']" data-whitespace="normal" data-basealign="slide" data-responsive_offset="off">
+							<span>GETA</span> COLLECTION
+						</div>
+						<div class="tp-caption tp-resizeme slide-caption-title-3" data-frames='[{"delay":0,"speed":300,"frame":"0","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]' data-fontsize="['80', '80', '80', '90']" data-lineheight="['60', '60', '50', '50']" data-color="['#666','#fff','#fff','#fff']" data-textAlign="['center', 'center', 'center', 'center']" data-x="['right','right','right','right']" data-y="['bottom','bottom','bottom','bottom']" data-hoffset="['27', '27', '27', '60']" data-voffset="['28', '30', '30', '30']" data-width="['250', '250', '300', '350']" data-whitespace="normal" data-basealign="slide" data-responsive_offset="off">
+							<label style="color:black">03<label>
+						</div>
+						<div class="tp-caption tp-resizeme slide-caption-title-3" data-frames='[{"delay":0,"speed":300,"frame":"0","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]' data-fontsize="['13', '15', '20', '35']" data-lineheight="['32', '35', '40', '45']" data-color="['#666','#fff','#fff','#fff']" data-textAlign="['center', 'center', 'center', 'center']" data-x="['right','right','right','right']" data-y="['bottom','bottom','bottom','bottom']" data-hoffset="['3', '-23', '-20', '32']" data-voffset="['63', '56', '50', '37']" data-width="['187', '250', '300', '350']" data-whitespace="normal" data-basealign="slide" data-responsive_offset="off">
+							<label style="color:black">/<label>
+						</div>
+						<div class="tp-caption tp-resizeme slide-caption-title-3" data-frames='[{"delay":0,"speed":300,"frame":"0","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]' data-fontsize="['20', '25', '30', '40']" data-lineheight="['32', '35', '40', '45']" data-color="['#666','#fff','#fff','#fff']" data-textAlign="['center', 'center', 'center', 'center']" data-x="['right','right','right','right']" data-y="['bottom','bottom','bottom','bottom']" data-hoffset="['-17', '-43', '-40', '15']" data-voffset="['63', '56', '50', '37']" data-width="['187', '250', '300', '350']" data-whitespace="normal" data-basealign="slide" data-responsive_offset="off">
+							<label style="color:black">05<label>
+						</div>
+						<!-- END LAYER -->
+					</li>
+					<!-- END SLIDE 3 -->
+
+					<!-- BEGIN SLIDE 4 -->
+					<li data-transition="boxslide">
+						<!-- SLIDE'S MAIN BACKGROUND IMAGE -->
+						<img src="resource/Home Sliders/kohler1760x837.jpg" alt="slide-1" class="rev-slidebg">
+
+						<!-- BEGIN LAYER -->
+						<div class="tp-caption tp-resizeme slide-caption-title-1" data-frames='[{"delay":500,"speed":1000,"frame":"0","from":"y:-50px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":500,"frame":"999","to":"y:-20px;opacity:0;","ease":"Power3.easeInOut"}]' data-fontsize="['20', '25', '30', '35']" data-lineheight="['32', '35', '40', '45']" data-color="#d59f9f" data-textAlign="['center', 'center', 'center', 'center']" data-x="['center','center','center','center']" data-y="['middle','middle','middle','middle']" data-hoffset="['0', '0', '0', '0']" data-voffset="['-227', '-200', '-175', '-130']" data-width="['187', '250', '300', '350']" data-whitespace="normal" data-basealign="slide" data-responsive_offset="off">
+
+						</div>
+						<div class="tp-caption tp-resizeme slide-caption-title-2" style="margin-top: 500px;" data-frames='[{"delay":1100,"speed":1000,"frame":"0","from":"y:-50px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":500,"frame":"999","to":"y:-20px;opacity:0;","ease":"Power3.easeInOut"}]' data-fontsize="['90', '90', '80', '80']" data-lineheight="['70', '70', '60', '60']" data-color="#fff" data-textAlign="['center', 'center', 'center', 'center']" data-x="['center','center','center','center']" data-y="['middle','middle','middle','middle']" data-hoffset="['0', '0', '0', '0']" data-voffset="['-140', '-117', '-110', '-90']" data-width="['1200', '850', '850', '800']" data-whitespace="normal" data-basealign="slide" data-responsive_offset="off">
+							<img width="40%" height="10%" src="resource/logomerk/kh.png"> <label style="color:black"> COLLECTION</label>
+						</div>
+						<div class="tp-caption tp-resizeme slide-caption-title-3" data-frames='[{"delay":0,"speed":300,"frame":"0","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]' data-fontsize="['80', '80', '80', '90']" data-lineheight="['60', '60', '50', '50']" data-color="['#666','#fff','#fff','#fff']" data-textAlign="['center', 'center', 'center', 'center']" data-x="['right','right','right','right']" data-y="['bottom','bottom','bottom','bottom']" data-hoffset="['27', '18', '18', '60']" data-voffset="['28', '30', '30', '30']" data-width="['250', '250', '300', '350']" data-whitespace="normal" data-basealign="slide" data-responsive_offset="off">
+							<label style="color:black">04<label>
+						</div>
+						<div class="tp-caption tp-resizeme slide-caption-title-3" data-frames='[{"delay":0,"speed":300,"frame":"0","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]' data-fontsize="['13', '15', '20', '35']" data-lineheight="['32', '35', '40', '45']" data-color="['#666','#fff','#fff','#fff']" data-textAlign="['center', 'center', 'center', 'center']" data-x="['right','right','right','right']" data-y="['bottom','bottom','bottom','bottom']" data-hoffset="['14', '-23', '-20', '35']" data-voffset="['63', '56', '50', '37']" data-width="['187', '250', '300', '350']" data-whitespace="normal" data-basealign="slide" data-responsive_offset="off">
+							<label style="color:black">/<label>
+						</div>
+						<div class="tp-caption tp-resizeme slide-caption-title-3" data-frames='[{"delay":0,"speed":300,"frame":"0","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]' data-fontsize="['20', '25', '30', '40']" data-lineheight="['32', '35', '40', '45']" data-color="['#666','#fff','#fff','#fff']" data-textAlign="['center', 'center', 'center', 'center']" data-x="['right','right','right','right']" data-y="['bottom','bottom','bottom','bottom']" data-hoffset="['-6', '-43', '-40', '15']" data-voffset="['63', '56', '50', '37']" data-width="['187', '250', '300', '350']" data-whitespace="normal" data-basealign="slide" data-responsive_offset="off">
+							<label style="color:black">05<label>
+						</div>
+						<!-- END LAYER -->
+					</li>
+					<!-- END SLIDE 4 -->
+
+					<!-- BEGIN SLIDE 5 -->
+					<li data-transition="boxslide">
+						<!-- SLIDE'S MAIN BACKGROUND IMAGE -->
+						<img src="resource/Home Sliders/smartmarble1760x837.jpg" alt="slide-2" class="rev-slidebg">
+
+						<!-- BEGIN LAYER -->
+						<div class="tp-caption tp-resizeme slide-caption-title-1" data-frames='[{"delay":500,"speed":1000,"frame":"0","from":"y:-50px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":500,"frame":"999","to":"y:-20px;opacity:0;","ease":"Power3.easeInOut"}]' data-fontsize="['20', '25', '30', '35']" data-lineheight="['32', '35', '40', '45']" data-color="#3d4552" data-textAlign="['center', 'center', 'center', 'center']" data-x="['center','center','center','center']" data-y="['middle','middle','middle','middle']" data-hoffset="['0', '0', '0', '0']" data-voffset="['-227', '-200', '-175', '-130']" data-width="['187', '250', '300', '350']" data-whitespace="normal" data-basealign="slide" data-responsive_offset="off">
+							PREMIUM
+						</div>
+						<div class="tp-caption tp-resizeme slide-caption-title-2" data-frames='[{"delay":1000,"speed":1000,"frame":"0","from":"y:-50px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":500,"frame":"999","to":"y:-20px;opacity:0;","ease":"Power3.easeInOut"}]' data-fontsize="['90', '90', '80', '80']" data-lineheight="['70', '70', '60', '60']" data-color="#fff" data-textAlign="['center', 'center', 'center', 'center']" data-x="['center','center','center','center']" data-y="['middle','middle','middle','middle']" data-hoffset="['0', '0', '0', '0']" data-voffset="['-140', '-117', '-110', '-90']" data-width="['1200', '850', '850', '800']" data-whitespace="normal" data-basealign="slide" data-responsive_offset="off">
+							<span>SMART</span> MARBLE
+						</div>
+						<div class="tp-caption tp-resizeme slide-caption-title-3" data-frames='[{"delay":0,"speed":300,"frame":"0","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]' data-fontsize="['80', '80', '80', '90']" data-lineheight="['60', '60', '50', '50']" data-color="['#666','#fff','#fff','#fff']" data-textAlign="['center', 'center', 'center', 'center']" data-x="['right','right','right','right']" data-y="['bottom','bottom','bottom','bottom']" data-hoffset="['27', '27', '27', '60']" data-voffset="['28', '30', '30', '30']" data-width="['250', '250', '300', '350']" data-whitespace="normal" data-basealign="slide" data-responsive_offset="off">
+							<label style="color:black">05<label>
+						</div>
+						<div class="tp-caption tp-resizeme slide-caption-title-3" data-frames='[{"delay":0,"speed":300,"frame":"0","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]' data-fontsize="['13', '15', '20', '35']" data-lineheight="['32', '35', '40', '45']" data-color="['#666','#fff','#fff','#fff']" data-textAlign="['center', 'center', 'center', 'center']" data-x="['right','right','right','right']" data-y="['bottom','bottom','bottom','bottom']" data-hoffset="['3', '-23', '-20', '32']" data-voffset="['63', '56', '50', '37']" data-width="['187', '250', '300', '350']" data-whitespace="normal" data-basealign="slide" data-responsive_offset="off">
+							<label style="color:black">/<label>
+						</div>
+						<div class="tp-caption tp-resizeme slide-caption-title-3" data-frames='[{"delay":0,"speed":300,"frame":"0","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]' data-fontsize="['20', '25', '30', '40']" data-lineheight="['32', '35', '40', '45']" data-color="['#666','#fff','#fff','#fff']" data-textAlign="['center', 'center', 'center', 'center']" data-x="['right','right','right','right']" data-y="['bottom','bottom','bottom','bottom']" data-hoffset="['-17', '-43', '-40', '15']" data-voffset="['63', '56', '50', '37']" data-width="['187', '250', '300', '350']" data-whitespace="normal" data-basealign="slide" data-responsive_offset="off">
+							<label style="color:black">05<label>
+						</div>
+						<!-- END LAYER -->
+					</li>
+					<!-- END SLIDE 5 -->
 				</ul>
 			</div>
 		</section>

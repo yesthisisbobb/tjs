@@ -68,17 +68,19 @@ $total = mysqli_num_rows($queryTotal);
 						<!-- Filter -->
 						<div class="widget_price_filter">
 							<h3 class="widget-title">Filter By Price</h3>
-							<form method="POST">
-								<div class="price_slider_wrapper">
-									<div id="slider-range"></div>
-									<div class="">
-										<br>
-										<input type="text" id="amount" readonly style="border:0; margin-left:-15px;width:100%; color:#000000; ">
-
-
-									</div>
+							<div id="price-filter">
+								<div class="price-input">
+									<span>Min</span>
+									<input type="number" id="min">
 								</div>
-							</form>
+								<div class="price-input">
+									<span>Max</span>
+									<input type="number" id="max">
+								</div>
+							</div>
+							<div id="price-apply">
+								<button id="price-button" type="button" class="btn btn-outline-dark">Apply</button>
+							</div>
 						</div>
 						<!-- Categories -->
 						<div class="widget widget_product_categories">
@@ -200,9 +202,9 @@ $total = mysqli_num_rows($queryTotal);
 
 			$("#sort").val("none");
 			$("#search").val("");
-			$("#slider-range").slider({
-				values: [0, 250000000]
-			});
+			// $("#slider-range").slider({
+			// 	values: [0, 250000000]
+			// });
 			$("#amount").val("Rp 0 - Rp 250.000.000");
 			$('.tombol-category span').removeClass("category-active");
 
@@ -324,42 +326,81 @@ $total = mysqli_num_rows($queryTotal);
 		});
 		// ===== End of search section ===== //
 
-		$(function() {
-			$("#slider-range").slider({
-				range: true,
-				step: 500000,
-				min: 0,
-				max: 250000000,
-				values: [0, 2500000000],
-				slide: function(event, ui) {
-					let num1 = new Intl.NumberFormat('id-ID').format(ui.values[0]);
-					let num2 = new Intl.NumberFormat('id-ID').format(ui.values[1]);
-					$("#amount").val("Rp " + num1 + " - Rp " + num2);
-				},
-				stop: function(event, ui) {
-					statesArr["isFilteredByPrice"] = true;
-					sessionStorage.setItem("isFilteredByPrice", true);
-
-					let num1 = new Intl.NumberFormat('id-ID').format(ui.values[0]);
-					let num2 = new Intl.NumberFormat('id-ID').format(ui.values[1]);
-					$("#amount").val("Rp " + num1 + " - Rp " + num2);
-
-					valArr["min"] = ui.values[0];
-					valArr["max"] = ui.values[1];
-					sessionStorage.setItem("min", ui.values[0]);
-					sessionStorage.setItem("max", ui.values[1]);
-
-					let jsonVal = JSON.stringify(valArr);
-					let jsonStates = JSON.stringify(statesArr);
-
-					callLoader();
-					$("#kontainerAnjay").load(`searchEngine.php?vals=${jsonVal}&states=${jsonStates}`, function() {
-						removeLoader();
-					});
-				}
-			});
-			$("#amount").val("Rp " + $("#slider-range").slider("values", 0) + " - Rp " + $("#slider-range").slider("values", 1));
+		// Price Filter
+		$("#min").click(function() {
+			$("#min").attr("type", "number");
+			$("#min").val(min);
+			$("#min").select();
 		});
+		$("#max").click(function() {
+			$("#max").attr("type", "number");
+			$("#max").val(max);
+			$("#max").select();
+		});
+		$("#price-button").click(function() {
+			min = parseInt($("#min").val());
+			max = parseInt($("#max").val());
+
+			if (min) {
+				$("#min").attr("type", "text");
+				$("#min").val(new Intl.NumberFormat('id-ID').format(min));
+			}
+			if (max) {
+				$("#max").attr("type", "text");
+				$("#max").val(new Intl.NumberFormat('id-ID').format(max));
+			}
+
+			valArr["min"] = min;
+			valArr["max"] = max;
+			sessionStorage.setItem("min", min);
+			sessionStorage.setItem("max", max);
+
+			let jsonVal = JSON.stringify(valArr);
+			let jsonStates = JSON.stringify(statesArr);
+
+			console.log(`searchEngine.php?vals=${jsonVal}&states=${jsonStates}`);
+
+			callLoader();
+			$("#kontainerAnjay").load(`searchEngine.php?vals=${jsonVal}&states=${jsonStates}`, function() {
+				removeLoader();
+			});
+		});
+		// $(function() {
+		// 	$("#slider-range").slider({
+		// 		range: true,
+		// 		step: 500000,
+		// 		min: 0,
+		// 		max: 250000000,
+		// 		values: [0, 2500000000],
+		// 		slide: function(event, ui) {
+		// 			let num1 = new Intl.NumberFormat('id-ID').format(ui.values[0]);
+		// 			let num2 = new Intl.NumberFormat('id-ID').format(ui.values[1]);
+		// 			$("#amount").val("Rp " + num1 + " - Rp " + num2);
+		// 		},
+		// 		stop: function(event, ui) {
+		// 			statesArr["isFilteredByPrice"] = true;
+		// 			sessionStorage.setItem("isFilteredByPrice", true);
+
+		// 			let num1 = new Intl.NumberFormat('id-ID').format(ui.values[0]);
+		// 			let num2 = new Intl.NumberFormat('id-ID').format(ui.values[1]);
+		// 			$("#amount").val("Rp " + num1 + " - Rp " + num2);
+
+		// 			valArr["min"] = ui.values[0];
+		// 			valArr["max"] = ui.values[1];
+		// 			sessionStorage.setItem("min", ui.values[0]);
+		// 			sessionStorage.setItem("max", ui.values[1]);
+
+		// 			let jsonVal = JSON.stringify(valArr);
+		// 			let jsonStates = JSON.stringify(statesArr);
+
+		// 			callLoader();
+		// 			$("#kontainerAnjay").load(`searchEngine.php?vals=${jsonVal}&states=${jsonStates}`, function() {
+		// 				removeLoader();
+		// 			});
+		// 		}
+		// 	});
+		// 	$("#amount").val("Rp " + $("#slider-range").slider("values", 0) + " - Rp " + $("#slider-range").slider("values", 1));
+		// });
 
 		// ===== Codes for pager ===== //
 		$(document).on('click', '.pager', function() {
@@ -406,16 +447,12 @@ $total = mysqli_num_rows($queryTotal);
 				$(`#${valArr["categoryCode"]} span`).addClass("category-active");
 			}
 			if (valArr["min"] = sessionStorage.getItem("min")) {
-				$(function() {
-					$("#slider-range").slider("values", 0, valArr["min"]);
-					$("#amount").val("Rp " + new Intl.NumberFormat('id-ID').format(valArr["min"]) + " - Rp " + new Intl.NumberFormat('id-ID').format(valArr["max"]));
-				});
+				$("#min").attr("type", "text");
+				$("#min").text(new Intl.NumberFormat('id-ID').format(valArr["min"]));
 			}
 			if (valArr["max"] = sessionStorage.getItem("max")) {
-				$(function() {
-					$("#slider-range").slider("values", 1, valArr["max"]);
-					$("#amount").val("Rp " + new Intl.NumberFormat('id-ID').format(valArr["min"]) + " - Rp " + new Intl.NumberFormat('id-ID').format(valArr["max"]));
-				});
+				$("#max").attr("type", "text");
+				$("#max").text(new Intl.NumberFormat('id-ID').format(valArr["max"]));
 			}
 			let current_page = 1;
 			if (sessionStorage.getItem("page")) current_page = sessionStorage.getItem("page");

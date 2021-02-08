@@ -702,7 +702,8 @@ $file = getProductPicture($kodeproduk);
     function qtyValueChanged(id, isi) {
         let temp = id;
         let arrTemp = temp.split("-");
-        let rawId = arrTemp[0];
+        let rawId = arrTemp[0] + "-" + arrTemp[1];
+        console.log(temp, arrTemp, rawId);
 
         if (typeof(isi) == "undefined" || isi == "") {
             $(`#${rawId}`).val(0);
