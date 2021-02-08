@@ -1,4 +1,7 @@
 <?php
+
+use function PHPSTORM_META\type;
+
 include("db/config.php");
 include("api/bridge.php");
 include("rupiah.php");
@@ -65,9 +68,12 @@ if ($statesData["isSearched"]) {
     }
 }
 if ($statesData["isFilteredByPrice"]){
-    // echo "masuk filter price ||";
     $min = intval($valData["min"]);
     $max = intval($valData["max"]);
+    if ($max < 1) {
+        echo "- Masuk max lebih kecil 0, ";
+        $max = 250000000; // Max 250jt klo kosong
+    }
     if (!$statesData["isSorted"]){
         $froms .= ", master_price mp";
         $wheres .= " AND ms.kode_stok = mp.kode";

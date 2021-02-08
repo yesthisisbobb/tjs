@@ -340,6 +340,7 @@ $total = mysqli_num_rows($queryTotal);
 		$("#price-button").click(function() {
 			min = parseInt($("#min").val());
 			max = parseInt($("#max").val());
+			// max = 250000000;
 
 			if (min) {
 				$("#min").attr("type", "text");
@@ -349,6 +350,9 @@ $total = mysqli_num_rows($queryTotal);
 				$("#max").attr("type", "text");
 				$("#max").val(new Intl.NumberFormat('id-ID').format(max));
 			}
+
+			statesArr["isFilteredByPrice"] = true;
+			sessionStorage.setItem("isFilteredByPrice", true);
 
 			valArr["min"] = min;
 			valArr["max"] = max;
@@ -446,13 +450,17 @@ $total = mysqli_num_rows($queryTotal);
 				$('.tombol-category span').removeClass("category-active");
 				$(`#${valArr["categoryCode"]} span`).addClass("category-active");
 			}
-			if (valArr["min"] = sessionStorage.getItem("min")) {
+			if (!isNaN(sessionStorage.getItem("min"))) {
+				console.log("masuk min");
+				valArr["min"] = sessionStorage.getItem("min");
 				$("#min").attr("type", "text");
-				$("#min").text(new Intl.NumberFormat('id-ID').format(valArr["min"]));
+				$("#min").val(new Intl.NumberFormat('id-ID').format(valArr["min"]));
 			}
-			if (valArr["max"] = sessionStorage.getItem("max")) {
+			if (!isNaN(sessionStorage.getItem("max"))) {
+				valArr["max"] = sessionStorage.getItem("max");
 				$("#max").attr("type", "text");
-				$("#max").text(new Intl.NumberFormat('id-ID').format(valArr["max"]));
+				$("#max").val(new Intl.NumberFormat('id-ID').format(valArr["max"]));
+				console.log("masuk max", valArr["max"], new Intl.NumberFormat('id-ID').format(valArr["max"]));
 			}
 			let current_page = 1;
 			if (sessionStorage.getItem("page")) current_page = sessionStorage.getItem("page");
