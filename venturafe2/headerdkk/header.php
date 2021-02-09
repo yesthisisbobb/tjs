@@ -33,22 +33,22 @@ if (session_status() == PHP_SESSION_NONE) {
                                 </a>
                                 <ul class="sub-menu">
                                     <li class="">
-                                        <a href="index.php#TILE">
+                                        <a href="shop.php?category=TILE">
                                             TILE
                                         </a>
                                     </li>
                                     <li class="">
-                                        <a href="index.php#SANITARY">
+                                        <a href="shop.php?category=SANITARY">
                                             SANITARY
                                         </a>
                                     </li>
                                     <li class="">
-                                        <a href="index.php#FITTING">
+                                        <a href="shop.php?category=FITTING">
                                             FITTING
                                         </a>
                                     </li>
                                     <li class="">
-                                        <a href="index.php#OTHER">
+                                        <a href="shop.php?category=OTHER">
                                             OTHER
                                         </a>
                                     </li>
@@ -286,11 +286,11 @@ if (session_status() == PHP_SESSION_NONE) {
                     if (isset($_SESSION['level'])) {
                         if ($_SESSION['level'] == "admin") {
                     ?>
-                    <li class="drop">
-                        <a href="#" style="color:#ec3923;">
-                            SMB ACADEMY
-                        </a>
-                    </li>
+                            <li class="drop">
+                                <a href="#" style="color:#ec3923;">
+                                    SMB ACADEMY
+                                </a>
+                            </li>
                     <?php
                         }
                     }

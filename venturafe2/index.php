@@ -220,7 +220,7 @@ include('rupiah.php');
 								<div class="info">
 									<a href="#" class="sale">SALE UP TO</a>
 									<span>50% OFF</span>
-									<a href="shop-full-width.html" class="shop">Shop Now<i class="zmdi zmdi-arrow-right"></i></a>
+									<a href="#" class="shop">Shop Now<i class="zmdi zmdi-arrow-right"></i></a>
 								</div>
 							</div>
 						</div>
@@ -311,7 +311,9 @@ include('rupiah.php');
 		<section class="featured-hp-1">
 			<div class="container">
 				<div class="featured-content woocommerce">
-					<span></span>
+					<div class="text-center" style="margin-bottom:63px;">
+						<h2>Our Values</h2>
+					</div>
 					<div class="row">
 						<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-5">
 							<div class="insta-detail p-4 text-center">

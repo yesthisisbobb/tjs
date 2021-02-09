@@ -3109,7 +3109,7 @@ textarea:-moz-placeholder {
     -webkit-justify-content: space-between;
     -o-justify-content: space-between;
     -ms-justify-content: space-between;
-    margin-bottom: 40px; }
+    margin-bottom: 2px; }
     .featured-hp-1.shop-full-page .woocommerce .storefront-sorting .woocommerce-ordering {
       position: relative; }
       .featured-hp-1.shop-full-page .woocommerce .storefront-sorting .woocommerce-ordering select {

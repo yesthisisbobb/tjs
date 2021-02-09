@@ -28,7 +28,6 @@ $total = mysqli_num_rows($queryTotal);
 						<div class="storefront-sorting">
 							<p class="woocommerce-result-count">Showing 1 – 12 of <?= $total ?> results</p>
 							<form class="woocommerce-ordering" method="get">
-								<button type="button" class="btn btn-link" id="clear-filter" style="color:gray;"><i class="fas fa-ban"></i> Clear Filter</button>
 								<select name="orderby" id="sort" class="orderby">
 									<option value="none">--Sort--</option>
 									<option value="low">Sort by price: low to high</option>
@@ -36,6 +35,9 @@ $total = mysqli_num_rows($queryTotal);
 								</select>
 								<span><i class="zmdi zmdi-chevron-down"></i></span>
 							</form>
+						</div>
+						<div style="display:flex;justify-content:flex-end;margin-bottom:10px;">
+							<button type="button" class="btn btn-link" id="clear-filter" style="color:gray;"><i class="fas fa-ban"></i> Clear Filter</button>
 						</div>
 						<div id="kontainerAnjay">
 
