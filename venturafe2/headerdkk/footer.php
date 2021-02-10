@@ -147,6 +147,17 @@
 		console.log('Image URL: ' + profile.getImageUrl());
 		console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
 	}
+
+	// Neken" header
+	$(".home-nav").click(function() {
+		sessionStorage.setItem("isCategorized", true);
+		sessionStorage.setItem("categoryType", "main");
+		sessionStorage.setItem("categoryCode", $(this).children("a").text().replace(/\s/g, ""));
+
+		// console.log("asd", $(this).children("a").text());
+		// loadShopContents("no-page", 0);
+	});
+
 	$(document).on('click', '#loginBtn', function() {
 		$.ajax({
 			type: 'POST',

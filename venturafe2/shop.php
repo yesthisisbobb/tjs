@@ -182,6 +182,37 @@ $total = mysqli_num_rows($queryTotal);
 			$("#kontainerAnjay").css("padding-bottom", "0");
 		}
 
+		function loadShopContents(type, page) {
+			if (type === "no-page") {
+				let jsonVal = JSON.stringify(valArr);
+				let jsonStates = JSON.stringify(statesArr);
+
+				callLoader();
+				topFunction();
+				$("#kontainerAnjay").load(`searchEngine.php?vals=${jsonVal}&states=${jsonStates}`, function() {
+					removeLoader();
+				});
+			} else if (type === "with-page") {
+				let jsonVal = JSON.stringify(valArr);
+				let jsonStates = JSON.stringify(statesArr);
+
+				callLoader();
+				topFunction();
+				$("#kontainerAnjay").load(`searchEngine.php?halaman=${page}&vals=${jsonVal}&states=${jsonStates}`, function() {
+					removeLoader();
+				});
+			} else if (type === "clear") {
+				let jsonVal = JSON.stringify({});
+				let jsonStates = JSON.stringify(statesArr);
+
+				callLoader();
+				topFunction();
+				$("#kontainerAnjay").load(`searchEngine.php?vals=${jsonVal}&states=${jsonStates}`, function() {
+					removeLoader();
+				});
+			}
+		}
+
 		$("#clear-filter").click(function() {
 			statesArr["isSorted"] = false;
 			statesArr["isSearched"] = false;
@@ -211,14 +242,7 @@ $total = mysqli_num_rows($queryTotal);
 			$("#amount").val("Rp 0 - Rp 250.000.000");
 			$('.tombol-category span').removeClass("category-active");
 
-			let jsonVal = JSON.stringify({});
-			let jsonStates = JSON.stringify(statesArr);
-
-			callLoader();
-
-			$("#kontainerAnjay").load(`searchEngine.php?vals=${jsonVal}&states=${jsonStates}`, function() {
-				removeLoader();
-			});
+			loadShopContents("clear", 0)
 		});
 
 		$("#search-header").click(function() {
@@ -241,15 +265,7 @@ $total = mysqli_num_rows($queryTotal);
 			sessionStorage.setItem("searchBy", $(this).attr("value"));
 
 			if ($('#search').val() != "") {
-				let jsonVal = JSON.stringify(valArr);
-				let jsonStates = JSON.stringify(statesArr);
-
-				callLoader();
-				topFunction();
-				$("#kontainerAnjay").load(`searchEngine.php?vals=${jsonVal}&states=${jsonStates}`, function() {
-					removeLoader();
-					$('.images-preloader').fadeOut();
-				});
+				loadShopContents("no-page", 0);
 			}
 		});
 
@@ -265,14 +281,7 @@ $total = mysqli_num_rows($queryTotal);
 			valArr["sortVal"] = val;
 			sessionStorage.setItem("sortVal", val);
 
-			let jsonVal = JSON.stringify(valArr);
-			let jsonStates = JSON.stringify(statesArr);
-
-			callLoader();
-
-			$("#kontainerAnjay").load(`searchEngine.php?vals=${jsonVal}&states=${jsonStates}`, function() {
-				removeLoader();
-			});
+			loadShopContents("no-page", 0);
 		});
 
 		$(document).on('click', '.tombol-category', function(e) {
@@ -288,15 +297,7 @@ $total = mysqli_num_rows($queryTotal);
 			sessionStorage.setItem("categoryCode", this.id);
 			sessionStorage.setItem("categoryType", $(this).attr("stype"));
 
-			let jsonVal = JSON.stringify(valArr);
-			let jsonStates = JSON.stringify(statesArr);
-
-			callLoader();
-			topFunction();
-
-			$("#kontainerAnjay").load(`searchEngine.php?vals=${jsonVal}&states=${jsonStates}`, function() {
-				removeLoader();
-			});
+			loadShopContents("no-page", 0);
 		});
 
 		// ===== Start to search after idling for 0.8 seconds ===== //
@@ -312,15 +313,7 @@ $total = mysqli_num_rows($queryTotal);
 			valArr["searchVal"] = encodeURIComponent(val);
 			sessionStorage.setItem("searchVal", encodeURIComponent(val));
 
-			let jsonVal = JSON.stringify(valArr);
-			let jsonStates = JSON.stringify(statesArr);
-
-			callLoader();
-			topFunction();
-			$("#kontainerAnjay").load(`searchEngine.php?vals=${jsonVal}&states=${jsonStates}`, function() {
-				removeLoader();
-				$('.images-preloader').fadeOut();
-			});
+			loadShopContents("no-page", 0);
 		}
 		let idleAfterTyping = null;
 		$('#search').on('keyup', function() {
@@ -362,15 +355,7 @@ $total = mysqli_num_rows($queryTotal);
 			sessionStorage.setItem("min", min);
 			sessionStorage.setItem("max", max);
 
-			let jsonVal = JSON.stringify(valArr);
-			let jsonStates = JSON.stringify(statesArr);
-
-			console.log(`searchEngine.php?vals=${jsonVal}&states=${jsonStates}`);
-
-			callLoader();
-			$("#kontainerAnjay").load(`searchEngine.php?vals=${jsonVal}&states=${jsonStates}`, function() {
-				removeLoader();
-			});
+			loadShopContents("no-page", 0);
 		});
 		// $(function() {
 		// 	$("#slider-range").slider({
@@ -414,15 +399,7 @@ $total = mysqli_num_rows($queryTotal);
 			let id = this.innerHTML;
 			sessionStorage.setItem("page", id);
 
-			let jsonVal = JSON.stringify(valArr);
-			let jsonStates = JSON.stringify(statesArr);
-
-			callLoader();
-			topFunction();
-			$("#kontainerAnjay").load(`searchEngine.php?halaman=${id}&vals=${jsonVal}&states=${jsonStates}`, function() {
-				removeLoader();
-				$('.images-preloader').fadeOut();
-			});
+			loadShopContents("with-page", id);
 		});
 		// ===== End of codes for pager ===== //
 
@@ -451,6 +428,7 @@ $total = mysqli_num_rows($queryTotal);
 			}
 			if ((valArr["categoryType"] = sessionStorage.getItem("categoryType")) && (valArr["categoryCode"] = sessionStorage.getItem("categoryCode"))) {
 				$('.tombol-category span').removeClass("category-active");
+				console.log(`#${valArr["categoryCode"]} span`);
 				$(`#${valArr["categoryCode"]} span`).addClass("category-active");
 			}
 			if (!isNaN(sessionStorage.getItem("min"))) {
@@ -489,13 +467,7 @@ $total = mysqli_num_rows($queryTotal);
 			sessionStorage.setItem("categoryType", "main");
 			sessionStorage.setItem("categoryCode", getUrlParameter("category"));
 
-			let jsonVal = JSON.stringify(valArr);
-			let jsonStates = JSON.stringify(statesArr);
-
-			callLoader();
-			$("#kontainerAnjay").load(`searchEngine.php?vals=${jsonVal}&states=${jsonStates}`, function() {
-				removeLoader();
-			});
+			loadShopContents("no-page", 0);
 		} else if (getUrlParameter("brand")) {
 			statesArr['isCategorized'] = true;
 			sessionStorage.setItem("isCategorized", true);
@@ -505,21 +477,9 @@ $total = mysqli_num_rows($queryTotal);
 			sessionStorage.setItem("categoryType", "merk");
 			sessionStorage.setItem("categoryCode", getUrlParameter("brand"));
 
-			let jsonVal = JSON.stringify(valArr);
-			let jsonStates = JSON.stringify(statesArr);
-
-			callLoader();
-			$("#kontainerAnjay").load(`searchEngine.php?vals=${jsonVal}&states=${jsonStates}`, function() {
-				removeLoader();
-			});
+			loadShopContents("no-page", 0);
 		} else {
-			let jsonVal = JSON.stringify(valArr);
-			let jsonStates = JSON.stringify(statesArr);
-
-			callLoader();
-			$("#kontainerAnjay").load(`searchEngine.php?vals=${jsonVal}&states=${jsonStates}`, function() {
-				removeLoader();
-			});
+			loadShopContents("no-page", 0);
 		}
 	</script>
 	</body>

@@ -32,22 +32,22 @@ if (session_status() == PHP_SESSION_NONE) {
                                     HOME
                                 </a>
                                 <ul class="sub-menu">
-                                    <li class="">
+                                    <li class="home-nav">
                                         <a href="shop.php?category=TILE">
                                             TILE
                                         </a>
                                     </li>
-                                    <li class="">
+                                    <li class="home-nav">
                                         <a href="shop.php?category=SANITARY">
                                             SANITARY
                                         </a>
                                     </li>
-                                    <li class="">
+                                    <li class="home-nav">
                                         <a href="shop.php?category=FITTING">
                                             FITTING
                                         </a>
                                     </li>
-                                    <li class="">
+                                    <li class="home-nav">
                                         <a href="shop.php?category=OTHER">
                                             OTHER
                                         </a>
