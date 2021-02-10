@@ -504,6 +504,22 @@
 }
 
 /* ===== Akhir Punya e Floating Cart ===== */
+/* ===== Punya e My account ===== */
+.ma-header{
+    margin-bottom: 24px;
+}
+#other-login{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    margin-top: 24px;
+}
+#other-login div{
+    margin-bottom: 10px;
+}
+/* ===== Akhir Punya e My account ===== */
 /* ===== Punya e Footer ===== */
 .contact-location{
     color: #ecb319;

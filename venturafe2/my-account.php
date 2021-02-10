@@ -12,7 +12,7 @@ include('rupiah.php');
 </style>
 
 <head>
-	<title>Smart Marble</title>
+	<title>SMB | Login or Register</title>
 	<?php include("./headerdkk/template-head.php"); ?>
 </head>
 
@@ -20,14 +20,14 @@ include('rupiah.php');
 	<?php include('headerdkk/header.php'); ?>
 	<div class="page-content">
 		<!-- My Account Section -->
-		<section class="my-account-section section-box">
+		<section class="my-account-section section-box" style="padding-top: 140px">
 			<div class="woocommerce">
 				<div class="container">
 					<div class="content-area">
 						<div class="row">
 							<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
 								<div class="entry-content">
-									<h2 class="special-heading">Login account</h2>
+									<h4 class="ma-header">Login</h4>
 									<form id="login-form-ma" class="woocommerce-form-register js-contact-form">
 										<div class="input-container input-border">
 											<i class=" fa fa-envelope icon icon"></i>
@@ -42,13 +42,17 @@ include('rupiah.php');
 										<button style="cursor:pointer;background:#6c757d;color:white;border:0px solid white;padding:12px" id="login-button-ma" type="button" data-dismiss="modal" class="au-btn loginBtn">
 											L O G I N
 										</button>
-										<div class="g-signin2" data-onsuccess="onSignIn"></div>
+										<div id="other-login">
+											<h4 class="ma-header">or login with social media</h4>
+											<div class="g-signin2" data-onsuccess="onSignIn"></div>
+											<div class="fb-login-button" data-width="" data-size="medium" data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>
+										</div>
 									</form>
 								</div>
 							</div>
 							<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
 								<div class="novas-form-signup">
-									<h2 class="special-heading">Register</h2>
+									<h4 class="ma-header">Register</h4>
 									<form id="formRegister" class="woocommerce-form-register js-contact-form">
 										<div class="input-container input-border">
 											<i class=" fa fa-envelope icon icon"></i>
@@ -132,13 +136,11 @@ include('rupiah.php');
 	</div>
 	<?php include("headerdkk/footer.php"); ?>
 	<script type="text/javascript">
-		$.ajax({
-			type: 'POST',
-			url: 'ajaxHome.php',
-			success: function(data) {
-				document.getElementById("kontainerAnjay").innerHTML = data;
-				$('.images-preloader').fadeOut();
-			}
+		$(document).ready(function() {
+			FB.getLoginStatus(function(response) {
+				console.log(response);
+				// statusChangeCallback(response);
+			});
 		});
 		$('#register').on('click', function() {
 			if ($('#email').val() != "" && $('#password1').val() != "" && $('#alamat').val() != "") {

@@ -139,6 +139,32 @@
 <!-- Google Sign-in -->
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 
+<!-- Facebook Sign-in -->
+<!-- TODO: Pindah ke halaman-halaman yang butuh -->
+<script>
+	window.fbAsyncInit = function() {
+		FB.init({
+			appId: '734873737231892',
+			cookie: true,
+			xfbml: true,
+			version: 'v9.0'
+		});
+
+		FB.AppEvents.logPageView();
+
+	};
+
+	(function(d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) {
+			return;
+		}
+		js = d.createElement(s);
+		js.id = id;
+		js.src = "https://connect.facebook.net/en_US/sdk.js";
+		fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
+</script>
 <script>
 	function onSignIn(googleUser) {
 		var profile = googleUser.getBasicProfile();
@@ -153,9 +179,6 @@
 		sessionStorage.setItem("isCategorized", true);
 		sessionStorage.setItem("categoryType", "main");
 		sessionStorage.setItem("categoryCode", $(this).children("a").text().replace(/\s/g, ""));
-
-		// console.log("asd", $(this).children("a").text());
-		// loadShopContents("no-page", 0);
 	});
 
 	$(document).on('click', '#loginBtn', function() {

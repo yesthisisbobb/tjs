@@ -27,7 +27,7 @@ if (session_status() == PHP_SESSION_NONE) {
 <link rel="stylesheet" type="text/css" href="fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
 <link rel="stylesheet" type="text/css" href="fonts/linearicons/style.css">
 <link rel="stylesheet" type="text/css" href="css/poppins-font.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" defer/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" defer />
 <!-- CSS   
   ================================================== -->
 <!-- Font Awesome -->
@@ -39,7 +39,7 @@ if (session_status() == PHP_SESSION_NONE) {
 <!-- Material Design Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet" defer>
 <!-- Bootrap -->
-<link rel="stylesheet" href="vendor/bootrap/css/bootstrap.min.css" async/>
+<link rel="stylesheet" href="vendor/bootrap/css/bootstrap.min.css" async />
 <!-- Owl Carousel 2 -->
 <link rel="stylesheet" href="vendor/owl/css/owl.carousel.min.css">
 <link rel="stylesheet" href="vendor/owl/css/owl.theme.default.min.css">
@@ -55,7 +55,7 @@ if (session_status() == PHP_SESSION_NONE) {
 <!-- noUiSlider Library -->
 <link rel="stylesheet" type="text/css" href="vendor/nouislider/css/nouislider.css">
 <!-- Main Style Css -->
-<link rel="stylesheet" href="css/style.css?ver=1.1" defer/>
+<link rel="stylesheet" href="css/style.css?ver=1.1" defer />
 <!-- Kastem -->
 <link rel="stylesheet" type="text/css" href="css/custom.css?ver=1.7">
 <!-- JQUERY -->
