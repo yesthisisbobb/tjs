@@ -201,7 +201,7 @@
 						}
 					});
 					$('#canvasModal').fadeOut();
-					swal("Congratulation", "Now You Can Shop", "success");
+					Swal.fire("Congratulation", "Now You Can Shop", "success");
 					// $('body').css('overflow-y', 'auto');
 				} else {
 					swal("Error", "Password atau Email anda salah!", "error");
@@ -248,8 +248,13 @@
 			confirmButtonText: 'Log Out!'
 		}).then((result) => {
 			if (result.isConfirmed) {
-				var auth2 = gapi.auth2.getAuthInstance();
-				auth2.signOut();
+				try {
+					var auth2 = gapi.auth2.getAuthInstance();
+					auth2.signOut();
+				}
+				catch (error){
+					console.error(error);
+				}
 
 				$.ajax({
 					type: 'POST',
