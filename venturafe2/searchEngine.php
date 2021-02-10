@@ -100,87 +100,98 @@ $masterQuery = "$selects $froms $wheres";
 // echo $masterQuery;
 $queryTotal = $conn->query($masterQuery);
 $total = mysqli_num_rows($queryTotal);
-$numOfPages = ceil($total / $contentPerPage);
+if ($total > 0) {
+    $numOfPages = ceil($total / $contentPerPage);
 
-$i = 0;
-$queryMasterSubGrup = $conn->query("$masterQuery LIMIT $firstItemIndex, $contentPerPage");
-while($rowMasterSubGrup = mysqli_fetch_assoc($queryMasterSubGrup)){
-    $i++;
+    $i = 0;
+    $queryMasterSubGrup = $conn->query("$masterQuery LIMIT $firstItemIndex, $contentPerPage");
+    while ($rowMasterSubGrup = mysqli_fetch_assoc($queryMasterSubGrup)) {
+        $i++;
 
-    $merk = $rowMasterSubGrup['merk'];
-    $namaGrup = $rowMasterSubGrup['grup'];
-    $jum = 0;
-    $kodeProduk = $rowMasterSubGrup['tipe'];
-    $kodeStok = $rowMasterSubGrup['kode'];
+        $merk = $rowMasterSubGrup['merk'];
+        $namaGrup = $rowMasterSubGrup['grup'];
+        $jum = 0;
+        $kodeProduk = $rowMasterSubGrup['tipe'];
+        $kodeStok = $rowMasterSubGrup['kode'];
 
-    $file = getProductPicture($kodeProduk);
+        $file = getProductPicture($kodeProduk);
 
-    // $queryMerk = $conn->query("SELECT * FROM master_merk WHERE kode ='$merk'");
-    // $dataMerk = mysqli_fetch_assoc($queryMerk);
-    // $showPrice = $dataMerk['publish'];
-    $showPrice = 1;
+        // $queryMerk = $conn->query("SELECT * FROM master_merk WHERE kode ='$merk'");
+        // $dataMerk = mysqli_fetch_assoc($queryMerk);
+        // $showPrice = $dataMerk['publish'];
+        $showPrice = 1;
 
-    $harga = 0;
-    $queryHarga = $conn->query("SELECT * FROM master_price WHERE kode ='$kodeStok'");
-    while ($rowHarga = mysqli_fetch_assoc($queryHarga)) {
-        $harga = $rowHarga['pls'];
-    }
+        $harga = 0;
+        $queryHarga = $conn->query("SELECT * FROM master_price WHERE kode ='$kodeStok'");
+        while ($rowHarga = mysqli_fetch_assoc($queryHarga)) {
+            $harga = $rowHarga['pls'];
+        }
 
-    // Stok
-    $Spage = 1;
-    $apidata = ventura('item/stock?page=' . $Spage, ["kode" => "$kodeProduk", 'merk' => null, 'gudang' => null], 'POST');
-    $apitotalpage = $apidata["result"]["total_page"];
+        // Stok
+        $Spage = 1;
+        $apidata = ventura('item/stock?page=' . $Spage, ["kode" => "$kodeProduk", 'merk' => null, 'gudang' => null], 'POST');
+        $apitotalpage = $apidata["result"]["total_page"];
 
-    $jum = 0;
-    for ($j = 1; $j <= $apitotalpage; $j++) {
-        $apidata = ventura('item/stock?page=' . $j, ["kode" => "$kodeProduk", 'merk' => null, 'gudang' => null], 'POST');
-        foreach ($apidata["result"]["data"] as $d) {
-            $jum += $d["stok"];
+        $jum = 0;
+        for ($j = 1; $j <= $apitotalpage; $j++) {
+            $apidata = ventura('item/stock?page=' . $j, ["kode" => "$kodeProduk", 'merk' => null, 'gudang' => null], 'POST');
+            foreach ($apidata["result"]["data"] as $d) {
+                $jum += $d["stok"];
+            }
+        }
+        // $queryStok = $conn->query("SELECT * FROM master_shading where kode_stok='$kodeStok' AND (gudang = '1G.PROYEK' OR gudang = '1G DISPLAY SALE' OR gudang = '1G SHOWROOM BRAVAT' OR gudang='1G.DISPLAY KMJ-1' OR gudang = '1G.DISPLAY KMJ-2' OR gudang = '1G.DISTRIBUSI' OR gudang = '1G.RETAILjkt' OR gudang = '1G.TOKO1' OR gudang = '1G.TOKO2' OR gudang = '4G.JAKARTA')");
+        // while ($rowStok = mysqli_fetch_assoc($queryStok)) {
+        //     $jum += $rowStok["jum"];
+        // }
+
+        // Favorite
+        $isFavorite = 0;
+        if (isset($_SESSION['username'])) {
+            $queryFavorite = $conn->query("SELECT * FROM fav where user='" . $_SESSION['username'] . "' AND kode='$kodeStok'");
+            $isFavorite = mysqli_num_rows($queryFavorite);
+        }
+
+        if ($i % $itemsPerRow == 1) {
+            echo '<div class="row">';
+        }
+
+        echo productContainerv2($kodeProduk, $kodeStok, $namaGrup, getSmallBrandLogo($merk), $file, $harga, $jum, $isFavorite, $showPrice);
+
+        if ($i % $itemsPerRow == 0) {
+            echo '</div>';
         }
     }
-    // $queryStok = $conn->query("SELECT * FROM master_shading where kode_stok='$kodeStok' AND (gudang = '1G.PROYEK' OR gudang = '1G DISPLAY SALE' OR gudang = '1G SHOWROOM BRAVAT' OR gudang='1G.DISPLAY KMJ-1' OR gudang = '1G.DISPLAY KMJ-2' OR gudang = '1G.DISTRIBUSI' OR gudang = '1G.RETAILjkt' OR gudang = '1G.TOKO1' OR gudang = '1G.TOKO2' OR gudang = '4G.JAKARTA')");
-    // while ($rowStok = mysqli_fetch_assoc($queryStok)) {
-    //     $jum += $rowStok["jum"];
-    // }
-
-    // Favorite
-    $isFavorite = 0;
-    if (isset($_SESSION['username'])) {
-        $queryFavorite = $conn->query("SELECT * FROM fav where user='" . $_SESSION['username'] . "' AND kode='$kodeStok'");
-        $isFavorite = mysqli_num_rows($queryFavorite);
+    if ($i < $contentPerPage) {
+        echo "</div>";
     }
 
-    if ($i % $itemsPerRow == 1) {
-        echo '<div class="row">';
+    echo    '<div class="navigation pagination">
+                <div class="page-numbers">';
+
+    $showPage = 0;
+    $sidePagesQty = 3; // Number for how many pages will be shown on the sides of the active page
+    for ($i = 1; $i <= $numOfPages; $i++) {
+        if ((($i >= $currentPage - $sidePagesQty) && ($i <= $currentPage + $sidePagesQty)) || ($i == 1) || ($i == $numOfPages)) {
+            if (($showPage == 1) && ($i != 2))  echo "<label style = 'margin-left :5px;font-weight:bold;color:#1ABC9C'> . . . </label>";
+            if (($showPage != ($numOfPages - 1)) && ($i == $numOfPages))  echo "<label style = 'margin-left :5px;font-weight:bold;color:#1ABC9C'> . . . </label>";
+
+            if ($i == $currentPage) echo '<button class="pager" id="paging" style = "background:#1ABC9C;border:1px solid #1ABC9C;color:white;border-radius :1px;margin-left:5px;width:45px;height:45px;" class="page-numbers current">' . $i . '</button>';
+            else echo '<button class="pager" id="paging" style = "background:white;border:1px solid #1ABC9C;color:#1ABC9C;border-radius :1px;width:45px;height:45px;margin-left:5px" class="page-numbers current">' . $i . '</button>';
+
+            $showPage = $i;
+        }
     }
 
-    echo productContainerv2($kodeProduk, $kodeStok, $namaGrup, getSmallBrandLogo($merk), $file, $harga, $jum, $isFavorite, $showPrice);
-
-    if ($i % $itemsPerRow == 0) {
-        echo '</div>';
-    }
-}
-if ($i < $contentPerPage) {
-    echo "</div>";
-}
-
-echo    '<div class="navigation pagination">
-            <div class="page-numbers">';
-
-$showPage = 0;
-$sidePagesQty = 3; // Number for how many pages will be shown on the sides of the active page
-for ($i = 1; $i <= $numOfPages; $i++) {
-    if ((($i >= $currentPage - $sidePagesQty) && ($i <= $currentPage + $sidePagesQty)) || ($i == 1) || ($i == $numOfPages)) {
-        if (($showPage == 1) && ($i != 2))  echo "<label style = 'margin-left :5px;font-weight:bold;color:#1ABC9C'> . . . </label>";
-        if (($showPage != ($numOfPages - 1)) && ($i == $numOfPages))  echo "<label style = 'margin-left :5px;font-weight:bold;color:#1ABC9C'> . . . </label>";
-
-        if ($i == $currentPage) echo '<button class="pager" id="paging" style = "background:#1ABC9C;border:1px solid #1ABC9C;color:white;border-radius :1px;margin-left:5px;width:45px;height:45px;" class="page-numbers current">' . $i . '</button>';
-        else echo '<button class="pager" id="paging" style = "background:white;border:1px solid #1ABC9C;color:#1ABC9C;border-radius :1px;width:45px;height:45px;margin-left:5px" class="page-numbers current">' . $i . '</button>';
-
-        $showPage = $i;
-    }
+    echo        '</div>
+            </div>';
+} else {
+    echo    "<div class='row' style='display:flex;'>
+            <div class='col empty-message-container justify-content-center'>
+                <h2>Oops!</h2>
+                <img src='resource/no-result.png'>
+                <span style='text-align:center;'>Looks like the product you're looking for doesn't exist!</span>
+            </div>
+            </div>";
 }
 
-echo        '</div>
-        </div>';
 ?>
