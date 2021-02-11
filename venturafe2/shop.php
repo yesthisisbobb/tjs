@@ -168,6 +168,9 @@ $total = mysqli_num_rows($queryTotal);
 								?>
 							</ul>
 						</div>
+						<div id="filter-apply">
+							<button type="button" class="btn btn-success">Apply Filter</button>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -183,12 +186,12 @@ $total = mysqli_num_rows($queryTotal);
 			brandsVisible = false,
 			colorVisible = false,
 			patternVisible = false;
+		let categoryArr = [];
 		let valArr = {
 			"sortVal": "",
 			"searchVal": "",
 			"searchBy": "",
-			"categoryType": "",
-			"categoryCode": "",
+			"category": {},
 			"min": 100000,
 			"max": 250000000
 		};
@@ -280,8 +283,7 @@ $total = mysqli_num_rows($queryTotal);
 			sessionStorage.removeItem("sortVal");
 			sessionStorage.removeItem("searchVal");
 			sessionStorage.removeItem("searchBy");
-			sessionStorage.removeItem("categoryType");
-			sessionStorage.removeItem("categoryCode");
+			sessionStorage.removeItem("category");
 			sessionStorage.removeItem("min");
 			sessionStorage.removeItem("max");
 
@@ -342,16 +344,53 @@ $total = mysqli_num_rows($queryTotal);
 			e.preventDefault();
 			statesArr["isCategorized"] = true;
 			sessionStorage.setItem("isCategorized", true);
+			console.table("very beginning", categoryArr);
 
-			$('.tombol-category span').removeClass("category-active");
+			$(`.tombol-category[stype=${$(this).attr("stype")}] span`).removeClass("category-active");
 			$(this).children("span").addClass("category-active");
 
-			valArr["categoryCode"] = encodeURIComponent(this.id);
-			valArr["categoryType"] = encodeURIComponent($(this).attr("stype"));
-			sessionStorage.setItem("categoryCode", encodeURIComponent(this.id));
-			sessionStorage.setItem("categoryType", encodeURIComponent($(this).attr("stype")));
+			if (categoryArr.length > 0) {
+				let existsInCategoryArr = false;
+				let toBeRemovedIdx = -1;
 
-			loadShopContents("no-page", 0);
+				for (let i = 0; i < categoryArr.length; i++) {
+					const idx = categoryArr[i];
+					if (idx["categoryType"] === encodeURIComponent($(this).attr("stype"))) {
+						existsInCategoryArr = true;
+						if (idx["categoryCode"] === encodeURIComponent(this.id)) {
+							toBeRemovedIdx = i;
+							console.log("idx", toBeRemovedIdx);
+							$(`.tombol-category#${idx["categoryCode"]} span`).removeClass("category-active");
+						} else {
+							categoryArr[i]["categoryCode"] = encodeURIComponent(this.id);
+							break;
+						}
+					}
+				}
+
+				if (!existsInCategoryArr) {
+					categoryArr.push({
+						"categoryCode": encodeURIComponent(this.id),
+						"categoryType": encodeURIComponent($(this).attr("stype"))
+					});
+				}
+
+				// Remove the same one that has been clicked
+				console.log("the data", categoryArr[toBeRemovedIdx]);
+				console.table(categoryArr);
+				if (toBeRemovedIdx >= 0) categoryArr.splice(toBeRemovedIdx, 1);
+				// Reset the index
+				toBeRemovedIdx = -1;
+			} else {
+				categoryArr.push({
+					"categoryCode": encodeURIComponent(this.id),
+					"categoryType": encodeURIComponent($(this).attr("stype"))
+				});
+			}
+			console.table("very last", categoryArr);
+
+			valArr["category"] = JSON.stringify(categoryArr);
+			sessionStorage.setItem("category", JSON.stringify(categoryArr));
 		});
 
 		// ===== Start to search after idling for 0.8 seconds ===== //
@@ -480,10 +519,16 @@ $total = mysqli_num_rows($queryTotal);
 				$(".search-item .search-checkbox").removeClass("filter-checked");
 				$(`.search-item[value=${valArr['searchBy']}] .search-checkbox`).addClass("filter-checked");
 			}
-			if ((valArr["categoryType"] = decodeURIComponent(sessionStorage.getItem("categoryType"))) && (valArr["categoryCode"] = decodeURIComponent(sessionStorage.getItem("categoryCode")))) {
+			if ((valArr["category"] = sessionStorage.getItem("category"))) {
 				$('.tombol-category span').removeClass("category-active");
-				console.log(`#${valArr["categoryCode"]} span`);
-				$(`#${valArr["categoryCode"]} span`).addClass("category-active");
+				let firstParse = JSON.parse(valArr["category"]);
+				firstParse.forEach(item => {
+					categoryArr.push({
+						"categoryCode": item["categoryCode"],
+						"categoryType": item["categoryType"]
+					});
+					$(`#${item["categoryCode"]} span`).addClass("category-active");
+				});
 			}
 			if (!isNaN(sessionStorage.getItem("min"))) {
 				console.log("masuk min");
@@ -594,6 +639,10 @@ $total = mysqli_num_rows($queryTotal);
 					$("#cp ul").css("display", "block");
 					patternVisible = true;
 				}
+			});
+			// Apply filter on click for category
+			$("#filter-apply button").click(function() {
+				loadShopContents("no-page", 0);
 			});
 		});
 	</script>

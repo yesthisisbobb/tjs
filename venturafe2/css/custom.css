@@ -878,7 +878,7 @@
 }
 
 #search-filters{
-    margin-bottom: 33px;
+    margin-bottom: 43px;
 }
 #search-header{
     cursor: pointer;
@@ -942,6 +942,10 @@
 }
 .category-active{
     color: rgb(80,183,189);
+}
+#filter-apply{
+    display:flex;
+    justify-content:center;
 }
 /* ===== AKHIR PUNYA E SHOP ===== */
 

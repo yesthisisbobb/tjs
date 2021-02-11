@@ -44,18 +44,22 @@ $froms = "FROM master_sub_grup msg, detail_sub_grup dsg, master_stok ms";
 $wheres = "WHERE ms.status='Active' AND msg.nama = dsg.namagrup AND dsg.nama = ms.grupname";
 if ($statesData["isCategorized"]) {
     // echo "masuk kategori" . " ||";
-    $ctypeVal = $valData["categoryType"];
-    $catVal = $valData["categoryCode"];
 
-    if ($ctypeVal == "main") $wheres .= " AND msg.namagrup = '$catVal'";
-    if ($ctypeVal == "merk") $wheres .= " AND ms.kodemerk = '$catVal'";
-    if ($ctypeVal == "color") {
-        $froms .= ", master_tipe mt";
-        $wheres .= " AND mt.kode = ms.kodetipe AND mt.color = '$catVal'";
-    }
-    if ($ctypeVal == "pattern") {
-        $froms .= ", master_tipe mt";
-        $wheres .= " AND mt.kode = ms.kodetipe AND mt.pattern = '$catVal'";
+    $catData = json_decode($valData["category"], true);
+    foreach ($catData as $data) {
+        $ctypeVal = $data["categoryType"];
+        $catVal = $data["categoryCode"];
+        
+        if ($ctypeVal == "main") $wheres .= " AND msg.namagrup = '$catVal'";
+        if ($ctypeVal == "merk") $wheres .= " AND ms.kodemerk = '$catVal'";
+        if ($ctypeVal == "color") {
+            $froms .= ", master_tipe mt";
+            $wheres .= " AND mt.kode = ms.kodetipe AND mt.color = '$catVal'";
+        }
+        if ($ctypeVal == "pattern") {
+            $froms .= ", master_tipe mt";
+            $wheres .= " AND mt.kode = ms.kodetipe AND mt.pattern = '$catVal'";
+        }
     }
 }
 if ($statesData["isSearched"]) {
