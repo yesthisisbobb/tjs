@@ -49,6 +49,10 @@ if ($statesData["isCategorized"]) {
 
     if ($ctypeVal == "main") $wheres .= " AND msg.namagrup = '$catVal'";
     if ($ctypeVal == "merk") $wheres .= " AND ms.kodemerk = '$catVal'";
+    if ($ctypeVal == "color") {
+        $froms .= ", master_tipe mt";
+        $wheres .= " AND mt.kode = ms.kodetipe AND mt.color = '$catVal'";
+    }
 }
 if ($statesData["isSearched"]) {
     // echo "masuk search" . " ||";

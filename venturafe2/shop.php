@@ -119,6 +119,40 @@ $total = mysqli_num_rows($queryTotal);
 								?>
 							</ul>
 						</div>
+
+						<!-- Color -->
+						<div class="widget widget_product_categories">
+							<h3 class="widget-title">Color</h3>
+							<ul class="product-categories">
+								<?php
+								$queryColor = $conn->query("SELECT color, COUNT(kode) as qty FROM master_tipe WHERE color IS NOT NULL GROUP BY color");
+								while ($row = mysqli_fetch_assoc($queryColor)) {
+									$jml = $row["qty"];
+									echo '<li class="cat-item cat-parent">
+										<a href="" class="tombol-category" stype="color" id="' . $row['color'] . '"><span>' . $row['color'] . '</span></a>
+										<span>(' . $jml . ')</span>
+									</li>';
+								}
+								?>
+							</ul>
+						</div>
+
+						<!-- Pattern -->
+						<div class="widget widget_product_categories">
+							<h3 class="widget-title">Pattern</h3>
+							<ul class="product-categories">
+								<?php
+								$queryPattern = $conn->query("SELECT pattern, COUNT(kode) as qty FROM master_tipe WHERE pattern IS NOT NULL GROUP BY pattern");
+								while ($row = mysqli_fetch_assoc($queryPattern)) {
+									$jml = $row["qty"];
+									echo '<li class="cat-item cat-parent">
+										<a href="" class="tombol-category" stype="pattern" id="' . $row['pattern'] . '"><span>' . $row['pattern'] . '</span></a>
+										<span>(' . $jml . ')</span>
+									</li>';
+								}
+								?>
+							</ul>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -292,10 +326,10 @@ $total = mysqli_num_rows($queryTotal);
 			$('.tombol-category span').removeClass("category-active");
 			$(this).children("span").addClass("category-active");
 
-			valArr["categoryCode"] = this.id;
-			valArr["categoryType"] = $(this).attr("stype");
-			sessionStorage.setItem("categoryCode", this.id);
-			sessionStorage.setItem("categoryType", $(this).attr("stype"));
+			valArr["categoryCode"] = encodeURIComponent(this.id);
+			valArr["categoryType"] = encodeURIComponent($(this).attr("stype"));
+			sessionStorage.setItem("categoryCode", encodeURIComponent(this.id));
+			sessionStorage.setItem("categoryType", encodeURIComponent($(this).attr("stype")));
 
 			loadShopContents("no-page", 0);
 		});
@@ -426,7 +460,7 @@ $total = mysqli_num_rows($queryTotal);
 				$(".search-item .search-checkbox").removeClass("filter-checked");
 				$(`.search-item[value=${valArr['searchBy']}] .search-checkbox`).addClass("filter-checked");
 			}
-			if ((valArr["categoryType"] = sessionStorage.getItem("categoryType")) && (valArr["categoryCode"] = sessionStorage.getItem("categoryCode"))) {
+			if ((valArr["categoryType"] = decodeURIComponent(sessionStorage.getItem("categoryType"))) && (valArr["categoryCode"] = decodeURIComponent(sessionStorage.getItem("categoryCode")))) {
 				$('.tombol-category span').removeClass("category-active");
 				console.log(`#${valArr["categoryCode"]} span`);
 				$(`#${valArr["categoryCode"]} span`).addClass("category-active");
