@@ -84,9 +84,13 @@ $total = mysqli_num_rows($queryTotal);
 								<button id="price-button" type="button" class="btn btn-outline-dark">Apply</button>
 							</div>
 						</div>
+
 						<!-- Categories -->
-						<div class="widget widget_product_categories">
-							<h3 class="widget-title">Categories</h3>
+						<div class="widget widget_product_categories" id="cg">
+							<div class="category-dropdown">
+								<i class="fas fa-chevron-down filter-active"></i>
+								<h3>Category</h3>
+							</div>
 							<ul class="product-categories">
 								<?php
 								$queryCategories = $conn->query("SELECT * FROM master_grup");
@@ -104,8 +108,11 @@ $total = mysqli_num_rows($queryTotal);
 						</div>
 
 						<!-- Brands -->
-						<div class="widget widget_product_categories">
-							<h3 class="widget-title">Brands</h3>
+						<div class="widget widget_product_categories" id="cb">
+							<div class="category-dropdown">
+								<i class="fas fa-chevron-down"></i>
+								<h3>Brands</h3>
+							</div>
 							<ul class="product-categories">
 								<?php
 								$queryBrand = $conn->query("SELECT COUNT(ms.kodemerk) as qty, UPPER(mm.nama) as nama, UPPER(mm.kode) as kode FROM master_merk mm, master_stok ms WHERE mm.kode=ms.kodemerk GROUP BY ms.kodemerk");
@@ -121,8 +128,11 @@ $total = mysqli_num_rows($queryTotal);
 						</div>
 
 						<!-- Color -->
-						<div class="widget widget_product_categories">
-							<h3 class="widget-title">Color</h3>
+						<div class="widget widget_product_categories" id="cc">
+							<div class="category-dropdown">
+								<i class="fas fa-chevron-down"></i>
+								<h3>Color</h3>
+							</div>
 							<ul class="product-categories">
 								<?php
 								$queryColor = $conn->query("SELECT color, COUNT(kode) as qty FROM master_tipe WHERE color IS NOT NULL GROUP BY color");
@@ -138,8 +148,11 @@ $total = mysqli_num_rows($queryTotal);
 						</div>
 
 						<!-- Pattern -->
-						<div class="widget widget_product_categories">
-							<h3 class="widget-title">Pattern</h3>
+						<div class="widget widget_product_categories" id="cp">
+							<div class="category-dropdown">
+								<i class="fas fa-chevron-down"></i>
+								<h3>Pattern</h3>
+							</div>
 							<ul class="product-categories">
 								<?php
 								$queryPattern = $conn->query("SELECT pattern, COUNT(kode) as qty FROM master_tipe WHERE pattern IS NOT NULL GROUP BY pattern");
@@ -163,6 +176,10 @@ $total = mysqli_num_rows($queryTotal);
 
 	<script>
 		let searchFilterOptionsVisible = false;
+		let generalCategoryVisible = true;
+		let brandsVisible = false;
+		let colorVisible = false;
+		let patternVisible = false;
 		let valArr = {
 			"sortVal": "",
 			"searchVal": "",
@@ -515,6 +532,53 @@ $total = mysqli_num_rows($queryTotal);
 		} else {
 			loadShopContents("no-page", 0);
 		}
+		$(document).ready(function() {
+			// Muncul"in dropdown kategori
+			$("#cg .category-dropdown").click(function() {
+				if (generalCategoryVisible) {
+					$("#cg .category-dropdown i").removeClass("filter-active");
+					$("#cg ul").css("display", "none");
+					generalCategoryVisible = false;
+				} else {
+					$("#cg .category-dropdown i").addClass("filter-active");
+					$("#cg ul").css("display", "block");
+					generalCategoryVisible = true;
+				}
+			});
+			$("#cb .category-dropdown").click(function() {
+				if (brandsVisible) {
+					$("#cb .category-dropdown i").removeClass("filter-active");
+					$("#cb ul").css("display", "none");
+					brandsVisible = false;
+				} else {
+					$("#cb .category-dropdown i").addClass("filter-active");
+					$("#cb ul").css("display", "block");
+					brandsVisible = true;
+				}
+			});
+			$("#cc .category-dropdown").click(function() {
+				if (colorVisible) {
+					$("#cc .category-dropdown i").removeClass("filter-active");
+					$("#cc ul").css("display", "none");
+					colorVisible = false;
+				} else {
+					$("#cc .category-dropdown i").addClass("filter-active");
+					$("#cc ul").css("display", "block");
+					colorVisible = true;
+				}
+			});
+			$("#cp .category-dropdown").click(function() {
+				if (patternVisible) {
+					$("#cp .category-dropdown i").removeClass("filter-active");
+					$("#cp ul").css("display", "none");
+					patternVisible = false;
+				} else {
+					$("#cp .category-dropdown i").addClass("filter-active");
+					$("#cp ul").css("display", "block");
+					patternVisible = true;
+				}
+			});
+		});
 	</script>
 	</body>
 

@@ -53,6 +53,10 @@ if ($statesData["isCategorized"]) {
         $froms .= ", master_tipe mt";
         $wheres .= " AND mt.kode = ms.kodetipe AND mt.color = '$catVal'";
     }
+    if ($ctypeVal == "pattern") {
+        $froms .= ", master_tipe mt";
+        $wheres .= " AND mt.kode = ms.kodetipe AND mt.pattern = '$catVal'";
+    }
 }
 if ($statesData["isSearched"]) {
     // echo "masuk search" . " ||";

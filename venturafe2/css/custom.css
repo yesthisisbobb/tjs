@@ -698,6 +698,25 @@
 /* ===== AKHIR PUNYA E COMPANY ===== */
 
 /* ===== PUNYA E SHOP ===== */
+.category-dropdown{
+    display: flex;
+    align-items: center;
+
+    margin-bottom: 23px;
+
+    cursor: pointer;
+}
+.category-dropdown i{
+    margin-right: 12px;
+    transition: .3s ease-out;
+}
+.category-dropdown h3{
+    font-size: 20px;
+}
+#cb ul, #cc ul, #cp ul{
+    display: none;
+}
+
 .shop-product-base-container{
     padding-top: 18px;
     height: 480px;

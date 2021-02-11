@@ -57,7 +57,7 @@ if (session_status() == PHP_SESSION_NONE) {
 <!-- Main Style Css -->
 <link rel="stylesheet" href="css/style.css?ver=1.1" defer />
 <!-- Kastem -->
-<link rel="stylesheet" type="text/css" href="css/custom.css?ver=1.8">
+<link rel="stylesheet" type="text/css" href="css/custom.css?ver=1.9">
 <!-- JQUERY -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <!-- <script src="../vendor/jquery/jquery-3.5.1.min.js"></script> -->
