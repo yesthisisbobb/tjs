@@ -1,7 +1,7 @@
 <?php
 include("db/config.php");
 include("rupiah.php");
-$queryTotal = $conn->query("SELECT * FROM  master_sub_grup msg inner join detail_sub_grup dsg on UPPER(msg.nama) = UPPER(dsg.namagrup) inner join master_stok ms on UPPER(dsg.nama) = UPPER(ms.grupname) WHERE ms.status = 'Active' ORDER BY msg.namagrup");
+$queryTotal = $conn->query("SELECT ms.kodetipe FROM  master_sub_grup msg inner join detail_sub_grup dsg on UPPER(msg.nama) = UPPER(dsg.namagrup) inner join master_stok ms on UPPER(dsg.nama) = UPPER(ms.grupname) WHERE ms.status = 'Active' ORDER BY msg.namagrup");
 $total = mysqli_num_rows($queryTotal);
 ?>
 <!DOCTYPE html>
@@ -26,7 +26,6 @@ $total = mysqli_num_rows($queryTotal);
 				<div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
 					<div class="content-area">
 						<div class="storefront-sorting">
-							<p class="woocommerce-result-count">Showing 1 – 12 of <?= $total ?> results</p>
 							<form class="woocommerce-ordering" method="get">
 								<select name="orderby" id="sort" class="orderby">
 									<option value="none">--Sort--</option>
@@ -36,7 +35,7 @@ $total = mysqli_num_rows($queryTotal);
 								<span><i class="zmdi zmdi-chevron-down"></i></span>
 							</form>
 						</div>
-						<div style="display:flex;justify-content:flex-end;margin-bottom:10px;">
+						<div style="display:flex;justify-content:flex-end;margin-bottom:6px;">
 							<button type="button" class="btn btn-link" id="clear-filter" style="color:gray;"><i class="fas fa-ban"></i> Clear Filter</button>
 						</div>
 						<div id="kontainerAnjay">

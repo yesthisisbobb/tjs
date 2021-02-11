@@ -27,7 +27,7 @@ session_start();
 // };
 
 // Query related variables
-$contentPerPage = 12;
+$contentPerPage = 18;
 $itemsPerRow = 3;
 $currentPage = isset($_GET["halaman"]) ? (int)$_GET["halaman"] : 1;
 $firstItemIndex = ($currentPage > 1) ? ($currentPage * $contentPerPage) - $contentPerPage : 0;
@@ -110,6 +110,10 @@ $queryTotal = $conn->query($masterQuery);
 $total = mysqli_num_rows($queryTotal);
 if ($total > 0) {
     $numOfPages = ceil($total / $contentPerPage);
+
+    $shownindex1 = $firstItemIndex + 1;
+    $shownindex2 = $firstItemIndex + 18;
+    echo "<p class='woocommerce-result-count'>Showing $shownindex1 - $shownindex2 of $total total items</p>";
 
     $i = 0;
     $queryMasterSubGrup = $conn->query("$masterQuery LIMIT $firstItemIndex, $contentPerPage");
