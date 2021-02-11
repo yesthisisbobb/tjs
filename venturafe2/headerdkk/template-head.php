@@ -24,22 +24,22 @@ if (session_status() == PHP_SESSION_NONE) {
 <!-- Font
   ================================================== -->
 <script src="https://kit.fontawesome.com/f0ec2f5d0b.js" crossorigin="anonymous" async></script>
-<link rel="stylesheet" type="text/css" href="fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
-<link rel="stylesheet" type="text/css" href="fonts/linearicons/style.css">
-<link rel="stylesheet" type="text/css" href="css/poppins-font.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" defer />
+<link rel="stylesheet" type="text/css" href="fonts/material-design-iconic-font/css/material-design-iconic-font.min.css" async>
+<link rel="stylesheet" type="text/css" href="fonts/linearicons/style.css" async>
+<link rel="stylesheet" type="text/css" href="css/poppins-font.css" async>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" async defer />
 <!-- CSS   
   ================================================== -->
 <!-- Font Awesome -->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" defer>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" async defer>
 <!-- Google Fonts -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" async>
 <!-- Bootstrap core CSS -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" defer>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" async defer>
 <!-- Material Design Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet" defer>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet" async defer>
 <!-- Bootrap -->
-<link rel="stylesheet" href="vendor/bootrap/css/bootstrap.min.css" async />
+<link rel="stylesheet" href="vendor/bootrap/css/bootstrap.min.css" async defer />
 <!-- Owl Carousel 2 -->
 <link rel="stylesheet" href="vendor/owl/css/owl.carousel.min.css">
 <link rel="stylesheet" href="vendor/owl/css/owl.theme.default.min.css">
@@ -55,7 +55,7 @@ if (session_status() == PHP_SESSION_NONE) {
 <!-- noUiSlider Library -->
 <link rel="stylesheet" type="text/css" href="vendor/nouislider/css/nouislider.css">
 <!-- Main Style Css -->
-<link rel="stylesheet" href="css/style.css?ver=1.3" defer />
+<link rel="stylesheet" href="css/style.css?ver=1.3" async defer />
 <!-- Kastem -->
 <link rel="stylesheet" type="text/css" href="css/custom.css?ver=2.1">
 <!-- JQUERY -->
