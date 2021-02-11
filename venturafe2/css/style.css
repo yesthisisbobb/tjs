@@ -919,7 +919,7 @@ textarea:-moz-placeholder {
     -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
     -o-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
     -ms-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
-    padding: 124px 63px 70px;
+    padding: 70px 63px 70px;
     min-height: 100vh; }
     .header-hp-1 #canvasModal .canvas-content .logo {
       padding: 31px 0 30px; }

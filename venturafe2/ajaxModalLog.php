@@ -17,6 +17,10 @@ if (!isset($_SESSION['loginId'])) {
             <button style="cursor:pointer;background:#6c757d;color:white;border:0px solid white;padding:12px" id="loginBtn" type="button" data-dismiss="modal" name="add-to-cart" class="au-btn loginBtn">
                 L O G I N
             </button>
+            <div id="other-login">
+                <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                <div class="fb-login-button" data-width="" data-size="medium" data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>
+            </div>
             </form>
             <br>
             <label><a href="my-account.php" id="registerlink" style="color:#20c997">Register Now</a></label>';
