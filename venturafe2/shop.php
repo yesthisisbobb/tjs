@@ -67,8 +67,11 @@ $total = mysqli_num_rows($queryTotal);
 							</div>
 						</div>
 						<!-- Filter -->
-						<div class="widget_price_filter">
-							<h3 class="widget-title">Filter By Price</h3>
+						<div class="widget_price_filter" id="pr">
+							<div class="category-dropdown">
+								<i class="fas fa-chevron-down filter-active"></i>
+								<h3>Price</h3>
+							</div>
 							<div id="price-filter">
 								<div class="price-input">
 									<span>Min</span>
@@ -174,11 +177,12 @@ $total = mysqli_num_rows($queryTotal);
 	<?php include('headerdkk/footer.php') ?>
 
 	<script>
-		let searchFilterOptionsVisible = false;
-		let generalCategoryVisible = true;
-		let brandsVisible = false;
-		let colorVisible = false;
-		let patternVisible = false;
+		let searchFilterOptionsVisible = false,
+			priceVisible = true,
+			generalCategoryVisible = true,
+			brandsVisible = false,
+			colorVisible = false,
+			patternVisible = false;
 		let valArr = {
 			"sortVal": "",
 			"searchVal": "",
@@ -532,6 +536,20 @@ $total = mysqli_num_rows($queryTotal);
 			loadShopContents("no-page", 0);
 		}
 		$(document).ready(function() {
+			// Dropdown Price
+			$("#pr .category-dropdown").click(function() {
+				if (priceVisible) {
+					$("#pr .category-dropdown i").removeClass("filter-active");
+					$("#price-filter").css("display", "none");
+					$("#price-apply").css("display", "none");
+					priceVisible = false;
+				} else {
+					$("#pr .category-dropdown i").addClass("filter-active");
+					$("#price-filter").css("display", "flex");
+					$("#price-apply").css("display", "flex");
+					priceVisible = true;
+				}
+			});
 			// Muncul"in dropdown kategori
 			$("#cg .category-dropdown").click(function() {
 				if (generalCategoryVisible) {

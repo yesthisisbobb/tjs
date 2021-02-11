@@ -3137,7 +3137,7 @@ textarea:-moz-placeholder {
   padding-bottom: 100px; }
   .shop-right-siderbar .widget-area .widget_search {
     position: relative;
-    margin: -6px 0 24px; }
+    margin: -6px 0 8px; }
     .shop-right-siderbar .widget-area .widget_search input {
       padding: 0 0 9px;
       border: none;
@@ -3165,7 +3165,7 @@ textarea:-moz-placeholder {
       -o-outline: none;
       -ms-outline: none; }
   .shop-right-siderbar .widget-area .widget_price_filter {
-    margin-bottom: 55px; }
+    margin-bottom: 33px; }
     .shop-right-siderbar .widget-area .widget_price_filter .widget-title {
       font-size: 20px;
       margin-bottom: 35px; }
