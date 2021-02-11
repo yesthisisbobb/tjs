@@ -111,7 +111,9 @@ $masterQuery = "$selects $froms $wheres";
 
 // echo $masterQuery;
 $queryTotal = $conn->query($masterQuery);
-$total = mysqli_num_rows($queryTotal);
+$total = 0;
+if ($queryTotal) $total = mysqli_num_rows($queryTotal);
+
 if ($total > 0) {
     $numOfPages = ceil($total / $contentPerPage);
 
