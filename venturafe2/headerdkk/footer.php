@@ -5,7 +5,7 @@
 				<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-5">
 					<div class="footer-items">
 						<div class="logo">
-							<a href="index1.html"><img src="../venturafe1/img/logo/smbwh.png" alt="logo"></a>
+							<a href="index.php"><img src="../venturafe1/img/logo/smbwh.png" alt="logo"></a>
 						</div>
 						<p>Smart Marble & Bath(SMB)
 							is a subsidiary company of Karya Modern Group.

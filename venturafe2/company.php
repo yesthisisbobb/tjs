@@ -19,7 +19,12 @@ include('rupiah.php');
                 <img src="resource/smboutline_logo_only.svg" alt="Smart Marble & Bath Logo" class="not-selectable">
             </div>
             <div id="cp-projects">
-                <div id="cp-projects-header" class="smb-serif">
+                <div class="smb-serif cp-section">
+                    About Us
+                </div>
+            </div>
+            <div id="cp-projects">
+                <div class="smb-serif cp-section">
                     Project Portfolio
                 </div>
             </div>
