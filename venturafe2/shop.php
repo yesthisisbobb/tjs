@@ -69,7 +69,7 @@ $total = mysqli_num_rows($queryTotal);
 						<!-- Filter -->
 						<div class="widget_price_filter" id="pr">
 							<div class="category-dropdown">
-								<i class="fas fa-chevron-down filter-active"></i>
+								<i class="fas fa-chevron-down"></i>
 								<h3>Price</h3>
 							</div>
 							<div id="price-filter">
@@ -90,7 +90,7 @@ $total = mysqli_num_rows($queryTotal);
 						<!-- Categories -->
 						<div class="widget widget_product_categories" id="cg">
 							<div class="category-dropdown">
-								<i class="fas fa-chevron-down filter-active"></i>
+								<i class="fas fa-chevron-down"></i>
 								<h3>Category</h3>
 							</div>
 							<ul class="product-categories">
@@ -169,7 +169,7 @@ $total = mysqli_num_rows($queryTotal);
 							</ul>
 						</div>
 						<div id="filter-apply">
-							<button type="button" class="btn btn-success">Apply Filter</button>
+							<button type="button" class="btn btn-success">Search</button>
 						</div>
 					</div>
 				</div>
@@ -181,8 +181,8 @@ $total = mysqli_num_rows($queryTotal);
 
 	<script>
 		let searchFilterOptionsVisible = false,
-			priceVisible = true,
-			generalCategoryVisible = true,
+			priceVisible = false,
+			generalCategoryVisible = false,
 			brandsVisible = false,
 			colorVisible = false,
 			patternVisible = false;
