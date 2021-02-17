@@ -3,16 +3,6 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 ?>
-<!-- Images Loader -->
-<!-- <div class="images-preloader">
-    <div id="preloader_1" class="rectangle-bounce">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-</div> -->
 
 <header class="header">
     <!-- Show Desktop Header -->
@@ -213,12 +203,6 @@ if (session_status() == PHP_SESSION_NONE) {
                                 <div class="canvas-content" style="background-image:url('resource/backlogin.jpg');">
                                     <div class="contact" id="modalLog">
 
-                                    </div>
-                                    <div class="socials">
-                                        <a href="#"><i class="zmdi zmdi-facebook"></i></a>
-                                        <a href="#"><i class="zmdi zmdi-twitter"></i></a>
-                                        <a href="#"><i class="zmdi zmdi-tumblr"></i></a>
-                                        <a href="#"><i class="zmdi zmdi-instagram"></i></a>
                                     </div>
                                 </div>
                             </div>
