@@ -25,19 +25,6 @@ $total = mysqli_num_rows($queryTotal);
 			<div class="row">
 				<div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
 					<div class="content-area">
-						<div class="storefront-sorting">
-							<form class="woocommerce-ordering" method="get">
-								<select name="orderby" id="sort" class="orderby">
-									<option value="none">--Sort--</option>
-									<option value="low">Sort by price: low to high</option>
-									<option value="high">Sort by price: high to low</option>
-								</select>
-								<span><i class="zmdi zmdi-chevron-down"></i></span>
-							</form>
-						</div>
-						<div style="display:flex;justify-content:flex-end;margin-bottom:6px;">
-							<button type="button" class="btn btn-link" id="clear-filter" style="color:gray;"><i class="fas fa-ban"></i> Clear Filter</button>
-						</div>
 						<div id="kontainerAnjay">
 
 						</div>
@@ -47,129 +34,125 @@ $total = mysqli_num_rows($queryTotal);
 					<div class="widget-area">
 						<!-- Search -->
 						<div class="widget widget_search">
-							<form class="search-form" method="get" role="search">
-								<input type="texts" id="search" name="search" class="search-field" placeholder="Type here to search">
-								<i class="zmdi zmdi-search search-submit"></i>
-							</form>
-						</div>
-						<div id="search-filters">
-							<div id="search-header"><i class="fas fa-chevron-down"></i>Search by</div>
-							<div id="search-options">
-								<div class="search-item" value="type">
-									<div class="search-checkbox filter-checked"></div>Type
-								</div>
-								<div class="search-item" value="code">
-									<div class="search-checkbox"></div>Code
-								</div>
-								<div class="search-item" value="brand">
-									<div class="search-checkbox"></div>Brand
-								</div>
+							<div class="ui-widget">
+								<input type="texts" id="search" name="search" class="search-field ui-autocomplete-input" placeholder="Type here to search" autocomplete="off">
 							</div>
+							<i class="zmdi zmdi-search search-submit"></i>
 						</div>
+
 						<!-- Filter -->
 						<div class="widget_price_filter" id="pr">
 							<div class="category-dropdown">
-								<i class="fas fa-chevron-down"></i>
 								<h3>Price</h3>
 							</div>
-							<div id="price-filter">
-								<div class="price-input">
-									<span>Min</span>
-									<input type="number" id="min">
-								</div>
-								<div class="price-input">
-									<span>Max</span>
-									<input type="number" id="max">
-								</div>
+							<select class="filters" id="prf">
+								<option value="none">All</option>
+								<option value="lth">Low to High</option>
+								<option value="htl">High to Low</option>
+								<option value="be1">Below 100k</option>
+								<option value="ab1">Above 100k</option>
+								<option value="be2">Below 1.000k</option>
+								<option value="ab2">Above 1.000k</option>
+							</select>
+						</div>
+
+						<!-- Stock -->
+						<div class="widget widget_product_categories">
+							<div class="category-dropdown">
+								<h3>Availability</h3>
 							</div>
-							<div id="price-apply">
-								<button id="price-button" type="button" class="btn btn-outline-dark">Apply</button>
-							</div>
+							<select class="filters" id="avf">
+								<option value="none">All</option>
+								<option value="rdy">Ready</option>
+								<option value="idt">Indent</option>
+							</select>
 						</div>
 
 						<!-- Categories -->
 						<div class="widget widget_product_categories" id="cg">
 							<div class="category-dropdown">
-								<i class="fas fa-chevron-down"></i>
 								<h3>Category</h3>
 							</div>
-							<ul class="product-categories">
+							<select stype="main" class="filters" id="caf">
+								<option value="none">All</option>
 								<?php
-								$queryCategories = $conn->query("SELECT * FROM master_grup");
-								while ($row = mysqli_fetch_assoc($queryCategories)) {
-									$namagrup = $row['nama'];
-									$queryMasterSubGrup = $conn->query("SELECT * FROM  master_sub_grup msg inner join detail_sub_grup dsg on msg.nama = dsg.namagrup inner join master_stok on dsg.nama = grupname WHERE msg.namagrup = '$namagrup'");
-									$jml = mysqli_num_rows($queryMasterSubGrup);
-									echo '<li class="cat-item cat-parent">
-										<a href="" class="tombol-category" stype="main" id="' . $row['nama'] . '"><span>' . $row['nama'] . '</span></a>
-										<span>(' . $jml . ')</span>
-									</li>';
+								$command = "SELECT DISTINCT msg.namagrup as nama FROM master_stok ms, master_sub_grup msg, detail_sub_grup dsg WHERE ms.grupname = dsg.nama AND dsg.namagrup = msg.nama";
+								$query = mysqli_query($conn, $command);
+								while ($row = mysqli_fetch_assoc($query)) {
+									echo 	"<option value='" . $row["nama"] . "'>
+												" . $row["nama"] . "
+											</option>";
 								}
 								?>
-							</ul>
+							</select>
 						</div>
 
 						<!-- Brands -->
 						<div class="widget widget_product_categories" id="cb">
 							<div class="category-dropdown">
-								<i class="fas fa-chevron-down"></i>
 								<h3>Brands</h3>
 							</div>
-							<ul class="product-categories">
+							<select stype="merk" class="filters" id="brf">
+								<option value="none">All</option>
 								<?php
-								$queryBrand = $conn->query("SELECT COUNT(ms.kodemerk) as qty, UPPER(mm.nama) as nama, UPPER(mm.kode) as kode FROM master_merk mm, master_stok ms WHERE mm.kode=ms.kodemerk GROUP BY ms.kodemerk");
-								while ($row = mysqli_fetch_assoc($queryBrand)) {
-									$jml = $row["qty"];
-									echo '<li class="cat-item cat-parent">
-										<a href="" class="tombol-category" stype="merk" id="' . $row['kode'] . '"><span>' . $row['nama'] . '</span></a>
-										<span>(' . $jml . ')</span>
-									</li>';
+								$command = "SELECT DISTINCT UPPER(mm.nama) as nama, UPPER(mm.kode) as kode FROM master_stok ms, master_merk mm WHERE ms.kodemerk = mm.kode";
+								$query = mysqli_query($conn, $command);
+								while ($row = mysqli_fetch_assoc($query)) {
+									echo 	"<option value='" . $row["kode"] . "'>
+												" . $row["nama"] . "
+											</option>";
 								}
 								?>
-							</ul>
+							</select>
 						</div>
 
 						<!-- Color -->
 						<div class="widget widget_product_categories" id="cc">
 							<div class="category-dropdown">
-								<i class="fas fa-chevron-down"></i>
 								<h3>Color</h3>
 							</div>
-							<ul class="product-categories">
+							<select stype="color" class="filters" id="cof">
+								<option value="none">All</option>
 								<?php
-								$queryColor = $conn->query("SELECT color, COUNT(kode) as qty FROM master_tipe WHERE color IS NOT NULL GROUP BY color");
-								while ($row = mysqli_fetch_assoc($queryColor)) {
-									$jml = $row["qty"];
-									echo '<li class="cat-item cat-parent">
-										<a href="" class="tombol-category" stype="color" id="' . $row['color'] . '"><span>' . $row['color'] . '</span></a>
-										<span>(' . $jml . ')</span>
-									</li>';
+								$command = "SELECT DISTINCT mt.color as color FROM master_stok ms, master_tipe mt WHERE ms.kodetipe = mt.kode";
+								$query = mysqli_query($conn, $command);
+								while ($row = mysqli_fetch_assoc($query)) {
+									echo 	"<option value='" . $row["color"] . "'>
+												" . $row["color"] . "
+											</option>";
 								}
 								?>
-							</ul>
+								<option value="BEIGE">
+									BEIGE
+								</option>
+							</select>
 						</div>
 
 						<!-- Pattern -->
 						<div class="widget widget_product_categories" id="cp">
 							<div class="category-dropdown">
-								<i class="fas fa-chevron-down"></i>
 								<h3>Pattern</h3>
 							</div>
-							<ul class="product-categories">
+							<select stype="pattern" class="filters" id="paf">
+								<option value="none">All</option>
 								<?php
-								$queryPattern = $conn->query("SELECT pattern, COUNT(kode) as qty FROM master_tipe WHERE pattern IS NOT NULL GROUP BY pattern");
-								while ($row = mysqli_fetch_assoc($queryPattern)) {
-									$jml = $row["qty"];
-									echo '<li class="cat-item cat-parent">
-										<a href="" class="tombol-category" stype="pattern" id="' . $row['pattern'] . '"><span>' . $row['pattern'] . '</span></a>
-										<span>(' . $jml . ')</span>
-									</li>';
+								$command = "SELECT DISTINCT mt.pattern as pattern FROM master_stok ms, master_tipe mt WHERE ms.kodetipe = mt.kode";
+								$query = mysqli_query($conn, $command);
+								while ($row = mysqli_fetch_assoc($query)) {
+									echo 	"<option value='" . $row["pattern"] . "'>
+												" . $row["pattern"] . "
+											</option>";
 								}
 								?>
-							</ul>
+							</select>
 						</div>
-						<div id="filter-apply">
-							<button type="button" class="btn btn-success">Search</button>
+
+						<!-- Clear filter -->
+						<div style="display:flex;justify-content:space-around;margin-bottom:6px;">
+							<button type="button" class="btn btn-link" id="clear-filter" style="color:gray;"><i class="fas fa-ban"></i> Clear Filter</button>
+							<div id="filter-apply">
+								<button type="button" class="btn btn-success waves-effect waves-light">Search</button>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -180,26 +163,19 @@ $total = mysqli_num_rows($queryTotal);
 	<?php include('headerdkk/footer.php') ?>
 
 	<script>
-		let searchFilterOptionsVisible = false,
-			priceVisible = false,
-			generalCategoryVisible = false,
-			brandsVisible = false,
-			colorVisible = false,
-			patternVisible = false;
+		let autocompleteArr = [];
 		let categoryArr = [];
 		let valArr = {
-			"sortVal": "",
 			"searchVal": "",
-			"searchBy": "",
-			"category": {},
-			"min": 100000,
-			"max": 250000000
+			"priceVal": "",
+			"availVal": "",
+			"category": {}
 		};
 		let statesArr = {
-			"isSorted": false,
 			"isSearched": false,
-			"isCategorized": false,
-			"isFilteredByPrice": false
+			"isFilteredByPrice": false,
+			"isFilteredByAvail": false,
+			"isCategorized": false
 		};
 
 		// Ngabil value dari URL
@@ -240,6 +216,10 @@ $total = mysqli_num_rows($queryTotal);
 		}
 
 		function loadShopContents(type, page) {
+			// Debugging table contents
+			console.table("valArr", valArr);
+			console.table("statesArr", statesArr);
+
 			if (type === "no-page") {
 				let jsonVal = JSON.stringify(valArr);
 				let jsonStates = JSON.stringify(statesArr);
@@ -270,222 +250,166 @@ $total = mysqli_num_rows($queryTotal);
 			}
 		}
 
-		$("#clear-filter").click(function() {
-			statesArr["isSorted"] = false;
-			statesArr["isSearched"] = false;
-			statesArr["isCategorized"] = false;
-			statesArr["isFilteredByPrice"] = false;
-			sessionStorage.removeItem("isSorted");
-			sessionStorage.removeItem("isSearched");
-			sessionStorage.removeItem("isCategorized");
-			sessionStorage.removeItem("isFilteredByPrice");
-
-			sessionStorage.removeItem("sortVal");
-			sessionStorage.removeItem("searchVal");
-			sessionStorage.removeItem("searchBy");
-			sessionStorage.removeItem("category");
-			sessionStorage.removeItem("min");
-			sessionStorage.removeItem("max");
-
-			sessionStorage.removeItem("page");
-
-			$("#sort").val("none");
-			$("#search").val("");
-			$("#min").attr("type", "number");
-			$("#min").val("");
-			$("#max").attr("type", "number");
-			$("#max").val("");
-			$("#amount").val("Rp 0 - Rp 250.000.000");
-			$('.tombol-category span').removeClass("category-active");
-
-			loadShopContents("clear", 0)
-		});
-
-		$("#search-header").click(function() {
-			if (!searchFilterOptionsVisible) {
-				searchFilterOptionsVisible = true;
-				$("#search-header i").addClass("filter-active");
-				$("#search-options").css("height", "auto");
-			} else {
-				searchFilterOptionsVisible = false;
-				$("#search-header i").removeClass("filter-active");
-				$("#search-options").css("height", "0px");
-			}
-		});
-
-		$(".search-item").click(function() {
-			$(".search-item .search-checkbox").removeClass("filter-checked");
-			$(this).find(".search-checkbox").addClass("filter-checked");
-
-			valArr["searchBy"] = $(this).attr("value");
-			sessionStorage.setItem("searchBy", $(this).attr("value"));
-
-			if ($('#search').val() != "") {
-				loadShopContents("no-page", 0);
-			}
-		});
-
-		$('#sort').on('change', function() {
-			statesArr["isSorted"] = true;
-			sessionStorage.setItem("isSorted", true);
-			if ($(this).val() === "none") {
-				statesArr["isSorted"] = false;
-				sessionStorage.removeItem("isSorted");
-			}
-
-			let val = $('#sort').val();
-			valArr["sortVal"] = val;
-			sessionStorage.setItem("sortVal", val);
-
-			loadShopContents("no-page", 0);
-		});
-
-		$(document).on('click', '.tombol-category', function(e) {
-			e.preventDefault();
-			statesArr["isCategorized"] = true;
-			sessionStorage.setItem("isCategorized", true);
-			console.table("very beginning", categoryArr);
-
-			$(`.tombol-category[stype=${$(this).attr("stype")}] span`).removeClass("category-active");
-			$(this).children("span").addClass("category-active");
-
+		function addToCategoryArr(code, stype) {
 			if (categoryArr.length > 0) {
 				let existsInCategoryArr = false;
 				let toBeRemovedIdx = -1;
 
 				for (let i = 0; i < categoryArr.length; i++) {
 					const idx = categoryArr[i];
-					if (idx["categoryType"] === encodeURIComponent($(this).attr("stype"))) {
-						existsInCategoryArr = true;
-						if (idx["categoryCode"] === encodeURIComponent(this.id)) {
+					if (idx["categoryType"] === encodeURIComponent(stype)) {
+						if (idx["categoryCode"] === "none") {
 							toBeRemovedIdx = i;
-							console.log("idx", toBeRemovedIdx);
-							$(`.tombol-category#${idx["categoryCode"]} span`).removeClass("category-active");
 						} else {
-							categoryArr[i]["categoryCode"] = encodeURIComponent(this.id);
-							break;
+							existsInCategoryArr = true;
+							categoryArr[i]["categoryCode"] = encodeURIComponent(code);
 						}
+						break;
 					}
 				}
 
 				if (!existsInCategoryArr) {
 					categoryArr.push({
-						"categoryCode": encodeURIComponent(this.id),
-						"categoryType": encodeURIComponent($(this).attr("stype"))
+						"categoryCode": encodeURIComponent(code),
+						"categoryType": encodeURIComponent(stype)
 					});
 				}
 
-				// Remove the same one that has been clicked
-				console.log("the data", categoryArr[toBeRemovedIdx]);
-				console.table(categoryArr);
-				if (toBeRemovedIdx >= 0) categoryArr.splice(toBeRemovedIdx, 1);
-				// Reset the index
-				toBeRemovedIdx = -1;
+				console.table("before", categoryArr);
+				if (toBeRemovedIdx > -1) {
+					console.log("masuk splice");
+					let rData = categoryArr.splice(toBeRemovedIdx, 1);
+					console.log("rData", rData);
+					categoryArr[rData["categoryType"]] = "";
+				}
+				console.table("after", categoryArr);
 			} else {
 				categoryArr.push({
-					"categoryCode": encodeURIComponent(this.id),
-					"categoryType": encodeURIComponent($(this).attr("stype"))
+					"categoryCode": encodeURIComponent(code),
+					"categoryType": encodeURIComponent(stype)
 				});
 			}
-			console.table("very last", categoryArr);
 
 			valArr["category"] = JSON.stringify(categoryArr);
 			sessionStorage.setItem("category", JSON.stringify(categoryArr));
+		}
+
+		$(".filters").change(function() {
+			// let valArr = {
+			// 	"searchVal": "",
+			// 	"priceVal": "",
+			// 	"availVal": "",
+			// 	"category": {}
+			// };
+			// let statesArr = {
+			// 	"isSearched": false,
+			// 	"isFilteredByPrice": false,
+			// 	"isFilteredByAvail": false,
+			// 	"isCategorized": false
+			// };
+			let id = this.id;
+			let value = $(`#${this.id}`).val();
+			console.log(id, value);
+
+			if (id === "prf") {
+				if (value != "none") {
+					statesArr["isFilteredByPrice"] = true;
+					sessionStorage.setItem("isFilteredByPrice", true);
+
+					valArr["priceVal"] = value;
+					sessionStorage.setItem("priceVal", value);
+				} else {
+					statesArr["isFilteredByPrice"] = false;
+					sessionStorage.removeItem("isFilteredByPrice");
+
+					valArr["priceVal"] = "";
+					sessionStorage.removeItem("priceVal");
+				}
+			} else if (id === "avf") {
+				if (value != "none") {
+					statesArr["isFilteredByAvail"] = true;
+					sessionStorage.setItem("isFilteredByAvail", true);
+
+					valArr["availVal"] = value;
+					sessionStorage.setItem("availVal", value);
+				} else {
+					statesArr["isFilteredByAvail"] = false;
+					sessionStorage.removeItem("isFilteredByAvail");
+
+					valArr["availVal"] = "";
+					sessionStorage.removeItem("availVal");
+				}
+			} else if (id === "caf" || id === "brf" || id === "cof" || id === "paf") {
+				if (value === "none") {
+					statesArr["isCategorized"] = false;
+					sessionStorage.removeItem("isCategorized");
+
+					addToCategoryArr(value, $(`#${id}`).attr("stype"));
+				} else {
+					statesArr["isCategorized"] = true;
+					sessionStorage.setItem("isCategorized", true);
+
+					addToCategoryArr(value, $(`#${id}`).attr("stype"));
+				}
+			}
 		});
 
-		// ===== Start to search after idling for 0.8 seconds ===== //
-		function searchByKeyword() {
+		$("#clear-filter").click(function() {
+			statesArr["isSearched"] = false;
+			statesArr["isFilteredByPrice"] = false;
+			statesArr["isFilteredByAvail"] = false;
+			statesArr["isCategorized"] = false;
+			sessionStorage.removeItem("isSearched");
+			sessionStorage.removeItem("isFilteredByPrice");
+			sessionStorage.removeItem("isFilteredByAvail");
+			sessionStorage.removeItem("isCategorized");
+
+			sessionStorage.removeItem("searchVal");
+			sessionStorage.removeItem("priceVal");
+			sessionStorage.removeItem("availVal");
+			sessionStorage.removeItem("category");
+
+			sessionStorage.removeItem("page");
+
+			$("#search").val("");
+			$("#prf").val("none");
+			$("#avf").val("none");
+			$("#caf").val("none");
+			$("#brf").val("none");
+			$("#cof").val("none");
+			$("#paf").val("none");
+
+			loadShopContents("clear", 0)
+		});
+
+		// ===== Search & Autocomplete ===== //
+		// Search baru
+		$("#search").change(function() {
 			let val = $('#search').val();
 			statesArr["isSearched"] = true;
 			sessionStorage.setItem("isSearched", true);
 			if (val === "") {
+				valArr["searchVal"] = "";
 				statesArr["isSearched"] = false;
 				sessionStorage.removeItem("isSearched");
+				sessionStorage.removeItem("searchVal");
 			}
 
 			valArr["searchVal"] = encodeURIComponent(val);
 			sessionStorage.setItem("searchVal", encodeURIComponent(val));
 
 			loadShopContents("no-page", 0);
-		}
-		let idleAfterTyping = null;
-		$('#search').on('keyup', function() {
-			clearTimeout(idleAfterTyping);
-			idleAfterTyping = setTimeout(searchByKeyword, 800);
+		});
+		$(function() {
+			$("#search").autocomplete({
+				delay: 800,
+				source: "autocompleteData.php",
+				change: function() {
+					console.log($("#search").val());
+				}
+			});
 		});
 		// ===== End of search section ===== //
-
-		// Price Filter
-		$("#min").click(function() {
-			$("#min").attr("type", "number");
-			$("#min").val(min);
-			$("#min").select();
-		});
-		$("#max").click(function() {
-			$("#max").attr("type", "number");
-			$("#max").val(max);
-			$("#max").select();
-		});
-		$("#price-button").click(function() {
-			min = parseInt($("#min").val());
-			max = parseInt($("#max").val());
-			// max = 250000000;
-
-			if (min) {
-				$("#min").attr("type", "text");
-				$("#min").val(new Intl.NumberFormat('id-ID').format(min));
-			}
-			if (max) {
-				$("#max").attr("type", "text");
-				$("#max").val(new Intl.NumberFormat('id-ID').format(max));
-			}
-
-			statesArr["isFilteredByPrice"] = true;
-			sessionStorage.setItem("isFilteredByPrice", true);
-
-			valArr["min"] = min;
-			valArr["max"] = max;
-			sessionStorage.setItem("min", min);
-			sessionStorage.setItem("max", max);
-
-			loadShopContents("no-page", 0);
-		});
-		// $(function() {
-		// 	$("#slider-range").slider({
-		// 		range: true,
-		// 		step: 500000,
-		// 		min: 0,
-		// 		max: 250000000,
-		// 		values: [0, 2500000000],
-		// 		slide: function(event, ui) {
-		// 			let num1 = new Intl.NumberFormat('id-ID').format(ui.values[0]);
-		// 			let num2 = new Intl.NumberFormat('id-ID').format(ui.values[1]);
-		// 			$("#amount").val("Rp " + num1 + " - Rp " + num2);
-		// 		},
-		// 		stop: function(event, ui) {
-		// 			statesArr["isFilteredByPrice"] = true;
-		// 			sessionStorage.setItem("isFilteredByPrice", true);
-
-		// 			let num1 = new Intl.NumberFormat('id-ID').format(ui.values[0]);
-		// 			let num2 = new Intl.NumberFormat('id-ID').format(ui.values[1]);
-		// 			$("#amount").val("Rp " + num1 + " - Rp " + num2);
-
-		// 			valArr["min"] = ui.values[0];
-		// 			valArr["max"] = ui.values[1];
-		// 			sessionStorage.setItem("min", ui.values[0]);
-		// 			sessionStorage.setItem("max", ui.values[1]);
-
-		// 			let jsonVal = JSON.stringify(valArr);
-		// 			let jsonStates = JSON.stringify(statesArr);
-
-		// 			callLoader();
-		// 			$("#kontainerAnjay").load(`searchEngine.php?vals=${jsonVal}&states=${jsonStates}`, function() {
-		// 				removeLoader();
-		// 			});
-		// 		}
-		// 	});
-		// 	$("#amount").val("Rp " + $("#slider-range").slider("values", 0) + " - Rp " + $("#slider-range").slider("values", 1));
-		// });
 
 		// ===== Codes for pager ===== //
 		$(document).on('click', '.pager', function() {
@@ -496,59 +420,45 @@ $total = mysqli_num_rows($queryTotal);
 		});
 		// ===== End of codes for pager ===== //
 
-		// "sortVal": "",
-		// "searchVal": "",
-		// "searchBy": "",
-		// "categoryType": "",
-		// "categoryCode": "",
-		// "min": 100000,
-		// "max": 250000000
-
-		// "isSorted": false,
-		// "isSearched": false,
-		// "isCategorized": false,
-		// "isFilteredByPrice": false
-		if (sessionStorage.getItem("isSorted") || sessionStorage.getItem("isSearched") || sessionStorage.getItem("isCategorized") || sessionStorage.getItem("isFilteredByPrice")) {
-			if (valArr["sortVal"] = sessionStorage.getItem("sortVal")) {
-				$("#sort").val(valArr["sortVal"]);
-			}
+		// let valArr = {
+		// 	"searchVal": "",
+		// 	"priceVal": "",
+		// 	"availVal": "",
+		// 	"category": {}
+		// };
+		// let statesArr = {
+		// 	"isSearched": false,
+		// 	"isFilteredByPrice": false,
+		// 	"isFilteredByAvail": false,
+		// 	"isCategorized": false
+		// };
+		if (sessionStorage.getItem("isSearched") || sessionStorage.getItem("isCategorized") || sessionStorage.getItem("isFilteredByPrice") || sessionStorage.getItem("isFilteredByAvail")) {
 			if (valArr["searchVal"] = sessionStorage.getItem("searchVal")) {
 				$("#search").val(decodeURIComponent(valArr["searchVal"]));
 			}
-			if (valArr["searchBy"] = sessionStorage.getItem("searchBy")) {
-				$(".search-item .search-checkbox").removeClass("filter-checked");
-				$(`.search-item[value=${valArr['searchBy']}] .search-checkbox`).addClass("filter-checked");
+			if (valArr["priceVal"] = sessionStorage.getItem("priceVal")) {
+				$("#prf").val(valArr["priceVal"]);
+			}
+			if (valArr["availVal"] = sessionStorage.getItem("availVal")) {
+				$("#avf").val(valArr["availVal"]);
 			}
 			if ((valArr["category"] = sessionStorage.getItem("category"))) {
-				$('.tombol-category span').removeClass("category-active");
 				let firstParse = JSON.parse(valArr["category"]);
 				firstParse.forEach(item => {
 					categoryArr.push({
 						"categoryCode": item["categoryCode"],
 						"categoryType": item["categoryType"]
 					});
-					$(`#${item["categoryCode"]} span`).addClass("category-active");
+					$(`select[stype=${item["categoryType"]}]`).val(`${decodeURIComponent(item["categoryCode"])}`);
 				});
-			}
-			if (!isNaN(sessionStorage.getItem("min"))) {
-				console.log("masuk min");
-				valArr["min"] = sessionStorage.getItem("min");
-				$("#min").attr("type", "text");
-				$("#min").val(new Intl.NumberFormat('id-ID').format(valArr["min"]));
-			}
-			if (!isNaN(sessionStorage.getItem("max"))) {
-				valArr["max"] = sessionStorage.getItem("max");
-				$("#max").attr("type", "text");
-				$("#max").val(new Intl.NumberFormat('id-ID').format(valArr["max"]));
-				console.log("masuk max", valArr["max"], new Intl.NumberFormat('id-ID').format(valArr["max"]));
 			}
 			let current_page = 1;
 			if (sessionStorage.getItem("page")) current_page = sessionStorage.getItem("page");
 
-			statesArr["isSorted"] = sessionStorage.getItem("isSorted");
 			statesArr["isSearched"] = sessionStorage.getItem("isSearched");
 			statesArr["isCategorized"] = sessionStorage.getItem("isCategorized");
 			statesArr["isFilteredByPrice"] = sessionStorage.getItem("isFilteredByPrice");
+			statesArr["isFilteredByAvail"] = sessionStorage.getItem("isFilteredByAvail");
 
 			let jsonVal = JSON.stringify(valArr);
 			let jsonStates = JSON.stringify(statesArr);
@@ -581,65 +491,6 @@ $total = mysqli_num_rows($queryTotal);
 			loadShopContents("no-page", 0);
 		}
 		$(document).ready(function() {
-			// Dropdown Price
-			$("#pr .category-dropdown").click(function() {
-				if (priceVisible) {
-					$("#pr .category-dropdown i").removeClass("filter-active");
-					$("#price-filter").css("display", "none");
-					$("#price-apply").css("display", "none");
-					priceVisible = false;
-				} else {
-					$("#pr .category-dropdown i").addClass("filter-active");
-					$("#price-filter").css("display", "flex");
-					$("#price-apply").css("display", "flex");
-					priceVisible = true;
-				}
-			});
-			// Muncul"in dropdown kategori
-			$("#cg .category-dropdown").click(function() {
-				if (generalCategoryVisible) {
-					$("#cg .category-dropdown i").removeClass("filter-active");
-					$("#cg ul").css("display", "none");
-					generalCategoryVisible = false;
-				} else {
-					$("#cg .category-dropdown i").addClass("filter-active");
-					$("#cg ul").css("display", "block");
-					generalCategoryVisible = true;
-				}
-			});
-			$("#cb .category-dropdown").click(function() {
-				if (brandsVisible) {
-					$("#cb .category-dropdown i").removeClass("filter-active");
-					$("#cb ul").css("display", "none");
-					brandsVisible = false;
-				} else {
-					$("#cb .category-dropdown i").addClass("filter-active");
-					$("#cb ul").css("display", "block");
-					brandsVisible = true;
-				}
-			});
-			$("#cc .category-dropdown").click(function() {
-				if (colorVisible) {
-					$("#cc .category-dropdown i").removeClass("filter-active");
-					$("#cc ul").css("display", "none");
-					colorVisible = false;
-				} else {
-					$("#cc .category-dropdown i").addClass("filter-active");
-					$("#cc ul").css("display", "block");
-					colorVisible = true;
-				}
-			});
-			$("#cp .category-dropdown").click(function() {
-				if (patternVisible) {
-					$("#cp .category-dropdown i").removeClass("filter-active");
-					$("#cp ul").css("display", "none");
-					patternVisible = false;
-				} else {
-					$("#cp .category-dropdown i").addClass("filter-active");
-					$("#cp ul").css("display", "block");
-					patternVisible = true;
-				}
-			});
 			// Apply filter on click for category
 			$("#filter-apply button").click(function() {
 				loadShopContents("no-page", 0);

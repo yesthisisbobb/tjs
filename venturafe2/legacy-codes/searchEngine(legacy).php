@@ -11,16 +11,19 @@ session_start();
 
 // Variable Name Reference
 // let valArr = {
-// 	"searchVal": "",
-// 	"priceVal": "",
-// 	"availVal": "",
-// 	"category": {}
+// 			"sortVal": "",
+// 			"searchVal": "",
+//          "searchBy": "",
+// 			"categoryType": "",
+// 			"categoryCode": "",
+// 			"min": 100000,
+//           "max": 250000000
 // };
 // let statesArr = {
-// 	"isSearched": false,
-// 	"isFilteredByPrice": false,
-// 	"isFilteredByAvail": false,
-// 	"isCategorized": false
+//     "isSorted": false,
+//     "isSearched": false,
+//     "isCategorized": false,
+//     "isFilteredByPrice": false
 // };
 
 // Query related variables
@@ -39,8 +42,6 @@ $masterQuery = "";
 $selects = "SELECT ms.kodetipe AS tipe, ms.kode_stok AS kode, ms.kodemerk AS merk, ms.panjang AS p, ms.lebar AS l, ms.tinggi AS t, ms.tebal AS tebal, msg.namagrup AS grup";
 $froms = "FROM master_sub_grup msg, detail_sub_grup dsg, master_stok ms";
 $wheres = "WHERE ms.status='Active' AND msg.nama = dsg.namagrup AND dsg.nama = ms.grupname";
-
-// FILTER KATEGORI
 if ($statesData["isCategorized"]) {
     // echo "masuk kategori" . " ||";
 
@@ -49,80 +50,41 @@ if ($statesData["isCategorized"]) {
         $ctypeVal = $data["categoryType"];
         $catVal = $data["categoryCode"];
         
-        if ($catVal != "none") {
-            if ($ctypeVal == "main") $wheres .= " AND msg.namagrup = '$catVal'";
-            if ($ctypeVal == "merk") $wheres .= " AND ms.kodemerk = '$catVal'";
-            if ($ctypeVal == "color") {
-                $froms .= ", master_tipe mt";
-                $wheres .= " AND mt.kode = ms.kodetipe AND mt.color = '$catVal'";
-            }
-            if ($ctypeVal == "pattern") {
-                $froms .= ", master_tipe mt";
-                $wheres .= " AND mt.kode = ms.kodetipe AND mt.pattern = '$catVal'";
-            }
+        if ($ctypeVal == "main") $wheres .= " AND msg.namagrup = '$catVal'";
+        if ($ctypeVal == "merk") $wheres .= " AND ms.kodemerk = '$catVal'";
+        if ($ctypeVal == "color") {
+            $froms .= ", master_tipe mt";
+            $wheres .= " AND mt.kode = ms.kodetipe AND mt.color = '$catVal'";
+        }
+        if ($ctypeVal == "pattern") {
+            $froms .= ", master_tipe mt";
+            $wheres .= " AND mt.kode = ms.kodetipe AND mt.pattern = '$catVal'";
         }
     }
 }
-
-// FILTER SEARCH
 if ($statesData["isSearched"]) {
     // echo "masuk search" . " ||";
     $searchVal = trim($valData["searchVal"]);
-
-    // Cari berdasarkan brand
-    $froms .= ", master_merk mm";
-    $wheres .= " AND mm.kode = ms.kodemerk AND (mm.nama LIKE '%$searchVal%'";
-
-    // Cari berdasarkan Kode Tipe
-    $wheres .= " OR ms.kodetipe LIKE '%$searchVal%'";
-
-    // Cari berdasarkan Kode Stok
-    $wheres .= " OR ms.kode_stok LIKE '%$searchVal%'";
-
-    // Cari berdasarkan Grupname
-    $wheres .= " OR ms.grupname LIKE '%$searchVal%')";
-
+    echo $searchVal;
+    // if ($searchBy == "type") {
+    //     $wheres .= " AND ms.kodetipe LIKE '%$searchVal%'";
+    // }
+    // else if($searchBy == "code"){
+    //     $wheres .= " AND ms.kode_stok LIKE '%$searchVal%'";
+    // }
+    // else if($searchBy == "brand"){
+    //     $wheres .= " AND ms.kodemerk LIKE '%$searchVal%'";
+    // }
+    // else{
+    //     $wheres .= " AND ms.kodetipe LIKE '%$searchVal%'";
+    // }
 }
-
-// FILTER HARGA
 if ($statesData["isFilteredByPrice"]){
-    // <option value="none">All</option>
-    // <option value="lth">Low to High</option>
-    // <option value="htl">High to Low</option>
-    // <option value="be1">Below 100k</option>
-    // <option value="ab1">Above 100k</option>
-    // <option value="be2">Below 1.000k</option>
-    // <option value="ab2">Above 1.000k</option>
-    
-    $priceVal = $valData["priceVal"];
-    switch ($priceVal) {
-        case 'lth':
-            $froms .= ", master_price mp";
-            $wheres .= " AND mp.kode = ms.kode_stok ORDER BY mp.pls ASC";
-            break;
-        case 'htl':
-            $froms .= ", master_price mp";
-            $wheres .= " AND mp.kode = ms.kode_stok ORDER BY mp.pls DESC";
-            break;
-        case 'be1':
-            $froms .= ", master_price mp";
-            $wheres .= " AND mp.kode = ms.kode_stok AND mp.pls <= 100000";
-            break;
-        case 'be2':
-            $froms .= ", master_price mp";
-            $wheres .= " AND mp.kode = ms.kode_stok AND mp.pls <= 1000000";
-            break;
-        case 'ab1':
-            $froms .= ", master_price mp";
-            $wheres .= " AND mp.kode = ms.kode_stok AND mp.pls > 100000";
-            break;
-        case 'ab2':
-            $froms .= ", master_price mp";
-            $wheres .= " AND mp.kode = ms.kode_stok AND mp.pls > 1000000";
-            break;
-        default:
-            break;
+    if ($max < 1) {
+        echo "- Masuk max lebih kecil 0, ";
+        $max = 250000000; // Max 250jt klo kosong
     }
+    $wheres .= " AND mp.pls BETWEEN $min AND $max";
 }
 if (!$statesData["isFilteredByPrice"] && !$statesData["isSearched"] && !$statesData["isCategorized"]) {
     $wheres .= " ORDER BY RAND()";
@@ -231,5 +193,3 @@ if ($total > 0) {
             </div>
             </div>";
 }
-
-?>

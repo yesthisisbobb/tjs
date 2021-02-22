@@ -131,7 +131,7 @@
 <!-- Video JS -->
 <script src="vendor/videojs/video.min.js"></script>
 
-<!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <!-- <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script> -->
 <!-- <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->

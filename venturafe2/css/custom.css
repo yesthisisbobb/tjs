@@ -702,9 +702,7 @@
     display: flex;
     align-items: center;
 
-    margin-bottom: 23px;
-
-    cursor: pointer;
+    margin-bottom: 10px;
 }
 .category-dropdown i{
     margin-right: 12px;
@@ -712,6 +710,11 @@
 }
 .category-dropdown h3{
     font-size: 20px;
+}
+.filters{
+    padding: 4px 10px;
+
+    cursor: pointer;
 }
 #cg ul, #cb ul, #cc ul, #cp ul{
     display: none;
