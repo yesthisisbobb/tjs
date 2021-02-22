@@ -3165,7 +3165,7 @@ textarea:-moz-placeholder {
       -o-outline: none;
       -ms-outline: none; }
   .shop-right-siderbar .widget-area .widget_price_filter {
-    margin-bottom: 33px; }
+    margin-bottom: 20px; }
     .shop-right-siderbar .widget-area .widget_price_filter .widget-title {
       font-size: 20px;
       margin-bottom: 35px; }
@@ -3240,7 +3240,7 @@ textarea:-moz-placeholder {
           content: '$';
           left: 0; }
   .shop-right-siderbar .widget-area .widget_product_categories {
-    margin-bottom: 33px; }
+    margin-bottom: 20px; }
     .shop-right-siderbar .widget-area .widget_product_categories .widget-title {
       font-size: 20px;
       margin-bottom: 23px; }

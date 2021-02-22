@@ -340,17 +340,10 @@ $total = mysqli_num_rows($queryTotal);
 					sessionStorage.removeItem("availVal");
 				}
 			} else if (id === "caf" || id === "brf" || id === "cof" || id === "paf") {
-				if (value === "none") {
-					statesArr["isCategorized"] = false;
-					sessionStorage.removeItem("isCategorized");
+				statesArr["isCategorized"] = true;
+				sessionStorage.setItem("isCategorized", true);
 
-					addToCategoryArr(value, $(`#${id}`).attr("stype"));
-				} else {
-					statesArr["isCategorized"] = true;
-					sessionStorage.setItem("isCategorized", true);
-
-					addToCategoryArr(value, $(`#${id}`).attr("stype"));
-				}
+				addToCategoryArr(value, $(`#${id}`).attr("stype"));
 			}
 		});
 

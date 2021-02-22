@@ -55,9 +55,9 @@ if (session_status() == PHP_SESSION_NONE) {
 <!-- noUiSlider Library -->
 <link rel="stylesheet" type="text/css" href="vendor/nouislider/css/nouislider.css">
 <!-- Main Style Css -->
-<link rel="stylesheet" href="css/style.css?ver=1.3" async defer />
+<link rel="stylesheet" href="css/style.css?ver=1.4" async defer />
 <!-- Kastem -->
-<link rel="stylesheet" type="text/css" href="css/custom.css?ver=2.2">
+<link rel="stylesheet" type="text/css" href="css/custom.css?ver=2.3">
 <!-- JQUERY -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <!-- <script src="../vendor/jquery/jquery-3.5.1.min.js"></script> -->
