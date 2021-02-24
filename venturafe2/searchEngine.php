@@ -169,7 +169,7 @@ if ($total > 0) {
         }
 
         // Stok
-        $apidata = ventura('item/qty', ["kode" => "$kodeProduk", 'merk' => null, 'gudang' => null], 'POST');
+        $apidata = ventura('item/qty', ["kode" => "$kodeProduk", 'merk' => null], 'POST');
         $jum = $apidata["result"]["data"][0]["stok"];
 
         // $Spage = 1;
