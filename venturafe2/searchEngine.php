@@ -124,9 +124,12 @@ if ($statesData["isFilteredByPrice"]){
             break;
     }
 }
+
+// This might need to be changed
 if (!$statesData["isFilteredByPrice"] && !$statesData["isSearched"] && !$statesData["isCategorized"]) {
     $wheres .= " ORDER BY RAND()";
 }
+
 $masterQuery = "$selects $froms $wheres";
 
 // echo $masterQuery;
