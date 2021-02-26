@@ -650,6 +650,8 @@
     font-weight: 600;
 }
 #cp-base-container{
+    font-family: 'Lato', sans-serif;
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -673,7 +675,7 @@
     justify-content: center;
 
     width: 100%;
-    height: 420px;
+    height: 74vh;
     margin-bottom: 48px;
 
     background-image: url("../resource/cp-header.jpg");
@@ -686,14 +688,72 @@
     height: 74px;
 }
 .cp-section{
-    width: fit-content;
-    padding: 0 8px 0 10%;
-    margin-bottom: 24px;
+    margin-bottom: 54px;
+}
+.cp-image{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+.cp-image img{
+    max-height: 200%;
+    max-width: 100%;
+}
+.cp-text{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    font-size: .9em;
+    font-weight: 400;
+}
+.cp-bolden{
+    font-weight: 700;
+}
+.cp-bolden-heavy{
+    font-weight: 900;
+}
+.cp-section-header{
+    display: flex;
+    justify-content: center;
+
+    width: 100%;
+    margin-bottom: 34px;
 
     font-size: 2.1em;
-    font-weight: 400;
+    font-weight: 300;
+}
+.cp-section-desc-1, .cp-section-desc-2{
+    display: flex;
 
-    border-bottom: 1px solid lightgray;
+    width: 100%;
+    height: 70vh;
+    padding: 16px 0;
+}
+.cp-section-desc-1 h3, .cp-section-desc-2 h3{
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+}
+.cp-section-desc-1 .cp-image{
+    width: 52%;
+
+    overflow: hidden;
+}
+
+.cp-section-desc-1 .cp-text{
+    width: 48%;
+
+    padding-left: 20px;
+}
+.cp-section-desc-2 .cp-image{
+    width: 52%;
+
+    overflow: hidden;
+}
+.cp-section-desc-2 .cp-text{
+    width: 48%;
+
+    padding-right: 20px;
 }
 /* ===== AKHIR PUNYA E COMPANY ===== */
 
@@ -1814,6 +1874,7 @@ html {
     }
     #cp-base-container{
         margin-top: 0;
+        font-family: 'Lato', sans-serif;
     }
 
     #profile-base-container{
@@ -1908,4 +1969,3 @@ html {
         display: none;
     }
 }
-

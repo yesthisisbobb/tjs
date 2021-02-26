@@ -295,22 +295,6 @@ $file = getProductPicture($kodeproduk);
                                                         } else {
                                                             echo "<a class='shop-product-stock stock-indent' style='color:white;'>Indent</a>";
                                                         }
-                                                        // $stockcommand = "SELECT kode_stok, SUM(jum) as jumlah FROM master_shading WHERE kode_stok='$tempkode' AND (gudang = '1G.PROYEK' OR gudang = '1G DISPLAY SALE' OR gudang = '1G SHOWROOM BRAVAT' OR gudang='1G.DISPLAY KMJ-1' OR gudang = '1G.DISPLAY KMJ-2' OR gudang = '1G.DISTRIBUSI' OR gudang = '1G.RETAILjkt' OR gudang = '1G.TOKO1' OR gudang = '1G.TOKO2' OR gudang = '4G.JAKARTA') GROUP BY kode_stok";
-                                                        // $stockquery = mysqli_query($conn, $stockcommand);
-                                                        // if ($stockquery) {
-                                                        //     $stockres = mysqli_fetch_array($stockquery);
-                                                        //     if (!isset($stockres)) {
-                                                        //         echo "<a class='shop-product-stock stock-indent' style='color:white;'>Indent</a>";
-                                                        //     } else if ($stockres['jumlah'] > 18) {
-                                                        //         echo "<a class='shop-product-stock stock-ready' style='color:white;'>Ready</a>";
-                                                        //     } else if ($stockres['jumlah'] <= 18 && $stockres['jumlah'] > 1) {
-                                                        //         echo "<a class='shop-product-stock stock-limited' style='color:white;'>Limited</a>";
-                                                        //     } else {
-                                                        //         echo "<a class='shop-product-stock stock-indent' style='color:white;'>Indent</a>";
-                                                        //     }
-                                                        // } else {
-                                                        //     echo "<a class='shop-product-stock stock-indent' style='color:white;'>Indent</a>";
-                                                        // }
                                                         ?>
                                                         <?php
 
@@ -385,146 +369,6 @@ $file = getProductPicture($kodeproduk);
             }
         }
     }
-
-    // Buat yang mau diakses pas document ready
-    $(document).ready(function() {
-        // Ngeload Related Products AJAX
-        // let kodeproduk = $("#product-code").text();
-        // let category = $("#category").text();
-        // $.ajax({
-        //     url: "ajaxRelatedProduct.php",
-        //     method: "POST",
-        //     dataType: "html",
-        //     data: {
-        //         "grup": category,
-        //         "kodeproduk": kodeproduk
-        //     },
-        //     success: function(data){
-        //         // $("#related-products").html(data);
-        //         console.log(data);
-        //     },
-        //     error: function(error){
-        //         console.log(error.responseText);
-        //     }
-        // });
-
-        // Button Add to Cart besar
-        $("#add-to-cart").click(function(e) {
-            e.preventDefault();
-
-            let grup = getUrlParameter("group");
-
-            if (grup != "TILE") {
-                // If item is not a tile
-                addToCart($("#product-code").text());
-            } else {
-                // If item is a tile
-                let objShading = [];
-                let totalQty = 0;
-                $("input[type=range]").each(function() {
-                    let temp = $(this).attr("id").split('-');
-                    let trueId = temp[1];
-                    objShading = [...objShading, {
-                        "kode_shading": trueId,
-                        "qty_shading": $(this).val()
-                    }];
-                    totalQty += $(this).val();
-                });
-
-                // console.log(totalQty);
-                if (totalQty > 1) {
-                    addToCartShading($("#product-code").text(), objShading);
-                } else {
-                    addToCart($("#product-code").text());
-                }
-            }
-        });
-
-        $("#tile-calc").click(function(e) {
-            e.preventDefault();
-            $("#tc-stock").text(stock);
-            $("#tile-calculator-modal").css({
-                "transform": "translateY(0px)"
-            });
-            $("#tile-calculator-base").css({
-                "background-color": "rgba(0, 0, 0, 0.4)",
-                "visibility": "visible"
-            });
-        });
-        $("#tc-pcs").keyup(function() {
-            $("#tc-carton").val(Math.ceil($("#tc-pcs").val() / ppc));
-            $("#tc-m2").val(Math.ceil($("#tc-pcs").val() / ppc) * spc);
-        });
-        $("#tc-carton").keyup(function() {
-            $("#tc-pcs").val($("#tc-carton").val() * ppc);
-            $("#tc-m2").val($("#tc-carton").val() * spc);
-        });
-        $("#tc-m2").keyup(function() {
-            $("#tc-pcs").val(Math.ceil($("#tc-m2").val() / spc) * ppc);
-            $("#tc-carton").val(Math.ceil($("#tc-m2").val() / spc));
-        });
-        $("#tc-cancel").click(function() {
-            $("#tile-calculator-modal").css({
-                "transform": "translateY(1400px)"
-            });
-            $("#tile-calculator-base").css({
-                "background-color": "rgba(0, 0, 0, 0.0)",
-                "visibility": "hidden"
-            });
-        });
-        // $("#tile-calculator-base").click(function() {
-        //     $("#tile-calculator-modal").css({
-        //         "transform": "translateY(1400px)"
-        //     });
-        //     $("#tile-calculator-base").css({
-        //         "background-color": "rgba(0, 0, 0, 0.0)",
-        //         "visibility": "hidden"
-        //     });
-        // });
-        $("#tc-confirm").click(function() {
-            $("#quantity").val($("#tc-carton").val());
-            $("#tile-calculator-modal").css({
-                "transform": "translateY(1400px)"
-            });
-            $("#tile-calculator-base").css({
-                "background-color": "rgba(0, 0, 0, 0.0)",
-                "visibility": "hidden"
-            });
-        });
-
-        $("#set-shading").click(function(e) {
-            e.preventDefault();
-            shadingLimit = $("#quantity").val();
-            if (!shadingState) {
-                let kode_stok = $("#product-code").text();
-                $.ajax({
-                    url: "ajaxShading.php",
-                    method: "POST",
-                    dataType: "html",
-                    data: {
-                        "kode": kode_stok,
-                        "amount": $("#quantity").val()
-                    },
-                    success: function(data) {
-                        $("#shading-container").html(data);
-                    }
-                });
-                $("#shading-base-container").css("display", "flex");
-                $("#shading-base-container").css("height", "auto");
-                $("#set-shading i").removeClass("fa-eye");
-                $("#set-shading i").addClass("fa-eye-slash");
-                shadingState = true;
-            } else {
-                $("#shading-base-container").css({
-                    "display": "none",
-                    "height": "0px"
-                });
-                $("#set-shading i").removeClass("fa-eye-slash");
-                $("#set-shading i").addClass("fa-eye");
-                shadingState = false;
-            }
-        });
-    });
 </script>
 <script>
     // Menyembunyikan sizes lek bukan tiles
@@ -712,4 +556,144 @@ $file = getProductPicture($kodeproduk);
             $(`#${rawId}`).val(isi);
         }
     }
+
+    // Buat yang mau diakses pas document ready
+    $(document).ready(function() {
+        // Ngeload Related Products AJAX
+        // let kodeproduk = $("#product-code").text();
+        // let category = $("#category").text();
+        // $.ajax({
+        //     url: "ajaxRelatedProduct.php",
+        //     method: "POST",
+        //     dataType: "html",
+        //     data: {
+        //         "grup": category,
+        //         "kodeproduk": kodeproduk
+        //     },
+        //     success: function(data){
+        //         // $("#related-products").html(data);
+        //         console.log(data);
+        //     },
+        //     error: function(error){
+        //         console.log(error.responseText);
+        //     }
+        // });
+
+        // Button Add to Cart besar
+        $("#add-to-cart").click(function(e) {
+            e.preventDefault();
+
+            let grup = getUrlParameter("group");
+
+            if (grup != "TILE") {
+                // If item is not a tile
+                addToCart($("#product-code").text());
+            } else {
+                // If item is a tile
+                let objShading = [];
+                let totalQty = 0;
+                $("input[type=range]").each(function() {
+                    let temp = $(this).attr("id").split('-');
+                    let trueId = temp[1];
+                    objShading = [...objShading, {
+                        "kode_shading": trueId,
+                        "qty_shading": $(this).val()
+                    }];
+                    totalQty += $(this).val();
+                });
+
+                // console.log(totalQty);
+                if (totalQty > 1) {
+                    addToCartShading($("#product-code").text(), objShading);
+                } else {
+                    addToCart($("#product-code").text());
+                }
+            }
+        });
+
+        $("#tile-calc").click(function(e) {
+            e.preventDefault();
+            $("#tc-stock").text(stock);
+            $("#tile-calculator-modal").css({
+                "transform": "translateY(0px)"
+            });
+            $("#tile-calculator-base").css({
+                "background-color": "rgba(0, 0, 0, 0.4)",
+                "visibility": "visible"
+            });
+        });
+        $("#tc-pcs").keyup(function() {
+            $("#tc-carton").val(Math.ceil($("#tc-pcs").val() / ppc));
+            $("#tc-m2").val(Math.ceil($("#tc-pcs").val() / ppc) * spc);
+        });
+        $("#tc-carton").keyup(function() {
+            $("#tc-pcs").val($("#tc-carton").val() * ppc);
+            $("#tc-m2").val($("#tc-carton").val() * spc);
+        });
+        $("#tc-m2").keyup(function() {
+            $("#tc-pcs").val(Math.ceil($("#tc-m2").val() / spc) * ppc);
+            $("#tc-carton").val(Math.ceil($("#tc-m2").val() / spc));
+        });
+        $("#tc-cancel").click(function() {
+            $("#tile-calculator-modal").css({
+                "transform": "translateY(1400px)"
+            });
+            $("#tile-calculator-base").css({
+                "background-color": "rgba(0, 0, 0, 0.0)",
+                "visibility": "hidden"
+            });
+        });
+        // $("#tile-calculator-base").click(function() {
+        //     $("#tile-calculator-modal").css({
+        //         "transform": "translateY(1400px)"
+        //     });
+        //     $("#tile-calculator-base").css({
+        //         "background-color": "rgba(0, 0, 0, 0.0)",
+        //         "visibility": "hidden"
+        //     });
+        // });
+        $("#tc-confirm").click(function() {
+            $("#quantity").val($("#tc-carton").val());
+            $("#tile-calculator-modal").css({
+                "transform": "translateY(1400px)"
+            });
+            $("#tile-calculator-base").css({
+                "background-color": "rgba(0, 0, 0, 0.0)",
+                "visibility": "hidden"
+            });
+        });
+
+        $("#set-shading").click(function(e) {
+            e.preventDefault();
+            shadingLimit = $("#quantity").val();
+            if (!shadingState) {
+                let kode_stok = $("#product-code").text();
+                $.ajax({
+                    url: "ajaxShading.php",
+                    method: "POST",
+                    dataType: "html",
+                    data: {
+                        "kode": kode_stok,
+                        "amount": $("#quantity").val()
+                    },
+                    success: function(data) {
+                        $("#shading-container").html(data);
+                    }
+                });
+                $("#shading-base-container").css("display", "flex");
+                $("#shading-base-container").css("height", "auto");
+                $("#set-shading i").removeClass("fa-eye");
+                $("#set-shading i").addClass("fa-eye-slash");
+                shadingState = true;
+            } else {
+                $("#shading-base-container").css({
+                    "display": "none",
+                    "height": "0px"
+                });
+                $("#set-shading i").removeClass("fa-eye-slash");
+                $("#set-shading i").addClass("fa-eye");
+                shadingState = false;
+            }
+        });
+    });
 </script>

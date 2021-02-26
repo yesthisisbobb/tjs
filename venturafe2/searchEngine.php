@@ -10,18 +10,18 @@ include("containers.php");
 session_start();
 
 // Variable Name Reference
-// let valArr = {
-// 	"searchVal": "",
-// 	"priceVal": "",
-// 	"availVal": "",
-// 	"category": {}
-// };
-// let statesArr = {
-// 	"isSearched": false,
-// 	"isFilteredByPrice": false,
-// 	"isFilteredByAvail": false,
-// 	"isCategorized": false
-// };
+# let valArr = {
+# 	"searchVal": "",
+# 	"priceVal": "",
+# 	"availVal": "",
+# 	"category": {}
+# };
+# let statesArr = {
+# 	"isSearched": false,
+# 	"isFilteredByPrice": false,
+# 	"isFilteredByAvail": false,
+# 	"isCategorized": false
+# };
 
 // Query related variables
 $contentPerPage = 18;
@@ -86,13 +86,13 @@ if ($statesData["isSearched"]) {
 
 // FILTER HARGA
 if ($statesData["isFilteredByPrice"]){
-    // <option value="none">All</option>
-    // <option value="lth">Low to High</option>
-    // <option value="htl">High to Low</option>
-    // <option value="be1">Below 100k</option>
-    // <option value="ab1">Above 100k</option>
-    // <option value="be2">Below 1.000k</option>
-    // <option value="ab2">Above 1.000k</option>
+    # <option value="none">All</option>
+    # <option value="lth">Low to High</option>
+    # <option value="htl">High to Low</option>
+    # <option value="be1">Below 100k</option>
+    # <option value="ab1">Above 100k</option>
+    # <option value="be2">Below 1.000k</option>
+    # <option value="ab2">Above 1.000k</option>
     
     $priceVal = $valData["priceVal"];
     switch ($priceVal) {
@@ -125,7 +125,7 @@ if ($statesData["isFilteredByPrice"]){
     }
 }
 
-// This might need to be changed
+// TODO: This might need to be changed
 if (!$statesData["isFilteredByPrice"] && !$statesData["isSearched"] && !$statesData["isCategorized"]) {
     $wheres .= " ORDER BY RAND()";
 }
