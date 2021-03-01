@@ -35,6 +35,44 @@ $statesRawData = $_GET['states'];
 $valData = json_decode($valRawData, true);
 $statesData = json_decode($statesRawData, true);
 
+$availDatas = "";
+$toBeQueried = [];
+$availQueries = array();
+if ($statesData["isFilteredByAvail"]) {
+    $avail = "";
+    switch ($valData["availVal"]) {
+        case 'rdy':
+            $avail = "Ready";
+            break;
+        case 'idt':
+            $avail = "Indent";
+            break;
+        case 'none':
+            $avail = "none";
+            break;
+        default:
+            $avail = "";
+            break;
+    }
+
+    if ($avail != "none" || $avail != "") {
+        $toBeQueried =  ventura('item/stock', ["kode" => null, 'status' => "$avail"], 'POST');
+
+        $temp = " ms.kodetipe IN (SELECT kodetipe FROM master_stok WHERE ";
+        for ($l=0; $l < sizeof($toBeQueried["result"]["result"]); $l++) { 
+            $key = urlencode($toBeQueried["result"]["result"][$l]["tipe_item"]);
+            $stock = $toBeQueried["result"]["result"][$l]["stok"];
+            $temp .= "kodetipe='$key'"; // Konkatenasi data
+            $availQueries["$key"] = $stock; // Nyimpen data
+            if($l < sizeof($toBeQueried["result"]["result"]) - 1) $temp .= " OR ";
+        }
+        $temp .= ")";
+        $availDatas = $temp;
+
+        // echo $availDatas;
+    }
+}
+
 $masterQuery = "";
 $selects = "SELECT ms.kodetipe AS tipe, ms.kode_stok AS kode, ms.kodemerk AS merk, ms.panjang AS p, ms.lebar AS l, ms.tinggi AS t, ms.tebal AS tebal, msg.namagrup AS grup";
 $froms = "FROM master_sub_grup msg, detail_sub_grup dsg, master_stok ms";
@@ -125,6 +163,10 @@ if ($statesData["isFilteredByPrice"]){
     }
 }
 
+if ($statesData["isFilteredByAvail"]) {
+    $wheres .= " AND $availDatas";
+}
+
 // TODO: This might need to be changed
 if (!$statesData["isFilteredByPrice"] && !$statesData["isSearched"] && !$statesData["isCategorized"]) {
     $wheres .= " ORDER BY RAND()";
@@ -169,8 +211,14 @@ if ($total > 0) {
         }
 
         // Stok
-        $apidata = ventura('item/qty', ["kode" => "$kodeProduk", 'merk' => null], 'POST');
-        $jum = $apidata["result"]["data"][0]["stok"];
+        if ($statesData["isFilteredByPrice"]) {
+            $jum = $availQueries["$kodeProduk"];
+        }
+        else{
+            $apidata = ventura('item/stock', ["kode" => "$kodeProduk", 'status' => null], 'POST');
+            $jum = 0;
+            if ($apidata["result"]["result"] != null) $jum = $apidata["result"]["result"][0]["stok"];
+        }
 
         // $Spage = 1;
         // $apidata = ventura('item/stock?page=' . $Spage, ["kode" => "$kodeProduk", 'merk' => null, 'gudang' => null], 'POST');

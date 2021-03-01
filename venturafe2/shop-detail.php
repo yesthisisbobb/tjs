@@ -101,17 +101,8 @@ $file = getProductPicture($kodeproduk);
                                     $stockres = [];
 
                                     // Koneksi ke API
-                                    $page = 1;
-                                    $apidata = ventura('item/stock?page=' . $page, ["kode" => "$kodeproduk", 'merk' => null, 'gudang' => null], 'POST');
-
-                                    $jmlprod = 0;
-                                    $apitotalpage = $apidata["result"]["total_page"];
-                                    for ($i = 1; $i <= $apitotalpage; $i++) {
-                                        $apidata = ventura('item/stock?page=' . $i, ["kode" => "$kodeproduk", 'merk' => null, 'gudang' => null], 'POST');
-                                        foreach ($apidata["result"]["data"] as $d) {
-                                            $jmlprod += $d["stok"];
-                                        }
-                                    }
+                                    $apidata = ventura('item/stock', ["kode" => "$kodeproduk", 'status' => null], 'POST');
+                                    if ($apidata["result"]["result"] != null) $jmlprod = $apidata["result"]["result"][0]["stok"];
 
                                     // $queryStok = $conn->query("SELECT * FROM master_shading where kode_stok='$kodestok' AND (gudang = '1G.PROYEK' OR gudang = '1G DISPLAY SALE' OR gudang = '1G SHOWROOM BRAVAT' OR gudang='1G.DISPLAY KMJ-1' OR gudang = '1G.DISPLAY KMJ-2' OR gudang = '1G.DISTRIBUSI' OR gudang = '1G.RETAILjkt' OR gudang = '1G.TOKO1' OR gudang = '1G.TOKO2' OR gudang = '4G.JAKARTA')");
                                     // while ($rowStok = mysqli_fetch_assoc($queryStok)) {
@@ -277,17 +268,11 @@ $file = getProductPicture($kodeproduk);
                                                         </a>
                                                         <?php
                                                         $tempkode = $data["namaproduk"];
-                                                        $page = 1;
-                                                        $apidata = ventura('item/stock?page=' . $page, ["kode" => "$tempkode", 'merk' => null, 'gudang' => null], 'POST');
-
                                                         $jmlprod = 0;
-                                                        $apitotalpage = $apidata["result"]["total_page"];
-                                                        for ($i = 1; $i <= $apitotalpage; $i++) {
-                                                            $apidata = ventura('item/stock?page=' . $i, ["kode" => "$tempkode", 'merk' => null, 'gudang' => null], 'POST');
-                                                            foreach ($apidata["result"]["data"] as $d) {
-                                                                $jmlprod += $d["stok"];
-                                                            }
-                                                        }
+                                                        
+                                                        $apidata = ventura('item/stock', ["kode" => "$tempkode", 'status' => null], 'POST');
+                                                        if ($apidata["result"]["result"] != null) $jmlprod = $apidata["result"]["result"][0]["stok"];
+
                                                         if ($jmlprod > 18) {
                                                             echo "<a class='shop-product-stock stock-ready' style='color:white;'>Ready</a>";
                                                         } else if ($jmlprod <= 18 && $jmlprod > 1) {
