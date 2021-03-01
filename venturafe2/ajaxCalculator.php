@@ -1,7 +1,9 @@
 <?php
     include("db/config.php");
+    include("api/bridge.php");
 
     $kode = $_POST["kode"];
+    $kodetipe = $_POST["kodetipe"];
 
     $command = "SELECT pcsctn as ppc, sqmctn as spc FROM master_stok WHERE kode_stok='$kode'";
     $query = mysqli_query($conn, $command);
@@ -14,10 +16,9 @@
         $dataArray["spc"] = $rawdata["spc"];
 
         $jmlprod = 0;
-        $queryStok = $conn->query("SELECT * FROM master_shading where kode_stok='$kode'");
-        while ($rowStok = mysqli_fetch_assoc($queryStok)) {
-            $jmlprod += $rowStok["jum"];
-        }
+        $apidata = ventura('item/stock', ["kode" => "$kodetipe", 'status' => null], 'POST');
+        if ($apidata["result"]["result"] != null) $jmlprod = $apidata["result"]["result"][0]["stok"];
+
         $dataArray["stok"] = $jmlprod;
     }
     else{

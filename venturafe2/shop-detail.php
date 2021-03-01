@@ -269,7 +269,7 @@ $file = getProductPicture($kodeproduk);
                                                         <?php
                                                         $tempkode = $data["namaproduk"];
                                                         $jmlprod = 0;
-                                                        
+
                                                         $apidata = ventura('item/stock', ["kode" => "$tempkode", 'status' => null], 'POST');
                                                         if ($apidata["result"]["result"] != null) $jmlprod = $apidata["result"]["result"][0]["stok"];
 
@@ -514,7 +514,8 @@ $file = getProductPicture($kodeproduk);
         method: "POST",
         dataType: "JSON",
         data: {
-            "kode": kodestok_elemen
+            "kode": kodestok_elemen,
+            "kodetipe": getUrlParameter("id")
         },
         success: function(data) {
             // console.log(data, data.spc, data.ppc);
