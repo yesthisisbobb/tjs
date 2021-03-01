@@ -168,7 +168,7 @@ if ($statesData["isFilteredByAvail"]) {
 }
 
 // TODO: This might need to be changed
-if (!$statesData["isFilteredByPrice"] && !$statesData["isSearched"] && !$statesData["isCategorized"]) {
+if (!$statesData["isFilteredByPrice"] && !$statesData["isFilteredByAvail"] && !$statesData["isSearched"] && !$statesData["isCategorized"]) {
     $wheres .= " ORDER BY RAND()";
 }
 
