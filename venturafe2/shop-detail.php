@@ -424,7 +424,7 @@ $file = getProductPicture($kodeproduk);
                         animate: 'slide'
                     });
                 } else {
-                    window.location.href = "my-account.php?logged=false";
+                    window.location.href = "access.php?logged=false";
                 }
             },
             error: function(error) {
@@ -478,7 +478,7 @@ $file = getProductPicture($kodeproduk);
                         animate: 'slide'
                     });
                 } else {
-                    window.location.href = "my-account.php?logged=false";
+                    window.location.href = "access.php?logged=false";
                 }
             },
             error: function(error) {

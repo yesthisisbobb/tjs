@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION["username"])) {
-    header("Location:my-account.php?logged=false");
+    header("Location:access.php?logged=false");
 }
 ?>
 <!DOCTYPE html>

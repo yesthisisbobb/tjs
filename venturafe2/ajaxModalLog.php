@@ -23,7 +23,7 @@ if (!isset($_SESSION['loginId'])) {
             </div>
             </form>
             <br>
-            <label><a href="my-account.php" id="registerlink" style="color:#20c997">Register Now</a></label>';
+            <label><a href="access.php" id="registerlink" style="color:#20c997">Register Now</a></label>';
 } else {
     echo '<h4>'.$_SESSION['username']. '</h4>
    

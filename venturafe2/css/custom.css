@@ -238,6 +238,7 @@
 }
 /* End Animations */
 
+/* Globals */
 .orange-yellow{
     color: #D6AA2F;
 }
@@ -255,13 +256,15 @@
     overflow: hidden;
 }
 
-/* button>i{
-    margin-right: 8px;
-} */
-
 .swal-modal .swal-text {
     text-align: center;
 }
+
+.content-container{
+    margin-top: 140px;
+}
+/* End of Globals */
+
 /* ===== Punya e cart header ===== */
 #indent-cart, #normal-cart {
     display: flex;
@@ -275,6 +278,7 @@
     margin-left: 4px;
 }
 /* ===== Akhir punya e cart header ====== */
+
 /* ===== Punya e Floating Cart ===== */
 #normal-cart-container{
     display: none;
@@ -641,6 +645,74 @@
     height: 62%;
 }
 /* ===== AKHIR PUNYA E INDEX ===== */
+
+/* ===== PUNYA E ACCOUNT ===== */
+#acc-base{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+}
+#acc-main{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    width: 80%;
+    padding: 20px 0 120px;
+}
+#acc-top, #acc-bot{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+#acc-top{
+    width: 100%;
+    padding: 32px 0;
+    margin-bottom: 20px;
+
+    background-color: rgb(250, 250, 250);
+}
+#acc-img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-bottom: 14px;
+
+    border-radius: 50%;
+
+    overflow: hidden;
+}
+#acc-img img{
+    max-height: 100px;
+    max-width: 100px;
+}
+#acc-bot{
+    width: 76%;
+}
+#acc-bot table td{
+    padding: 8px 16px;
+}
+#acc-bot button{
+    padding: 0;
+    margin: 0;
+    margin-top: 20px;
+}
+#acc-bot button i{
+    align-self: flex-start;
+    margin-right: 8px;
+}
+#acc-cpass{
+    display: none;
+}
+#acc-cpass input{
+    padding: 4px 6px;
+}
+/* ===== AKHIR PUNYA E ACCOUNT ===== */
 
 /* ===== PUNYA E COMPANY ===== */
 .smb-serif{
@@ -1818,32 +1890,36 @@ html {
 
 /* Kinda Large Screen ( <= 1199px & >= 992px ) */
 @media screen and (max-width: 1199px) and (min-width: 992px) {
+    .content-container{
+        margin-top: 0;
+    }
     #cp-base-container{
         margin-top: 0;
     }
-
     #profile-base-container{
         margin-top: 0px;
     }
-    /* .row .col.borderRight{
-        display: none;
-    } */
+    .featured-hp-1.shop-full-page .woocommerce {
+        padding-top: 50px;
+    }
     #normal-cart-container,#indent-cart-container{
         display: flex;
     }
 }
 /* Medium Screen ( <= 991px & >= 768px ) */
 @media screen and (max-width: 991px) and (min-width: 768px){
+    .content-container{
+        margin-top: 0;
+    }
     #cp-base-container{
         margin-top: 0;
     }
-
     #profile-base-container{
         margin-top: 0px;
     }
-    /* .row .col.borderRight{
-        display: none;
-    } */
+    .featured-hp-1.shop-full-page .woocommerce {
+        padding-top: 50px;
+    }
     #normal-cart-container,#indent-cart-container{
         display: flex;
         width: 60px;
@@ -1872,17 +1948,19 @@ html {
     html{
         font-size: 11px;
     }
+    .content-container{
+        margin-top: 0;
+    }
     #cp-base-container{
         margin-top: 0;
         font-family: 'Lato', sans-serif;
     }
-
     #profile-base-container{
         margin-top: 0px;
     }
-    /* .row .col.borderRight{
-        display: none;
-    } */
+    .featured-hp-1.shop-full-page .woocommerce {
+        padding-top: 50px;
+    }
     #normal-cart-container,#indent-cart-container{
         display: flex;
         width: 50px;

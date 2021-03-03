@@ -11,7 +11,7 @@ include('rupiah.php');
 	<?php include("./headerdkk/template-head.php"); ?>
 </head>
 
-<body class="homepages-1" id="realcontainer">
+<body class="content-container" id="realcontainer">
 	<?php include('headerdkk/header.php'); ?>
 	<div class="page-content">
 		<!-- Slider Revolution Section -->
