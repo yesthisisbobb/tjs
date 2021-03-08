@@ -663,6 +663,21 @@
     width: 80%;
     padding: 20px 0 120px;
 }
+.acc-validation{
+    position: absolute;
+    top: 20%;
+    left: 100%;
+
+    font-size: .9em;
+    color: red;
+
+    width: fit-content;
+    height: fit-content;
+
+    visibility: hidden;
+
+    transition: .3s ease-in;
+}
 #acc-top, #acc-bot{
     display: flex;
     flex-direction: column;
@@ -696,6 +711,7 @@
 }
 #acc-bot table td{
     padding: 8px 16px;
+    position: relative;
 }
 #acc-bot button{
     padding: 0;
@@ -706,11 +722,18 @@
     align-self: flex-start;
     margin-right: 8px;
 }
-#acc-cpass{
+#acc-opass, #acc-npass, #acc-cpass{
     display: none;
 }
-#acc-cpass input{
+#acc-ophn-num, #acc-nphn-num{
+    display: none;
+}
+#acc-bot input{
     padding: 4px 6px;
+}
+#acc-conf{
+    display: none;
+    color: limegreen;
 }
 /* ===== AKHIR PUNYA E ACCOUNT ===== */
 
@@ -1611,6 +1634,9 @@ html {
     align-items: center;
 }
 /* Kalo empty message, center content */
+#real-content button i{
+    margin-right: 6px;
+}
 #real-content .empty-message-container{
     width: 100%;
     display: flex;
