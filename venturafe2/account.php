@@ -15,6 +15,8 @@ $query = mysqli_query($conn, $command);
 if ($query) {
     $result = mysqli_fetch_assoc($query);
 }
+
+// TODO: Upload gambar buat ngganti profile picture, rapikan coding, encode value-value
 ?>
 
 <!DOCTYPE html>
