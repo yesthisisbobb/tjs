@@ -185,17 +185,17 @@ include('rupiah.php');
 		$('#toggle-option').on('click', function() {
 			$("#sales").mousedown();
 		});
-		setInterval(function() {
-			$.ajax({
-				type: 'POST',
-				url: 'ajaxCheckSession.php',
-				success: function(data) {
-					if (data != "") {
-						window.location = "index.php";
-					}
-				}
-			});
-		}, 500)
+		// setInterval(function() {
+		// 	$.ajax({
+		// 		type: 'POST',
+		// 		url: 'ajaxCheckSession.php',
+		// 		success: function(data) {
+		// 			if (data != "") {
+		// 				window.location = "index.php";
+		// 			}
+		// 		}
+		// 	});
+		// }, 500)
 	</script>
 </body>
 

@@ -201,10 +201,10 @@
 						}
 					});
 					$('#canvasModal').fadeOut();
-					Swal.fire("Congratulation", "Now You Can Shop", "success");
+					Swal.fire("Login Successful!", "Now You Can Shop", "success");
 					// $('body').css('overflow-y', 'auto');
 				} else {
-					swal("Error", "Password atau Email anda salah!", "error");
+					Swal.fire("An error occured!", "Invalid email or password!", "error");
 				}
 				modalLog();
 				// Ngambil function dari header.php
@@ -213,6 +213,8 @@
 			}
 		});
 	});
+
+	// Untuk login di access.php
 	$("#login-button-ma").click(function() {
 		console.log($('#login-form-ma').serialize());
 		$.ajax({
@@ -222,10 +224,16 @@
 			success: function(data) {
 				if (data == "Success!") {
 					$('#canvasModal').fadeOut();
-					swal("Congratulation", "Now You Can Shop", "success");
+					Swal.fire("Login Successful!", "Now You Can Shop", "success")
+						.then((result) => {
+							if (result.isConfirmed) {
+								window.location.href = "index.php";
+							}
+
+						});
 					// $('body').css('overflow-y', 'auto');
 				} else {
-					swal("Error", "Password atau Email anda salah!", "error");
+					Swal.fire("An error occured!", "Invalid email or password!", "error");
 				}
 				modalLog();
 				// Ngambil function dari header.php
@@ -251,8 +259,7 @@
 				try {
 					var auth2 = gapi.auth2.getAuthInstance();
 					auth2.signOut();
-				}
-				catch (error){
+				} catch (error) {
 					console.error(error);
 				}
 
@@ -267,7 +274,7 @@
 						// document.location.reload();
 					}
 				});
-				swal(
+				Swal.fire(
 					'Logged Out!',
 					'Logged Out Successfully',
 					'success'
