@@ -77,7 +77,7 @@ if (session_status() == PHP_SESSION_NONE) {
                                 </ul>
                             </li>
                             <li class="menu-item">
-                                <a href="#">
+                                <a href="company.php">
                                     ABOUT
                                 </a>
                                 <ul class="sub-menu">
