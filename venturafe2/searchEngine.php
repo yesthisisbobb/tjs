@@ -176,7 +176,7 @@ if (!$statesData["isFilteredByPrice"] && !$statesData["isFilteredByAvail"] && !$
 
 $masterQuery = "$selects $froms $wheres";
 
-echo $masterQuery;
+// echo $masterQuery;
 $queryTotal = $conn->query($masterQuery);
 $total = 0;
 if ($queryTotal) $total = mysqli_num_rows($queryTotal);
