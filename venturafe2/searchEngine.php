@@ -122,6 +122,11 @@ if ($statesData["isSearched"]) {
 
 }
 
+
+if ($statesData["isFilteredByAvail"]) {
+    $wheres .= " AND $availDatas";
+}
+
 // FILTER HARGA
 if ($statesData["isFilteredByPrice"]){
     # <option value="none">All</option>
@@ -163,9 +168,6 @@ if ($statesData["isFilteredByPrice"]){
     }
 }
 
-if ($statesData["isFilteredByAvail"]) {
-    $wheres .= " AND $availDatas";
-}
 
 // TODO: This might need to be changed
 if (!$statesData["isFilteredByPrice"] && !$statesData["isFilteredByAvail"] && !$statesData["isSearched"] && !$statesData["isCategorized"]) {
@@ -174,7 +176,7 @@ if (!$statesData["isFilteredByPrice"] && !$statesData["isFilteredByAvail"] && !$
 
 $masterQuery = "$selects $froms $wheres";
 
-// echo $masterQuery;
+echo $masterQuery;
 $queryTotal = $conn->query($masterQuery);
 $total = 0;
 if ($queryTotal) $total = mysqli_num_rows($queryTotal);
