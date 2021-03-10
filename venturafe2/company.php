@@ -37,7 +37,6 @@ include('rupiah.php');
                         <br>
                         <p>
                             Smart Marble & Bath (SMB) is a branch of Karya Modern Group is located in Surabaya and has been already in tile and bathroom ﬁtting business for more than 42 years. Karya Modern Group was founded in 1976 in Surabaya and was a material store when it was ﬁrst started. Karya Modern Group located in Surabaya, East Java Province. It was built since 1976 as a material store located at Jl. Baliwerti No. 119-121 Kav 10, Surabaya.
-
                         </p>
                     </div>
                 </div>
@@ -66,10 +65,96 @@ include('rupiah.php');
                 <div class="cp-section-header">
                     Certifications
                 </div>
+                <div id="cpc-slider">
+                    <div id="cpc-slider-wrap">
+                        <div class="cpc-slider-frame">
+                            <img src="../img/company-profile/certificate/certi1.png" alt="">
+                        </div>
+                        <div class="cpc-slider-frame">
+                            <img src="../img/company-profile/certificate/certi2.png" alt="">
+                        </div>
+                        <div class="cpc-slider-frame">
+                            <img src="../img/company-profile/certificate/certi3.png" alt="">
+                        </div>
+                        <div class="cpc-slider-frame">
+                            <img src="../img/company-profile/certificate/certi4.png" alt="">
+                        </div>
+                        <div class="cpc-slider-frame">
+                            <img src="../img/company-profile/certificate/certi5.png" alt="">
+                        </div>
+                        <div class="cpc-slider-frame">
+                            <img src="../img/company-profile/certificate/certi6.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div id="cpc-arrow-left"><i class="fas fa-chevron-left"></i></div>
+                <div id="cpc-arrow-right"><i class="fas fa-chevron-right"></i></div>
             </div>
             <div class="cp-section" id="cp-projects">
                 <div class="cp-section-header">
                     Project Portfolio
+                </div>
+                <div id="cpp-child">
+                    <div id="cpp-left">
+                        <div class="cpp-image-frame">
+                            <img src="../img/company-profile/projects/my tower apartement surabaya.jpg" alt="My Tower Apartment, Surabaya">
+                            <span>My Tower Apartment, Surabaya</span>
+                        </div>
+                        <div class="cpp-image-frame">
+                            <img src="../img/company-profile/projects/city point malang.jpg" alt="City Point, Malang">
+                            <span>City Point, Malang</span>
+                        </div>
+                        <div class="cpp-image-frame">
+                            <img src="../img/company-profile/projects/eden hotel bali.jpg" alt="Eden Hotel, Bali">
+                            <span>Eden Hotel, Bali</span>
+                        </div>
+                        <div class="cpp-image-frame">
+                            <img src="../img/company-profile/projects/puncak cbd surabaya.jpg" alt="Puncak CBD, Surabaya">
+                            <span>Puncak CBD, Surabaya</span>
+                        </div>
+                        <div class="cpp-image-frame-double">
+                            <div class="cpp-image-frame">
+                                <div class="cpp-image tall">
+                                    <img src="../img/company-profile/projects/trillium office surabaya.jpg" alt="Trillium Office, Surabaya">
+                                </div>
+                                <span>Trillium Office, Surabaya</span>
+                            </div>
+                            <div class="cpp-image-frame">
+                                <div class="cpp-image tall">
+                                    <img src="../img/company-profile/projects/belle view manyar apartment.jpg" alt="Belle View Manyar Apartment, Surabaya">
+                                </div>
+                                <span>Belle View Manyar Apartment, Surabaya</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="cpp-right">
+                        <div class="cpp-image-frame">
+                            <img src="../img/company-profile/projects/the wahid private residences medan.jpg" alt="The Wahid Private Residences, Medan">
+                            <span>The Wahid Private Residences, Medan</span>
+                        </div>
+                        <div class="cpp-image-frame-double">
+                            <div class="cpp-image-frame">
+                                <div class="cpp-image tall">
+                                    <img src="../img/company-profile/projects/puncak merr surabaya.jpg" alt="Puncak Merr, Surabaya">
+                                </div>
+                                <span>Puncak Merr, Surabaya</span>
+                            </div>
+                            <div class="cpp-image-frame">
+                                <div class="cpp-image tall">
+                                    <img src="../img/company-profile/projects/rich pallace hotel surabaya.jpg" alt="Rich Palace Hotel, Surabaya">
+                                </div>
+                                <span>Rich Palace Hotel, Surabaya</span>
+                            </div>
+                        </div>
+                        <div class="cpp-image-frame">
+                            <img src="../img/company-profile/projects/skyline tower surabaya.jpg" alt="Skyline Tower, Surabaya">
+                            <span>Skyline Tower, Surabaya</span>
+                        </div>
+                        <div class="cpp-image-frame">
+                            <img src="../img/company-profile/projects/la diva green hill residence surabaya.jpg" alt="La Diva Green Hill Residence, Surabaya">
+                            <span>La Diva Green Hill Residence, Surabaya</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -79,3 +164,19 @@ include('rupiah.php');
 </body>
 
 </html>
+<script>
+    let SLIDE_AMOUNT = 332; // 320 (frame size) + 12 (margin right)
+    let sliderPos = 0;
+    $("#cpc-arrow-left").click(function() {
+        if (sliderPos != 0) {
+            sliderPos++;
+            $(".cpc-slider-frame").css("transform", `translateX(${SLIDE_AMOUNT * sliderPos}px)`);
+        }
+    });
+    $("#cpc-arrow-right").click(function() {
+        if (sliderPos > -3) {
+            sliderPos--;
+            $(".cpc-slider-frame").css("transform", `translateX(${SLIDE_AMOUNT * sliderPos}px)`);
+        }
+    });
+</script>

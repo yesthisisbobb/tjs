@@ -282,7 +282,7 @@ if ($total > 0) {
             <div class='col empty-message-container justify-content-center'>
                 <h2>Oops!</h2>
                 <img src='resource/no-result.png'>
-                <span style='text-align:center;'>Looks like the product you're looking for doesn't exist!</span>
+                <span style='text-align:center;'>Looks like the product you're looking for doesn't exist<br/>or maybe you forgot to clear the search bar!</span>
             </div>
             </div>";
 }

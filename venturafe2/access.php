@@ -36,7 +36,7 @@ include('rupiah.php');
 										<br>
 										<div class="input-container input-border">
 											<i class="fa fa-lock icon"></i>
-											<input autocomplete="current-password" type="password" required="" id="password2" class="input-field " name="password" placeholder="Password">
+											<input autocomplete="current-password" type="password" required="" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" id="password2" class="input-field " name="password" placeholder="Password">
 											<i class="fa fa-eye toggle-visible" id="icon-toggle" onClick="toggleVisible(3)"></i>
 										</div>
 										<button style="cursor:pointer;background:#6c757d;color:white;border:0px solid white;padding:12px" id="login-button-ma" type="button" data-dismiss="modal" class="au-btn loginBtn">
