@@ -1591,17 +1591,6 @@ input[type=range]::-ms-thumb {
 }
 /* ===== AKHIR PUNYA E CART LIST ===== */
 
-@media (max-width: 575px) {
-    .div-test {
-        background-color: white;
-        top: 52px;
-        left: -20px;
-        position: absolute;
-        z-index: 100;
-    }
-}
-
-
 /* =====  LOGIN  ===== */
 
 .input-container {
@@ -2036,6 +2025,52 @@ html {
     #normal-cart-container,#indent-cart-container{
         display: flex;
     }
+
+    #cpp-child{
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
+    #cpp-left, #cpp-right{
+        align-items: center;
+
+        width: 100%;
+    }
+    .cpp-image-frame-double{
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        
+        padding-bottom: 8px;
+    }
+    .cpp-image-frame-double .cpp-image-frame{
+        width: 100%;
+    }
+    .cpp-image-frame .cpp-image{
+        height: auto;
+
+        overflow: hidden;
+    }
+    .cpp-image-frame .cpp-image.tall{
+        max-width: 100%;
+    }
+    .cp-section-desc-1, .cp-section-desc-2{
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+
+        height: auto;
+    }
+    .cp-section-desc-1 .cp-image, .cp-section-desc-2 .cp-image{
+        width: 100%;
+
+        overflow: hidden;
+    }
+    .cp-section-desc-1 .cp-text, .cp-section-desc-2 .cp-text{
+        width: 100%;
+
+        padding: 12px 0;
+    }
 }
 /* Medium Screen ( <= 991px & >= 768px ) */
 @media screen and (max-width: 991px) and (min-width: 768px){
@@ -2072,6 +2107,52 @@ html {
     #add-to-cart .atc-icon{
         padding-left: 0;
         margin-right: 0;
+    }
+
+    #cpp-child{
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
+    #cpp-left, #cpp-right{
+        align-items: center;
+
+        width: 100%;
+    }
+    .cpp-image-frame-double{
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        
+        padding-bottom: 8px;
+    }
+    .cpp-image-frame-double .cpp-image-frame{
+        width: 100%;
+    }
+    .cpp-image-frame .cpp-image{
+        height: auto;
+
+        overflow: hidden;
+    }
+    .cpp-image-frame .cpp-image.tall{
+        max-width: 100%;
+    }
+    .cp-section-desc-1, .cp-section-desc-2{
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+
+        height: auto;
+    }
+    .cp-section-desc-1 .cp-image, .cp-section-desc-2 .cp-image{
+        width: 100%;
+
+        overflow: hidden;
+    }
+    .cp-section-desc-1 .cp-text, .cp-section-desc-2 .cp-text{
+        width: 100%;
+
+        padding: 12px 0;
     }
 }
 /* Small Screen ( <= 767px ) */
@@ -2166,6 +2247,52 @@ html {
     }
     .so-header-content{
         width: auto;
+    }
+
+    #cpp-child{
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
+    #cpp-left, #cpp-right{
+        align-items: center;
+
+        width: 100%;
+    }
+    .cpp-image-frame-double{
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        
+        padding-bottom: 8px;
+    }
+    .cpp-image-frame-double .cpp-image-frame{
+        width: 100%;
+    }
+    .cpp-image-frame .cpp-image{
+        height: auto;
+
+        overflow: hidden;
+    }
+    .cpp-image-frame .cpp-image.tall{
+        max-width: 100%;
+    }
+    .cp-section-desc-1, .cp-section-desc-2{
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+
+        height: auto;
+    }
+    .cp-section-desc-1 .cp-image, .cp-section-desc-2 .cp-image{
+        width: 100%;
+
+        overflow: hidden;
+    }
+    .cp-section-desc-1 .cp-text, .cp-section-desc-2 .cp-text{
+        width: 100%;
+
+        padding: 12px 0;
     }
 }
 

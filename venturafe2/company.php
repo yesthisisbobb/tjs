@@ -165,8 +165,26 @@ include('rupiah.php');
 
 </html>
 <script>
+    let viewportWidth = $(window).width();
     let SLIDE_AMOUNT = 332; // 320 (frame size) + 12 (margin right)
+    let slideLimit = 3;
     let sliderPos = 0;
+
+    $(window).resize(function() {
+        viewportWidth = $(window).width();
+
+        if (viewportWidth >= 992 && viewportWidth <= 1199) {
+            slideLimit = 4;
+        } else if (viewportWidth >= 768 && viewportWidth <= 991) {
+            slideLimit = 4;
+        } else if (viewportWidth <= 767) {
+            slideLimit = 5;
+        } else{
+            slideLimit = 3;
+        }
+        console.log(slideLimit);
+    });
+
     $("#cpc-arrow-left").click(function() {
         if (sliderPos != 0) {
             sliderPos++;
@@ -174,7 +192,7 @@ include('rupiah.php');
         }
     });
     $("#cpc-arrow-right").click(function() {
-        if (sliderPos > -3) {
+        if (sliderPos > -1 * slideLimit) {
             sliderPos--;
             $(".cpc-slider-frame").css("transform", `translateX(${SLIDE_AMOUNT * sliderPos}px)`);
         }

@@ -262,7 +262,7 @@ if (session_status() == PHP_SESSION_NONE) {
                         </a>
                     </li>
                     <li class="drop">
-                        <a class="drop-link" href="#OTHER">
+                        <a class="drop-link" href="company.php">
                             ABOUT
                         </a>
                     </li>

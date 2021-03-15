@@ -168,6 +168,13 @@ $uh =   '<ul>
                 <a href="' . $COMPANY_PROFILE_LINK . '">
                     ABOUT
                 </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="' . $COMPANY_PROFILE_LINK . '">
+                            COMPANY PROFILE
+                        </a>
+                    </li>
+                </ul>
             </li>
         </ul>';
 
@@ -208,7 +215,7 @@ function mVersion($isLogged, $type){
                         </a>
                     </li>
                     <li class="drop">
-                        <a class="drop-link" href="' . $GLOBALS["COMPANY_PROFILE_LINK"] . '">
+                        <a id="mallh" class="drop-link" href="' . $GLOBALS["COMPANY_PROFILE_LINK"] . '">
                             ABOUT
                         </a>
                     </li>
@@ -256,7 +263,7 @@ function mVersion($isLogged, $type){
                         </a>
                     </li>
                     <li class="drop">
-                        <a class="drop-link" href="' . $GLOBALS["COMPANY_PROFILE_LINK"] . '">
+                        <a id="muh" class="drop-link" href="' . $GLOBALS["COMPANY_PROFILE_LINK"] . '">
                             ABOUT
                         </a>
                     </li>

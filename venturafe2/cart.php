@@ -190,41 +190,42 @@ $result = mysqli_fetch_array($query);
     }
 
     function checkout() {
-        Swal.fire({
-                icon: "info",
-                title: "Proceed to Checkout?",
-                text: "Please make sure to check items in your order before checking out",
-                showCancelButton: true,
-                confirmButtonText: "Yes, Proceed to Checkout"
-            })
-            .then((value) => {
-                if (value.isConfirmed) {
-                    $.ajax({
-                        url: "checkout-process.php",
-                        method: "POST",
-                        data: {
-                            "tipe": "normal"
-                        },
-                        success: function() {
-                            Swal.fire({
-                                title: "Success",
-                                text: "Your order is successfully processed! Proceed to Transactions tab to view your order",
-                                icon: "success"
-                            });
-                            refreshCart();
-                            refreshCartList();
-                            window.location.hash = "top-anchor";
-                        },
-                        error: function(error) {
-                            Swal.fire({
-                                title: "Error",
-                                text: JSON.parse(error).responseText,
-                                icon: "warning"
-                            });
-                        }
-                    });
-                }
-            });
+        // Swal.fire({
+        //         icon: "info",
+        //         title: "Proceed to Checkout?",
+        //         text: "Please make sure to check items in your order before checking out",
+        //         showCancelButton: true,
+        //         confirmButtonText: "Yes, Proceed to Checkout"
+        //     })
+        //     .then((value) => {
+        //         if (value.isConfirmed) {
+        //             $.ajax({
+        //                 url: "checkout-process.php",
+        //                 method: "POST",
+        //                 data: {
+        //                     "tipe": "normal"
+        //                 },
+        //                 success: function() {
+        //                     Swal.fire({
+        //                         title: "Success",
+        //                         text: "Your order is successfully processed! Proceed to Transactions tab to view your order",
+        //                         icon: "success"
+        //                     });
+        //                     refreshCart();
+        //                     refreshCartList();
+        //                     window.location.hash = "top-anchor";
+        //                 },
+        //                 error: function(error) {
+        //                     Swal.fire({
+        //                         title: "Error",
+        //                         text: JSON.parse(error).responseText,
+        //                         icon: "warning"
+        //                     });
+        //                 }
+        //             });
+        //         }
+        //     });
+        window.location.href = "checkout.php";
     };
 
     $(document).ready(function() {
