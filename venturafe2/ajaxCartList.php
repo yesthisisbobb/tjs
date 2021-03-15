@@ -91,39 +91,6 @@ if(isset($_SESSION["username"])){
             </tr>';
         }
 
-        // while ($data = mysqli_fetch_array($query)) {
-        //     $path = "../venturafe1/img/gambar/" . $data["nama"] . ".jpg";
-        //     if (!file_exists($path)) $path = "../venturafe1/img/gambar/noimg.jpg";
-
-        //     $tempRemove = "removeItemIOnCart('" . strval($data["kode"]) . "')";
-        //     $tempIncrease = "increaseItem('" . $data["kode"] . "')";
-        //     $tempDecrease = "decreaseItem('" . $data["kode"] . "')";
-        //     $tempChange = "valueChanged('" . $data["kode"] . "')";
-
-        //     echo    '<tr class="woocommerce-cart-form__cart-item cart_item">
-        //             <td class="product-remove">
-        //                 <a onclick="' . $tempRemove . '" class="remove"><i class="zmdi zmdi-close"></i></a>
-        //             </td>
-        //             <td class="product-name" data-title="Product">
-        //                 <a href="#"><img src="' . $path . '" alt="product"></a>
-        //                 <span>' . $data["nama"] . '</span>
-        //             </td>
-        //             <td class="product-price" data-title="Price">
-        //                 <span class="woocommerce-Price-amount amount" id="h' . $data["kode"] . '" value="' . $data["hrg"] . '">' . rupiah($data["hrg"]) . '</span>
-        //             </td>
-        //             <td class="product-quantity" data-title="Quantity">
-        //                 <div class="quantity">
-        //                     <span class="modify-qty minus" onclick="' . $tempDecrease . '">-</span>
-        //                     <input onkeyup="' . $tempChange . '" type="number" name="quantity" id="q' . $data["kode"] . '" value="' . $data["jml"] . '" min="1" class="input-text qty text">
-        //                     <span class="modify-qty plus" onclick="' . $tempIncrease . '">+</span>
-        //                 </div>
-        //             </td>
-        //             <td class="product-subtotal" data-title="Total">
-        //                 <span class="woocommerce-Price-amount amount" id="t' . $data["kode"] . '" value="' . (intval($data["jml"]) * intval($data["hrg"])) . '">' . rupiah(intval($data["jml"]) * intval($data["hrg"])) . '</span>
-        //             </td>
-        //         </tr>';
-        // }
-
         // SECTION BAWAH ======
         echo        '</tbody>
             </table>

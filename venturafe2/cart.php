@@ -190,23 +190,15 @@ $result = mysqli_fetch_array($query);
     }
 
     function checkout() {
-        swal({
+        Swal.fire({
                 icon: "info",
                 title: "Proceed to Checkout?",
                 text: "Please make sure to check items in your order before checking out",
-                buttons: {
-                    cancel: true,
-                    confirm: {
-                        text: "Yes, Proceed to Checkout",
-                        value: "checkout",
-                        closeModal: false
-                    }
-                },
-                closeOnClickOutside: false,
-                closeOnEsc: false
+                showCancelButton: true,
+                confirmButtonText: "Yes, Proceed to Checkout"
             })
             .then((value) => {
-                if (value === "checkout") {
+                if (value.isConfirmed) {
                     $.ajax({
                         url: "checkout-process.php",
                         method: "POST",
@@ -214,7 +206,7 @@ $result = mysqli_fetch_array($query);
                             "tipe": "normal"
                         },
                         success: function() {
-                            swal({
+                            Swal.fire({
                                 title: "Success",
                                 text: "Your order is successfully processed! Proceed to Transactions tab to view your order",
                                 icon: "success"
@@ -224,7 +216,7 @@ $result = mysqli_fetch_array($query);
                             window.location.hash = "top-anchor";
                         },
                         error: function(error) {
-                            swal({
+                            Swal.fire({
                                 title: "Error",
                                 text: JSON.parse(error).responseText,
                                 icon: "warning"
