@@ -1046,6 +1046,9 @@
     -o-user-select: none;
     z-index: 899;
 }
+.stock-skeleton{
+    background-color: #8a8888;
+}
 .stock-ready{
     background-color: rgba(9, 161, 141, 0.6);
 }
