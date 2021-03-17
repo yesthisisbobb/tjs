@@ -212,14 +212,14 @@ if ($total > 0) {
             $harga = $rowHarga['pls'];
         }
 
-        // Stok; Ngambil "Ready", "Indent", atau "Limited"
+        // Stok
         if ($statesData["isFilteredByPrice"]) {
             $jum = $availQueries["$kodeProduk"];
         }
         else{
             $apidata = ventura('item/stock', ["kode" => "$kodeProduk", 'status' => null], 'POST');
-            $jum = "Indent";
-            if ($apidata["result"]["result"] != null) $jum = $apidata["result"]["result"][0]["status"];
+            $jum = 0;
+            if ($apidata["result"]["result"] != null) $jum = $apidata["result"]["result"][0]["stok"];
         }
 
         // $Spage = 1;

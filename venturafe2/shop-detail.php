@@ -100,24 +100,22 @@ $file = getProductPicture($kodeproduk);
                                     $jmlprod = 0;
                                     $stockres = [];
 
+                                    // Koneksi ke API
+                                    $apidata = ventura('item/stock', ["kode" => "$kodeproduk", 'status' => null], 'POST');
+                                    if ($apidata["result"]["result"] != null) $jmlprod = $apidata["result"]["result"][0]["stok"];
+
                                     // $queryStok = $conn->query("SELECT * FROM master_shading where kode_stok='$kodestok' AND (gudang = '1G.PROYEK' OR gudang = '1G DISPLAY SALE' OR gudang = '1G SHOWROOM BRAVAT' OR gudang='1G.DISPLAY KMJ-1' OR gudang = '1G.DISPLAY KMJ-2' OR gudang = '1G.DISTRIBUSI' OR gudang = '1G.RETAILjkt' OR gudang = '1G.TOKO1' OR gudang = '1G.TOKO2' OR gudang = '4G.JAKARTA')");
                                     // while ($rowStok = mysqli_fetch_assoc($queryStok)) {
                                     //     $jmlprod += $rowStok["jum"];
                                     // }
 
-                                    // Koneksi ke API
-                                    $apidata = ventura('item/stock', ["kode" => "$kodeproduk", 'status' => null], 'POST');
-                                    if ($apidata["result"]["result"] != null){
-                                        $jmlprod = $apidata["result"]["result"][0]["stok"];
-
-                                        if ($apidata["result"]["result"][0]["status"] == "Ready") {
-                                            echo "<a class='shop-product-stock stock-ready' style='color:white;'>Ready</a>";
-                                        } else if ($apidata["result"]["result"][0]["status"] == "Limited") {
-                                            echo "<a class='shop-product-stock stock-limited' style='color:white;'>Limited</a>";
-                                        } else {
-                                            echo "<a class='shop-product-stock stock-indent' style='color:white;'>Indent</a>";
-                                        }
-                                    }                                    
+                                    if ($jmlprod > 18) {
+                                        echo "<a class='shop-product-stock stock-ready' style='color:white;'>Ready</a>";
+                                    } else if ($jmlprod <= 18 && $jmlprod > 1) {
+                                        echo "<a class='shop-product-stock stock-limited' style='color:white;'>Limited</a>";
+                                    } else {
+                                        echo "<a class='shop-product-stock stock-indent' style='color:white;'>Indent</a>";
+                                    }
                                     ?>
                                     <div class="owl-carousel">
                                         <div class="item">
@@ -273,24 +271,15 @@ $file = getProductPicture($kodeproduk);
                                                         $jmlprod = 0;
 
                                                         $apidata = ventura('item/stock', ["kode" => "$tempkode", 'status' => null], 'POST');
-                                                        if ($apidata["result"]["result"] != null){
-                                                            $jmlprod = $apidata["result"]["result"][0]["stok"];
+                                                        if ($apidata["result"]["result"] != null) $jmlprod = $apidata["result"]["result"][0]["stok"];
 
-                                                            if ($apidata["result"]["result"][0]["status"] == "Ready") {
-                                                                echo "<a class='shop-product-stock stock-ready' style='color:white;'>Ready</a>";
-                                                            } else if ($apidata["result"]["result"][0]["status"] == "Limited") {
-                                                                echo "<a class='shop-product-stock stock-limited' style='color:white;'>Limited</a>";
-                                                            } else {
-                                                                echo "<a class='shop-product-stock stock-indent' style='color:white;'>Indent</a>";
-                                                            }
+                                                        if ($jmlprod > 18) {
+                                                            echo "<a class='shop-product-stock stock-ready' style='color:white;'>Ready</a>";
+                                                        } else if ($jmlprod <= 18 && $jmlprod > 1) {
+                                                            echo "<a class='shop-product-stock stock-limited' style='color:white;'>Limited</a>";
+                                                        } else {
+                                                            echo "<a class='shop-product-stock stock-indent' style='color:white;'>Indent</a>";
                                                         }
-                                                        // if ($jmlprod > 18) {
-                                                        //     echo "<a class='shop-product-stock stock-ready' style='color:white;'>Ready</a>";
-                                                        // } else if ($jmlprod <= 18 && $jmlprod > 1) {
-                                                        //     echo "<a class='shop-product-stock stock-limited' style='color:white;'>Limited</a>";
-                                                        // } else {
-                                                        //     echo "<a class='shop-product-stock stock-indent' style='color:white;'>Indent</a>";
-                                                        // }
                                                         ?>
                                                         <?php
 
