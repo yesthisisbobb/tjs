@@ -26,7 +26,7 @@ include('rupiah.php');
                 </div>
                 <div class="cp-section-desc-1">
                     <div class="cp-image">
-                        <img src="../img/company-profile/2Â¥´ÉÆ¬Çø02-1.jpg" alt="">
+                        <img src="../img/company-profile/km.jpg" alt="">
                     </div>
                     <div class="cp-text">
                         <h3>Our <span class="cp-bolden">Company</span></h3>
