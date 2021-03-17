@@ -57,8 +57,10 @@ while ($row = mysqli_fetch_assoc($query)) {
 			$harga = $rowHarga['pls'];
 		}
 
-		$apidata = ventura('item/stock', ["kode" => "$kodeProduk", 'status' => null], 'POST');
-		if ($apidata["result"]["result"] != null) $jum = $apidata["result"]["result"][0]["stok"];
+		// Stock
+		// $apidata = ventura('item/stock', ["kode" => "$kodeProduk", 'status' => null], 'POST');
+		// if ($apidata["result"]["result"] != null) $jum = $apidata["result"]["result"][0]["stok"];
+		
 		// $queryStok = $conn->query("SELECT * FROM master_shading where kode_stok='$kodeStok' AND (gudang = '1G.PROYEK' OR gudang = '1G DISPLAY SALE' OR gudang = '1G SHOWROOM BRAVAT' OR gudang='1G.DISPLAY KMJ-1' OR gudang = '1G.DISPLAY KMJ-2' OR gudang = '1G.DISTRIBUSI' OR gudang = '1G.RETAILjkt' OR gudang = '1G.TOKO1' OR gudang = '1G.TOKO2' OR gudang = '4G.JAKARTA')");
 		// while ($rowStok = mysqli_fetch_assoc($queryStok)) {
 		// 	$jum += $rowStok["jum"];

@@ -136,9 +136,9 @@ function homeContainerv2($kodeProduk, $kodeStok, $namaGrup, $namaKategori, $prod
     echo    '<div class="col">
                 <div class="home-product-base-container">
                     <div class="home-product-base" onclick="' . $linkToShopDetail . '">
-                        <div class="home-product-top">
-                            <div class="home-product-stock' . $stockClass . '">' . $stockType . '</div>
-                            <div class="home-product-image"  onclick="' . $linkToShopDetail . '"><img class="not-selectable" src="' . $productimg . '"></div>
+                        <div class="home-product-top">'
+                            // '<div class="home-product-stock' . $stockClass . '">' . $stockType . '</div>'
+                            . '<div class="home-product-image"  onclick="' . $linkToShopDetail . '"><img class="not-selectable" src="' . $productimg . '"></div>
                         </div>
                         <div class="home-product-bottom">
                             <div class="home-product-interaction">
