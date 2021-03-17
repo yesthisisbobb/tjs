@@ -126,6 +126,10 @@ include('rupiah.php');
                                 <span>Belle View Manyar Apartment, Surabaya</span>
                             </div>
                         </div>
+                        <div class="cpp-image-frame">
+                            <img src="../img/company-profile/projects/AT - TAQWA MOSQUE - KUDUS.jpg" alt="At-taqwa Mosque, Kudus">
+                            <span>At-taqwa Mosque, Kudus</span>
+                        </div>
                     </div>
                     <div id="cpp-right">
                         <div class="cpp-image-frame">
@@ -154,6 +158,64 @@ include('rupiah.php');
                             <img src="../img/company-profile/projects/la diva green hill residence surabaya.jpg" alt="La Diva Green Hill Residence, Surabaya">
                             <span>La Diva Green Hill Residence, Surabaya</span>
                         </div>
+                        <div class="cpp-image-frame">
+                            <img src="../img/company-profile/projects/MASJID MADINAH ISLAMIC CENTRE - LUMAJANG.jpg" alt="Masjid Madinah Islamic Centre, Lumajang">
+                            <span>Masjid Madinah Islamic Centre, Lumajang</span>
+                        </div>
+                    </div>
+                </div>
+                <div id="cpp-bottom">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-6 cl-sm-12 col-6 d-flex align-items-center justify-content-center">
+                            <img src="../img/company-profile/projects/just-logos/ciputra-world-surabaya-logo.png" alt="Ciputra World Surabaya">
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 cl-sm-12 col-6 d-flex align-items-center justify-content-center">
+                            <img src="../img/company-profile/projects/just-logos/wisata bukit mas.png" alt="Wisata Bukit Mas">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-6 cl-sm-12 col-6 d-flex align-items-center justify-content-center">
+                            <img src="../img/company-profile/projects/just-logos/UC-HORIZONTAL-LOGO.png" alt="Universitas Ciputra">
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-3 cl-sm-12 col-3 d-flex align-items-center justify-content-center">
+                            <img src="../img/company-profile/projects/just-logos/aston-logo-color.png" alt="Aston">
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-3 cl-sm-12 col-3 d-flex align-items-center justify-content-center">
+                            <img src="../img/company-profile/projects/just-logos/ladiva.png" alt="La Diva Green Hill">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-4 col-lg-4 col-md-4 cl-sm-12 col-4 d-flex align-items-center justify-content-center">
+                            <img src="../img/company-profile/projects/just-logos/gunawangsa.png" alt="Apartemen Gunawangsa">
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 cl-sm-12 col-4 d-flex align-items-center justify-content-center">
+                            <img src="../img/company-profile/projects/just-logos/xin zhong school copy.png" alt="Xin Zhong School">
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 cl-sm-12 col-4 d-flex align-items-center justify-content-center">
+                            <img src="../img/company-profile/projects/just-logos/golden tulip.png" alt="Golden Tulip">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-3 col-lg-3 col-md-3 cl-sm-12 col-3 d-flex align-items-center justify-content-center">
+                            <img src="../img/company-profile/projects/just-logos/4point.png" alt="Four Points by Sheraton">
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-3 cl-sm-12 col-3 d-flex align-items-center justify-content-center">
+                            <img src="../img/company-profile/projects/just-logos/swisbelhotel.PNG" alt="Swiss Belinn Hotel">
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-3 cl-sm-12 col-3 d-flex align-items-center justify-content-center">
+                            <img src="../img/company-profile/projects/just-logos/gwalk.png" alt="La Diva Green Hill">
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-3 cl-sm-12 col-3 d-flex align-items-center justify-content-center">
+                            <img src="../img/company-profile/projects/just-logos/grand darmo.PNG" alt="Grand Darmo">
+                        </div>
+                    </div>
+                    <div id="cpp-text-projects">
+                        <div class="col text-center">Hotel Yellow Surabaya&nbsp&nbsp|&nbsp&nbspHotel Prime Royal&nbsp&nbsp|&nbsp&nbspIPDN Mataram&nbsp&nbsp|&nbsp&nbspPuncak Bukit Golf</div>
+                        <div class="col text-center">Puncak Kertajaya&nbsp&nbsp|&nbsp&nbspPurimas Apartment&nbsp&nbsp|&nbsp&nbspRSP Unram Mataram&nbsp&nbsp|&nbsp&nbspRSUD Blitar</div>
+                        <div class="col text-center">RSUD Ngimbang&nbsp&nbsp|&nbsp&nbspRSUD Pasuruan&nbsp&nbsp|&nbsp&nbspTunjungan City (Siola)&nbsp&nbsp|&nbsp&nbspUniversitas Ciputra Apartment</div>
+                        <div class="col text-center">Masjid At-Taqwa, Lamongan&nbsp&nbsp|&nbsp&nbspMasjid Al-Ikhlas, Bojonegoro&nbsp&nbsp|&nbsp&nbspMasjid Baiturrohim, Bojonegoro</div>
+                        <div class="col text-center">Masjid Jami/H Mustofa, Gresik&nbsp&nbsp|&nbsp&nbspMasjid Jamik At-Taqwa, Lamongan&nbsp&nbsp|&nbsp&nbspMasjid Jami Darusalam, Lamongan</div>
+                        <div class="col text-center">Masjid Al-Ikhlas, Mojokerto&nbsp&nbsp|&nbsp&nbspMasjid Babussalam Socah, Bangkalan&nbsp&nbsp|&nbsp&nbspMasjid Al Hijroh, Gresik</div>
                     </div>
                 </div>
             </div>
@@ -179,7 +241,7 @@ include('rupiah.php');
             slideLimit = 4;
         } else if (viewportWidth <= 767) {
             slideLimit = 5;
-        } else{
+        } else {
             slideLimit = 3;
         }
         console.log(slideLimit);

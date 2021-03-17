@@ -949,6 +949,8 @@
 #cpp-child{
     display: flex;
     justify-content: space-between;
+
+    margin-bottom: 42px;
 }
 #cpp-left, #cpp-right{
     display: flex;
@@ -998,6 +1000,15 @@
 }
 .cpp-image-frame-double .cpp-image-frame{
     width: 49.5%;
+}
+#cpp-bottom .row{
+    height: 28vh;
+}
+#cpp-bottom img{
+    max-height: 28vh;
+}
+#cpp-text-projects{
+    margin-top: 42px;
 }
 /* ===== AKHIR PUNYA E COMPANY ===== */
 
