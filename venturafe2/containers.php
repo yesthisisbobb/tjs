@@ -1,4 +1,5 @@
 <?php
+include("processes/stock-classification.php");
 
 function homeContainer($kodeProduk, $kodeStok, $namaGrup, $namaKategori, $productimg, $harga, $jum,$isFavorite){
     echo    '<div class="col" >
@@ -129,13 +130,7 @@ function homeContainerv2($kodeProduk, $kodeStok, $namaGrup, $namaKategori, $prod
     $priceDisplay = rupiah($harga);
 
     // Stock Settings
-    if ($jum <= 0) {
-        $stockType = "Indent";
-    } else if ($jum > 0 && $jum <= 18) {
-        $stockType = "Limited";
-    } else {
-        $stockType = "Ready";
-    }
+    $stockType = stockLevel($namaGrup, $jum);
     $stockClass = " stock-" . strtolower($stockType);
 
     echo    '<div class="col">
@@ -182,15 +177,7 @@ function productContainerv2($kodeProduk, $kodeStok, $namaGrup, $merkimg, $produc
     // $priceDisplay = rupiah($harga);
 
     // Stock Settings
-    if($jum <= 1) {
-        $stockType = "Indent";
-    }
-    else if($jum > 1 && $jum <= 18){
-        $stockType = "Limited";
-    }
-    else{
-        $stockType = "Ready";
-    }
+    $stockType = stockLevel($namaGrup, $jum);
     $stockClass = " stock-" . strtolower($stockType);
 
     // Favorites Settings

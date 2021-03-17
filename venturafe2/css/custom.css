@@ -1053,7 +1053,7 @@
     background-color: rgba(207, 119, 17, 0.6);
 }
 .stock-indent{
-    background-color: rgba(172, 4, 4, 0.6);
+    background-color: rgba(112, 112, 112, 0.6);
 }
 .shop-product-stock:hover{
     filter: opacity(0.35);
