@@ -1,6 +1,52 @@
 <?php
 include('db/config.php');
 include('rupiah.php');
+
+function printSkeleton()
+{
+	for ($i = 0; $i < 5; $i++) {
+		echo '<div class="col">
+				<div class="home-product-base-container">
+					<div class="home-product-base" onclick="">
+						<div class="home-product-top">
+							<div class="home-product-stock stock-skeleton" style="width:5em;">
+								<div class="home-skeleton-animation"></div>
+							</div>
+							<div class="home-product-image">
+								<div style="width:100%;height:100%;background-color:#d6d6d6">
+									<div class="home-skeleton-animation"></div>
+								</div>
+							</div>
+						</div>
+						<div class="home-product-bottom">
+							<div class="home-product-interaction" style="background-color:#e8e8e8;">
+								<div class="home-product-desc">
+									<span class="home-product-group">
+										<div style="width:7.5em;height:.8em;background-color:#bababa;margin-bottom:5px;">
+											<div class="home-skeleton-animation"></div>
+										</div>
+									</span>
+									<span class="home-product-name">
+										<div style="width:5.7em;height:1.1em;background-color:#cccccc;margin-bottom:5px;">
+											<div class="home-skeleton-animation"></div>
+										</div>
+									</span>
+									<span class="home-product-price">
+										<div style="width:5em;height:.9em;background-color:#d9d9d9">
+											<div class="home-skeleton-animation"></div>
+										</div>
+									</span>
+								</div>
+								<div class="home-product-buy" onclick="">
+									<img src="resource/cart.svg">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>';
+	}
+}
 ?>
 
 <!DOCTYPE html>
@@ -208,323 +254,21 @@ include('rupiah.php');
 					<div class="featured-content woocommerce">
 						<h2 class="special-heading">
 							<div style="width:100%;display:flex;justify-content:center;align-items:center;">
-								<div style="width:5em;height:1.6em;background-color:#e8e8e8;"></div>
+								<div style="width:5em;height:1.6em;background-color:#e8e8e8;overflow:hidden;">
+									<div class="home-skeleton-animation"></div>
+								</div>
 							</div>
 						</h2>
 						<div class="content-area">
 							<div class="row">
-								<!-- Product-->
-								<div class="col">
-									<div class="home-product-base-container">
-										<div class="home-product-base" onclick="">
-											<div class="home-product-top">
-												<div class="home-product-stock stock-skeleton" style="width:5em;"></div>
-												<div class="home-product-image">
-													<div style="width:100%;height:100%;background-color:#c2c2c2"></div>
-												</div>
-											</div>
-											<div class="home-product-bottom">
-												<div class="home-product-interaction" style="background-color:#e8e8e8;">
-													<div class="home-product-desc">
-														<span class="home-product-group">
-															<div style="width:7.5em;height:.8em;background-color:#bababa;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-name">
-															<div style="width:5.7em;height:1.1em;background-color:#cccccc;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-price">
-															<div style="width:5em;height:.9em;background-color:#d9d9d9"></div>
-														</span>
-													</div>
-													<div class="home-product-buy" onclick="">
-														<img src="resource/cart.svg">
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<!-- Product-->
-								<div class="col">
-									<div class="home-product-base-container">
-										<div class="home-product-base" onclick="">
-											<div class="home-product-top">
-												<div class="home-product-stock stock-skeleton" style="width:5em;"></div>
-												<div class="home-product-image">
-													<div style="width:100%;height:100%;background-color:#c2c2c2"></div>
-												</div>
-											</div>
-											<div class="home-product-bottom">
-												<div class="home-product-interaction" style="background-color:#e8e8e8;">
-													<div class="home-product-desc">
-														<span class="home-product-group">
-															<div style="width:7.5em;height:.8em;background-color:#bababa;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-name">
-															<div style="width:5.7em;height:1.1em;background-color:#cccccc;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-price">
-															<div style="width:5em;height:.9em;background-color:#d9d9d9"></div>
-														</span>
-													</div>
-													<div class="home-product-buy" onclick="">
-														<img src="resource/cart.svg">
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<!-- Product-->
-								<div class="col">
-									<div class="home-product-base-container">
-										<div class="home-product-base" onclick="">
-											<div class="home-product-top">
-												<div class="home-product-stock stock-skeleton" style="width:5em;"></div>
-												<div class="home-product-image">
-													<div style="width:100%;height:100%;background-color:#c2c2c2"></div>
-												</div>
-											</div>
-											<div class="home-product-bottom">
-												<div class="home-product-interaction" style="background-color:#e8e8e8;">
-													<div class="home-product-desc">
-														<span class="home-product-group">
-															<div style="width:7.5em;height:.8em;background-color:#bababa;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-name">
-															<div style="width:5.7em;height:1.1em;background-color:#cccccc;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-price">
-															<div style="width:5em;height:.9em;background-color:#d9d9d9"></div>
-														</span>
-													</div>
-													<div class="home-product-buy" onclick="">
-														<img src="resource/cart.svg">
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<!-- Product-->
-								<div class="col">
-									<div class="home-product-base-container">
-										<div class="home-product-base" onclick="">
-											<div class="home-product-top">
-												<div class="home-product-stock stock-skeleton" style="width:5em;"></div>
-												<div class="home-product-image">
-													<div style="width:100%;height:100%;background-color:#c2c2c2"></div>
-												</div>
-											</div>
-											<div class="home-product-bottom">
-												<div class="home-product-interaction" style="background-color:#e8e8e8;">
-													<div class="home-product-desc">
-														<span class="home-product-group">
-															<div style="width:7.5em;height:.8em;background-color:#bababa;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-name">
-															<div style="width:5.7em;height:1.1em;background-color:#cccccc;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-price">
-															<div style="width:5em;height:.9em;background-color:#d9d9d9"></div>
-														</span>
-													</div>
-													<div class="home-product-buy" onclick="">
-														<img src="resource/cart.svg">
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<!-- Product-->
-								<div class="col">
-									<div class="home-product-base-container">
-										<div class="home-product-base" onclick="">
-											<div class="home-product-top">
-												<div class="home-product-stock stock-skeleton" style="width:5em;"></div>
-												<div class="home-product-image">
-													<div style="width:100%;height:100%;background-color:#c2c2c2"></div>
-												</div>
-											</div>
-											<div class="home-product-bottom">
-												<div class="home-product-interaction" style="background-color:#e8e8e8;">
-													<div class="home-product-desc">
-														<span class="home-product-group">
-															<div style="width:7.5em;height:.8em;background-color:#bababa;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-name">
-															<div style="width:5.7em;height:1.1em;background-color:#cccccc;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-price">
-															<div style="width:5em;height:.9em;background-color:#d9d9d9"></div>
-														</span>
-													</div>
-													<div class="home-product-buy" onclick="">
-														<img src="resource/cart.svg">
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
+								<?php
+								printSkeleton();
+								?>
 							</div>
 							<div class="row">
-								<!-- Product-->
-								<div class="col">
-									<div class="home-product-base-container">
-										<div class="home-product-base" onclick="">
-											<div class="home-product-top">
-												<div class="home-product-stock stock-skeleton" style="width:5em;"></div>
-												<div class="home-product-image">
-													<div style="width:100%;height:100%;background-color:#c2c2c2"></div>
-												</div>
-											</div>
-											<div class="home-product-bottom">
-												<div class="home-product-interaction" style="background-color:#e8e8e8;">
-													<div class="home-product-desc">
-														<span class="home-product-group">
-															<div style="width:7.5em;height:.8em;background-color:#bababa;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-name">
-															<div style="width:5.7em;height:1.1em;background-color:#cccccc;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-price">
-															<div style="width:5em;height:.9em;background-color:#d9d9d9"></div>
-														</span>
-													</div>
-													<div class="home-product-buy" onclick="">
-														<img src="resource/cart.svg">
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<!-- Product-->
-								<div class="col">
-									<div class="home-product-base-container">
-										<div class="home-product-base" onclick="">
-											<div class="home-product-top">
-												<div class="home-product-stock stock-skeleton" style="width:5em;"></div>
-												<div class="home-product-image">
-													<div style="width:100%;height:100%;background-color:#c2c2c2"></div>
-												</div>
-											</div>
-											<div class="home-product-bottom">
-												<div class="home-product-interaction" style="background-color:#e8e8e8;">
-													<div class="home-product-desc">
-														<span class="home-product-group">
-															<div style="width:7.5em;height:.8em;background-color:#bababa;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-name">
-															<div style="width:5.7em;height:1.1em;background-color:#cccccc;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-price">
-															<div style="width:5em;height:.9em;background-color:#d9d9d9"></div>
-														</span>
-													</div>
-													<div class="home-product-buy" onclick="">
-														<img src="resource/cart.svg">
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<!-- Product-->
-								<div class="col">
-									<div class="home-product-base-container">
-										<div class="home-product-base" onclick="">
-											<div class="home-product-top">
-												<div class="home-product-stock stock-skeleton" style="width:5em;"></div>
-												<div class="home-product-image">
-													<div style="width:100%;height:100%;background-color:#c2c2c2"></div>
-												</div>
-											</div>
-											<div class="home-product-bottom">
-												<div class="home-product-interaction" style="background-color:#e8e8e8;">
-													<div class="home-product-desc">
-														<span class="home-product-group">
-															<div style="width:7.5em;height:.8em;background-color:#bababa;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-name">
-															<div style="width:5.7em;height:1.1em;background-color:#cccccc;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-price">
-															<div style="width:5em;height:.9em;background-color:#d9d9d9"></div>
-														</span>
-													</div>
-													<div class="home-product-buy" onclick="">
-														<img src="resource/cart.svg">
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<!-- Product-->
-								<div class="col">
-									<div class="home-product-base-container">
-										<div class="home-product-base" onclick="">
-											<div class="home-product-top">
-												<div class="home-product-stock stock-skeleton" style="width:5em;"></div>
-												<div class="home-product-image">
-													<div style="width:100%;height:100%;background-color:#c2c2c2"></div>
-												</div>
-											</div>
-											<div class="home-product-bottom">
-												<div class="home-product-interaction" style="background-color:#e8e8e8;">
-													<div class="home-product-desc">
-														<span class="home-product-group">
-															<div style="width:7.5em;height:.8em;background-color:#bababa;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-name">
-															<div style="width:5.7em;height:1.1em;background-color:#cccccc;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-price">
-															<div style="width:5em;height:.9em;background-color:#d9d9d9"></div>
-														</span>
-													</div>
-													<div class="home-product-buy" onclick="">
-														<img src="resource/cart.svg">
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<!-- Product-->
-								<div class="col">
-									<div class="home-product-base-container">
-										<div class="home-product-base" onclick="">
-											<div class="home-product-top">
-												<div class="home-product-stock stock-skeleton" style="width:5em;"></div>
-												<div class="home-product-image">
-													<div style="width:100%;height:100%;background-color:#c2c2c2"></div>
-												</div>
-											</div>
-											<div class="home-product-bottom">
-												<div class="home-product-interaction" style="background-color:#e8e8e8;">
-													<div class="home-product-desc">
-														<span class="home-product-group">
-															<div style="width:7.5em;height:.8em;background-color:#bababa;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-name">
-															<div style="width:5.7em;height:1.1em;background-color:#cccccc;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-price">
-															<div style="width:5em;height:.9em;background-color:#d9d9d9"></div>
-														</span>
-													</div>
-													<div class="home-product-buy" onclick="">
-														<img src="resource/cart.svg">
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
+								<?php
+								printSkeleton();
+								?>
 							</div>
 						</div>
 						<div class="view-all">
@@ -538,323 +282,21 @@ include('rupiah.php');
 					<div class="featured-content woocommerce">
 						<h2 class="special-heading">
 							<div style="width:100%;display:flex;justify-content:center;align-items:center;">
-								<div style="width:5em;height:1.6em;background-color:#e8e8e8;"></div>
+								<div style="width:5em;height:1.6em;background-color:#e8e8e8;overflow:hidden;">
+									<div class="home-skeleton-animation"></div>
+								</div>
 							</div>
 						</h2>
 						<div class="content-area">
 							<div class="row">
-								<!-- Product-->
-								<div class="col">
-									<div class="home-product-base-container">
-										<div class="home-product-base" onclick="">
-											<div class="home-product-top">
-												<div class="home-product-stock stock-skeleton" style="width:5em;"></div>
-												<div class="home-product-image">
-													<div style="width:100%;height:100%;background-color:#c2c2c2"></div>
-												</div>
-											</div>
-											<div class="home-product-bottom">
-												<div class="home-product-interaction" style="background-color:#e8e8e8;">
-													<div class="home-product-desc">
-														<span class="home-product-group">
-															<div style="width:7.5em;height:.8em;background-color:#bababa;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-name">
-															<div style="width:5.7em;height:1.1em;background-color:#cccccc;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-price">
-															<div style="width:5em;height:.9em;background-color:#d9d9d9"></div>
-														</span>
-													</div>
-													<div class="home-product-buy" onclick="">
-														<img src="resource/cart.svg">
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<!-- Product-->
-								<div class="col">
-									<div class="home-product-base-container">
-										<div class="home-product-base" onclick="">
-											<div class="home-product-top">
-												<div class="home-product-stock stock-skeleton" style="width:5em;"></div>
-												<div class="home-product-image">
-													<div style="width:100%;height:100%;background-color:#c2c2c2"></div>
-												</div>
-											</div>
-											<div class="home-product-bottom">
-												<div class="home-product-interaction" style="background-color:#e8e8e8;">
-													<div class="home-product-desc">
-														<span class="home-product-group">
-															<div style="width:7.5em;height:.8em;background-color:#bababa;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-name">
-															<div style="width:5.7em;height:1.1em;background-color:#cccccc;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-price">
-															<div style="width:5em;height:.9em;background-color:#d9d9d9"></div>
-														</span>
-													</div>
-													<div class="home-product-buy" onclick="">
-														<img src="resource/cart.svg">
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<!-- Product-->
-								<div class="col">
-									<div class="home-product-base-container">
-										<div class="home-product-base" onclick="">
-											<div class="home-product-top">
-												<div class="home-product-stock stock-skeleton" style="width:5em;"></div>
-												<div class="home-product-image">
-													<div style="width:100%;height:100%;background-color:#c2c2c2"></div>
-												</div>
-											</div>
-											<div class="home-product-bottom">
-												<div class="home-product-interaction" style="background-color:#e8e8e8;">
-													<div class="home-product-desc">
-														<span class="home-product-group">
-															<div style="width:7.5em;height:.8em;background-color:#bababa;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-name">
-															<div style="width:5.7em;height:1.1em;background-color:#cccccc;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-price">
-															<div style="width:5em;height:.9em;background-color:#d9d9d9"></div>
-														</span>
-													</div>
-													<div class="home-product-buy" onclick="">
-														<img src="resource/cart.svg">
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<!-- Product-->
-								<div class="col">
-									<div class="home-product-base-container">
-										<div class="home-product-base" onclick="">
-											<div class="home-product-top">
-												<div class="home-product-stock stock-skeleton" style="width:5em;"></div>
-												<div class="home-product-image">
-													<div style="width:100%;height:100%;background-color:#c2c2c2"></div>
-												</div>
-											</div>
-											<div class="home-product-bottom">
-												<div class="home-product-interaction" style="background-color:#e8e8e8;">
-													<div class="home-product-desc">
-														<span class="home-product-group">
-															<div style="width:7.5em;height:.8em;background-color:#bababa;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-name">
-															<div style="width:5.7em;height:1.1em;background-color:#cccccc;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-price">
-															<div style="width:5em;height:.9em;background-color:#d9d9d9"></div>
-														</span>
-													</div>
-													<div class="home-product-buy" onclick="">
-														<img src="resource/cart.svg">
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<!-- Product-->
-								<div class="col">
-									<div class="home-product-base-container">
-										<div class="home-product-base" onclick="">
-											<div class="home-product-top">
-												<div class="home-product-stock stock-skeleton" style="width:5em;"></div>
-												<div class="home-product-image">
-													<div style="width:100%;height:100%;background-color:#c2c2c2"></div>
-												</div>
-											</div>
-											<div class="home-product-bottom">
-												<div class="home-product-interaction" style="background-color:#e8e8e8;">
-													<div class="home-product-desc">
-														<span class="home-product-group">
-															<div style="width:7.5em;height:.8em;background-color:#bababa;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-name">
-															<div style="width:5.7em;height:1.1em;background-color:#cccccc;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-price">
-															<div style="width:5em;height:.9em;background-color:#d9d9d9"></div>
-														</span>
-													</div>
-													<div class="home-product-buy" onclick="">
-														<img src="resource/cart.svg">
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
+								<?php
+								printSkeleton();
+								?>
 							</div>
 							<div class="row">
-								<!-- Product-->
-								<div class="col">
-									<div class="home-product-base-container">
-										<div class="home-product-base" onclick="">
-											<div class="home-product-top">
-												<div class="home-product-stock stock-skeleton" style="width:5em;"></div>
-												<div class="home-product-image">
-													<div style="width:100%;height:100%;background-color:#c2c2c2"></div>
-												</div>
-											</div>
-											<div class="home-product-bottom">
-												<div class="home-product-interaction" style="background-color:#e8e8e8;">
-													<div class="home-product-desc">
-														<span class="home-product-group">
-															<div style="width:7.5em;height:.8em;background-color:#bababa;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-name">
-															<div style="width:5.7em;height:1.1em;background-color:#cccccc;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-price">
-															<div style="width:5em;height:.9em;background-color:#d9d9d9"></div>
-														</span>
-													</div>
-													<div class="home-product-buy" onclick="">
-														<img src="resource/cart.svg">
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<!-- Product-->
-								<div class="col">
-									<div class="home-product-base-container">
-										<div class="home-product-base" onclick="">
-											<div class="home-product-top">
-												<div class="home-product-stock stock-skeleton" style="width:5em;"></div>
-												<div class="home-product-image">
-													<div style="width:100%;height:100%;background-color:#c2c2c2"></div>
-												</div>
-											</div>
-											<div class="home-product-bottom">
-												<div class="home-product-interaction" style="background-color:#e8e8e8;">
-													<div class="home-product-desc">
-														<span class="home-product-group">
-															<div style="width:7.5em;height:.8em;background-color:#bababa;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-name">
-															<div style="width:5.7em;height:1.1em;background-color:#cccccc;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-price">
-															<div style="width:5em;height:.9em;background-color:#d9d9d9"></div>
-														</span>
-													</div>
-													<div class="home-product-buy" onclick="">
-														<img src="resource/cart.svg">
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<!-- Product-->
-								<div class="col">
-									<div class="home-product-base-container">
-										<div class="home-product-base" onclick="">
-											<div class="home-product-top">
-												<div class="home-product-stock stock-skeleton" style="width:5em;"></div>
-												<div class="home-product-image">
-													<div style="width:100%;height:100%;background-color:#c2c2c2"></div>
-												</div>
-											</div>
-											<div class="home-product-bottom">
-												<div class="home-product-interaction" style="background-color:#e8e8e8;">
-													<div class="home-product-desc">
-														<span class="home-product-group">
-															<div style="width:7.5em;height:.8em;background-color:#bababa;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-name">
-															<div style="width:5.7em;height:1.1em;background-color:#cccccc;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-price">
-															<div style="width:5em;height:.9em;background-color:#d9d9d9"></div>
-														</span>
-													</div>
-													<div class="home-product-buy" onclick="">
-														<img src="resource/cart.svg">
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<!-- Product-->
-								<div class="col">
-									<div class="home-product-base-container">
-										<div class="home-product-base" onclick="">
-											<div class="home-product-top">
-												<div class="home-product-stock stock-skeleton" style="width:5em;"></div>
-												<div class="home-product-image">
-													<div style="width:100%;height:100%;background-color:#c2c2c2"></div>
-												</div>
-											</div>
-											<div class="home-product-bottom">
-												<div class="home-product-interaction" style="background-color:#e8e8e8;">
-													<div class="home-product-desc">
-														<span class="home-product-group">
-															<div style="width:7.5em;height:.8em;background-color:#bababa;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-name">
-															<div style="width:5.7em;height:1.1em;background-color:#cccccc;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-price">
-															<div style="width:5em;height:.9em;background-color:#d9d9d9"></div>
-														</span>
-													</div>
-													<div class="home-product-buy" onclick="">
-														<img src="resource/cart.svg">
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<!-- Product-->
-								<div class="col">
-									<div class="home-product-base-container">
-										<div class="home-product-base" onclick="">
-											<div class="home-product-top">
-												<div class="home-product-stock stock-skeleton" style="width:5em;"></div>
-												<div class="home-product-image">
-													<div style="width:100%;height:100%;background-color:#c2c2c2"></div>
-												</div>
-											</div>
-											<div class="home-product-bottom">
-												<div class="home-product-interaction" style="background-color:#e8e8e8;">
-													<div class="home-product-desc">
-														<span class="home-product-group">
-															<div style="width:7.5em;height:.8em;background-color:#bababa;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-name">
-															<div style="width:5.7em;height:1.1em;background-color:#cccccc;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-price">
-															<div style="width:5em;height:.9em;background-color:#d9d9d9"></div>
-														</span>
-													</div>
-													<div class="home-product-buy" onclick="">
-														<img src="resource/cart.svg">
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
+								<?php
+								printSkeleton();
+								?>
 							</div>
 						</div>
 						<div class="view-all">
@@ -868,323 +310,21 @@ include('rupiah.php');
 					<div class="featured-content woocommerce">
 						<h2 class="special-heading">
 							<div style="width:100%;display:flex;justify-content:center;align-items:center;">
-								<div style="width:5em;height:1.6em;background-color:#e8e8e8;"></div>
+								<div style="width:5em;height:1.6em;background-color:#e8e8e8;overflow:hidden;">
+									<div class="home-skeleton-animation"></div>
+								</div>
 							</div>
 						</h2>
 						<div class="content-area">
 							<div class="row">
-								<!-- Product-->
-								<div class="col">
-									<div class="home-product-base-container">
-										<div class="home-product-base" onclick="">
-											<div class="home-product-top">
-												<div class="home-product-stock stock-skeleton" style="width:5em;"></div>
-												<div class="home-product-image">
-													<div style="width:100%;height:100%;background-color:#c2c2c2"></div>
-												</div>
-											</div>
-											<div class="home-product-bottom">
-												<div class="home-product-interaction" style="background-color:#e8e8e8;">
-													<div class="home-product-desc">
-														<span class="home-product-group">
-															<div style="width:7.5em;height:.8em;background-color:#bababa;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-name">
-															<div style="width:5.7em;height:1.1em;background-color:#cccccc;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-price">
-															<div style="width:5em;height:.9em;background-color:#d9d9d9"></div>
-														</span>
-													</div>
-													<div class="home-product-buy" onclick="">
-														<img src="resource/cart.svg">
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<!-- Product-->
-								<div class="col">
-									<div class="home-product-base-container">
-										<div class="home-product-base" onclick="">
-											<div class="home-product-top">
-												<div class="home-product-stock stock-skeleton" style="width:5em;"></div>
-												<div class="home-product-image">
-													<div style="width:100%;height:100%;background-color:#c2c2c2"></div>
-												</div>
-											</div>
-											<div class="home-product-bottom">
-												<div class="home-product-interaction" style="background-color:#e8e8e8;">
-													<div class="home-product-desc">
-														<span class="home-product-group">
-															<div style="width:7.5em;height:.8em;background-color:#bababa;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-name">
-															<div style="width:5.7em;height:1.1em;background-color:#cccccc;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-price">
-															<div style="width:5em;height:.9em;background-color:#d9d9d9"></div>
-														</span>
-													</div>
-													<div class="home-product-buy" onclick="">
-														<img src="resource/cart.svg">
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<!-- Product-->
-								<div class="col">
-									<div class="home-product-base-container">
-										<div class="home-product-base" onclick="">
-											<div class="home-product-top">
-												<div class="home-product-stock stock-skeleton" style="width:5em;"></div>
-												<div class="home-product-image">
-													<div style="width:100%;height:100%;background-color:#c2c2c2"></div>
-												</div>
-											</div>
-											<div class="home-product-bottom">
-												<div class="home-product-interaction" style="background-color:#e8e8e8;">
-													<div class="home-product-desc">
-														<span class="home-product-group">
-															<div style="width:7.5em;height:.8em;background-color:#bababa;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-name">
-															<div style="width:5.7em;height:1.1em;background-color:#cccccc;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-price">
-															<div style="width:5em;height:.9em;background-color:#d9d9d9"></div>
-														</span>
-													</div>
-													<div class="home-product-buy" onclick="">
-														<img src="resource/cart.svg">
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<!-- Product-->
-								<div class="col">
-									<div class="home-product-base-container">
-										<div class="home-product-base" onclick="">
-											<div class="home-product-top">
-												<div class="home-product-stock stock-skeleton" style="width:5em;"></div>
-												<div class="home-product-image">
-													<div style="width:100%;height:100%;background-color:#c2c2c2"></div>
-												</div>
-											</div>
-											<div class="home-product-bottom">
-												<div class="home-product-interaction" style="background-color:#e8e8e8;">
-													<div class="home-product-desc">
-														<span class="home-product-group">
-															<div style="width:7.5em;height:.8em;background-color:#bababa;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-name">
-															<div style="width:5.7em;height:1.1em;background-color:#cccccc;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-price">
-															<div style="width:5em;height:.9em;background-color:#d9d9d9"></div>
-														</span>
-													</div>
-													<div class="home-product-buy" onclick="">
-														<img src="resource/cart.svg">
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<!-- Product-->
-								<div class="col">
-									<div class="home-product-base-container">
-										<div class="home-product-base" onclick="">
-											<div class="home-product-top">
-												<div class="home-product-stock stock-skeleton" style="width:5em;"></div>
-												<div class="home-product-image">
-													<div style="width:100%;height:100%;background-color:#c2c2c2"></div>
-												</div>
-											</div>
-											<div class="home-product-bottom">
-												<div class="home-product-interaction" style="background-color:#e8e8e8;">
-													<div class="home-product-desc">
-														<span class="home-product-group">
-															<div style="width:7.5em;height:.8em;background-color:#bababa;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-name">
-															<div style="width:5.7em;height:1.1em;background-color:#cccccc;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-price">
-															<div style="width:5em;height:.9em;background-color:#d9d9d9"></div>
-														</span>
-													</div>
-													<div class="home-product-buy" onclick="">
-														<img src="resource/cart.svg">
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
+								<?php
+								printSkeleton();
+								?>
 							</div>
 							<div class="row">
-								<!-- Product-->
-								<div class="col">
-									<div class="home-product-base-container">
-										<div class="home-product-base" onclick="">
-											<div class="home-product-top">
-												<div class="home-product-stock stock-skeleton" style="width:5em;"></div>
-												<div class="home-product-image">
-													<div style="width:100%;height:100%;background-color:#c2c2c2"></div>
-												</div>
-											</div>
-											<div class="home-product-bottom">
-												<div class="home-product-interaction" style="background-color:#e8e8e8;">
-													<div class="home-product-desc">
-														<span class="home-product-group">
-															<div style="width:7.5em;height:.8em;background-color:#bababa;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-name">
-															<div style="width:5.7em;height:1.1em;background-color:#cccccc;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-price">
-															<div style="width:5em;height:.9em;background-color:#d9d9d9"></div>
-														</span>
-													</div>
-													<div class="home-product-buy" onclick="">
-														<img src="resource/cart.svg">
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<!-- Product-->
-								<div class="col">
-									<div class="home-product-base-container">
-										<div class="home-product-base" onclick="">
-											<div class="home-product-top">
-												<div class="home-product-stock stock-skeleton" style="width:5em;"></div>
-												<div class="home-product-image">
-													<div style="width:100%;height:100%;background-color:#c2c2c2"></div>
-												</div>
-											</div>
-											<div class="home-product-bottom">
-												<div class="home-product-interaction" style="background-color:#e8e8e8;">
-													<div class="home-product-desc">
-														<span class="home-product-group">
-															<div style="width:7.5em;height:.8em;background-color:#bababa;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-name">
-															<div style="width:5.7em;height:1.1em;background-color:#cccccc;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-price">
-															<div style="width:5em;height:.9em;background-color:#d9d9d9"></div>
-														</span>
-													</div>
-													<div class="home-product-buy" onclick="">
-														<img src="resource/cart.svg">
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<!-- Product-->
-								<div class="col">
-									<div class="home-product-base-container">
-										<div class="home-product-base" onclick="">
-											<div class="home-product-top">
-												<div class="home-product-stock stock-skeleton" style="width:5em;"></div>
-												<div class="home-product-image">
-													<div style="width:100%;height:100%;background-color:#c2c2c2"></div>
-												</div>
-											</div>
-											<div class="home-product-bottom">
-												<div class="home-product-interaction" style="background-color:#e8e8e8;">
-													<div class="home-product-desc">
-														<span class="home-product-group">
-															<div style="width:7.5em;height:.8em;background-color:#bababa;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-name">
-															<div style="width:5.7em;height:1.1em;background-color:#cccccc;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-price">
-															<div style="width:5em;height:.9em;background-color:#d9d9d9"></div>
-														</span>
-													</div>
-													<div class="home-product-buy" onclick="">
-														<img src="resource/cart.svg">
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<!-- Product-->
-								<div class="col">
-									<div class="home-product-base-container">
-										<div class="home-product-base" onclick="">
-											<div class="home-product-top">
-												<div class="home-product-stock stock-skeleton" style="width:5em;"></div>
-												<div class="home-product-image">
-													<div style="width:100%;height:100%;background-color:#c2c2c2"></div>
-												</div>
-											</div>
-											<div class="home-product-bottom">
-												<div class="home-product-interaction" style="background-color:#e8e8e8;">
-													<div class="home-product-desc">
-														<span class="home-product-group">
-															<div style="width:7.5em;height:.8em;background-color:#bababa;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-name">
-															<div style="width:5.7em;height:1.1em;background-color:#cccccc;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-price">
-															<div style="width:5em;height:.9em;background-color:#d9d9d9"></div>
-														</span>
-													</div>
-													<div class="home-product-buy" onclick="">
-														<img src="resource/cart.svg">
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<!-- Product-->
-								<div class="col">
-									<div class="home-product-base-container">
-										<div class="home-product-base" onclick="">
-											<div class="home-product-top">
-												<div class="home-product-stock stock-skeleton" style="width:5em;"></div>
-												<div class="home-product-image">
-													<div style="width:100%;height:100%;background-color:#c2c2c2"></div>
-												</div>
-											</div>
-											<div class="home-product-bottom">
-												<div class="home-product-interaction" style="background-color:#e8e8e8;">
-													<div class="home-product-desc">
-														<span class="home-product-group">
-															<div style="width:7.5em;height:.8em;background-color:#bababa;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-name">
-															<div style="width:5.7em;height:1.1em;background-color:#cccccc;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-price">
-															<div style="width:5em;height:.9em;background-color:#d9d9d9"></div>
-														</span>
-													</div>
-													<div class="home-product-buy" onclick="">
-														<img src="resource/cart.svg">
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
+								<?php
+								printSkeleton();
+								?>
 							</div>
 						</div>
 						<div class="view-all">
@@ -1198,323 +338,21 @@ include('rupiah.php');
 					<div class="featured-content woocommerce">
 						<h2 class="special-heading">
 							<div style="width:100%;display:flex;justify-content:center;align-items:center;">
-								<div style="width:5em;height:1.6em;background-color:#e8e8e8;"></div>
+								<div style="width:5em;height:1.6em;background-color:#e8e8e8;overflow:hidden;">
+									<div class="home-skeleton-animation"></div>
+								</div>
 							</div>
 						</h2>
 						<div class="content-area">
 							<div class="row">
-								<!-- Product-->
-								<div class="col">
-									<div class="home-product-base-container">
-										<div class="home-product-base" onclick="">
-											<div class="home-product-top">
-												<div class="home-product-stock stock-skeleton" style="width:5em;"></div>
-												<div class="home-product-image">
-													<div style="width:100%;height:100%;background-color:#c2c2c2"></div>
-												</div>
-											</div>
-											<div class="home-product-bottom">
-												<div class="home-product-interaction" style="background-color:#e8e8e8;">
-													<div class="home-product-desc">
-														<span class="home-product-group">
-															<div style="width:7.5em;height:.8em;background-color:#bababa;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-name">
-															<div style="width:5.7em;height:1.1em;background-color:#cccccc;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-price">
-															<div style="width:5em;height:.9em;background-color:#d9d9d9"></div>
-														</span>
-													</div>
-													<div class="home-product-buy" onclick="">
-														<img src="resource/cart.svg">
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<!-- Product-->
-								<div class="col">
-									<div class="home-product-base-container">
-										<div class="home-product-base" onclick="">
-											<div class="home-product-top">
-												<div class="home-product-stock stock-skeleton" style="width:5em;"></div>
-												<div class="home-product-image">
-													<div style="width:100%;height:100%;background-color:#c2c2c2"></div>
-												</div>
-											</div>
-											<div class="home-product-bottom">
-												<div class="home-product-interaction" style="background-color:#e8e8e8;">
-													<div class="home-product-desc">
-														<span class="home-product-group">
-															<div style="width:7.5em;height:.8em;background-color:#bababa;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-name">
-															<div style="width:5.7em;height:1.1em;background-color:#cccccc;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-price">
-															<div style="width:5em;height:.9em;background-color:#d9d9d9"></div>
-														</span>
-													</div>
-													<div class="home-product-buy" onclick="">
-														<img src="resource/cart.svg">
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<!-- Product-->
-								<div class="col">
-									<div class="home-product-base-container">
-										<div class="home-product-base" onclick="">
-											<div class="home-product-top">
-												<div class="home-product-stock stock-skeleton" style="width:5em;"></div>
-												<div class="home-product-image">
-													<div style="width:100%;height:100%;background-color:#c2c2c2"></div>
-												</div>
-											</div>
-											<div class="home-product-bottom">
-												<div class="home-product-interaction" style="background-color:#e8e8e8;">
-													<div class="home-product-desc">
-														<span class="home-product-group">
-															<div style="width:7.5em;height:.8em;background-color:#bababa;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-name">
-															<div style="width:5.7em;height:1.1em;background-color:#cccccc;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-price">
-															<div style="width:5em;height:.9em;background-color:#d9d9d9"></div>
-														</span>
-													</div>
-													<div class="home-product-buy" onclick="">
-														<img src="resource/cart.svg">
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<!-- Product-->
-								<div class="col">
-									<div class="home-product-base-container">
-										<div class="home-product-base" onclick="">
-											<div class="home-product-top">
-												<div class="home-product-stock stock-skeleton" style="width:5em;"></div>
-												<div class="home-product-image">
-													<div style="width:100%;height:100%;background-color:#c2c2c2"></div>
-												</div>
-											</div>
-											<div class="home-product-bottom">
-												<div class="home-product-interaction" style="background-color:#e8e8e8;">
-													<div class="home-product-desc">
-														<span class="home-product-group">
-															<div style="width:7.5em;height:.8em;background-color:#bababa;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-name">
-															<div style="width:5.7em;height:1.1em;background-color:#cccccc;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-price">
-															<div style="width:5em;height:.9em;background-color:#d9d9d9"></div>
-														</span>
-													</div>
-													<div class="home-product-buy" onclick="">
-														<img src="resource/cart.svg">
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<!-- Product-->
-								<div class="col">
-									<div class="home-product-base-container">
-										<div class="home-product-base" onclick="">
-											<div class="home-product-top">
-												<div class="home-product-stock stock-skeleton" style="width:5em;"></div>
-												<div class="home-product-image">
-													<div style="width:100%;height:100%;background-color:#c2c2c2"></div>
-												</div>
-											</div>
-											<div class="home-product-bottom">
-												<div class="home-product-interaction" style="background-color:#e8e8e8;">
-													<div class="home-product-desc">
-														<span class="home-product-group">
-															<div style="width:7.5em;height:.8em;background-color:#bababa;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-name">
-															<div style="width:5.7em;height:1.1em;background-color:#cccccc;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-price">
-															<div style="width:5em;height:.9em;background-color:#d9d9d9"></div>
-														</span>
-													</div>
-													<div class="home-product-buy" onclick="">
-														<img src="resource/cart.svg">
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
+								<?php
+								printSkeleton();
+								?>
 							</div>
 							<div class="row">
-								<!-- Product-->
-								<div class="col">
-									<div class="home-product-base-container">
-										<div class="home-product-base" onclick="">
-											<div class="home-product-top">
-												<div class="home-product-stock stock-skeleton" style="width:5em;"></div>
-												<div class="home-product-image">
-													<div style="width:100%;height:100%;background-color:#c2c2c2"></div>
-												</div>
-											</div>
-											<div class="home-product-bottom">
-												<div class="home-product-interaction" style="background-color:#e8e8e8;">
-													<div class="home-product-desc">
-														<span class="home-product-group">
-															<div style="width:7.5em;height:.8em;background-color:#bababa;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-name">
-															<div style="width:5.7em;height:1.1em;background-color:#cccccc;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-price">
-															<div style="width:5em;height:.9em;background-color:#d9d9d9"></div>
-														</span>
-													</div>
-													<div class="home-product-buy" onclick="">
-														<img src="resource/cart.svg">
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<!-- Product-->
-								<div class="col">
-									<div class="home-product-base-container">
-										<div class="home-product-base" onclick="">
-											<div class="home-product-top">
-												<div class="home-product-stock stock-skeleton" style="width:5em;"></div>
-												<div class="home-product-image">
-													<div style="width:100%;height:100%;background-color:#c2c2c2"></div>
-												</div>
-											</div>
-											<div class="home-product-bottom">
-												<div class="home-product-interaction" style="background-color:#e8e8e8;">
-													<div class="home-product-desc">
-														<span class="home-product-group">
-															<div style="width:7.5em;height:.8em;background-color:#bababa;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-name">
-															<div style="width:5.7em;height:1.1em;background-color:#cccccc;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-price">
-															<div style="width:5em;height:.9em;background-color:#d9d9d9"></div>
-														</span>
-													</div>
-													<div class="home-product-buy" onclick="">
-														<img src="resource/cart.svg">
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<!-- Product-->
-								<div class="col">
-									<div class="home-product-base-container">
-										<div class="home-product-base" onclick="">
-											<div class="home-product-top">
-												<div class="home-product-stock stock-skeleton" style="width:5em;"></div>
-												<div class="home-product-image">
-													<div style="width:100%;height:100%;background-color:#c2c2c2"></div>
-												</div>
-											</div>
-											<div class="home-product-bottom">
-												<div class="home-product-interaction" style="background-color:#e8e8e8;">
-													<div class="home-product-desc">
-														<span class="home-product-group">
-															<div style="width:7.5em;height:.8em;background-color:#bababa;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-name">
-															<div style="width:5.7em;height:1.1em;background-color:#cccccc;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-price">
-															<div style="width:5em;height:.9em;background-color:#d9d9d9"></div>
-														</span>
-													</div>
-													<div class="home-product-buy" onclick="">
-														<img src="resource/cart.svg">
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<!-- Product-->
-								<div class="col">
-									<div class="home-product-base-container">
-										<div class="home-product-base" onclick="">
-											<div class="home-product-top">
-												<div class="home-product-stock stock-skeleton" style="width:5em;"></div>
-												<div class="home-product-image">
-													<div style="width:100%;height:100%;background-color:#c2c2c2"></div>
-												</div>
-											</div>
-											<div class="home-product-bottom">
-												<div class="home-product-interaction" style="background-color:#e8e8e8;">
-													<div class="home-product-desc">
-														<span class="home-product-group">
-															<div style="width:7.5em;height:.8em;background-color:#bababa;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-name">
-															<div style="width:5.7em;height:1.1em;background-color:#cccccc;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-price">
-															<div style="width:5em;height:.9em;background-color:#d9d9d9"></div>
-														</span>
-													</div>
-													<div class="home-product-buy" onclick="">
-														<img src="resource/cart.svg">
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<!-- Product-->
-								<div class="col">
-									<div class="home-product-base-container">
-										<div class="home-product-base" onclick="">
-											<div class="home-product-top">
-												<div class="home-product-stock stock-skeleton" style="width:5em;"></div>
-												<div class="home-product-image">
-													<div style="width:100%;height:100%;background-color:#c2c2c2"></div>
-												</div>
-											</div>
-											<div class="home-product-bottom">
-												<div class="home-product-interaction" style="background-color:#e8e8e8;">
-													<div class="home-product-desc">
-														<span class="home-product-group">
-															<div style="width:7.5em;height:.8em;background-color:#bababa;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-name">
-															<div style="width:5.7em;height:1.1em;background-color:#cccccc;margin-bottom:5px;"></div>
-														</span>
-														<span class="home-product-price">
-															<div style="width:5em;height:.9em;background-color:#d9d9d9"></div>
-														</span>
-													</div>
-													<div class="home-product-buy" onclick="">
-														<img src="resource/cart.svg">
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
+								<?php
+								printSkeleton();
+								?>
 							</div>
 						</div>
 						<div class="view-all">

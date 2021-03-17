@@ -13,7 +13,11 @@ session_start();
 			echo '<section class="featured-hp-1">
 						<div class="container" id="'.$namaGrup.'">
 							<div class="featured-content woocommerce">
-								<h2 class="special-heading">' . $namaGrup . '</h2>
+								<h2 class="special-heading">
+									' . $namaGrup . '
+									<br/>
+									<span style="font-size:.5em;color:#51b7bd;">Ready</span>
+								</h2>
 								<div class="content-area">
 									';
 			$i = 0;

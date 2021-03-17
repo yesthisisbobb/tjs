@@ -227,7 +227,6 @@
 @keyframes blink{
     50%{transform: scale(1.2);}
 }
-
 .blinking{
     animation: blink 1s ease-out infinite;
 }
@@ -235,6 +234,12 @@
 @keyframes rotate{
     0%{transform: rotate(0deg);}
     100%{transform: rotate(360deg);}
+}
+
+@keyframes skeleton-load{
+    100%{
+        transform: translateX(440%);
+    }
 }
 /* End Animations */
 
@@ -548,6 +553,8 @@
     width: 100%;
     height: 400px;
     font-size: 16px;
+
+    overflow: hidden;
 }
 .home-product-base{
     display: flex;
@@ -557,6 +564,8 @@
     margin-top: 5%;
     border: 1px solid rgb(224, 224, 224);
     transition: .3s ease-out;
+
+    overflow: hidden;
     cursor: pointer;
 }
 .home-product-base:hover{
@@ -574,6 +583,8 @@
     height: auto;
     max-width: 88%;
     max-height: 88%;
+
+    overflow: hidden;
 }
 .home-product-stock{
     position: absolute;
@@ -587,6 +598,8 @@
     border-radius: 0 0 1em 0;
     transition: .4s ease-in;
     color: white;
+
+    overflow: hidden;
 }
 .home-product-stock:hover{
     filter: opacity(0.35);
@@ -598,10 +611,14 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
+
+    overflow: hidden;
 }
 .home-product-bottom{
     width: 100%;
     height: 38%;
+
+    overflow: hidden;
 }
 .home-product-interaction{  
     display: flex;
@@ -610,21 +627,31 @@
     justify-content: center;
     width: 100%;
     height: 100%;
+
+    overflow: hidden;
 }
 .home-product-desc{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    overflow: hidden;
 }
 .home-product-group{
     font-size: .8em;
+
+    overflow: hidden;
 }
 .home-product-name{
     font-size: 1.1em;
+
+    overflow: hidden;
 }
 .home-product-price{
     font-size: .9em;
+
+    overflow: hidden;
 }
 .home-product-buy{
     display: flex;
@@ -636,6 +663,8 @@
     height: 38px;
     transition: .3s ease-out;
     cursor: pointer;
+
+    overflow: hidden;
 }
 .home-product-buy:hover{
     background-color: rgb(231, 231, 231);
@@ -643,6 +672,21 @@
 .home-product-buy img{
     width: 62%;
     height: 62%;
+}
+.home-skeleton-animation{
+    width: 20%;
+    height: 100%;
+
+    transform: translateX(-300%);
+
+    background-image: -moz-linear-gradient(90deg, transparent, rgb(240, 240, 240), transparent);
+    background-image: -o-linear-gradient(90deg, transparent, rgb(240, 240, 240), transparent);
+    background-image: -webkit-linear-gradient(90deg, transparent, rgb(240, 240, 240), transparent);
+    background-image: linear-gradient(90deg, transparent, rgb(240, 240, 240), transparent);
+
+    animation-name: skeleton-load;
+    animation-iteration-count: infinite;
+    animation-duration: 1s;
 }
 /* ===== AKHIR PUNYA E INDEX ===== */
 
