@@ -82,7 +82,7 @@ $wheres = "WHERE ms.status='Active' AND msg.nama = dsg.namagrup AND dsg.nama = m
 if ($statesData["isCategorized"]) {
     // echo "masuk kategori" . " ||";
 
-    var_dump($valData["category"]);
+    // var_dump($valData["category"]);
     $catData = json_decode($valData["category"], true);
     foreach ($catData as $data) {
         $ctypeVal = $data["categoryType"];
