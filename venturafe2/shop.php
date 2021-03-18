@@ -23,13 +23,6 @@ $total = mysqli_num_rows($queryTotal);
 	<div class="container">
 		<div class="featured-content woocommerce">
 			<div class="row">
-				<div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
-					<div class="content-area">
-						<div id="kontainerAnjay">
-
-						</div>
-					</div>
-				</div>
 				<div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
 					<div class="widget-area">
 						<!-- Search -->
@@ -153,6 +146,13 @@ $total = mysqli_num_rows($queryTotal);
 							<div id="filter-apply">
 								<button type="button" class="btn btn-success waves-effect waves-light">Search</button>
 							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+					<div class="content-area">
+						<div id="kontainerAnjay">
+
 						</div>
 					</div>
 				</div>
@@ -478,7 +478,7 @@ $total = mysqli_num_rows($queryTotal);
 		} else if (getUrlParameter("brand")) {
 			statesArr['isCategorized'] = true;
 			sessionStorage.setItem("isCategorized", true);
-			
+
 			let tempArr = [];
 			let temp = {
 				"categoryType": "merk",

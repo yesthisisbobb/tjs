@@ -1071,9 +1071,17 @@ textarea:-moz-placeholder {
       transition: top .2s cubic-bezier(.33333,0,.66667,.33333),opacity .1s linear .22s;
       opacity: 0;}
 
+.au-navbar-mobile::-webkit-scrollbar {
+  display: none;
+}
 .au-navbar-mobile {
   display: none;
   width: 100%;
+  height: 70vh;
+  padding-bottom: 50px;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+  overflow-y: scroll;
   z-index: 999998; }
   .au-navbar-mobile.style-au-navbar-mobile {
     width: 100%;

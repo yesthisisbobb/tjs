@@ -232,6 +232,17 @@ include('rupiah.php');
     let slideLimit = 3;
     let sliderPos = 0;
 
+    // Slide Limit Settings
+    if (viewportWidth >= 992 && viewportWidth <= 1199) {
+        slideLimit = 4;
+    } else if (viewportWidth >= 768 && viewportWidth <= 991) {
+        slideLimit = 4;
+    } else if (viewportWidth <= 767) {
+        slideLimit = 5;
+    } else {
+        slideLimit = 3;
+    }
+    // If resized
     $(window).resize(function() {
         viewportWidth = $(window).width();
 
@@ -244,7 +255,6 @@ include('rupiah.php');
         } else {
             slideLimit = 3;
         }
-        console.log(slideLimit);
     });
 
     $("#cpc-arrow-left").click(function() {
