@@ -23,22 +23,22 @@ if (session_status() == PHP_SESSION_NONE) {
                                 </a>
                                 <ul class="sub-menu">
                                     <li class="home-nav">
-                                        <a href="shop.php?category=TILE">
+                                        <a dest="TILE">
                                             TILE
                                         </a>
                                     </li>
                                     <li class="home-nav">
-                                        <a href="shop.php?category=SANITARY">
+                                        <a dest="SANITARY">
                                             SANITARY
                                         </a>
                                     </li>
                                     <li class="home-nav">
-                                        <a href="shop.php?category=FITTING">
+                                        <a dest="FITTING">
                                             FITTING
                                         </a>
                                     </li>
                                     <li class="home-nav">
-                                        <a href="shop.php?category=OTHER">
+                                        <a dest="OTHER">
                                             OTHER
                                         </a>
                                     </li>
@@ -638,6 +638,26 @@ if (session_status() == PHP_SESSION_NONE) {
         // Njalanin function diatas
         refreshCart();
     }
+
+    // Neken" header
+    $(".home-nav a").click(function(e) {
+        e.preventDefault();
+        sessionStorage.setItem("isCategorized", true);
+
+        console.log($(this).attr("dest"));
+
+        let tempArr = [];
+        let temp = {
+            "categoryType": "main",
+            'categoryCode': $(this).attr("dest")
+        };
+        tempArr.push(temp);
+
+        // valArr["category"] = JSON.stringify(tempArr);
+        sessionStorage.setItem("category", JSON.stringify(tempArr));
+
+        location.href="shop.php";
+    });
 
     // Pas neken cart normal ngganti subtotal
     $("#normal-cart").click(function() {

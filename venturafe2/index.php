@@ -202,9 +202,9 @@ function printSkeleton()
 						<!-- Categories 1 -->
 						<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
 							<div class="categories-detail lighting">
-								<a href="shop.php?brand=sm" class="images"><img src="resource/Vertical Banners/simpolo750x808.jpg" alt="Lighting"></a>
+								<a class="images" dest="sm"><img src="resource/Vertical Banners/simpolo750x808.jpg" alt="Lighting"></a>
 								<div class="product">
-									<a href="shop.php?brand=sm">
+									<a dest="sm">
 										<span class="name">
 											<span class="line">- </span>
 											SMART MARBLE
@@ -216,9 +216,9 @@ function printSkeleton()
 						<!-- Categories 2 -->
 						<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
 							<div class="categories-detail furniture">
-								<a href="shop.php?brand=khl" class="images"><img src="resource/Vertical Banners/kohler750x808.jpg" alt="Furniture"></a>
+								<a class="images" dest="kh"><img src="resource/Vertical Banners/kohler750x808.jpg" alt="Furniture"></a>
 								<div class="product">
-									<a href="shop.php?brand=khl">
+									<a dest="kh">
 										<span class="name">
 											<span class="line">- </span>
 											KOHLER
@@ -230,9 +230,9 @@ function printSkeleton()
 						<!-- Categories 3 -->
 						<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
 							<div class="categories-detail decoration">
-								<a href="shop.php?brand=bv" class="images"><img src="resource/Vertical Banners/bravat750x808.jpg" alt="Decoration"></a>
+								<a class="images" dest="bv"><img src="resource/Vertical Banners/bravat750x808.jpg" alt="Decoration"></a>
 								<div class="product">
-									<a href="shop.php?brand=bv">
+									<a dest="bv">
 										<span class="name">
 											<span class="line">- </span>
 											BRAVAT
@@ -570,6 +570,27 @@ function printSkeleton()
 			$("#floating-cart-list-container").css("background-color", "rgba(0, 0, 0, .25)");
 			$("#floating-cart-modal").css("transform", "translateY(0)");
 		});
+		$(".categories-detail a").click(function(e) {
+			e.preventDefault();
+
+			// DEBUG
+			console.log($(this).attr("dest"));
+
+			// statesArr['isCategorized'] = true;
+			sessionStorage.setItem("isCategorized", true);
+
+			let tempArr = [];
+			let temp = {
+				"categoryType": "merk",
+				'categoryCode': $(this).attr("dest")
+			};
+			tempArr.push(temp);
+
+			// valArr["category"] = JSON.stringify(tempArr);
+			sessionStorage.setItem("category", JSON.stringify(tempArr));
+
+			window.location.href = "shop.php";
+		})
 	</script>
 </body>
 

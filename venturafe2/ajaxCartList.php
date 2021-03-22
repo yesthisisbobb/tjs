@@ -110,19 +110,8 @@ if(isset($_SESSION["username"])){
                         </tr>
                     </tbody>
                 </table>
-                <div id="payment-option-container">
-                    <h2>Choose Payment Method</h2>
-                    <div class="payment-option" id="bcav">
-                        <div class="payment-radio"></div>
-                        <span>BCA Virtual Account</span>
-                    </div>
-                    <div class="payment-option" id="ownc">
-                        <div class="payment-radio selected-payment"></div>
-                        <span>Pay at Our Cashier</span>
-                    </div>
-                </div>
                 <div class="wc-proceed-to-checkout">
-                    <a id="checkout-button" onclick="checkout()" class="checkout-button button wc-forward au-btn btn-small ">Checkout<i class="zmdi zmdi-arrow-right"></i></a>
+                    <a id="checkout-button" onclick="toCheckout()" class="checkout-button button wc-forward au-btn btn-small ">Checkout<i class="zmdi zmdi-arrow-right"></i></a>
                 </div>
             </div>
         </div>';

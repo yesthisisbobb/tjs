@@ -442,7 +442,7 @@ $total = mysqli_num_rows($queryTotal);
 						"categoryCode": item["categoryCode"],
 						"categoryType": item["categoryType"]
 					});
-					$(`select[stype=${item["categoryType"]}]`).val(`${decodeURIComponent(item["categoryCode"])}`);
+					$(`select[stype=${item["categoryType"]}]`).val(`${decodeURIComponent(item["categoryCode"]).toUpperCase()}`);
 				});
 			}
 			let current_page = 1;
@@ -475,22 +475,24 @@ $total = mysqli_num_rows($queryTotal);
 			sessionStorage.setItem("category", JSON.stringify(tempArr));
 
 			loadShopContents("no-page", 0);
-		} else if (getUrlParameter("brand")) {
-			statesArr['isCategorized'] = true;
-			sessionStorage.setItem("isCategorized", true);
+		}
+		// else if (getUrlParameter("brand")) {
+		// 	statesArr['isCategorized'] = true;
+		// 	sessionStorage.setItem("isCategorized", true);
 
-			let tempArr = [];
-			let temp = {
-				"categoryType": "merk",
-				'categoryCode': getUrlParameter("brand")
-			};
-			tempArr.push(temp);
+		// 	let tempArr = [];
+		// 	let temp = {
+		// 		"categoryType": "merk",
+		// 		'categoryCode': getUrlParameter("brand")
+		// 	};
+		// 	tempArr.push(temp);
 
-			valArr["category"] = JSON.stringify(tempArr);
-			sessionStorage.setItem("category", JSON.stringify(tempArr));
+		// 	valArr["category"] = JSON.stringify(tempArr);
+		// 	sessionStorage.setItem("category", JSON.stringify(tempArr));
 
-			loadShopContents("no-page", 0);
-		} else {
+		// 	loadShopContents("no-page", 0);
+		// }
+		else {
 			loadShopContents("no-page", 0);
 		}
 		$(document).ready(function() {

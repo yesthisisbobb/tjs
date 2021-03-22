@@ -174,21 +174,6 @@
 		console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
 	}
 
-	// Neken" header
-	$(".home-nav").click(function() {
-		sessionStorage.setItem("isCategorized", true);
-
-		let tempArr = [];
-		let temp = {
-			"categoryType": "main",
-			'categoryCode': $(this).children("a").text().replace(/\s/g, "")
-		};
-		tempArr.push(temp);
-
-		valArr["category"] = JSON.stringify(tempArr);
-		sessionStorage.setItem("category", JSON.stringify(tempArr));
-	});
-
 	$(document).on('click', '#loginBtn', function() {
 		$.ajax({
 			type: 'POST',

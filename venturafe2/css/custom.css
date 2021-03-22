@@ -1625,7 +1625,7 @@ input[type=range]::-ms-thumb {
 .order-subtotal th{
     font-size: 1.2em;
 }
-#payment-option-container{
+/* #payment-option-container{
     margin-top: 32px;
 }
 .payment-option{
@@ -1646,7 +1646,7 @@ input[type=range]::-ms-thumb {
 .selected-payment{
     background-color: rgb(18,179,183);
     border: 1px solid rgb(18,179,183);
-}
+} */
 /* ===== AKHIR PUNYA E CART LIST ===== */
 
 /* =====  LOGIN  ===== */

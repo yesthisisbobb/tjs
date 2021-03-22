@@ -24,22 +24,22 @@ $allh =     '<ul>
                         HOME
                     </a>
                     <ul class="sub-menu">
-                        <li class="">
+                        <li class="home-nav">
                             <a href="' . $INDEX_TILE_LINK . '">
                                 TILE
                             </a>
                         </li>
-                        <li class="">
+                        <li class="home-nav">
                             <a href="' . $INDEX_SANITARY_LINK . '">
                                 SANITARY
                             </a>
                         </li>
-                        <li class="">
+                        <li class="home-nav">
                             <a href="' . $INDEX_FITTING_LINK . '">
                                 FITTING
                             </a>
                         </li>
-                        <li class="">
+                        <li class="home-nav">
                             <a href="' . $INDEX_OTHER_LINK . '">
                                 OTHER
                             </a>
@@ -110,22 +110,22 @@ $uh =   '<ul>
                     HOME
                 </a>
                 <ul class="sub-menu">
-                    <li class="">
+                    <li class="home-nav">
                         <a href="' . $INDEX_TILE_LINK . '">
                             TILE
                         </a>
                     </li>
-                    <li class="">
+                    <li class="home-nav">
                         <a href="' . $INDEX_SANITARY_LINK . '">
                             SANITARY
                         </a>
                     </li>
-                    <li class="">
+                    <li class="home-nav">
                         <a href="' . $INDEX_FITTING_LINK . '">
                             FITTING
                         </a>
                     </li>
-                    <li class="">
+                    <li class="home-nav">
                         <a href="' . $INDEX_OTHER_LINK . '">
                             OTHER
                         </a>

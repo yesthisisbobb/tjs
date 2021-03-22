@@ -1,3 +1,13 @@
+<?php
+include("db/config.php");
+session_start();
+
+$lEmail = $_SESSION["username"];
+$command = "SELECT * FROM CUSTOMER WHERE email='$lEmail'";
+$query = mysqli_query($conn, $command);
+$userData = mysqli_fetch_assoc($query);
+
+?>
 <!DOCTYPE html>
 <html>
 
@@ -16,9 +26,10 @@
         <section class="breadcrumb-contact-us breadcrumb-section section-box" style="margin-top:130px;background-image: url(resource/banner.jpg);">
             <div class="container">
                 <div class="breadcrumb-inner">
-                    <h1 style="color:white;">Shop</h1>
+                    <h1 style="color:white;">Checkout</h1>
                     <ul class="breadcrumbs">
                         <li><a class="breadcrumbs-1" style="color:white;" href="index.php">Home</a></li>
+                        <li><a class="breadcrumbs-1" style="color:white;" href="cart.php">Sales Order (SO Ready) Cart</a></li>
                         <li>
                             <p class="breadcrumbs-2" style="color:white;">Check Out</p>
                         </li>
@@ -71,10 +82,7 @@
                                         <h2>Billing details</h2>
                                         <div class="woocommerce-billing-fields__field-wrapper">
                                             <p class="form-row-first">
-                                                <input type="text" class="input-text " id="billing_first_name" placeholder="First Name *">
-                                            </p>
-                                            <p class="form-row-last">
-                                                <input type="text" class="input-text " name="billing_last_name" id="billing_last_name" placeholder="Last Name *">
+                                                <input type="text" class="input-text " id="billing_full_name" placeholder="Full Name *" value="<?=$userData["nama"]?>">
                                             </p>
                                             <p class="form-row-wide">
                                                 <input type="text" class="input-text " name="billing_company" id="billing_company" placeholder="Company Name">
@@ -82,16 +90,23 @@
                                             <p class="form-row-wide">
                                                 <label for="billing_country">Country <abbr class="required" title="required">*</abbr></label>
                                                 <select id="billing_country" class="country_select" name="billing_country">
-                                                    <option value="VN">VietNam</option>
-                                                    <option value="CL">Chile</option>
-                                                    <option value="JP">Japan</option>
-                                                    <option value="IT">Italy</option>
+                                                    <?php
+                                                    $command = "SELECT * FROM country";
+                                                    $query = mysqli_query($conn, $command);
+                                                    if ($query) {
+                                                        while ($cty = mysqli_fetch_assoc($query)) {
+                                                            $cname = $cty['countryname'];
+                                                            $ccode = $cty['countrycode'];
+                                                            echo "<option value='$ccode'>$cname</option>";
+                                                        }
+                                                    }
+                                                    ?>
                                                 </select>
                                                 <span class="select-btn"><i class="zmdi zmdi-caret-down"></i></span>
                                             </p>
                                             <p class="form-row-wide">
                                                 <label for="billing_address_1">Address <abbr class="required" title="required">*</abbr></label>
-                                                <input type="text" class="input-text " name="billing_address_1" id="billing_address_1" placeholder="Street address">
+                                                <input type="text" class="input-text " name="billing_address_1" id="billing_address_1" placeholder="Street address" value="<?=$userData["alamat"]?>">
                                             </p>
                                             <p class="form-row-wide">
                                                 <input type="text" class="input-text " name="billing_address_2" id="billing_address_2" placeholder="Apartment, suite, unit etc. (optional)">
@@ -113,24 +128,10 @@
                                                 <span class="select-btn"><i class="zmdi zmdi-caret-down"></i></span>
                                             </p>
                                             <p class="form-row-first">
-                                                <input type="tel" class="input-text " name="billing_phone" id="billing_phone" placeholder="Phone *">
+                                                <input type="tel" class="input-text " name="billing_phone" id="billing_phone" placeholder="Phone *" value="<?=$userData["telp"]?>">
                                             </p>
                                             <p class="form-row-last">
-                                                <input type="email" class="input-text " name="billing_email" id="billing_email" placeholder="Email Address *">
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="woocommerce-account-fields">
-                                        <p class="woocommerce-validated">
-                                            <label class="woocommerce-form__label-for-checkbox">
-                                                <input class="woocommerce-form__input-checkbox" id="createaccount" type="checkbox" name="createaccount">
-                                                <span>Create an account?</span>
-                                            </label>
-                                        </p>
-                                        <div class="create-account">
-                                            <p id="account_password_field">
-                                                <label for="account_password" class="">Create account password <abbr class="required" title="required">*</abbr></label>
-                                                <input type="password" class="input-text " name="account_password" id="account_password" placeholder="Password">
+                                                <input type="email" class="input-text " name="billing_email" id="billing_email" placeholder="Email Address *" value="<?=$userData["email"]?>">
                                             </p>
                                         </div>
                                     </div>
@@ -252,87 +253,62 @@
 
     </div>
 
-    <footer class="footer-section footer-hp-2 section-box">
-        <div class="footer-content">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
-                        <div class="footer-items">
-                            <div class="logo">
-                                <a href="index1.html"><img src="images/icons/logo-white.png" alt="logo"></a>
-                            </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
-                            <div class="socials">
-                                <a href="#"><i class="zmdi zmdi-facebook"></i></a>
-                                <a href="#"><i class="zmdi zmdi-twitter"></i></a>
-                                <a href="#"><i class="zmdi zmdi-tumblr"></i></a>
-                                <a href="#"><i class="zmdi zmdi-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
-                        <div class="footer-items footer-items-1">
-                            <h4>Contact</h4>
-                            <div class="contact">
-                                <i class="zmdi zmdi-map"></i>
-                                <span>No 40 Baria Sreet 133/2</span>
-                            </div>
-                            <div class="contact">
-                                <i class="zmdi zmdi-phone"></i>
-                                <span><a href="tel:15618003666666">+ (156) 1800-366-6666</a></span>
-                            </div>
-                            <div class="contact">
-                                <i class="zmdi zmdi-email"></i>
-                                <span>Eric-82@example.com</span>
-                            </div>
-                            <div class="contact">
-                                <i class="zmdi zmdi-globe"></i>
-                                <span>www.novas.com</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
-                        <div class="footer-items footer-items-2">
-                            <h4>Profile</h4>
-                            <div class="profile">
-                                <i class="zmdi zmdi-account"></i>
-                                <span><a href="my-account.html">My Account</a></span>
-                            </div>
-                            <div class="profile">
-                                <i class="zmdi zmdi-shopping-cart"></i>
-                                <span><a href="check-out.html">Checkout</a></span>
-                            </div>
-                            <div class="profile">
-                                <i class="zmdi zmdi-eye"></i>
-                                <span><a href="order-tracking.html">Order Tracking</a></span>
-                            </div>
-                            <div class="profile">
-                                <i class="zmdi zmdi-pin-help"></i>
-                                <span><a href="#">Help & Suppport</a></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
-                        <div class="footer-items">
-                            <h4>Newsletter</h4>
-                            <p>Subscribe to our newsletter</p>
-                            <div class="email">
-                                <div class="send">
-                                    <i class="zmdi zmdi-mail-send"></i>
-                                </div>
-                                <input type="email" required="" pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" name="email" placeholder="Your e-mail...">
-                            </div>
-                            <span>@ 2019 Novas. <a href="https://themeforest.net/cart/add_items?item_ids=23123473" target="_blank">Get The Template</a></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-
     <a href="#" id="back-to-top"></a>
 
     <?php include('headerdkk/footer.php') ?>
 </body>
 
 </html>
+<script>
+    function checkout() {
+        Swal.fire({
+                icon: "info",
+                title: "Proceed to Checkout?",
+                text: "Please make sure to check items in your order before checking out",
+                showCancelButton: true,
+                confirmButtonText: "Yes, Proceed to Checkout"
+            })
+            .then((value) => {
+                if (value.isConfirmed) {
+                    $.ajax({
+                        url: "checkout-process.php",
+                        method: "POST",
+                        data: {
+                            "tipe": "normal"
+                        },
+                        success: function() {
+                            Swal.fire({
+                                title: "Success",
+                                text: "Your order is successfully processed! Proceed to Transactions tab to view your order",
+                                icon: "success"
+                            });
+                            refreshCart();
+                            refreshCartList();
+                            window.location.hash = "top-anchor";
+                        },
+                        error: function(error) {
+                            Swal.fire({
+                                title: "Error",
+                                text: JSON.parse(error).responseText,
+                                icon: "warning"
+                            });
+                        }
+                    });
+                }
+            });
+    };
+
+    $("#billing_country").change(function() {
+        $.ajax({
+            url: "processes/get-country-details.php",
+            method: "GET",
+            data: {
+                "ccode": $("#billing_country").val()
+            },
+            success: function(res) {
+                console.log(res);
+                $("#billing_phone").val("+" + res);
+            }
+        });
+    });
+</script>
