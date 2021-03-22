@@ -82,7 +82,7 @@ $userData = mysqli_fetch_assoc($query);
                                         <h2>Billing details</h2>
                                         <div class="woocommerce-billing-fields__field-wrapper">
                                             <p class="form-row-first">
-                                                <input type="text" class="input-text " id="billing_full_name" placeholder="Full Name *" value="<?=$userData["nama"]?>">
+                                                <input type="text" class="input-text " id="billing_full_name" placeholder="Full Name *" value="<?= $userData["nama"] ?>">
                                             </p>
                                             <p class="form-row-wide">
                                                 <input type="text" class="input-text " name="billing_company" id="billing_company" placeholder="Company Name">
@@ -106,7 +106,7 @@ $userData = mysqli_fetch_assoc($query);
                                             </p>
                                             <p class="form-row-wide">
                                                 <label for="billing_address_1">Address <abbr class="required" title="required">*</abbr></label>
-                                                <input type="text" class="input-text " name="billing_address_1" id="billing_address_1" placeholder="Street address" value="<?=$userData["alamat"]?>">
+                                                <input type="text" class="input-text " name="billing_address_1" id="billing_address_1" placeholder="Street address" value="<?= $userData["alamat"] ?>">
                                             </p>
                                             <p class="form-row-wide">
                                                 <input type="text" class="input-text " name="billing_address_2" id="billing_address_2" placeholder="Apartment, suite, unit etc. (optional)">
@@ -118,20 +118,13 @@ $userData = mysqli_fetch_assoc($query);
                                                 <input type="text" class="input-text " placeholder="County *" name="billing_state" id="billing_state">
                                             </p>
                                             <p class="form-row-wide form-row-wide-1">
-                                                <select id="billing_postcode" class="postcode_select" name="billing_postcode">
-                                                    <option value="default" selected="selected">Postcode / Zip *</option>
-                                                    <option value="154000">154000</option>
-                                                    <option value="154100">154100</option>
-                                                    <option value="118500">118500</option>
-                                                    <option value="123000">123000</option>
-                                                </select>
-                                                <span class="select-btn"><i class="zmdi zmdi-caret-down"></i></span>
+                                                <input type="text" class="input-text" name="billing_postcode" id="billing_postcode" placeholder="Postal code/Zipcode *">
                                             </p>
                                             <p class="form-row-first">
-                                                <input type="tel" class="input-text " name="billing_phone" id="billing_phone" placeholder="Phone *" value="<?=$userData["telp"]?>">
+                                                <input type="tel" class="input-text " name="billing_phone" id="billing_phone" placeholder="Phone *" value="<?= $userData["telp"] ?>">
                                             </p>
                                             <p class="form-row-last">
-                                                <input type="email" class="input-text " name="billing_email" id="billing_email" placeholder="Email Address *" value="<?=$userData["email"]?>">
+                                                <input type="email" class="input-text " name="billing_email" id="billing_email" placeholder="Email Address *" value="<?= $userData["email"] ?>">
                                             </p>
                                         </div>
                                     </div>
