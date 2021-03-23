@@ -6,8 +6,13 @@ if (isset($_GET["ccode"])) {
 
     $command = "SELECT pc FROM country WHERE countrycode='$code'";
     $query = mysqli_query($conn, $command);
-    $result = mysqli_fetch_assoc($query);
 
-    echo $result["pc"];
+    if ($query) {
+        $result = mysqli_fetch_assoc($query);
+        echo $result["pc"];
+    }
+    else{
+        echo "QF";
+    }
 }
 ?>

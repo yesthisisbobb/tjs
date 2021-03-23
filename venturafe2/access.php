@@ -59,6 +59,11 @@ include('rupiah.php');
 											<input autocomplete="username" type="email" class="input-field" required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" id="email" name="email" placeholder="E-mail">
 										</div>
 										<br>
+										<div class="input-container">
+											<i class="fa fa-user icon icon"></i>
+											<input type="text" class="input-field input-border" required name="username" placeholder="Full Name">
+										</div>
+										<br>
 										<div class="input-container input-border">
 											<i class="fa fa-lock icon"></i>
 											<input autocomplete="current-password" type="password" required id="password1" class="input-field" name="password" placeholder="Password">
@@ -67,30 +72,44 @@ include('rupiah.php');
 										<br>
 										<div class="row">
 											<div class="input-container col-lg-6">
-												<i class=" fa fa-user icon icon"></i>
-												<input type="text" class="input-field input-border" required name="username" placeholder="Full Name">
+												<i class="fas fa-flag icon icon"></i>
+												<select name="country">
+													<option value="none">Select a country</option>
+													<?php
+													$command = "SELECT * FROM COUNTRY ORDER BY 2 ASC";
+													$query = mysqli_query($conn, $command);
+													while ($res = mysqli_fetch_assoc($query)) {
+														$cname = $res["countryname"];
+														$ccode = $res["countrycode"];
+														$pc = $res["pc"];
+
+														echo "<option value='$ccode'>$cname (+ $pc)</option>";
+													}
+													?>
+												</select>
 											</div>
 											<div class="input-container  col-lg-6">
 												<i class=" fa fa-phone icon icon"></i>
-												<input type="text" class="input-field input-border " required name="phone" placeholder="Phone/WhatsApp">
+												<input type="text" class="input-field input-border " required name="phone" placeholder="Phone (Ex: 81221362119)">
 											</div>
 										</div>
 										<br>
 										<div class="row">
-											<div class="input-container  col-lg-6">
-												<i class=" fa fa-map icon icon"></i>
-												<input type="text" class="input-field input-border" required name="province" placeholder="Province">
-											</div>
-											<br>
-											<div class="input-container  col-lg-6">
+											<div class="input-container col-lg-6">
 												<i class=" fa fa-city icon icon"></i>
 												<input type="text" class="input-field input-border" required name="city" placeholder="City">
 											</div>
+											<div class="input-container col-lg-6">
+												<i class=" fa fa-map icon icon"></i>
+												<input type="text" class="input-field input-border" required name="province" placeholder="Province">
+											</div>
 										</div>
 										<br>
-										<div class="input-container input-border">
-											<i class=" fa fa-address-book-o icon icon"></i>
-											<input type="text" class="input-field" required name="alamat" id="alamat" placeholder="Address">
+										<div class="row">
+											<div class="input-container col-lg-6">
+												<i class=" fa fa-address-book-o icon icon"></i>
+												<input type="text" class="input-field input-border" required name="alamat" id="alamat" placeholder="Address">
+											</div>
 										</div>
 										<br>
 										<div class="row">
@@ -136,11 +155,35 @@ include('rupiah.php');
 	</div>
 	<?php include("headerdkk/footer.php"); ?>
 	<script type="text/javascript">
+		// Phone Code
+		let pc = "";
+
 		$(document).ready(function() {
 			FB.getLoginStatus(function(response) {
 				console.log(response);
 				// statusChangeCallback(response);
 			});
+		});
+		
+		$("select[name='country']").change(function() {
+			$.ajax({
+				url: "processes/get-country-details.php",
+				method: "GET",
+				data: {
+					"ccode": $(this).val()
+				},
+				success: function(data) {
+					if (data != "QF") {
+						pc = data;
+					} else {
+						console.error("There's an error processing phone number");
+					}
+				},
+				error: function(err) {
+					console.error(err.responseText);
+				}
+			});
+			console.log(pc);
 		});
 		$('#register').on('click', function() {
 			if ($('#email').val() != "" && $('#password1').val() != "" && $('#alamat').val() != "") {
