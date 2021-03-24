@@ -46,15 +46,19 @@ if(isset($_SESSION["username"])){
     // while ($rowStok = mysqli_fetch_assoc($queryStok)) {
     //     $jmlprod += $rowStok["jum"];
     // }
-    $apidata = ventura('item/stock?page=1', ["kode" => "$kodetipe", 'merk' => null, 'gudang' => null], 'POST');
-    $resp["api"] = $apidata;
-    $apitotalpage = $apidata["result"]["total_page"];
-    for ($i = 1; $i <= $apitotalpage; $i++) {
-        $apidata = ventura('item/stock?page=' . $i, ["kode" => "$kodetipe", 'merk' => null, 'gudang' => null], 'POST');
-        foreach ($apidata["result"]["data"] as $d) {
-            $jmlprod += $d["stok"];
-        }
-    }
+
+    // $apidata = ventura('item/stock?page=1', ["kode" => "$kodetipe", 'merk' => null, 'gudang' => null], 'POST');
+    // $resp["api"] = $apidata;
+    // $apitotalpage = $apidata["result"]["total_page"];
+    // for ($i = 1; $i <= $apitotalpage; $i++) {
+    //     $apidata = ventura('item/stock?page=' . $i, ["kode" => "$kodetipe", 'merk' => null, 'gudang' => null], 'POST');
+    //     foreach ($apidata["result"]["data"] as $d) {
+    //         $jmlprod += $d["stok"];
+    //     }
+    // }
+
+    $apidata = ventura('item/stock', ["kode" => "$kodetipe", 'status' => null], 'POST');
+    if ($apidata["result"]["result"] != null) $jmlprod = $apidata["result"]["result"][0]["stok"];
 
     $cart = $INDENT_TABLE;
     $cartdtl = $INDENT_DETAIL;
