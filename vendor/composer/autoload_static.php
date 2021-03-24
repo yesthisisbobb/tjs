@@ -14,6 +14,10 @@ class ComposerStaticInitedb74701b31177a8218bc472a01e9b4a
     );
 
     public static $prefixLengthsPsr4 = array (
+        'X' => 
+        array (
+            'Xendit\\' => 7,
+        ),
         'P' => 
         array (
             'Psr\\Http\\Message\\' => 17,
@@ -28,6 +32,10 @@ class ComposerStaticInitedb74701b31177a8218bc472a01e9b4a
     );
 
     public static $prefixDirsPsr4 = array (
+        'Xendit\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/xendit/xendit-php/src',
+        ),
         'Psr\\Http\\Message\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/http-message/src',
@@ -50,11 +58,16 @@ class ComposerStaticInitedb74701b31177a8218bc472a01e9b4a
         ),
     );
 
+    public static $classMap = array (
+        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+    );
+
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInitedb74701b31177a8218bc472a01e9b4a::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInitedb74701b31177a8218bc472a01e9b4a::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitedb74701b31177a8218bc472a01e9b4a::$classMap;
 
         }, null, ClassLoader::class);
     }

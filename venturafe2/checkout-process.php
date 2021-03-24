@@ -1,4 +1,6 @@
 <?php
+// xnd_development_zVUuXXI9RydfnOuAmCRzxpwwqszIk78MD0PJ98Z0OOQKECNRz6n61d3x3Waglev
+
 session_start();
 include("db/config.php");
 
@@ -137,4 +139,30 @@ else if($tipe == "indent"){
     $query8 = mysqli_query($conn, $sql8);
 }
 
+use Xendit\Xendit;
+
+require 'vendor/autoload.php';
+
+Xendit::setApiKey('xnd_development_zVUuXXI9RydfnOuAmCRzxpwwqszIk78MD0PJ98Z0OOQKECNRz6n61d3x3Waglev');
+
+$params = [
+    'external_id' => 'demo_147580196270',
+    'payer_email' => 'sample_email@xendit.co',
+    'description' => 'Trip to Bali',
+    'amount' => 32000
+];
+
+$createInvoice = \Xendit\Invoice::create($params);
+var_dump($createInvoice);
+
+$id = $createInvoice['id'];
+
+$getInvoice = \Xendit\Invoice::retrieve($id);
+var_dump($getInvoice);
+
+$expireInvoice = \Xendit\Invoice::expireInvoice($id);
+var_dump($expireInvoice);
+
+$getAllInvoice = \Xendit\Invoice::retrieveAll();
+var_dump(($getAllInvoice));
 ?>

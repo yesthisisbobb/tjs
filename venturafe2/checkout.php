@@ -128,15 +128,6 @@ $userData = mysqli_fetch_assoc($query);
                                             </p>
                                         </div>
                                     </div>
-                                    <div class="woocommerce-additional-fields">
-                                        <h2>Additional information</h2>
-                                        <div class="woocommerce-additional-fields__field-wrapper">
-                                            <p class="notes" id="order_comments_field">
-                                                <label for="order_comments" class="">Order notes</label>
-                                                <textarea name="order_comments" class="input-text " id="order_comments" placeholder="Note about your order, eg. special notes fordelivery."></textarea>
-                                            </p>
-                                        </div>
-                                    </div>
                                 </form>
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
@@ -190,7 +181,7 @@ $userData = mysqli_fetch_assoc($query);
                                                         </li>
                                                         <li class="shipping">
                                                             <span class="review-total-title">Shipping</span>
-                                                            <p>there are no shitdping methods available. please double check your address, or contact us if you need any help.</p>
+                                                            <p>there are no shipping methods available. please double check your address, or contact us if you need any help.</p>
                                                         </li>
                                                         <li class="order-total">
                                                             <span class="review-total-title">Total</span>

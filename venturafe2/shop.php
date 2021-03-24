@@ -142,7 +142,7 @@ $total = mysqli_num_rows($queryTotal);
 
 						<!-- Clear filter -->
 						<div style="display:flex;justify-content:space-around;margin-bottom:6px;">
-							<button type="button" class="btn btn-link" id="clear-filter" style="color:gray;"><i class="fas fa-ban"></i> Clear Filter</button>
+							<button type="button" class="btn btn-link" id="clear-filter" style="color:gray;"><i class="fas fa-ban"></i> Reset</button>
 							<div id="filter-apply">
 								<button type="button" class="btn btn-success waves-effect waves-light">Search</button>
 							</div>
