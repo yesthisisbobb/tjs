@@ -142,7 +142,7 @@ $total = mysqli_num_rows($queryTotal);
 
 						<!-- Clear filter -->
 						<div style="display:flex;justify-content:space-around;margin-bottom:6px;">
-							<!-- <button type="button" class="btn btn-link" id="clear-filter" style="color:gray;"><i class="fas fa-ban"></i> Clear Filter</button> -->
+							<button type="button" class="btn btn-link" id="clear-filter" style="color:gray;"><i class="fas fa-ban"></i> Clear Filter</button>
 							<div id="filter-apply">
 								<button type="button" class="btn btn-success waves-effect waves-light">Search</button>
 							</div>
@@ -391,32 +391,6 @@ $total = mysqli_num_rows($queryTotal);
 			valArr["searchVal"] = encodeURIComponent(val);
 			sessionStorage.setItem("searchVal", encodeURIComponent(val));
 
-			// == VERY TEMPORARY STUFF ==
-			statesArr["isSearched"] = false;
-			statesArr["isFilteredByPrice"] = false;
-			statesArr["isFilteredByAvail"] = false;
-			statesArr["isCategorized"] = false;
-			sessionStorage.removeItem("isSearched");
-			sessionStorage.removeItem("isFilteredByPrice");
-			sessionStorage.removeItem("isFilteredByAvail");
-			sessionStorage.removeItem("isCategorized");
-
-			sessionStorage.removeItem("searchVal");
-			sessionStorage.removeItem("priceVal");
-			sessionStorage.removeItem("availVal");
-			sessionStorage.removeItem("category");
-
-			sessionStorage.removeItem("page");
-
-			$("#search").val("");
-			$("#prf").val("none");
-			$("#avf").val("none");
-			$("#caf").val("none");
-			$("#brf").val("none");
-			$("#cof").val("none");
-			$("#paf").val("none");
-			// == VERY TEMPORARY STUFF ==
-
 			loadShopContents("no-page", 0);
 		});
 		$(function() {
@@ -451,44 +425,42 @@ $total = mysqli_num_rows($queryTotal);
 		// 	"isFilteredByAvail": false,
 		// 	"isCategorized": false
 		// };
+		if (sessionStorage.getItem("isSearched") || sessionStorage.getItem("isCategorized") || sessionStorage.getItem("isFilteredByPrice") || sessionStorage.getItem("isFilteredByAvail")) {
+			if (valArr["searchVal"] = sessionStorage.getItem("searchVal")) {
+				$("#search").val(decodeURIComponent(valArr["searchVal"]));
+			}
+			if (valArr["priceVal"] = sessionStorage.getItem("priceVal")) {
+				$("#prf").val(valArr["priceVal"]);
+			}
+			if (valArr["availVal"] = sessionStorage.getItem("availVal")) {
+				$("#avf").val(valArr["availVal"]);
+			}
+			if ((valArr["category"] = sessionStorage.getItem("category"))) {
+				let firstParse = JSON.parse(valArr["category"]);
+				firstParse.forEach(item => {
+					categoryArr.push({
+						"categoryCode": item["categoryCode"],
+						"categoryType": item["categoryType"]
+					});
+					$(`select[stype=${item["categoryType"]}]`).val(`${decodeURIComponent(item["categoryCode"]).toUpperCase()}`);
+				});
+			}
+			let current_page = 1;
+			if (sessionStorage.getItem("page")) current_page = sessionStorage.getItem("page");
 
-		// if (sessionStorage.getItem("isSearched") || sessionStorage.getItem("isCategorized") || sessionStorage.getItem("isFilteredByPrice") || sessionStorage.getItem("isFilteredByAvail")) {
-		// 	if (valArr["searchVal"] = sessionStorage.getItem("searchVal")) {
-		// 		$("#search").val(decodeURIComponent(valArr["searchVal"]));
-		// 	}
-		// 	if (valArr["priceVal"] = sessionStorage.getItem("priceVal")) {
-		// 		$("#prf").val(valArr["priceVal"]);
-		// 	}
-		// 	if (valArr["availVal"] = sessionStorage.getItem("availVal")) {
-		// 		$("#avf").val(valArr["availVal"]);
-		// 	}
-		// 	if ((valArr["category"] = sessionStorage.getItem("category"))) {
-		// 		let firstParse = JSON.parse(valArr["category"]);
-		// 		firstParse.forEach(item => {
-		// 			categoryArr.push({
-		// 				"categoryCode": item["categoryCode"],
-		// 				"categoryType": item["categoryType"]
-		// 			});
-		// 			$(`select[stype=${item["categoryType"]}]`).val(`${decodeURIComponent(item["categoryCode"]).toUpperCase()}`);
-		// 		});
-		// 	}
-		// 	let current_page = 1;
-		// 	if (sessionStorage.getItem("page")) current_page = sessionStorage.getItem("page");
+			statesArr["isSearched"] = sessionStorage.getItem("isSearched");
+			statesArr["isCategorized"] = sessionStorage.getItem("isCategorized");
+			statesArr["isFilteredByPrice"] = sessionStorage.getItem("isFilteredByPrice");
+			statesArr["isFilteredByAvail"] = sessionStorage.getItem("isFilteredByAvail");
 
-		// 	statesArr["isSearched"] = sessionStorage.getItem("isSearched");
-		// 	statesArr["isCategorized"] = sessionStorage.getItem("isCategorized");
-		// 	statesArr["isFilteredByPrice"] = sessionStorage.getItem("isFilteredByPrice");
-		// 	statesArr["isFilteredByAvail"] = sessionStorage.getItem("isFilteredByAvail");
+			let jsonVal = JSON.stringify(valArr);
+			let jsonStates = JSON.stringify(statesArr);
 
-		// 	let jsonVal = JSON.stringify(valArr);
-		// 	let jsonStates = JSON.stringify(statesArr);
-
-		// 	callLoader();
-		// 	$("#kontainerAnjay").load(`searchEngine.php?halaman=${current_page}&vals=${jsonVal}&states=${jsonStates}`, function() {
-		// 		removeLoader();
-		// 	});
-		// }
-
+			callLoader();
+			$("#kontainerAnjay").load(`searchEngine.php?halaman=${current_page}&vals=${jsonVal}&states=${jsonStates}`, function() {
+				removeLoader();
+			});
+		}
 		// else if (getUrlParameter("category")) {
 		// 	statesArr['isCategorized'] = true;
 		// 	sessionStorage.setItem("isCategorized", true);
@@ -521,9 +493,9 @@ $total = mysqli_num_rows($queryTotal);
 
 		// 	loadShopContents("no-page", 0);
 		// }
-		// else {
-		loadShopContents("no-page", 0);
-		// }
+		else {
+			loadShopContents("no-page", 0);
+		}
 		$(document).ready(function() {
 			// Apply filter on click for category
 			$("#filter-apply button").click(function() {
