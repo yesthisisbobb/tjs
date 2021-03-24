@@ -53,15 +53,20 @@ include('rupiah.php');
 							<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
 								<div class="novas-form-signup">
 									<h4 class="ma-header">Register</h4>
-									<form id="formRegister" class="woocommerce-form-register js-contact-form">
+									<form id="formRegister" class="woocommerce-form-register">
 										<div class="input-container input-border">
 											<i class=" fa fa-envelope icon icon"></i>
-											<input autocomplete="username" type="email" class="input-field" required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" id="email" name="email" placeholder="E-mail">
+											<input autocomplete="email" type="email" class="input-field" required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" id="email" name="email" placeholder="E-mail">
 										</div>
 										<br>
 										<div class="input-container">
 											<i class="fa fa-user icon icon"></i>
-											<input type="text" class="input-field input-border" required name="username" placeholder="Full Name">
+											<input type="text" class="input-field input-border" required name="fullname" placeholder="Full Name">
+										</div>
+										<br>
+										<div class="input-container">
+											<i class="fa fa-user icon icon"></i>
+											<input type="text" class="input-field input-border" required name="username" placeholder="Username">
 										</div>
 										<br>
 										<div class="input-container input-border">
@@ -96,12 +101,12 @@ include('rupiah.php');
 										<br>
 										<div class="row">
 											<div class="input-container col-lg-6">
-												<i class=" fa fa-city icon icon"></i>
-												<input type="text" class="input-field input-border" required name="city" placeholder="City">
-											</div>
-											<div class="input-container col-lg-6">
 												<i class=" fa fa-map icon icon"></i>
 												<input type="text" class="input-field input-border" required name="province" placeholder="Province">
+											</div>
+											<div class="input-container col-lg-6">
+												<i class=" fa fa-city icon icon"></i>
+												<input type="text" class="input-field input-border" required name="city" placeholder="City">
 											</div>
 										</div>
 										<br>
@@ -130,12 +135,12 @@ include('rupiah.php');
 										<div class="input-container input-border">
 											<i class=" fa fa-users icon icon"></i>
 											<select id="sales" class="input-field" name="sales">
-												<option values='none'>Prefer to not have sales person</option>
-												<option values='rec'>Recommend me a sales person</option>
+												<option value='none'>Prefer to not have sales person</option>
+												<option value='rec'>Recommend me a sales person</option>
 												<?php
 												$query = $conn->query("SELECT username FROM login WHERE role = 'sales'");
 												while ($row = mysqli_fetch_assoc($query)) {
-													echo '<option values="' . $row['id'] . '">' . $row['username'] . '</option>';
+													echo '<option value="' . $row['id'] . '">' . $row['username'] . '</option>';
 												}
 												?>
 											</select>
@@ -155,47 +160,37 @@ include('rupiah.php');
 	</div>
 	<?php include("headerdkk/footer.php"); ?>
 	<script type="text/javascript">
-		// Phone Code
-		let pc = "";
-
 		$(document).ready(function() {
 			FB.getLoginStatus(function(response) {
 				console.log(response);
 				// statusChangeCallback(response);
 			});
 		});
-		
-		$("select[name='country']").change(function() {
-			$.ajax({
-				url: "processes/get-country-details.php",
-				method: "GET",
-				data: {
-					"ccode": $(this).val()
-				},
-				success: function(data) {
-					if (data != "QF") {
-						pc = data;
-					} else {
-						console.error("There's an error processing phone number");
-					}
-				},
-				error: function(err) {
-					console.error(err.responseText);
-				}
-			});
-			console.log(pc);
-		});
+
 		$('#register').on('click', function() {
 			if ($('#email').val() != "" && $('#password1').val() != "" && $('#alamat').val() != "") {
+				let decision = "";
 				$.ajax({
 					type: 'POST',
 					url: 'ajaxRegister.php',
+					dataType: "JSON",
 					data: $('#formRegister').serialize(),
 					success: function(data) {
-						console.log(data);
-						if (data == 'berhasil') {
+						let qs1Found = false,
+							qs2Found = false;
+						for (let i = 0; i < data.length; i++) {
+							const code = data[i];
+							if (code === "QS1") qs1Found = true;
+							if (code === "QS2") qs2Found = true;
+						}
+						if (qs1Found && qs2Found) {
+							decision = "success";
+						}
+					},
+					complete: function() {
+						if (decision == 'success') {
 							Swal.fire(
-								'Congratulation',
+								'Congratulations',
 								'You Can Login',
 								'success'
 							)
@@ -208,10 +203,7 @@ include('rupiah.php');
 						}
 					}
 				});
-			} else {
-
 			}
-
 		});
 		$('#npwp').hide();
 		$('#npwpbr').hide();
