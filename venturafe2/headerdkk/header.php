@@ -284,7 +284,7 @@ if (session_status() == PHP_SESSION_NONE) {
                         if (isset($_SESSION['username'])) {
                             echo '<a class="drop-link" href="ajaxLogout.php">Log Out</a>';
                         } else {
-                            echo '<a class="drop-link" href="my-account.php">Log In</a>';
+                            echo '<a class="drop-link" href="access.php">Log In</a>';
                         }
                         ?>
                     </li>

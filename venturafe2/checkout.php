@@ -3,10 +3,9 @@ include("db/config.php");
 session_start();
 
 $lEmail = $_SESSION["username"];
-$command = "SELECT * FROM CUSTOMER WHERE email='$lEmail'";
+$command = "SELECT * FROM customer WHERE email='$lEmail'";
 $query = mysqli_query($conn, $command);
 $userData = mysqli_fetch_assoc($query);
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -97,7 +96,12 @@ $userData = mysqli_fetch_assoc($query);
                                                         while ($cty = mysqli_fetch_assoc($query)) {
                                                             $cname = $cty['countryname'];
                                                             $ccode = $cty['countrycode'];
-                                                            echo "<option value='$ccode'>$cname</option>";
+
+                                                            if ($ccode == $userData["negara"]) {
+                                                                echo "<option selected='selected' value='$ccode'>$cname</option>";
+                                                            } else {
+                                                                echo "<option value='$ccode'>$cname</option>";
+                                                            }
                                                         }
                                                     }
                                                     ?>
@@ -105,17 +109,17 @@ $userData = mysqli_fetch_assoc($query);
                                                 <span class="select-btn"><i class="zmdi zmdi-caret-down"></i></span>
                                             </p>
                                             <p class="form-row-wide">
+                                                <input type="text" class="input-text " placeholder="Province *" name="billing_state" id="billing_state" value="<?= $userData["provinsi"] ?>">
+                                            </p>
+                                            <p class="form-row-wide">
+                                                <input type="text" class="input-text " name="billing_city" id="billing_city" placeholder="Town/City *" value="<?= $userData["kota"] ?>">
+                                            </p>
+                                            <p class="form-row-wide">
                                                 <label for="billing_address_1">Address <abbr class="required" title="required">*</abbr></label>
                                                 <input type="text" class="input-text " name="billing_address_1" id="billing_address_1" placeholder="Street address" value="<?= $userData["alamat"] ?>">
                                             </p>
                                             <p class="form-row-wide">
                                                 <input type="text" class="input-text " name="billing_address_2" id="billing_address_2" placeholder="Apartment, suite, unit etc. (optional)">
-                                            </p>
-                                            <p class="form-row-wide">
-                                                <input type="text" class="input-text " name="billing_city" id="billing_city" placeholder="Town/City *">
-                                            </p>
-                                            <p class="form-row-wide">
-                                                <input type="text" class="input-text " placeholder="County *" name="billing_state" id="billing_state">
                                             </p>
                                             <p class="form-row-wide form-row-wide-1">
                                                 <input type="text" class="input-text" name="billing_postcode" id="billing_postcode" placeholder="Postal code/Zipcode *">

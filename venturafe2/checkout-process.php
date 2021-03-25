@@ -3,8 +3,8 @@ session_start();
 include("db/config.php");
 
 $sesi = session_id();
-$nama = $_SESSION["username"];
-$tipe = $_POST["tipe"];
+// $nama = $_SESSION["username"];
+// $tipe = $_POST["tipe"];
 
 use Xendit\Xendit;
 
@@ -19,19 +19,22 @@ $params = [
     'amount' => 32000
 ];
 
-$createInvoice = \Xendit\Invoice::create($params);
-var_dump($createInvoice);
+// $createInvoice = \Xendit\Invoice::create($params);
+// echo "=================CREATE INVOICE=================";
+// var_dump($createInvoice);
 
-$id = $createInvoice['id'];
+// $id = $createInvoice['id'];
 
-$getInvoice = \Xendit\Invoice::retrieve($id);
-var_dump($getInvoice);
+// $getInvoice = \Xendit\Invoice::retrieve($id);
+// echo "=================GET INVOICE=================";
+// var_dump($getInvoice);
 
-$expireInvoice = \Xendit\Invoice::expireInvoice($id);
-var_dump($expireInvoice);
+// $expireInvoice = \Xendit\Invoice::expireInvoice($id);
+// var_dump($expireInvoice);
 
-$getAllInvoice = \Xendit\Invoice::retrieveAll();
-var_dump(($getAllInvoice));
+// $getAllInvoice = \Xendit\Invoice::retrieveAll();
+// echo "=================GET ALL INVOICE=================";
+// var_dump(($getAllInvoice));
 
 // Initialize
 $gt = 0;
@@ -58,7 +61,6 @@ if($tipe == "normal"){
             $noakhir1 = $noakhir + 1;
         }
     }
-
 
     $sql2 = "SELECT * from cart where user_id='$nama'";
     $query2 = mysqli_query($conn, $sql2);

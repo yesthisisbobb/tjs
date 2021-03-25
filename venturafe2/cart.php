@@ -4,7 +4,7 @@ include("rupiah.php");
 session_start();
 
 if (!isset($_SESSION["username"])) {
-    header("Location:my-account.php?logged=false");
+    header("Location:access.php?logged=false");
 }
 
 $getcommand = "SELECT * FROM cartdtl";
@@ -190,7 +190,18 @@ $result = mysqli_fetch_array($query);
     }
 
     function toCheckout() {
-        window.location.href = "checkout.php";
+        Swal.fire({
+            icon: "info",
+            title: "Proceed to Checkout?",
+            text: "Please make sure to check items in your order before checking out",
+            showCancelButton: true,
+            confirmButtonText: "Yes, Proceed to Checkout"
+        })
+        .then((value) => {
+            if (value.isConfirmed) {
+                window.location.href = "checkout.php";
+            }
+        });
     };
 
     $(document).ready(function() {

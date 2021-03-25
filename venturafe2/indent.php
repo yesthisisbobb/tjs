@@ -4,7 +4,7 @@ include("rupiah.php");
 session_start();
 
 if (!isset($_SESSION["username"])) {
-    header("Location:my-account.php?logged=false");
+    header("Location:access.php?logged=false");
 }
 
 $getcommand = "SELECT * FROM cartdtl";
@@ -179,50 +179,18 @@ $result = mysqli_fetch_array($query);
         });
     }
 
-    function checkout() {
-        swal({
-                icon: "info",
-                title: "Proceed to Checkout?",
-                text: "Please make sure to check items in your order before checking out",
-                buttons: {
-                    cancel: true,
-                    confirm: {
-                        text: "Yes, Proceed to Checkout",
-                        value: "checkout",
-                        closeModal: false
-                    }
-                },
-                closeOnClickOutside: false,
-                closeOnEsc: false
-            })
-            .then((value) => {
-                if (value === "checkout") {
-                    $.ajax({
-                        url: "checkout-process.php",
-                        method: "POST",
-                        data: {
-                            "tipe": "indent"
-                        },
-                        success: function(data) {
-                            console.log(data);
-                            swal({
-                                title: "Success",
-                                text: "Your order is successfully processed! Proceed to placeholder to view your order",
-                                icon: "success"
-                            });
-                            refreshCart();
-                            refreshCartList();
-                            window.location.hash = "top-anchor";
-                        },
-                        error: function(error) {
-                            swal({
-                                title: "Error",
-                                text: JSON.parse(error).responseText,
-                                icon: "warning"
-                            });
-                        }
-                    });
-                }
-            });
+    function toCheckout() {
+        Swal.fire({
+            icon: "info",
+            title: "Proceed to Checkout?",
+            text: "Please make sure to check items in your order before checking out",
+            showCancelButton: true,
+            confirmButtonText: "Yes, Proceed to Checkout"
+        })
+        .then((value) => {
+            if (value.isConfirmed) {
+                window.location.href = "checkout.php";
+            }
+        });
     };
 </script>
