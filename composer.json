@@ -2,5 +2,11 @@
     "require": {
         "guzzlehttp/guzzle": "^7.2",
         "xendit/xendit-php": "^2.10"
+    },
+    "autoload":{
+        "psr-4":{
+            "Xendit\\": "xendit\\xendit-php\\src",
+            "ApiOperations\\": "xendit\\xendit-php\\src\\ApiOperations"
+        }
     }
 }
