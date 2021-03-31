@@ -589,7 +589,9 @@ function printSkeleton()
 			// valArr["category"] = JSON.stringify(tempArr);
 			sessionStorage.setItem("category", JSON.stringify(tempArr));
 
-			window.location.href = "shop.php";
+			// Sebelumnya, href -> shop.php vvv
+			// window.location.href = "shop.php";
+			window.location.href = "brand-view.php";
 		})
 	</script>
 </body>
