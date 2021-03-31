@@ -6,6 +6,8 @@ include("get-picture.php");
 include("containers.php");
 session_start();
 
+error_reporting(0);
+
 // Buat nyari yang ready
 $toBeQueried =  ventura('item/stock', ["kode" => null, 'status' => "Ready"], 'POST');
 
