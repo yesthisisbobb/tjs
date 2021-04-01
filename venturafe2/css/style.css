@@ -4125,16 +4125,16 @@ textarea:-moz-placeholder {
     margin-bottom: 33px; }
     .checkout-section .woocommerce .woocommerce-checkout .woocommerce-billing-fields .input-text::-webkit-input-placeholder,
     .checkout-section .woocommerce .woocommerce-checkout .woocommerce-billing-fields select::-webkit-input-placeholder {
-      color: #333; }
+      color: rgb(184, 184, 184); }
     .checkout-section .woocommerce .woocommerce-checkout .woocommerce-billing-fields .input-text::-moz-placeholder,
     .checkout-section .woocommerce .woocommerce-checkout .woocommerce-billing-fields select::-moz-placeholder {
-      color: #333; }
+      color: rgb(184, 184, 184); }
     .checkout-section .woocommerce .woocommerce-checkout .woocommerce-billing-fields .input-text:-ms-input-placeholder,
     .checkout-section .woocommerce .woocommerce-checkout .woocommerce-billing-fields select:-ms-input-placeholder {
-      color: #333; }
+      color: rgb(184, 184, 184); }
     .checkout-section .woocommerce .woocommerce-checkout .woocommerce-billing-fields .input-text:-moz-placeholder,
     .checkout-section .woocommerce .woocommerce-checkout .woocommerce-billing-fields select:-moz-placeholder {
-      color: #333; }
+      color: rgb(184, 184, 184); }
   .checkout-section .woocommerce .woocommerce-checkout .woocommerce-billing-fields .form-row-first {
     width: calc(50% - 15px);
     float: left;

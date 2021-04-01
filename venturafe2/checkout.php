@@ -125,10 +125,10 @@ $userData = mysqli_fetch_assoc($query);
                                                 <input type="text" class="input-text" name="billing_postcode" id="billing_postcode" placeholder="Postal code/Zipcode *">
                                             </p>
                                             <p class="form-row-first">
-                                                <input type="tel" class="input-text " name="billing_phone" id="billing_phone" placeholder="Phone *" value="<?= $userData["telp"] ?>">
+                                                <input type="tel" class="input-text " name="billing_phone" id="billing_phone" placeholder="Phone *" value="<?= $userData["telp"] ?>" readonly>
                                             </p>
                                             <p class="form-row-last">
-                                                <input type="email" class="input-text " name="billing_email" id="billing_email" placeholder="Email Address *" value="<?= $userData["email"] ?>">
+                                                <input type="email" class="input-text " name="billing_email" id="billing_email" placeholder="Email Address *" value="<?= $userData["email"] ?>" readonly>
                                             </p>
                                         </div>
                                     </div>
@@ -139,36 +139,7 @@ $userData = mysqli_fetch_assoc($query);
                                     <h2 id="order_review_heading">Your order</h2>
                                     <table class="shop_table">
                                         <tbody>
-                                            <tr class="cart_item">
-                                                <td class="product-name">
-                                                    <img src="images/checkout-1.jpg" alt="product">
-                                                    <div class="review-wrap">
-                                                        <span class="cart_item_title">Low Table/Stool</span>
-                                                        <span class="product-quantity">x4</span>
-                                                    </div>
-                                                </td>
-                                                <td class="product-total">
-                                                    <span class="woocommerce-Price-amount amount">
-                                                        <span class="woocommerce-Price-currencySymbol">$</span>
-                                                        29
-                                                    </span>
-                                                </td>
-                                            </tr>
-                                            <tr class="cart_item">
-                                                <td class="product-name">
-                                                    <img src="images/checkout-2.jpg" alt="product">
-                                                    <div class="review-wrap">
-                                                        <span class="cart_item_title">Set of 3 Porcelain</span>
-                                                        <span class="product-quantity">x2</span>
-                                                    </div>
-                                                </td>
-                                                <td class="product-total">
-                                                    <span class="woocommerce-Price-amount amount">
-                                                        <span class="woocommerce-Price-currencySymbol">$</span>
-                                                        124
-                                                    </span>
-                                                </td>
-                                            </tr>
+                                            <!-- Cart Items -->
                                         </tbody>
                                         <tfoot>
                                             <tr>
@@ -299,4 +270,18 @@ $userData = mysqli_fetch_assoc($query);
             }
         });
     });
+
+    function loadItems() {
+        $.ajax({
+            url: "ajaxCheckoutItems.php",
+            method: "POST",
+            data: {
+                "tipe": "normal"
+            },
+            success: function (data) {
+                $(".shop-table").html(data);
+            }
+        });
+    }
+    loadItems();
 </script>

@@ -90,11 +90,11 @@ if (isset($_POST["email"]) || isset($_POST["fullname"]) || isset($_POST["passwor
 
     $res[] = "CP8";
 
-    $command = "INSERT INTO login(username, nama, email, level, role, password, date, sales) values('$username', '$fullname', '$email', 'user', 'user', '$password', $tanggal, '$sales')";
+    $ppno = rand(1, 10);
+    $command = "INSERT INTO login(username, nama, email, level, role, password, date, sales, gam) values('$username', '$fullname', '$email', 'user', 'user', '$password', $tanggal, '$sales', 'pp$ppno.png')";
     $query = mysqli_query($conn, $command);
     if ($query) {
         $res[] = "QS1";
-        $ppno = rand(1, 10);
 
         $command = "INSERT INTO customer(email, nama, username, password, telp, negara, provinsi, kota, alamat, date, sales, tax, npwp, gam) values('$email', '$fullname', '$username', '$password', '$finalphonenum', '$country', '$province', '$city', '$alamat', $tanggal, '$sales', '$tax', '$npwp', 'pp$ppno.png')";
         $query2 = mysqli_query($conn, $command);

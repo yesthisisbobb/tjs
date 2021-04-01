@@ -167,7 +167,7 @@ error_reporting(0);
                         <!-- Canvas -->
                         <div class="canvas canvas-btn-wrap">
                             <button class="canvas-images canvas-btn" data-toggle="modal" data-target="#canvasModal">
-                                <img src="resource/user.png" alt="canvas">
+                                <img src="../img/user/default/<?= (isset($_SESSION['pp'])) ? $_SESSION['pp'] : 'user.png' ?>" alt="Profile Pic">
                             </button>
 
                         </div>

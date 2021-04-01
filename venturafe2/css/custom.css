@@ -284,6 +284,14 @@
 }
 /* ===== Akhir punya e cart header ====== */
 
+/* ===== Punya e PP header ====== */
+.canvas-btn img{
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+}
+/* ===== Akhir punya PP header ====== */
+
 /* ===== Punya e Floating Cart ===== */
 #normal-cart-container{
     display: none;
