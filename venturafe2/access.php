@@ -81,7 +81,7 @@ include('rupiah.php');
 												<select name="country">
 													<option value="none">Select a country</option>
 													<?php
-													$command = "SELECT * FROM COUNTRY ORDER BY 2 ASC";
+													$command = "SELECT * FROM country ORDER BY 2 ASC";
 													$query = mysqli_query($conn, $command);
 													while ($res = mysqli_fetch_assoc($query)) {
 														$cname = $res["countryname"];
