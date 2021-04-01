@@ -1320,6 +1320,16 @@
     cursor: pointer;
 }
 
+.related .product-image{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+.related .product-image a img{
+    width: 100%;
+    max-height: 80%;
+}
+
 /* Tile Calculator */
 #tile-calc{
     background:#202020;
